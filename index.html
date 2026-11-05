@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>芝心數語｜靈數羅盤</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=DM+Mono:wght@500&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/lunar-javascript@1.6.12/lunar.js"></script>
+<style>
+/* Layout: one narrow column of stacked panels — input, numbers, nine-grid, pyramid, tarot tables */
+:root{
+  --bg:#f3f1f6; --panel:#ffffff; --ink:#24203a; --muted:#6c6782;
+  --line:#2f3b8f; --accent:#b0833f; --hl:#d0427f; --hl-bg:#fbe8f0;
+  --soft:#e9ecf8; --rule:#dcd9e6;
+  --c-pre:#e8742a; --c-post:#24a055; --c-main:#e0505a;
+  --display:"Noto Serif TC","Songti TC",serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --num:"DM Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#16141f; --panel:#211e2e; --ink:#ece9f5; --muted:#a39fb8;
+  --line:#8d9cf0; --accent:#d7ab68; --hl:#f07aaa; --hl-bg:#3a2030;
+  --soft:#2b2a40; --rule:#36334a;
+  --c-pre:#f39553; --c-post:#4cc47a; --c-main:#f07a82; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#16141f; --panel:#211e2e; --ink:#ece9f5; --muted:#a39fb8;
+  --line:#8d9cf0; --accent:#d7ab68; --hl:#f07aaa; --hl-bg:#3a2030;
+  --soft:#2b2a40; --rule:#36334a;
+  --c-pre:#f39553; --c-post:#4cc47a; --c-main:#f07a82; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+header h1{font-family:var(--display);font-weight:900;font-size:1.9rem;margin:0;letter-spacing:.04em;color:var(--accent);text-wrap:balance}
+header p{margin:2px 0 0;color:var(--muted);font-size:.85rem;letter-spacing:.06em}
+.panel{background:var(--panel);border-radius:18px;padding:22px 20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+h2{font-family:var(--display);font-size:1.2rem;margin:0;color:var(--line);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+label.lbl{font-weight:700;color:var(--line);font-size:.95rem}
+input{font:inherit;font-family:var(--num);color:var(--ink);background:var(--soft);border:1px solid var(--rule);border-radius:10px;padding:10px 12px;width:100%}
+input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lunar-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px}
+.lunar-row span{font-size:.75rem;color:var(--muted)}
+.hint{font-size:.8rem;color:var(--muted);margin:0}
+svg .score{font-size:10px;fill:var(--muted)}
+td.k,th.k{font-family:var(--body);color:var(--line);font-weight:700;position:sticky;left:0;background:var(--soft)}
+.birth-box{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.birth-box input{width:100%}
+.seg button:disabled{color:var(--muted);cursor:not-allowed;opacity:.6}
+.result{background:var(--soft);border-radius:12px;padding:10px 14px;display:flex;gap:22px;flex-wrap:wrap}
+.result b{color:var(--muted);font-weight:500;font-size:.85rem;margin-right:6px}
+.result .v{font-family:var(--num);font-size:1.15rem}
+.age{display:flex;align-items:baseline;justify-content:center;gap:12px;border:1px solid var(--rule);border-radius:14px;padding:12px}
+.age .n{font-family:var(--display);font-size:2.4rem;font-weight:900;color:var(--accent)}
+.legend{display:flex;gap:8px;flex-wrap:wrap}
+.legend span{font-size:.8rem;font-weight:700;border:1px solid currentColor;border-radius:999px;padding:2px 12px}
+.lg-pre{color:var(--c-pre)} .lg-post{color:var(--c-post)} .lg-main{color:var(--c-main)}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cell{aspect-ratio:1;max-width:100%;border:1.5px solid var(--rule);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.cell svg{width:88%;height:88%}
+.cell .pre{fill:none;stroke:var(--c-pre);stroke-width:2.5}
+.cell .post{fill:none;stroke:var(--c-post);stroke-width:2.5;stroke-linejoin:round}
+.cell .main{fill:none;stroke:var(--c-main);stroke-width:2.5}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.seg button{font:inherit;font-size:.9rem;border:0;background:transparent;color:var(--ink);padding:7px 16px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--line);color:var(--panel);font-weight:700}
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.9rem;color:var(--muted)}
+.controls input{width:96px;padding:6px 10px}
+.pill{font-family:var(--body);font-size:.8rem;font-weight:700;color:var(--hl);background:var(--hl-bg);border-radius:999px;padding:3px 12px}
+/* 七秒讀心數 colors */
+:root{--ring:#5cc08f;--ring-soft:#e8f8ef;--tri-out:#b7e0c8;--tri-in:#3f9a5e;--node:#ffffff;
+  --n-left:#3f5a4c;--n-right:#e58a6f;--n-top:#e08a2e;--star:#e0484a;--raw:#2a2a2a;
+  --t-mid:#3b7fd6;--t-mid-bg:#eef4fd;--t-young:#4a9a5c;--t-young-bg:#e3f8e9;--t-old:#e0b53c;--t-old-bg:#fdf6dd}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ring:#4fae80;--ring-soft:#1c2e25;--tri-out:#2f5a42;--tri-in:#5cc08f;--node:#211e2e;
+  --n-left:#cfe6d8;--n-right:#f2a48c;--n-top:#e8963a;--star:#f07070;--raw:#ece9f5;
+  --t-mid:#7fb0f0;--t-mid-bg:#1f2a3d;--t-young:#7cc98e;--t-young-bg:#1d3326;--t-old:#ecc85e;--t-old-bg:#352e18}}
+:root[data-theme="dark"]{--ring:#4fae80;--ring-soft:#1c2e25;--tri-out:#2f5a42;--tri-in:#5cc08f;--node:#211e2e;
+  --n-left:#cfe6d8;--n-right:#f2a48c;--n-top:#e8963a;--star:#f07070;--raw:#ece9f5;
+  --t-mid:#7fb0f0;--t-mid-bg:#1f2a3d;--t-young:#7cc98e;--t-young-bg:#1d3326;--t-old:#ecc85e;--t-old-bg:#352e18}
+#pyr .ring{fill:none;stroke:var(--ring);stroke-width:1.6}
+#pyr .tri-out{fill:var(--ring-soft);stroke:var(--tri-out);stroke-width:4;stroke-linejoin:round}
+#pyr .tri-in{fill:none;stroke:var(--tri-in);stroke-width:2.6;stroke-linecap:round}
+#pyr .node{fill:var(--node)}
+#pyr .node-top{fill:var(--n-top)}
+#pyr .nv{font-family:var(--body);font-size:17px;font-weight:700}
+#pyr .node,#pyr .node-top{filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.14))}
+#pyr .nl{fill:var(--n-left)} #pyr .nr{fill:var(--n-right)} #pyr .nt{fill:#fff}
+#pyr .star{fill:var(--star);font-size:11px}
+#pyr .raw{font-family:var(--body);fill:var(--raw);font-size:15px;font-weight:700}
+#pyr .rawl{font-family:var(--body);fill:var(--raw);font-size:9px}
+#pyr .grp{font-family:var(--body);font-size:11px;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round;paint-order:stroke}
+#pyr .grp-s{font-size:9px}
+#pyr .tile-t{font-family:var(--num);font-size:15px}
+svg{display:block}
+#pyr{width:100%;max-width:480px;height:auto;margin:0 auto}
+svg .edge{fill:none;stroke:var(--line);stroke-width:3;stroke-linejoin:round}
+svg .sm{stroke-width:2}
+svg text{font-family:var(--num);fill:var(--line);text-anchor:middle;dominant-baseline:central}
+svg .big{font-size:34px} svg .mid{font-size:17px}
+svg .age-l{font-family:var(--body);font-size:11px;fill:var(--accent);font-weight:700}
+svg .hlnum{fill:var(--hl)}
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;text-align:center}
+th,td{padding:10px 12px;border-bottom:1px solid var(--rule);white-space:nowrap}
+th{background:var(--soft);color:var(--line);font-weight:700;font-size:.85rem}
+tr:last-child td{border-bottom:0}
+td{font-family:var(--num);font-size:1.05rem}
+.cur{background:var(--hl-bg);color:var(--hl);font-weight:700}
+td .cn{display:block;font-family:var(--body);font-size:.7rem;color:var(--muted);font-weight:500;margin-top:1px}
+td.cur .cn{color:var(--hl)}
+.flow3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fcard{border:1px solid var(--rule);border-radius:12px;padding:10px 8px;text-align:center;display:flex;flex-direction:column;gap:2px;min-width:0}
+.fcard .t{font-size:.78rem;color:var(--muted)}
+.fcard .row{display:flex;justify-content:center;gap:6px;align-items:baseline;flex-wrap:wrap}
+.fcard .k{font-size:.7rem;color:var(--line);font-weight:700}
+.fcard .n{font-family:var(--num);font-size:1.25rem;color:var(--ink)}
+.fcard .nm{font-size:.72rem;color:var(--muted);margin-bottom:4px}
+h3{font-size:.9rem;margin:4px 0 0;color:var(--line)}
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.cal-head h3{margin:0;font-size:1rem}
+.nav{font:inherit;font-size:1.3rem;line-height:1;width:36px;height:36px;border-radius:10px;border:1px solid var(--rule);background:var(--panel);color:var(--line);cursor:pointer}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal .wd{text-align:center;font-size:.75rem;color:var(--muted);padding:2px 0}
+.cal .wd.we{color:var(--hl)}
+.day{font:inherit;border:1px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:10px;padding:4px 2px 6px;display:flex;flex-direction:column;align-items:center;gap:1px;cursor:pointer;min-width:0}
+.day .dn{font-size:.7rem;color:var(--muted);align-self:flex-start;padding-left:5px}
+.day .a{font-family:var(--num);font-size:1rem;line-height:1.2}
+.day .b{font-family:var(--num);font-size:.78rem;color:var(--muted);line-height:1.2}
+.day.today .dn{color:var(--line);font-weight:700}
+.day.sel{background:var(--hl-bg);border-color:var(--hl)}
+.day.sel .a,.day.sel .dn{color:var(--hl)}
+.day:hover{border-color:var(--line)}
+.day .nm{display:none;font-size:.62rem;color:var(--muted);line-height:1.25;text-align:center;word-break:keep-all}
+.cal.names .day .nm{display:block}
+.cal.names .day .a{margin-top:2px}
+.cal.names .day .b{margin-top:4px}
+.day.sel .nm{color:var(--hl)}
+details.fold{gap:0}
+details.fold[open]{gap:14px}
+details.fold summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px}
+details.fold summary::-webkit-details-marker{display:none}
+details.fold summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--line);border-bottom:2px solid var(--line);transform:rotate(45deg);margin:0 6px 4px 0;transition:transform .2s}
+details.fold[open] summary::after{transform:rotate(-135deg);margin-bottom:-4px}
+details.fold summary .hint{margin-left:auto}
+details.fold .legend{margin-bottom:14px}
+details.fold[open] summary .hint{display:none}
+details.fold summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
+footer{text-align:center;color:var(--muted);font-size:.75rem;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:8px}
+footer p{margin:0}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>芝心數語｜靈數羅盤</h1>
+    <p>生命靈數 × 七秒讀心術 × 塔羅流年</p>
+  </header>
+
+  <section class="panel">
+    <label class="lbl" for="solar">國曆生日</label>
+    <input type="date" id="solar" value="1990-05-22">
+    <div class="result"><div><b>後天數</b><span class="v" id="sSum"></span></div><div><b>主命數</b><span class="v" id="sMain"></span></div></div>
+    <label class="lbl" for="ly">農曆生日</label>
+    <div class="lunar-row">
+      <div><span>年</span><input id="ly" type="number" inputmode="numeric"></div>
+      <div><span>月</span><input id="lm" type="number" inputmode="numeric" min="1" max="12"></div>
+      <div><span>日</span><input id="ld" type="number" inputmode="numeric" min="1" max="30"></div>
+    </div>
+    <p class="hint" id="lunarHint">農曆會依國曆自動換算，也可以手動修改。</p>
+    <div class="result"><div><b>後天數</b><span class="v" id="lSum"></span></div><div><b>主命數</b><span class="v" id="lMain"></span></div></div>
+    <div class="birth-box">
+      <span class="lbl">出生型態</span>
+      <div class="seg" role="group" id="typeSeg">
+        <button data-v="single" aria-pressed="true">單胞胎</button>
+        <button data-v="multi" aria-pressed="false">多胞胎</button>
+      </div>
+      <div id="multiBox" hidden class="birth-box">
+        <span class="lbl">出生排行</span>
+        <div class="seg" role="group" id="orderSeg">
+          <button data-v="1" aria-pressed="true">老大</button>
+          <button data-v="2" aria-pressed="false">老二</button>
+          <button data-v="3" aria-pressed="false">老三</button>
+        </div>
+        <p class="hint">老大加媽媽、老二加爸爸、老三加爸媽。用於七秒讀心數的數字校正，流年模式只校正日、月。</p>
+        <div id="dadBox" class="birth-box" hidden><label class="lbl" for="dad">爸爸國曆生日</label>
+        <input type="date" id="dad"></div>
+        <div id="momBox" class="birth-box"><label class="lbl" for="mom">媽媽國曆生日</label>
+        <input type="date" id="mom"></div>
+      </div>
+    </div>
+    <div class="age"><span>年齡</span><span class="n" id="age"></span><span>歲</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>國曆九宮格</h2>
+    <div class="legend"><span class="lg-pre">○ 先天數</span><span class="lg-post">△ 後天數</span><span class="lg-main">□ 主命數</span></div>
+    <div class="grid9" id="grid9"></div>
+  </section>
+
+  <details class="panel fold" id="lunarFold">
+    <summary><h2>農曆九宮格</h2><span class="hint" id="lunarGridHint">點開查看</span></summary>
+    <div class="legend"><span class="lg-pre">○ 先天數</span><span class="lg-post">△ 後天數</span><span class="lg-main">□ 主命數</span></div>
+    <div class="grid9" id="grid9L"></div>
+  </details>
+
+  <section class="panel">
+    <h2>七秒讀心數 <span class="pill" id="flowPill" hidden></span></h2>
+    <div class="controls">模式
+      <div class="seg" role="group">
+        <button id="mBirth" aria-pressed="true">生日</button>
+        <button id="mFlow" aria-pressed="false">流年</button>
+      </div>
+      <span id="yrWrap" hidden>年份 <input id="flowYear" type="number" inputmode="numeric"></span>
+    </div>
+    <svg id="pyr" viewBox="0 0 400 350" role="img" aria-label="七秒讀心數"></svg>
+  </section>
+
+  <section class="panel">
+    <h2>塔羅流年表 <span class="pill" id="curPill"></span></h2>
+    <div class="controls">靈魂換日線
+      <div class="seg" role="group" id="shiftSeg">
+        <button data-v="0" aria-pressed="true">無</button>
+        <button data-v="1" aria-pressed="false">+1</button>
+        <button data-v="-1" aria-pressed="false">−1</button>
+      </div>
+    </div>
+    <div class="tbl"><table id="flowTbl"></table></div>
+  </section>
+
+  <section class="panel">
+    <h2>流年・流月・流日</h2>
+    <div class="controls">查詢日期 <input type="date" id="fDate" style="width:auto"></div>
+    <div class="flow3" id="flow3"></div>
+    <h3 id="mTitle">流月</h3>
+    <div class="tbl"><table id="mTbl"></table></div>
+    <div class="cal-head">
+      <button class="nav" id="calPrev" aria-label="上個月">‹</button>
+      <h3 id="dTitle">流日</h3>
+      <button class="nav" id="calNext" aria-label="下個月">›</button>
+    </div>
+    <p class="hint">點日期可以看當天的牌。每格上面是國曆，下面是農曆。切換到最下方的「電腦版」會加上牌名。</p>
+    <div class="cal" id="dCal"></div>
+  </section>
+
+  <section class="panel">
+    <h2>塔羅靈數性格</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>類型</th><th>本性</th><th>外在</th><th>內在</th></tr></thead>
+      <tbody>
+        <tr><td class="k">國曆</td><td id="sN"></td><td id="sO"></td><td id="sI"></td></tr>
+        <tr><td class="k">農曆</td><td id="lN"></td><td id="lO"></td><td id="lI"></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <footer>
+    <div class="seg" role="group" id="calView" aria-label="顯示方式">
+      <button data-v="m" aria-pressed="true">手機版</button>
+      <button data-v="d" aria-pressed="false">電腦版</button>
+    </div>
+    <p>從數字看見自己，從理解找到方向。</p>
+  </footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const NOW=new Date().getFullYear();
+let mode='birth', shift=0, multi=false, order=1;
+
+const dsum=n=>String(Math.abs(n)).split('').reduce((a,c)=>a+ +c,0);
+const one=n=>{while(n>9)n=dsum(n);return n;};
+const tarot=n=>dsum(n)%22;                  // 各位數相加後 mod 22（0＝愚人）
+const CARDS=['愚人','魔術師','女祭司','女皇','皇帝','教皇','戀人','戰車','力量','隱者','命運之輪','正義','吊人','死神','節制','惡魔','高塔','星星','月亮','太陽','審判','世界'];
+const cardCell=(n,cls='')=>`<td class="${cls}">${n}<span class="cn">${CARDS[n]}</span></td>`;
+/* 塔羅性格（依 Excel）：本性＝出生年後兩位數字相加；外在、內在＝(年+月+日) 各位數相加，
+   超過 21 時外在 −22、內在改成十位＋個位 */
+const persona=(Y,M,D)=>{const t=dsum(Y+M+D);return {n:dsum(Y%100),o:t<=21?t:t-22,i:t<=21?t:Math.floor(t/10)+t%10};};
+/* 流年：年份＋生日月＋日；流月：查詢年＋出生年＋生日月＋日＋月份；流日：出生年＋生日月＋日＋查詢年＋查詢月＋日 */
+const flowY=(Y,M,D)=>tarot(Y+M+D);
+const flowM=(qY,bY,M,D,m)=>tarot(qY+bY+M+D+m);
+const flowD=(bY,M,D,qY,qM,d)=>tarot(bY+M+D+qY+qM+d);
+
+function lifeNums(y,m,d){
+  const s=dsum(String(y)+m+d);
+  const chain=[s];let x=s;while(x>9){x=dsum(x);chain.push(x);}
+  return {chain,shown:chain.length>2?chain.slice(0,-1).join('/'):String(s),main:x,total:s};
+}
+
+/* 九宮格：○ 生日各位數（出現幾次畫幾圈）、△ 後天數各位數、□ 主命數 */
+function drawGrid(y,m,d,ln,target='grid9'){
+  const count=str=>{const c={};for(const ch of str)if(ch!=='0')c[ch]=(c[ch]||0)+1;return c;};
+  const pre=count(String(y)+m+d);
+  const post=count(ln.chain.slice(0,-1).join('')||String(ln.total));
+  let html='';
+  for(let k=1;k<=9;k++){
+    const p=pre[k]||0,t=post[k]||0,isMain=ln.main===k;
+    let s='';
+    if(isMain) s+=`<rect class="main" x="8" y="8" width="84" height="84"/>`;
+    for(let i=0;i<t;i++){const g=i*7;s+=`<path class="post" d="M50 ${14+g}L${16+g*.9} ${84-g*.4}H${84-g*.9}Z"/>`;}
+    for(let i=0;i<p;i++) s+=`<circle class="pre" cx="50" cy="60" r="${17+i*5}"/>`;
+    const fill=(p||t||isMain)?'var(--line)':'var(--line)';
+    s+=`<text x="50" y="61" style="font-size:24px;fill:${fill}">${k}</text>`;
+    html+=`<div class="cell"><svg viewBox="0 0 100 100" aria-label="${k}">${s}</svg></div>`;
+  }
+  $(target).innerHTML=html;
+}
+
+const base4=(y,m,d)=>{const ys=String(y).padStart(4,'0');return [one(d),one(m),one(+ys.slice(0,2)),one(+ys.slice(2))];};
+function pyramid(y,m,d,add){
+  let b=base4(y,m,d);
+  if(add) b=b.map((v,i)=>one(v+add[i]));   // 多胞胎老大：與媽媽同位置相加
+  const mL=one(b[0]+b[1]), mR=one(b[2]+b[3]), top=one(mL+mR);
+  const tri=(a,c)=>[a,c,one(a+c)];
+  return {b,mL,mR,top,
+    left:tri(one(mL+b[0]),one(mL+b[1])),
+    upper:tri(one(top+mR),one(top+mL)),
+    right:tri(one(mR+b[2]),one(mR+b[3]))};
+}
+
+/* 年齡小三角：方塊排列（上 1 格、下 2 格） */
+function tiles(cx,cy,[a,c,t],name,range,col,bg){
+  const w=25,g=1.5,top=cy, bot=cy+w+g;
+  const tile=(x,yv,v)=>`<rect x="${x-w/2}" y="${yv-w/2}" width="${w}" height="${w}" rx="2" style="fill:var(${bg})"/><text class="tile-t" x="${x}" y="${yv}" style="fill:var(${col})">${v}</text>`;
+  const pd=4;  // 方塊外留白，讓圓環線在這裡斷開
+  const gap=`<rect x="${cx-w/2-pd}" y="${top-w/2-pd}" width="${w+pd*2}" height="${w+pd*2}" style="fill:var(--panel)"/>`+
+            `<rect x="${cx-w-g/2-pd}" y="${bot-w/2-pd}" width="${w*2+g+pd*2}" height="${w+pd*2}" style="fill:var(--panel)"/>`;
+  return `<text class="grp" x="${cx}" y="${cy-39}" style="fill:var(${col})">${name}</text>
+  <text class="grp grp-s" x="${cx}" y="${cy-26}" style="fill:var(${col})">${range}</text>`+
+  tile(cx,top,t)+tile(cx-w/2-g/2,bot,a)+tile(cx+w/2+g/2,bot,c);
+}
+
+function drawPyramid(){
+  const [y,m,d]=$('solar').value.split('-').map(Number);
+  if(!y) return;
+  const flow=mode==='flow', yy=flow?(+$('flowYear').value||NOW):y;
+  let add=null;
+  if(multi){
+    const ids=order===1?['mom']:order===2?['dad']:['dad','mom'];
+    const parts=ids.map(id=>$(id).value).filter(Boolean).map(v=>{const [a,b2,c]=v.split('-').map(Number);return base4(a,b2,c);});
+    if(parts.length===ids.length){add=[0,0,0,0];parts.forEach(q=>q.forEach((v,i)=>add[i]+=v));if(flow)add[2]=add[3]=0;}
+  }
+  const p=pyramid(yy,m,d,add);
+  const ys=String(yy).padStart(4,'0'), pad=v=>String(v).padStart(2,'0');
+  const raw=[pad(d),pad(m),ys.slice(0,2),ys.slice(2)];
+  const T=[200,131], BL=[133,250], BR=[267,250];
+  const L=[166.5,190], R=[233.5,190], B=[[133,240],[178,240],[222,240],[267,240]];
+  const ln=(P,Q)=>`M${P[0]} ${P[1]}L${Q[0]} ${Q[1]}`;
+  const node=([x,yv],v,cls,r=12)=>`<circle class="node" cx="${x}" cy="${yv}" r="${r}"/><text class="nv ${cls}" x="${x}" y="${yv+1}">${v}</text>`;
+  $('pyr').innerHTML=
+   `<circle class="ring" cx="200" cy="193" r="153"/><circle class="ring" cx="200" cy="193" r="131"/>
+   <path class="tri-out" d="M200 98L107 259H293Z"/>
+   <path class="tri-in" d="${ln(T,BL)}${ln(T,BR)}${ln(BL,BR)}${ln(L,R)}${ln(L,B[1])}${ln(R,B[2])}"/>`+
+   `<circle class="node-top" cx="${T[0]}" cy="${T[1]}" r="12"/><text class="nv nt" x="${T[0]}" y="${T[1]+1}">${p.top}</text>`+
+   node(L,p.mL,'nl')+node(R,p.mR,'nr')+
+   node(B[0],p.b[0],'nl')+node(B[1],p.b[1],'nl')+node(B[2],p.b[2],'nr')+node(B[3],p.b[3],'nr')+
+   `<text class="star" x="200" y="112">*</text><text class="star" x="121" y="256">*</text><text class="star" x="279" y="256">*</text>`+
+   raw.map((v,i)=>`<text class="raw" x="${B[i][0]+2}" y="276">${v}</text>`).join('')+
+   `<text class="rawl" x="${B[0][0]+2}" y="290">日期</text><text class="rawl" x="${B[1][0]+2}" y="290">月份</text><text class="rawl" x="247" y="290">年份</text>`+
+   tiles(200,55,p.upper,'中年','41–60','--t-mid','--t-mid-bg')+
+   tiles(98,140,p.left,'青年','21–40','--t-young','--t-young-bg')+
+   tiles(302,140,p.right,'晚年','61–','--t-old','--t-old-bg');
+  $('flowPill').hidden=!flow;
+  $('flowPill').textContent=`${p.top} 為 ${yy} 流年`;
+}
+
+function autoLunar(){
+  const [y,m,d]=$('solar').value.split('-').map(Number);
+  try{
+    const l=Solar.fromYmd(y,m,d).getLunar();
+    $('ly').value=l.getYear();$('lm').value=Math.abs(l.getMonth());$('ld').value=l.getDay();
+    $('lunarHint').textContent=l.getMonth()<0?'這天是農曆閏月，已用月份數字計算。':'農曆會依國曆自動換算，也可以手動修改。';
+  }catch(e){$('lunarHint').textContent='無法自動換算農曆，請手動輸入。';}
+}
+
+function renderFlow(y,m,d,lm,ld){
+  const v=$('fDate').value; if(!v) return;
+  const [qY,qM,qD]=v.split('-').map(Number);
+  const hasL=!!lm;
+  const card=(t,a,b)=>`<div class="fcard"><span class="t">${t}</span>
+    <div class="row"><span class="k">國</span><span class="n">${a}</span></div><span class="nm">${CARDS[a]}</span>
+    ${hasL?`<div class="row"><span class="k">農</span><span class="n">${b}</span></div><span class="nm">${CARDS[b]}</span>`:''}</div>`;
+  $('flow3').innerHTML=
+    card(`${qY} 流年`,flowY(qY,m,d),hasL?flowY(qY,lm,ld):0)+
+    card(`${qM} 月流月`,flowM(qY,y,m,d,qM),hasL?flowM(qY,y,lm,ld,qM):0)+
+    card(`${qD} 日流日`,flowD(y,m,d,qY,qM,qD),hasL?flowD(y,lm,ld,qY,qM,qD):0);
+  const months=[...Array(12)].map((_,i)=>i+1);
+  $('mTitle').textContent=`${qY} 年流月`;
+  $('mTbl').innerHTML=`<thead><tr><th class="k">月份</th>${months.map(i=>`<th class="${i===qM?'cur':''}">${i}月</th>`).join('')}</tr></thead>
+   <tbody><tr><td class="k">國曆</td>${months.map(i=>cardCell(flowM(qY,y,m,d,i),i===qM?'cur':'')).join('')}</tr>
+   ${hasL?`<tr><td class="k">農曆</td>${months.map(i=>cardCell(flowM(qY,y,lm,ld,i),i===qM?'cur':'')).join('')}</tr>`:''}</tbody>`;
+  const nd=new Date(qY,qM,0).getDate(), days=[...Array(nd)].map((_,i)=>i+1);
+  $('dTitle').textContent=`${qY} 年 ${qM} 月流日`;
+  const first=new Date(qY,qM-1,1).getDay(), t=new Date();
+  const isToday=i=>t.getFullYear()===qY&&t.getMonth()+1===qM&&t.getDate()===i;
+  $('dCal').innerHTML=['日','一','二','三','四','五','六'].map((w,i)=>`<div class="wd${i===0||i===6?' we':''}">${w}</div>`).join('')+
+    '<div></div>'.repeat(first)+
+    days.map(i=>{const a=flowD(y,m,d,qY,qM,i), b=hasL?flowD(y,lm,ld,qY,qM,i):null;
+      return `<button class="day${i===qD?' sel':''}${isToday(i)?' today':''}" data-d="${i}" aria-label="${qM}月${i}日 國曆${a}${CARDS[a]}${b!=null?' 農曆'+b+CARDS[b]:''}">
+        <span class="dn">${i}</span><span class="a">${a}</span><span class="nm">${CARDS[a]}</span>${b!=null?`<span class="b">${b}</span><span class="nm">${CARDS[b]}</span>`:''}</button>`;}).join('');
+  // 表格自動捲到查詢的月份與日期
+  ['mTbl'].forEach(id=>{const box=$(id).parentElement,c=$(id).querySelector('th.cur');if(c)box.scrollLeft=Math.max(0,c.offsetLeft-box.clientWidth/2+c.offsetWidth/2);});
+}
+
+function render(){
+  const [y,m,d]=$('solar').value.split('-').map(Number);
+  if(!y) return;
+  const s=lifeNums(y,m,d);
+  $('sSum').textContent=s.shown;$('sMain').textContent=s.main;
+  const ly=+$('ly').value,lm=+$('lm').value,ld=+$('ld').value;
+  const l=lifeNums(ly,lm,ld);
+  $('lSum').textContent=ly?l.shown:'—';$('lMain').textContent=ly?l.main:'—';
+  $('age').textContent=NOW-y;
+  drawGrid(y,m,d,s);
+  if(ly) drawGrid(ly,lm,ld,l,'grid9L'); else $('grid9L').innerHTML='<p class="hint">請先輸入農曆生日。</p>';
+
+  const years=[];for(let k=-3;k<=3;k++)years.push(NOW+k);
+  const row=(mm,dd)=>years.map(Y=>mm?cardCell(tarot(mm+dd+shift+Y),Y===NOW?'cur':''):`<td>—</td>`).join('');
+  $('flowTbl').innerHTML=`<thead><tr><th class="k">類型</th>${years.map(Y=>`<th class="${Y===NOW?'cur':''}">${Y}</th>`).join('')}</tr></thead>
+   <tbody><tr><td class="k">國曆</td>${row(m,d)}</tr><tr><td class="k">農曆</td>${row(lm,ld)}</tr></tbody>`;
+  $('curPill').textContent=`${NOW} 為當年流年`;
+
+  const put=(id,n)=>{$(id).innerHTML=n==null?'—':`${n}<span class="cn">${CARDS[n]}</span>`;};
+  const ps=persona(y,m,d); put('sN',ps.n);put('sO',ps.o);put('sI',ps.i);
+  const pl=ly?persona(ly,lm,ld):{}; put('lN',pl.n);put('lO',pl.o);put('lI',pl.i);
+  renderFlow(y,m,d,lm,ld);
+  drawPyramid();
+}
+
+$('solar').addEventListener('change',()=>{autoLunar();render();});
+['ly','lm','ld'].forEach(id=>$(id).addEventListener('input',render));
+$('flowYear').value=NOW;
+$('flowYear').addEventListener('input',drawPyramid);
+$('mBirth').onclick=()=>{mode='birth';$('mBirth').setAttribute('aria-pressed','true');$('mFlow').setAttribute('aria-pressed','false');$('yrWrap').hidden=true;drawPyramid();};
+$('mFlow').onclick=()=>{mode='flow';$('mFlow').setAttribute('aria-pressed','true');$('mBirth').setAttribute('aria-pressed','false');$('yrWrap').hidden=false;drawPyramid();};
+document.querySelectorAll('#shiftSeg button').forEach(b=>b.onclick=()=>{
+  shift=+b.dataset.v;
+  document.querySelectorAll('#shiftSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  render();
+});
+document.querySelectorAll('#typeSeg button').forEach(b=>b.onclick=()=>{
+  multi=b.dataset.v==='multi';
+  document.querySelectorAll('#typeSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  $('multiBox').hidden=!multi; drawPyramid();
+});
+$('mom').addEventListener('change',drawPyramid);
+$('dad').addEventListener('change',drawPyramid);
+document.querySelectorAll('#orderSeg button').forEach(b=>b.onclick=()=>{
+  if(b.disabled) return;
+  document.querySelectorAll('#orderSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  order=+b.dataset.v;
+  $('dadBox').hidden=order===1; $('momBox').hidden=order===2;
+  drawPyramid();
+});
+(()=>{const t=new Date();$('fDate').value=`${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;})();
+$('fDate').addEventListener('change',render);
+const setQ=(Y,M,D)=>{const nd=new Date(Y,M,0).getDate();$('fDate').value=`${Y}-${String(M).padStart(2,'0')}-${String(Math.min(D,nd)).padStart(2,'0')}`;render();};
+$('dCal').addEventListener('click',e=>{const b=e.target.closest('.day');if(!b)return;const [Y,M]=$('fDate').value.split('-').map(Number);setQ(Y,M,+b.dataset.d);});
+const shiftMonth=k=>{const [Y,M,D]=$('fDate').value.split('-').map(Number);const dt=new Date(Y,M-1+k,1);setQ(dt.getFullYear(),dt.getMonth()+1,D);};
+let calView=(()=>{try{return localStorage.getItem('calView')}catch(e){return null}})()||(innerWidth>=720?'d':'m');
+const applyView=()=>{$('dCal').classList.toggle('names',calView==='d');document.querySelectorAll('#calView button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===calView?'true':'false'));};
+document.querySelectorAll('#calView button').forEach(b=>b.onclick=()=>{calView=b.dataset.v;try{localStorage.setItem('calView',calView)}catch(e){}applyView();});
+applyView();
+$('calPrev').onclick=()=>shiftMonth(-1);$('calNext').onclick=()=>shiftMonth(1);
+autoLunar(); if(!$('ly').value){$('ly').value=1990;$('lm').value=4;$('ld').value=28;}
+render();
+</script>
+
+</html>
