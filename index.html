@@ -40,8 +40,16 @@ h2{font-family:var(--display);font-size:1.2rem;margin:0;color:var(--line);displa
 label.lbl{font-weight:700;color:var(--line);font-size:.95rem}
 input{font:inherit;font-family:var(--num);color:var(--ink);background:var(--soft);border:1px solid var(--rule);border-radius:10px;padding:10px 12px;width:100%}
 input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.lunar-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px}
-.lunar-row span{font-size:.75rem;color:var(--muted)}
+.field{position:relative;display:flex;align-items:center;width:100%;min-height:48px;background:var(--soft);border:1px solid var(--rule);border-radius:10px;padding:0 12px;font-family:var(--num);color:var(--ink)}
+.field:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.field input[type=date]{-webkit-appearance:none;appearance:none;border:0;background:transparent;padding:0;min-height:46px;width:100%;display:block;text-align:left;outline:none}
+.field input[type=date]::-webkit-date-and-time-value{text-align:left}
+.field.lunar{gap:2px;flex-wrap:nowrap}
+.field select{-webkit-appearance:none;appearance:none;border:0;background:transparent;font:inherit;color:var(--ink);padding:12px 2px;cursor:pointer;outline:none;min-width:0}
+.field select:invalid{color:var(--muted)}
+.field select option{color:var(--ink)}
+.birth-box>#multiBox,#multiBox>.birth-box{align-self:stretch}
+.results{display:flex;flex-direction:column;gap:18px}
 .hint{font-size:.8rem;color:var(--muted);margin:0}
 svg .score{font-size:10px;fill:var(--muted)}
 td.k,th.k{font-family:var(--body);color:var(--line);font-weight:700;position:sticky;left:0;background:var(--soft)}
@@ -157,17 +165,18 @@ footer p{margin:0}
   </header>
 
   <section class="panel">
-    <label class="lbl" for="solar">國曆生日</label>
-    <input type="date" id="solar" value="1990-05-22">
-    <div class="result"><div><b>後天數</b><span class="v" id="sSum"></span></div><div><b>主命數</b><span class="v" id="sMain"></span></div></div>
+    <label class="lbl">國曆生日</label>
+    <div class="field ymd" data-target="solar" data-name="國曆"></div><input type="hidden" id="solar">
+    <p class="hint" id="startHint">選好國曆生日後，會自動換算農曆並顯示所有結果。</p>
+    <div class="result" id="sRes" hidden><div><b>後天數</b><span class="v" id="sSum"></span></div><div><b>主命數</b><span class="v" id="sMain"></span></div></div>
     <label class="lbl" for="ly">農曆生日</label>
-    <div class="lunar-row">
-      <div><span>年</span><input id="ly" type="number" inputmode="numeric"></div>
-      <div><span>月</span><input id="lm" type="number" inputmode="numeric" min="1" max="12"></div>
-      <div><span>日</span><input id="ld" type="number" inputmode="numeric" min="1" max="30"></div>
+    <div class="field lunar">
+      <select id="ly" required aria-label="農曆年"><option value="">年</option></select>
+      <select id="lm" required aria-label="農曆月"><option value="">月</option></select>
+      <select id="ld" required aria-label="農曆日"><option value="">日</option></select>
     </div>
     <p class="hint" id="lunarHint">農曆會依國曆自動換算，也可以手動修改。</p>
-    <div class="result"><div><b>後天數</b><span class="v" id="lSum"></span></div><div><b>主命數</b><span class="v" id="lMain"></span></div></div>
+    <div class="result" id="lRes" hidden><div><b>後天數</b><span class="v" id="lSum"></span></div><div><b>主命數</b><span class="v" id="lMain"></span></div></div>
     <div class="birth-box">
       <span class="lbl">出生型態</span>
       <div class="seg" role="group" id="typeSeg">
@@ -182,15 +191,16 @@ footer p{margin:0}
           <button data-v="3" aria-pressed="false">老三</button>
         </div>
         <p class="hint">老大加媽媽、老二加爸爸、老三加爸媽。用於七秒讀心數的數字校正，流年模式只校正日、月。</p>
-        <div id="dadBox" class="birth-box" hidden><label class="lbl" for="dad">爸爸國曆生日</label>
-        <input type="date" id="dad"></div>
-        <div id="momBox" class="birth-box"><label class="lbl" for="mom">媽媽國曆生日</label>
-        <input type="date" id="mom"></div>
+        <div id="dadBox" class="birth-box" hidden><label class="lbl">爸爸國曆生日</label>
+        <div class="field ymd" data-target="dad" data-name="爸爸國曆"></div><input type="hidden" id="dad"></div>
+        <div id="momBox" class="birth-box"><label class="lbl">媽媽國曆生日</label>
+        <div class="field ymd" data-target="mom" data-name="媽媽國曆"></div><input type="hidden" id="mom"></div>
       </div>
     </div>
-    <div class="age"><span>年齡</span><span class="n" id="age"></span><span>歲</span></div>
+    <div class="age" id="ageBox" hidden><span>年齡</span><span class="n" id="age"></span><span>歲</span></div>
   </section>
 
+  <div class="results" id="results" hidden>
   <section class="panel">
     <h2>國曆九宮格</h2>
     <div class="legend"><span class="lg-pre">○ 先天數</span><span class="lg-post">△ 後天數</span><span class="lg-main">□ 主命數</span></div>
@@ -252,6 +262,8 @@ footer p{margin:0}
       </tbody>
     </table></div>
   </section>
+
+  </div>
 
   <footer>
     <div class="seg" role="group" id="calView" aria-label="顯示方式">
@@ -363,8 +375,26 @@ function drawPyramid(){
   $('flowPill').textContent=`${p.top} 為 ${yy} 流年`;
 }
 
+/* 國曆生日：年／月／日三個選單（與農曆同樣式），選齊後寫入隱藏欄位 */
+document.querySelectorAll('.field.ymd').forEach(box=>{
+  const tgt=$(box.dataset.target), nm=box.dataset.name;
+  const mk=(ph,a,b,suf,lbl)=>{const el=document.createElement('select');el.required=true;el.setAttribute('aria-label',nm+lbl);
+    el.innerHTML=`<option value="">${ph}</option>`+Array.from({length:b-a+1},(_,i)=>`<option value="${a+i}">${a+i} ${suf}</option>`).join('');box.appendChild(el);return el;};
+  const Y=mk('年',1900,NOW,'年','年'), M=mk('月',1,12,'月','月'), D=mk('日',1,31,'日','日');
+  const sync=()=>{
+    const y=+Y.value,m=+M.value, nd=y&&m?new Date(y,m,0).getDate():31;
+    [...D.options].forEach(o=>{if(o.value)o.disabled=+o.value>nd;});
+    if(+D.value>nd) D.value='';
+    const v=Y.value&&M.value&&D.value?`${y}-${String(m).padStart(2,'0')}-${String(+D.value).padStart(2,'0')}`:'';
+    if(v!==tgt.value){tgt.value=v;tgt.dispatchEvent(new Event('change'));}
+  };
+  [Y,M,D].forEach(el=>el.addEventListener('change',sync));
+});
+(()=>{const add=(id,a,b,suf)=>{const el=$(id);for(let i=a;i<=b;i++){const o=document.createElement('option');o.value=i;o.textContent=`${i} ${suf}`;el.appendChild(o);}};
+  add('ly',1900,NOW+1,'年');add('lm',1,12,'月');add('ld',1,30,'日');})();
 function autoLunar(){
   const [y,m,d]=$('solar').value.split('-').map(Number);
+  if(!y) return;
   try{
     const l=Solar.fromYmd(y,m,d).getLunar();
     $('ly').value=l.getYear();$('lm').value=Math.abs(l.getMonth());$('ld').value=l.getDay();
@@ -403,10 +433,14 @@ function renderFlow(y,m,d,lm,ld){
 
 function render(){
   const [y,m,d]=$('solar').value.split('-').map(Number);
+  const has=!!y;
+  $('results').hidden=!has; $('sRes').hidden=!has; $('ageBox').hidden=!has; $('startHint').hidden=has;
+  $('lRes').hidden=!(has&&$('ly').value&&$('lm').value&&$('ld').value);
   if(!y) return;
   const s=lifeNums(y,m,d);
   $('sSum').textContent=s.shown;$('sMain').textContent=s.main;
-  const ly=+$('ly').value,lm=+$('lm').value,ld=+$('ld').value;
+  let ly=+$('ly').value,lm=+$('lm').value,ld=+$('ld').value;
+  if(!(ly&&lm&&ld)) ly=lm=ld=0;
   const l=lifeNums(ly,lm,ld);
   $('lSum').textContent=ly?l.shown:'—';$('lMain').textContent=ly?l.main:'—';
   $('age').textContent=NOW-y;
@@ -426,8 +460,8 @@ function render(){
   drawPyramid();
 }
 
-$('solar').addEventListener('change',()=>{autoLunar();render();});
-['ly','lm','ld'].forEach(id=>$(id).addEventListener('input',render));
+['change','input'].forEach(ev=>$('solar').addEventListener(ev,()=>{autoLunar();render();}));
+['ly','lm','ld'].forEach(id=>$(id).addEventListener('change',render));
 $('flowYear').value=NOW;
 $('flowYear').addEventListener('input',drawPyramid);
 $('mBirth').onclick=()=>{mode='birth';$('mBirth').setAttribute('aria-pressed','true');$('mFlow').setAttribute('aria-pressed','false');$('yrWrap').hidden=true;drawPyramid();};
@@ -461,7 +495,6 @@ const applyView=()=>{$('dCal').classList.toggle('names',calView==='d');document.
 document.querySelectorAll('#calView button').forEach(b=>b.onclick=()=>{calView=b.dataset.v;try{localStorage.setItem('calView',calView)}catch(e){}applyView();});
 applyView();
 $('calPrev').onclick=()=>shiftMonth(-1);$('calNext').onclick=()=>shiftMonth(1);
-autoLunar(); if(!$('ly').value){$('ly').value=1990;$('lm').value=4;$('ld').value=28;}
 render();
 </script>
 
