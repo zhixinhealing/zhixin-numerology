@@ -169,6 +169,78 @@ details.fold summary:focus-visible{outline:2px solid var(--accent);outline-offse
   box-shadow:0 6px 16px -6px rgba(0,0,0,.35);font:inherit;font-size:.62rem;font-weight:700;letter-spacing:.05em}
 .totop svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 .totop:focus-visible{outline:2px solid var(--line);outline-offset:3px}
+.miss{border-top:1px solid var(--rule);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.miss h3{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:1rem;margin:0}
+.miss-chips{display:inline-flex;gap:6px}
+.miss-chips span{font-family:var(--num);font-size:.9rem;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--hl-bg);color:var(--hl);font-weight:700}
+.miss-list{display:flex;flex-direction:column;gap:10px}
+.miss-card{border:1px solid var(--rule);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.miss-card h4{margin:0;font-size:.95rem;color:var(--line)}
+.miss-card ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:3px;font-size:.88rem}
+.miss-card .tip{margin:0;font-size:.88rem;color:var(--hl);font-weight:700}
+.decode .block{border-top:1px solid var(--rule);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.decode h3{margin:0;font-size:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.person{display:flex;flex-direction:column;gap:12px}
+.person-head{display:flex;align-items:center;gap:12px}
+.person-head h3{font-size:1.05rem}
+.person-head .hint{margin:0}
+.pno{position:relative;width:58px;height:58px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;flex:none}
+.pno b{font-family:var(--display);font-size:2rem;color:var(--line)}
+.pno i{position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;border:2px solid var(--panel);box-shadow:0 0 0 1px var(--rule)}
+.formula{display:flex;align-items:center;justify-content:center;gap:14px;font-family:var(--display);font-size:1.7rem;font-weight:900;color:var(--accent);padding:6px 0}
+.formula b{color:var(--muted);font-size:1.3rem}
+.fl{margin:0;text-align:center;color:var(--muted);font-size:.9rem}
+.ok-no{display:flex;flex-direction:column;gap:6px;background:var(--soft);border-radius:12px;padding:10px 12px}
+.ok-no p{margin:0;font-size:.9rem;display:flex;gap:8px;align-items:flex-start}
+.ok-no i{font-style:normal;flex:none;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;margin-top:2px}
+.ok-no .ok{background:var(--c-post)} .ok-no .no{background:var(--hl)}
+details.sub{border:1px solid var(--rule);border-radius:10px;padding:0 12px}
+details.sub summary{cursor:pointer;padding:10px 0;font-weight:700;color:var(--line);font-size:.92rem}
+details.sub[open] summary{border-bottom:1px solid var(--rule);margin-bottom:8px}
+details.sub ul{margin:0 0 10px;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:3px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:0 0 12px;font-size:.88rem}
+.kv dt{color:var(--muted);white-space:nowrap}
+.kv dd{margin:0;min-width:0}
+.cdot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;box-shadow:0 0 0 1px var(--rule)}
+.nums{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.lbl2{font-size:.8rem;color:var(--muted);width:4.5em}
+.chips{display:inline-flex;gap:5px;flex-wrap:wrap}
+.chips span{font-family:var(--num);width:26px;height:26px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;background:var(--soft);color:var(--line);font-size:.9rem}
+.chips.out span{background:transparent;border:1px solid var(--rule)}
+.qlist{display:flex;flex-direction:column;gap:6px}
+.qrow{border:1px solid var(--rule);border-radius:10px;border-left-width:4px}
+.qrow.qpp{border-left-color:var(--c-post)} .qrow.qmp{border-left-color:var(--t-mid)} .qrow.qpm{border-left-color:var(--accent)} .qrow.qmm{border-left-color:var(--rule)}
+.qrow summary{cursor:pointer;display:flex;align-items:center;gap:10px;padding:9px 12px;list-style:none}
+.qrow summary::-webkit-details-marker{display:none}
+.qn{font-family:var(--num);font-size:1.15rem;color:var(--line);width:1.2em}
+.qc{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.qb{margin-left:auto;font-size:.82rem;text-align:right}
+.qd{padding:0 12px 10px;display:flex;flex-direction:column;gap:6px;font-size:.88rem}
+.qd p{margin:0}
+.qd b{color:var(--line);margin-right:6px}
+.qd .core{color:var(--muted);font-size:.82rem}
+.cai-badge{font-size:.85rem;font-weight:700;padding:3px 12px;border-radius:999px;background:var(--soft);color:var(--line)}
+.cai-badge.cpp{background:var(--c-post);color:#fff} .cai-badge.cmp{background:var(--t-mid);color:#fff} .cai-badge.cpm{background:var(--accent);color:#fff} .cai-badge.cmm{background:var(--rule);color:var(--ink)}
+.cai-s{margin:0;font-weight:700}
+.cai-note{margin:0;font-size:.88rem;color:var(--muted);border-left:3px solid var(--accent);padding-left:10px}
+.flowbox{border-top:1px solid var(--rule);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.fy-head{display:flex;align-items:center;gap:12px}
+.fy-n{flex:none;width:52px;height:52px;border-radius:50%;background:var(--hl);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.7rem;font-weight:900}
+.fy-head h3{margin:0;font-size:1.05rem;color:var(--line)}
+.fy-head p{margin:2px 0 0;color:var(--muted);font-size:.88rem}
+.fy-tags{display:flex;flex-wrap:wrap;gap:6px}
+.fy-tags span{font-size:.78rem;background:var(--hl-bg);color:var(--hl);border-radius:999px;padding:3px 10px}
+.fy-body{display:flex;flex-direction:column;gap:8px}
+.sbody{display:flex;flex-direction:column;gap:6px;padding-bottom:12px;font-size:.88rem}
+.sbody p{margin:0}
+.sbody ul{margin:0!important}
+.sbody .lead b,.sbody .tag{color:var(--line);margin-right:8px}
+.warnline{color:var(--muted)}
+.remind{color:var(--hl);font-weight:700}
+.acts{display:flex;flex-direction:column;gap:8px}
+.act{display:flex;flex-direction:column;gap:1px;border-left:3px solid var(--accent);padding-left:10px}
+.act b{color:var(--ink);font-size:.9rem}
+.act span{color:var(--muted)}
 footer{padding-bottom:72px;text-align:center;color:var(--muted);font-size:.75rem;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:8px}
 footer p{margin:0}
 </style>
@@ -242,6 +314,41 @@ footer p{margin:0}
       <span id="yrWrap" hidden>年份 <input id="flowYear" type="number" inputmode="numeric"></span>
     </div>
     <svg id="pyr" viewBox="0 0 400 350" role="img" aria-label="七秒讀心數"></svg>
+    <div class="flowbox" id="flowBox" hidden>
+      <div class="fy-head" id="flowHead"></div>
+      <div class="fy-tags" id="flowTags"></div>
+      <p class="hint">點下面的主題展開看。</p>
+      <div class="fy-body" id="flowBody"></div>
+    </div>
+    <div class="miss" id="missBox">
+      <h3>大三角形缺數 <span class="miss-chips" id="missChips"></span></h3>
+      <p class="hint" id="missNote">依生日模式的大三角形 7 格計算。</p>
+      <div class="miss-list" id="missList"></div>
+    </div>
+  </section>
+
+  <section class="panel decode">
+    <h2>數字解碼</h2>
+    <p class="hint">依生日模式的七秒讀心數計算：金字塔內 7 個數（天賦、在家的樣子），外面三組 9 個數（後天能力、在外的樣子）。</p>
+
+    <div class="person">
+      <div class="person-head"><span class="pno"><i id="personDot"></i><b id="personNo"></b></span><div><h3>號人的成功公式</h3><p class="hint">由主命數決定</p></div></div>
+      <div id="personBody"></div>
+    </div>
+
+    <div class="block" id="quadBlock">
+      <h3>內外四大象限</h3>
+      <div class="nums"><span class="lbl2">金字塔內</span><span class="chips" id="innerNums"></span></div>
+      <div class="nums"><span class="lbl2">金字塔外</span><span class="chips out" id="outerNums"></span></div>
+      <p class="hint">點每個數字看解析。</p>
+      <div class="qlist" id="quadList"></div>
+    </div>
+
+    <div class="block" id="caiBlock">
+      <h3>財庫系統 <span id="caiBadge" class="cai-badge"></span></h3>
+      <p class="hint" id="caiWhy"></p>
+      <div id="caiBody"></div>
+    </div>
   </section>
 
   <section class="panel">
@@ -363,6 +470,227 @@ function tiles(cx,cy,[a,c,t],name,range,col,bg){
   tile(cx,top,t)+tile(cx-w/2-g/2,bot,a)+tile(cx+w/2+g/2,bot,c);
 }
 
+/* 大三角形缺數解讀（依講義原意改寫） */
+const MISS={
+ 1:{t:['習慣依賴別人照顧，自律與執行力需要加強','情感上較黏人，容易少了自己的主見','面對壓力容易退縮，對輸贏競爭不太在意'],a:'練習獨立，為自己撐傘，一步步成為更好的自己。'},
+ 2:{t:['個性內斂，不輕易開口求助，有需要也放在心裡','習慣獨自行動，配合度較低，心裡話不容易說出口','不擅長撒嬌與表達情感，有時顯得不解風情'],a:'學著表達關心與感受，慢慢建立親密的連結。'},
+ 3:{t:['對沒興趣的事提不起勁，容易拖延、慢半拍','不太擅長表達，社交時容易緊張，想得多做得少','目標容易飄移，渴望財富但累積得比較慢'],a:'分清輕重緩急，照顧好自己，想到就立刻行動。'},
+ 4:{t:['做事較隨性，容易丟三落四，條理與邏輯需要加強','容易求快、靠感覺，不太按部就班','時間容易流失，事情常停在表面、無法深入'],a:'設定具體、可衡量的目標，讓計畫真正落實在生活裡。'},
+ 5:{t:['方向感較弱，容易隨波逐流、不知道下一步','常對自己沒把握，不太會推銷自己','容易原地打轉，先成全了別人的夢想'],a:'問問自己「我要什麼」，選定方向，活成自己夢想的樣子。'},
+ 6:{t:['對錢比較大方，常主動付出，現金不容易留住','錢來得快去得也快，理財感較弱','心裡對錢有不安，存錢與累積財富要多繞些路'],a:'提升財商，好好守住財富，為自己建立只進不出的帳戶。'},
+ 7:{t:['貴人緣較淡，貴人來得少、留得短','待人和善卻不容易被真正理解，常常是別人的貴人','習慣把辛苦藏起來，不愛欠人情，一路走來不容易'],a:'學會適時示弱，示弱不是脆弱，而是讓愛靠近。'},
+ 8:{t:['不喜歡複雜與麻煩，承擔責任的意願較低','體力與抗壓性較弱，遇到挫折容易灰心','報喜不報憂，習慣把難過留給自己'],a:'不用再假裝堅強，勇敢開口求助，事情就會開始轉變。'},
+ 9:{t:['機會與認同感較少，努力容易被忽略','付出很多，卻不一定被家人看見','容易覺得辛苦沒有回報，感受不到自己的存在感'],a:'做好自己的本分，不必向誰證明，你的存在本身就有價值。'}};
+/* ===== 數字解碼資料（依講義原意改寫） ===== */
+const QL={'++':['內外都有','與生俱來的天賦'],'-+':['內沒外有','到外面才培養出來'],'--':['內外都沒','不擅長，不必勉強'],'+-':['內有外沒','熟人面前的隱藏翅膀']};
+const QUAD={
+1:{c:'獨立・自主・領導・自信','++':'想法清楚、敢說敢做，衝勁十足，認定了就往前衝。','-+':'在家習慣被照顧，出了門反而很獨立、能扛事。','--':'自主性較弱，做決定容易猶豫，需要身邊有人推一把。','+-':'在家有主見、想主導，到了外面則願意配合別人。'},
+2:{c:'溝通・互動・連結・合作','++':'善解人意、很會找話題，說話能說進人心，但耳根子較軟。','-+':'在家話不多，在外很健談，溫柔常常都給了外人。','--':'話不多、說話愛鋪陳，容易離題，重點不容易講清楚。','+-':'跟不熟的人話少，越熟越能聊。'},
+3:{c:'行動・表達・樂觀・表現','++':'閒不下來、性子急，會催別人，也不太能接受批評。','-+':'別人的事總是衝第一，卻常忘了照顧自己。','--':'做事慢、想得多，熱情不足，容易忙了半天沒重點。','+-':'在家勤快，先把自己的事顧好，對熟人比較容易發脾氣。'},
+4:{c:'穩定・規劃・紀律・細節','++':'原則多、就事論事，懂得及時停損，喜歡買書、學習。','-+':'為了工作才學習，辦公桌整齊、家裡卻有點亂，對外較有戒心。','--':'不愛做筆記，習慣用聽的學習，思緒活躍、隨遇而安。','+-':'家裡規矩多、對自己人要求嚴，計畫好了一出門就容易變卦。'},
+5:{c:'自由・冒險・變化・目標','++':'目標清楚、方向感好，做事篤定，不容易被動搖。','-+':'在家容易迷惘、被安排什麼就做什麼，走出去才找得到方向。','--':'容易茫然又忙亂，定力不夠，常常想換跑道。','+-':'立場和原則都很清楚，但容易被外人說服。'},
+6:{c:'財富・智慧・奉獻・關懷','++':'有財有庫：能賺也守得住，再難的關都過得去。','-+':'有財無庫：存錢比較難，想賺錢要多往外走。','--':'無財無庫：理財觀念較弱，借出去的錢不容易收回。','+-':'無財有庫：容易累積，家裡也常給予金錢上的支持。'},
+7:{c:'人脈・貴人・異性・專業','++':'自帶吸引力、不缺朋友，人脈一流動，財運也跟著動。','-+':'貴人在外面，多和不同圈子的人交流就會遇到。','--':'凡事靠自己比較辛苦，不太懂得借力，朋友多但知心少。','+-':'貴人在家裡，常是家中的寶貝，熟了的人都願意幫你。'},
+8:{c:'責任・使命・抗壓・掌控','++':'能掌控大局、喜歡賺錢，但容易鑽牛角尖，情緒寫在臉上。','-+':'為工作操很多心，家裡的事卻嫌麻煩，抗挫力較弱。','--':'喜歡簡單安逸，不愛繁瑣，與自己無關的事不太過問。','+-':'對家裡較有掌控欲、為家操心，對外則願意商量。'},
+9:{c:'機會・成功・認可・機遇','++':'不缺機會、走到哪都亮眼，需要的是運用機會的智慧。','-+':'成就與舞台都在外面，在家裡卻不容易被家人肯定。','--':'時機常不湊巧，像隱形人，需要靠努力換來被看見。','+-':'一開始不起眼，後來才被認可，機會多半來自熟人。'}};
+/* 金字塔內出現 1、2、3 個時的能量 */
+const MANY={1:['自律，能把自己的事做好','管好自己，還想管別人','不只管自己和身邊人，連整個圈子都想管'],
+2:['能聊、會說','很愛說、喜歡交流','話很多，容易變成嘮叨'],
+3:['有行動力，偶爾小急','好動，性子很急','容易衝動，急到停不下來'],
+4:['保守，懂得保護自己','容易焦慮，給自己設限','想太多，容易困住自己'],
+5:['有堅持，專注一個目標','比較頑固，同時抓兩個目標','很倔強，目標太多容易分散'],
+6:['週轉資金的能力強','錢容易來來去去','賺很多，卻常花在別人身上'],
+7:['有貴人，異性緣也好','有貴人，也要留意小人','人多嘴雜，人際比較複雜'],
+8:['容易自己一個人原地打轉','會拉著另一半一起打轉','全家容易跟著你轉'],
+9:['機會多、能見度高','機會多，誘惑也多','起伏大，不是大好就是大壞']};
+/* 1～9 號人 */
+const PERSON={
+1:{f:['創意','領導'],w:'自卑',fl:'勇於跳脫框架，就能帶著大家走在前面。',wl:'對自己沒信心時，再好的點子也不敢拿出來。',basic:'新・太陽・男人',talent:'決策快、自我驅動、說到做到、有創業家精神',pos:'耐操、前瞻、機智、果斷、實踐、熱血',neg:'自負、命令、沉迷、輕視、好勝、極端',jobs:'領導、主管、導演、教師、銷售、管家、發明',work:'專注個人表現，公私分明、好勝心強，有時放不下身段。',love:'需要被完全信任，少一點猜疑，多一點支持。',color:['紅色','#d8443c','激情、堅強、活力，幫助增加自信']},
+2:{f:['貼心','溝通'],w:'猶豫',fl:'從對方的角度出發，溝通才能真正被聽見。',wl:'想太多、顧慮太多，容易錯過開口的時機。',basic:'意・太極・女人',talent:'身段柔軟、懂得外交、以柔克剛、善於輔佐',pos:'同理、體諒、溫暖、委婉、細膩、合作',neg:'軟弱、依賴、敏感、委屈、退縮、順從',jobs:'秘書、助理、作家、律師、諮詢、保姆、仲介',work:'待人友善、配合度高，重視團隊，懂得顧全大局。',love:'再忙再累，都別忘了留時間談心交流。',color:['橙色','#ec8a2f','溫暖、融洽、親切，幫助增加好人緣']},
+3:{f:['熱情','行動'],w:'情緒',fl:'心裡的那把火，會推著行動自然往前。',wl:'情緒起伏太大，再強的行動力也會被打亂。',basic:'動・三角・孩子',talent:'邊做邊學、帶來快樂、語言表達好、學得快',pos:'樂觀、輕鬆、風趣、靈巧、閃耀、時尚',neg:'善變、做作、抱怨、輕率、浮誇、健忘',jobs:'諧星、主持、藝術、廣告、創作、健身、運動',work:'心地善良、熱情直爽，有話直說，但情緒起伏較大。',love:'像個孩子，需要多一點稱讚與鼓勵。',color:['黃色','#e9b92c','希望、樂觀、喜悅，幫助增加行動力']},
+4:{f:['規劃','計畫'],w:'悲觀',fl:'先理清順序、排好步驟，計畫才會真正落地。',wl:'還沒開始就先想到不可能，規劃再好也會停在原地。',basic:'穩・正方・家庭',talent:'邏輯清楚、擅長收納整理、建立秩序、善於守成',pos:'踏實、敬業、守時、規律、恆心、可靠',neg:'恐懼、封閉、疲憊、停滯、消極、吝嗇',jobs:'會計、出納、公職、企劃、建築、工程、技術',work:'重承諾、說到做到，一步一腳印，說話比較直。',love:'有事先商量、坦白說清楚，重視誠信，別自作主張。',color:['綠色','#3f9a5e','健康、成長、沉穩，幫助增加安全感']},
+5:{f:['方向','目標'],w:'固執',fl:'方向越清楚，力氣越能用在對的地方。',wl:'認定了就不肯調整，目標再明確也可能越走越偏。',basic:'玩・五角・旅行',talent:'反應快、學什麼像什麼、消息靈通、學了馬上用',pos:'變通、互動、搞笑、浪漫、仗義、顛覆',neg:'隨性、放縱、逃避、多情、魯莽、叛逆',jobs:'業務、美食、旅行、媒體、導遊、歌手、直播',work:'氣場強、人緣好，敢面對挑戰，但比較關不住。',love:'少一點限制、多一點空間，別用命令的方式。',color:['藍色','#3b7fd6','開朗、自由、平靜，幫助增加方向感']},
+6:{f:['智慧','財富'],w:'挑剔',fl:'用智慧判斷與選擇，價值會慢慢累積。',wl:'標準太高、什麼都不滿意，反而錯過好機會。',basic:'慧・六角・價值',talent:'經營家庭、美感設計、拿捏人情、化解衝突',pos:'仁慈、奉獻、忠誠、體恤、極致、小心',neg:'操心、溺愛、心累、心軟、吃醋、雞婆',jobs:'金融、美容、造型、醫療、幼教、品管、編輯',work:'做事細膩、追求完美，樂於協助，有時會管太多。',love:'重視家人與生活品質，愛乾淨，也會不斷提升自己。',color:['靛色','#3a3f9e','信賴、智慧、高貴，幫助增加價值感']},
+7:{f:['專業','人脈'],w:'質疑',fl:'專業越扎實，越容易被看見，也越能連結對的人。',wl:'總是懷疑別人、猜測動機，關係容易失去信任。',basic:'友・脈輪・貴人',talent:'擅長推理、求知欲強、自學能力強、記性好',pos:'探索、內省、深度、冷靜、低調、幸運',neg:'較真、內耗、困惑、惰性、遲緩、疏離',jobs:'偵探、教授、學者、軍事、哲學、顧問、命理',work:'心思細膩、人脈不錯，但得失心重，給人有點高冷的感覺。',love:'需要私人空間，表面冷淡其實很在乎，做事節奏較慢。',color:['紫色','#7a4bc4','神秘、幸運、優雅，幫助增加好運氣']},
+8:{f:['責任','使命'],w:'糾結',fl:'願意扛起責任，才能找到屬於自己的位置。',wl:'什麼都想扛、什麼都放不下，容易困在自己的拉扯裡。',basic:'大・無限・團隊',talent:'團隊支柱、商業嗅覺、戰略思維、帶領團隊',pos:'權威、謀略、真誠、魄力、成就、格局',neg:'霸道、無情、膨脹、虛榮、掌控、記仇',jobs:'金融、保險、銀行、總裁、老闆、法官、總統',work:'事業心強、追求成就，遇強則強，是實幹型的人。',love:'刀子嘴豆腐心，掌控欲和自尊心都強，記得給他留點面子。',color:['金色','#c9a227','權力、金錢、輝煌，幫助增強氣場']},
+9:{f:['機會','成功'],w:'貪心',fl:'把握每一次機會，可能才會變成結果。',wl:'什麼都想要，反而容易失去判斷。',basic:'多・變色・認可',talent:'公關能力、激勵人心、鼓舞士氣、引導他人',pos:'無私、互助、激勵、全面、健談、討喜',neg:'膚淺、奢侈、空想、忽視、偽裝、灰心',jobs:'心靈、牧師、護士、演藝、音樂、社工、政治',work:'理想性高、機會多，樂於付出，個性比較兩極。',love:'心思多變不好捉摸，相處要留點空間，別太強硬。',color:['白色','#f4f4f4','純潔、神聖、包容，幫助增加認可度']}};
+/* 財庫系統：依金字塔內／外有沒有 6 */
+const CAI={
+'++':{n:'有財有庫',s:'能賺也守得住，錢在你手上不會亂跑。',
+ sign:['有收入能力，也留得住錢','知道什麼該花、什麼不該花，對價值有概念','有商業感，懂成本、利潤與交換','有機會把財富做大、做長','對人、錢、機會在哪裡很敏感，擅長整合'],
+ warn:['別太保守，只守不攻會讓財卡住','有能力就別怕放大、開新局','錢是工具，別把安全感全綁在錢上','控制太多，反而限制成長','別停在「夠用就好」'],
+ rule:['敢投資，讓錢流動才會變大','建立系統，不要只靠自己賺','用錢換時間與效率','學會授權與合作','把收入變成資產'],
+ note:'重點不是現在有多少，而是能不能讓錢留下來，再放大。'},
+'-+':{n:'有財無庫',s:'很會賺，但不容易留住，錢來得快也走得快。',
+ sign:['收入不低、進帳快，帳戶卻常見底','剛賺就花，或常有莫名其妙的支出','懂得賺，不太懂得守，常想「再賺就好」','容易情緒消費或跟風投資','外表風光，一沒收入就焦慮'],
+ warn:['別再用「再賺就好」安慰自己','別讓情緒決定怎麼花錢','別忽略財務結構','別把收入當成安全感','別只追收入，不建立底盤'],
+ rule:['先存再花','建立自動、固定比例的存錢機制','生活、投資、儲蓄分帳管理','大額支出給自己一段冷靜期','從「收入思維」轉成「資產思維」'],
+ note:'問題不在賺不夠，而是留不住，才會一直重新開始。'},
+'+-':{n:'無財有庫',s:'很會存，但進帳不夠多，穩定卻不容易放大。',
+ sign:['收入普通，但錢留得住、不亂花','安全意識強，花錢前會想很多，很怕失去','日子過得去，但很難有財務上的突破','避開風險的同時，也避開了機會','容易停在「夠用就好」'],
+ warn:['別只守不攻','別過度害怕風險','安全感太強會限制成長','機會來了要敢接','別停在「穩定就好」'],
+ rule:['先提升賺錢能力','設定一部分保守、一部分成長的比例','學習投資，讓錢動起來','敢做決定，不要只觀望','從「穩定」升級成「穩中成長」'],
+ note:'不是不穩，而是太穩，穩到錯過變大的機會。'},
+'--':{n:'無財無庫',s:'進得少、留得更少，先建立金錢的入口與習慣。',
+ sign:['很努力，收入卻起伏大','偶爾有收入，但很快又歸零','對錢沒什麼概念，不太會算、不太會規劃','容易跟著別人的決定走，沒有自己的判斷','很拼很累，回報卻不成正比'],
+ warn:['別只靠努力，方向更重要','賺錢是可以學的能力','別把沒錢當成習慣','別亂跟、亂投、亂試','別逃避金錢問題'],
+ rule:['先建立收入能力','從小額開始養成存錢習慣','學會收入、支出、儲蓄的基本觀念','選對環境與方向','從用時間換錢，升級成用價值換錢'],
+ note:'不是命不好，而是還沒建立讓錢進來、讓錢留下的能力。'}};
+
+/* ===== 流年解讀資料（依講義原意改寫） ===== */
+const FY={
+1:{n:'開創年',t:'強制開機',alias:'播種期・起點年・迷失年',assoc:'一顆種子、一元復始、一鼓作氣',sign:'破舊立新、主導人生、搬家遷居、圈子更換、異地發展',key:'嶄新一頁',core:'樹立、選擇',tip:'大刀闊斧、脫胎換骨',line:'下定決心，大步向前走。'},
+2:{n:'合作年',t:'忽冷忽熱',alias:'蟄伏期・等待年・隱忍年',assoc:'二人同心、二人世界、好事成雙',sign:'比較敏感、需要陪伴、為人著想、節奏變慢、照顧他人',key:'一起共好',core:'資源、融合',tip:'釋放情感、勤勞勇敢',line:'對接平台，做好整合。'},
+3:{n:'行動年',t:'愚公移山',alias:'萌芽期・喜悅年・脾氣年',assoc:'三寸之舌、三姑六婆、煽風點火',sign:'情緒外顯、不吐不快、朋友邀約、生活熱鬧、圈子擴張',key:'積少成多',core:'展示、綻放',tip:'摩擦生熱、碰撞深刻',line:'天道酬勤，勤於開發。'},
+4:{n:'學習年',t:'學點本事',alias:'扎根期・思想年・不安年',assoc:'四平八穩、四書五經、就事論事',sign:'固定作息、家庭責任、安全優先、壓力上升、不敢亂來',key:'系統建構',core:'整理、佈局',tip:'屏住呼吸、穩定根基',line:'規劃布局，好好扎根。'},
+5:{n:'定錨年',t:'相較辛苦',alias:'繁衍期・轉折年・阻礙年',assoc:'五湖四海、五方大地、五花八門',sign:'想要突破、坐立不安、生活變快、旅行衝動、到處亂跑',key:'穩中求進',core:'挑戰、堅持',tip:'物競天擇、做出選擇',line:'定好方向，做出選擇。'},
+6:{n:'收穫年',t:'一枝獨秀',alias:'孕育期・家庭年・挑剔年',assoc:'六六大順、六畜興旺、六道輪迴',sign:'消費變多、要求變高、為人設想、被人依賴、讓人撐住',key:'創造價值',core:'財富、豐收',tip:'分享智慧、不要浪費',line:'財源滾滾，提供價值。'},
+7:{n:'貴人年',t:'姿態放低',alias:'重整期・沉澱年・冷漠年',assoc:'七嘴八舌、七上八下、七步成詩',sign:'刻意獨處、減少社交、作息簡化、低調做事、安靜生活',key:'與人和善',core:'人際、運氣',tip:'人情世故、高人帶路',line:'廣結善緣，人脈變廣。'},
+8:{n:'使命年',t:'槓上開花',alias:'結果期・富足年・因果年',assoc:'八面威風、八方支援、八仙過海',sign:'成敗有感、輸贏分明、生活升級、地位變化、圈層轉換',key:'勇於擔當',core:'實踐、收成',tip:'扛住壓力、享受成果',line:'扛住壓力，成為王者。'},
+9:{n:'機遇年',t:'十字路口',alias:'休息期・總結年・感恩年',assoc:'九九歸一、九天九地、九五至尊',sign:'人生清算、生活減法、放下過去、階段完成、準備翻頁',key:'有效取捨',core:'修身、養心',tip:'不厭其煩、總結覆盤',line:'修身養心，成為大贏家。'}};
+const FCORE={
+1:['這一年重點不在結果，而在敢不敢開始。','認識自己、肯定自己：你想成為誰？',['做決定，不拖延','開始行動，不等待','允許不完美'],'種子剛種下還沒發芽，迷惘和不安都很正常；這一年的選擇，會鋪出接下來九年的路。'],
+2:['重點不在你多厲害，而是能不能和人一起走。','溝通、包容、界線',['多溝通，不憋著','願意合作，不硬撐','設好界線，不委屈'],'開始需要外力，會變得猶豫、敏感；速度變慢是正常的，因為你不再只為自己。'],
+3:['重點不在想清楚，而在真的動起來。','行動、表達、持續',['多行動，不停下','多表達，不悶著','做到底，不半途'],'嫩芽剛冒頭還很脆弱，容易三分鐘熱度；混亂是試錯的過程，做了才會清楚。'],
+4:['重點不在衝多快，而在穩不穩。','規劃、紀律、持續',['建立系統','守住紀律','持續去做'],'根往下長比往上更辛苦，壓力變大、生活變悶都正常；撐過無聊，才會變強。'],
+5:['重點不在穩住，而在敢不敢改變。','選擇、判斷、負責',['做選擇，不全都要','控制節奏，不失控','敢改變，不卡住'],'機會變多，心也開始躁動；機會多不代表要全部抓，會選才走得遠。'],
+6:['重點不在得到多少，而在能不能承擔。','付出、關係、平衡',['扛起責任','顧好關係','守住界線，不過度付出'],'果實成熟，也要分出去，責任和壓力一起變大；能給也能守，才是真正的強。'],
+7:['重點不在做多少，而在看懂多少。','理解、信任、放手',['多覺察','多沉澱，不急躁','學會放下'],'開始回頭看，感觸會很多；這一年是在讓你看清路，放得下才走得遠。'],
+8:['重點不在有沒有機會，而在扛不扛得住結果。','掌控、承擔、平衡',['承擔結果，不逃避','善用影響力','留空間給別人'],'開始收成，壓力也同步放大；能掌控，也要能放手。'],
+9:['重點不在往前衝，而在放不放得下。','放下、總結、提升',['好好整理','學會放下','準備新的開始'],'一個九年循環正在完成，會想休息、想整理；結束得漂亮，才能開始得精彩。']};
+/* [主題, 一句話, 建議[], 注意, 提醒] */
+const FWORK={1:['開啟新機年','不必等準備好，開始了才會越來越清楚。',['創業、轉職或開新項目','建立個人品牌、增加曝光','主動出擊，勇敢做決定'],'容易衝太快、太想證明自己。','先上路，再調整方向。'],
+2:['合作整合年','學著和對的人同行。',['建立合作關係','經營客戶信任，做口碑與服務','學習團隊配合'],'容易玻璃心、太在意別人。','慢，不代表沒前進。'],
+3:['曝光行動年','一定要讓人看見你。',['直播、短影音、上台分享','多發文曝光','擴大朋友圈'],'容易情緒化、三分鐘熱度。','持續輸出，比完美更重要。'],
+4:['扎根學習年','適合累積實力。',['學技能、建立 SOP','穩定現金流','建立團隊制度'],'壓力較重，容易悲觀。','現在的累，是未來的底氣。'],
+5:['轉折突破年','會很忙，也容易突然改變。',['嘗試新市場、開發新客群','轉型升級','多跑、多動、多連結'],'容易焦躁、方向太多。','變動不是壞事，是重新洗牌。'],
+6:['收穫價值年','開始進入「被需要」。',['提升專業價值與收費','經營高端客戶','做品牌口碑'],'容易太累、什麼都想扛。','真正的價值，不靠討好。'],
+7:['沉澱貴人年','別急著衝，答案常在安靜裡出現。',['深化專業、進修學習','篩選人脈圈','做長期布局'],'容易孤單、想太多、與人疏離。','靜下來，才能走更遠。'],
+8:['成果放大年','成果會被放大。',['擴大規模、帶團隊','建立影響力','放大收入來源'],'壓力很大，責任變重。','扛得住多少，就站得多高。'],
+9:['總結翻篇年','很多事情進入尾聲。',['整理人脈、淘汰無效合作','做人生盤點','準備下一階段'],'容易感慨、捨不得放下。','有些結束，是新的開始。']};
+const FMONEY={1:['開創財年','財運來自主動出擊。',['開副業或創業','建立個人品牌','主動談合作'],'容易衝動投資、想賺快錢。','先行動，財路才會打開。'],
+2:['合作財年','財富來自關係。',['經營客戶、建立信任','合作共贏','做長期口碑'],'容易心軟、不好意思談錢。','有價值，就值得被付費。'],
+3:['曝光財年','越曝光，收入越有機會。',['直播、短影音、經營自媒體','多分享、多發聲'],'容易亂花錢、衝動消費。','流量進來，也要留得住錢。'],
+4:['穩定累積財','財運偏向慢慢累積。',['存錢、做長期規劃','建立穩定收入','學理財技能'],'容易壓力大、過度焦慮。','穩定，就是真正的財富。'],
+5:['變動偏財年','財運波動大，來得快也去得快。',['發展多方收入','嘗試新市場、新領域','多跑、多談、多連結'],'容易衝動投資、跟風。','快錢很香，風險也來得很快。'],
+6:['豐收財年','越專業，越值錢。',['提高客單價、做高端服務','建立品牌信任','擴大口碑'],'容易為別人花太多錢。','別讓善良變成財務壓力。'],
+7:['專業財年','適合靠腦袋賺錢。',['進修、深化專業','發展顧問型收入','建立高價值能力'],'容易想太多、不敢出手。','懂很多，不如開始變現。'],
+8:['財富放大年','財運看格局，扛得住收入就放大。',['擴張事業、帶團隊','整合資源','建立被動收入'],'容易壓力爆棚、得失心重。','大財富，背後一定有大責任。'],
+9:['清理財務年','適合財務斷捨離。',['清理負債、整理支出','停止無效投資','重新盤點人生方向'],'容易感性花錢、念舊消費。','有些錢不賺，反而更有價值。']};
+const FLOVE={1:['重新開始年','容易突然心動、遇到新對象，卡很久的感情也容易做決定。',['主動表達','勇敢追愛','不要一直觀望'],'容易太強勢、太急、控制欲變重。','愛情不是比輸贏。'],
+2:['情感放大年','情緒特別明顯，一句話就能開心，也能失眠。',['多溝通','多陪伴','建立安全感'],'容易想太多、患得患失。','有話要說出來，不要悶著。'],
+3:['桃花曝光年','聚會、社群、朋友圈都容易出現新緣分。',['多出去走走','多認識新朋友','勇敢展現魅力'],'容易三分鐘熱度、曖昧太多。','別只享受感覺，忘了真心。'],
+4:['現實考驗年','開始談未來、金錢、家庭與穩定。',['建立共同目標','務實經營關係','給彼此安全感'],'容易冷淡、壓力感重。','真正的愛，需要落地。'],
+5:['變動挑戰年','有人突然靠近，也有人突然離開。',['保持新鮮感','多創造互動','別把關係綁太死'],'容易衝動、忽冷忽熱、想逃。','自由不等於不負責。'],
+6:['婚姻家庭年','適合穩定交往、談婚論嫁；單身也容易遇到想定下來的人。',['用行動表達愛','學習照顧彼此','經營長久關係'],'容易委屈自己、過度付出。','愛別人之前，也別忘了自己。'],
+7:['冷靜沉澱年','比較想安靜，開始思考關係的本質。',['先整理自己','不急著投入','看清真正適合的人'],'容易冷掉、疏離、封閉自己。','真正適合的人，不怕等待。'],
+8:['因果結果年','好的關係更穩，不好的關係容易爆發。',['平衡彼此的價值','誠實面對問題','一起成長'],'容易控制、比較、壓力過重。','愛情是並肩，不是掌控。'],
+9:['放下翻篇年','容易分手、想起過去，或真正放下舊感情。',['學會放下','原諒過去','清理情緒'],'容易念舊、反覆回頭。','離開錯的人，才走得進對的人。']};
+const FHEALTH={1:['強制開機年','容易衝太快、熬夜、精神緊繃。',['充足睡眠','規律運動','學習放鬆，少熬夜'],'身體跟不上，夢想也走不遠。'],
+2:['情緒敏感年','容易把事放心裡，想太多影響睡眠，腸胃也跟著情緒起伏。',['穩定情緒、找人聊聊','作息與飲食規律','少吃生冷油膩'],'情緒放不下，身體就放鬆不了。'],
+3:['玩樂消耗年','邀約多，容易熬夜、飲食失衡，也要顧好喉嚨。',['控制飲食','維持運動、減少熬夜','多喝溫水'],'嘴巴快樂，也要顧好身體。'],
+4:['壓力累積年','責任變重、長期緊繃，容易疲勞、肩頸腰背痠痛。',['固定作息','建立運動與伸展習慣','規律休假、適度放鬆'],'最怕的不是忙，而是一直撐。'],
+5:['奔波耗能年','東奔西跑、節奏飛快，容易作息不穩或意外受傷。',['規律休息、多補水','少刺激飲食、細嚼慢嚥','運動時注意安全'],'人生可以衝刺，身體不能重來。'],
+6:['責任照顧年','照顧別人，卻忘了照顧自己。',['學會休息','適當拒絕','保留自己的時間'],'先照顧自己，才有能力照顧別人。'],
+7:['療癒修復年','適合調整身體，也要留意用腦過度、想太多。',['早睡早起、健康飲食','曬曬太陽、走進大自然','身心放鬆'],'安靜下來，身體才有機會修復。'],
+8:['高壓爆肝年','工作量和壓力都大，容易疲勞、睡不好。',['定期休息、規律運動','按摩、泡腳，學會紓壓','少咖啡、少酒精'],'你可以很強，但不需要一直硬撐。'],
+9:['排毒整理年','適合做減法：壞習慣、壞情緒、壞生活模式。',['調整飲食、整理生活','寫日記抒發','釋放壓力，告別過去'],'放下不需要的，身體才有空間恢復。']};
+const FTABOO={1:['不要一直猶豫',['拖延','怕丟臉','一直換方向'],'先做，人生才會動。'],2:['不要情緒內耗',['冷戰','過度討好','委屈自己'],'有話直說，比內耗健康。'],3:['不要只有嘴巴很忙',['只顧玩樂','亂花錢','情緒衝動'],'持續，比爆衝更重要。'],4:['不要把自己逼太緊',['悲觀','鑽牛角尖','什麼都自己扛'],'穩定，不代表痛苦。'],5:['不要亂衝亂投資',['亂借錢','衝動投資','到處亂跑'],'快，不代表對。'],6:['不要一直委屈自己',['過度付出','當濫好人','什麼責任都接'],'愛別人之前，先愛自己。'],7:['不要封閉自己',['過度懷疑','活在自己的世界','把自己關起來'],'真正的強大，不是孤立。'],8:['不要硬撐到底',['過度工作','控制欲太強','只剩輸贏'],'會休息的人，才能走更高。'],9:['不要一直回頭',['勉強關係','執著過去','一直消耗自己'],'有些離開，是為了新的開始。']};
+const FACT={1:[['主動改變｜擁抱改變','改變不必劇烈，只需要跨出那一步的勇氣。'],['無須考慮｜多走出去','走出去讓生命更寬，每一步都在開新路。'],['砍掉重練｜決定實踐','放下舊的，新的能量才進得來。'],['勇往直前｜先苦後甜','現在的辛苦，都會變成未來的力量。'],['重新開始｜從心開始','把心安好，方向就會清楚。'],['大膽追求｜夢寐以求','認真對待心裡的願望，你敢追，世界就讓路。']],
+2:[['主動被動｜不如互動','多開一扇窗，讓關係流動起來。'],['唯有發聲｜才能發生','說出心裡話，轉變才會開始。'],['低下頭來｜對接平台','願意接受協助，路會更寬。'],['強化聯繫｜建立人際','你向誰靠近，誰就會向你伸手。'],['以柔克剛｜無需緊張','柔和，是今年最強的力量。'],['淚流滿面｜靜觀其變','讓情緒被接住，答案會慢慢浮現。']],
+3:[['臨危不懼｜控制情緒','先停一下，心定了，混亂就會清楚。'],['種種變化｜必須消化','慢一點，讓心跟上變化。'],['謹慎投資｜控制開支','先穩住自己，錢自然穩住。'],['春夏秋冬｜有始有終','把每件事好好完成。'],['與其心動｜不如行動','一小步，就是生命的一大步。'],['保持警覺｜不怕拒絕','拒絕只是篩選，不是否定。']],
+4:[['累積經驗｜不急表現','不急著證明，時間會替你說話。'],['適時充電｜持續操練','保持節奏，休息是為了走得更遠。'],['單刀直入｜沒有好處','太急著切重點，容易忽略對方的感受。'],['集中精力｜後續發力','把能量放在重要的地方。'],['團結起來｜組織未來','一起走，比獨自走得更遠。'],['勞逸結合｜最佳選擇','允許自己放鬆，力量才會回來。']],
+5:[['跌跌撞撞｜乘風破浪','跌一下，會讓你更懂得怎麼站起來。'],['經得住晃｜才能茁壯','安住自己，就能在風中長成大樹。'],['紛紛擾擾｜正面思考','把注意力收回心裡，換個角度看。'],['歷經艱辛｜莫忘初心','記得為什麼出發，方向就不會亂。'],['保持微笑｜蹲下再跳','蹲低一點，是為了跳得更高。'],['克服障礙｜逍遙自在','跨過的每道難關，都會變成你的底氣。']],
+6:[['基礎事務｜應當關注','把小事做好，生活會慢慢打開。'],['投資自己｜壯大自己','把時間和資源花在自己身上。'],['關心氾濫｜忽明忽暗','先放好界線，心才有地方休息。'],['培養愛心｜還有耐心','多一份耐心，愛就流得更順。'],['小步快走｜前所未有','不必快，持續就好。'],['不發牢騷｜越飛越高','少抱怨，能解決的就去解決。']],
+7:[['過度封閉｜使不上力','打開一點點，就能看見新的可能。'],['細水長流｜才能引流','不求快，只求穩定與持續。'],['運用人脈｜成為錢脈','願意開口，就會有人伸手。'],['心態若好｜貴人不少','心態明亮，就是最強的貴人磁場。'],['保持開放｜光芒萬丈','心一打開，你的光就會被看見。'],['不要找碴｜富貴榮華','放過別人，也是放過自己。']],
+8:[['複製快樂｜不要吝嗇','多做讓你發光的事，也分享出去。'],['你的眼界｜你的世界','眼界放大，機會自然靠近。'],['得意忘形｜打回原形','成功時更要低調謙遜。'],['不太懶惰｜愛做不做','給自己一點推力，就能重新上軌道。'],['壓力越大｜成就越大','壓力是升級的信號。'],['保持健康｜美好時光','身體是所有成就的根基。']],
+9:[['酸甜苦辣｜總結歸納','回頭看，是為了看見自己的成長。'],['反思過去｜反思教訓','不是懊悔，而是理解與釋懷。'],['調整狀態｜遠離傷害','遠離不適合的，為幸福騰出位置。'],['越是有料｜越是低調','越踏實，越能活得自在。'],['揮別錯的｜收起對的','留下讓你變好的，放下讓你變累的。'],['大捨大得｜小捨小得','捨得的人，才有空間迎接豐盛。']]};
+/* 2026 年攻略（只有查 2026 年時顯示） */
+const F2026={1:['911','213','行動、執行',['創造機會、積極正向，從零開始建立','善用口才與自信，勇敢站上舞台','先把定位想清楚就不再煩惱，大方分享會帶來不同的回響']],
+2:['112','336','智慧、價值',['行動優先、以身作則，合作才能共贏','帶動團隊、傳遞熱情，用愛去實踐','柔中帶剛不必緊張，保持正向，在玩中學習']],
+3:['213','459','機會、趨勢',['先分析局勢再果斷出手，穩健前進','腳踏實地、堅持到底，就會迎來豐收','掌握節奏、先想再做，在穩定中求變、展現自己']],
+4:['314','573','行動、執行',['持續精進，用自信帶路，一步步扎實前進','真誠互動，讓信任循環，貴人會同行','調整心情、把想法化為行動；別只靠感覺，該學就學']],
+5:['415','696','智慧、價值',['策略清楚、行動果斷，心中要有夢','金流順暢、利他共贏，賺得有道','方向明確就當機立斷，積極學習讓財源不斷']],
+6:['516','729','機會、趨勢',['累積經驗，在學習中突破、創造價值','人和事就順，用心連結、成就彼此','塑造自己的價值，人脈和業績一起提升']],
+7:['617','843','行動、執行',['用愛帶人、用愛引導，好運自然來','用情感感染他人，不斷翻轉、拿下好成績','以德服人、一起共好，不分你我共創成果']],
+8:['718','966','智慧、價值',['拓展人脈、主動帶領，成就整個團隊','創造機會、用智慧生財，讓財富長流','招攬人才、放大舞台，掌握機會成為頂尖']],
+9:['819','189','機會、趨勢',['放大眼界、落實行動，啟發身邊的人','開創未來、持續突破，實踐理想','帶人也帶心，團結力量大；做得果斷、贏得穩健']]};
+
+function drawFlow(n,yr){
+  const F=FY[n], C=FCORE[n];
+  const ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  const topic=(d)=>`<p class="lead"><b>${d[0]}</b>${d[1]}</p>${ul(d[2])}<p class="warnline">注意：${d[3]}</p><p class="remind">${d[4]}</p>`;
+  const sec=(t,body)=>`<details class="sub"><summary>${t}</summary><div class="sbody">${body}</div></details>`;
+  const H=FHEALTH[n], T=FTABOO[n];
+  $('flowHead').innerHTML=`<span class="fy-n">${n}</span><div><h3>${yr} 年｜流年 ${n}・${F.n}</h3><p>${F.t}・${F.line}</p></div>`;
+  $('flowTags').innerHTML=`<span>階段：${F.alias}</span><span>關鍵：${F.key}</span><span>核心：${F.core}</span>`;
+  $('flowBody').innerHTML=
+    sec('年度總覽',`<dl class="kv"><dt>聯想詞</dt><dd>${F.assoc}</dd><dt>可能出現</dt><dd>${F.sign}</dd><dt>秘訣</dt><dd>${F.tip}</dd></dl>`)+
+    sec('核心解讀',`<p class="lead">${C[0]}</p><p><b class="tag">今年的課題</b>${C[1]}</p><p><b class="tag">做好三件事</b></p>${ul(C[2])}<p class="remind">${C[3]}</p>`)+
+    (yr===2026?sec('2026 年攻略',`<p class="lead"><b>${F.n}</b>組合 ${F2026[n][0]}・關鍵優勢 ${F2026[n][1]}（${F2026[n][2]}）</p>${ul(F2026[n][3])}`):'')+
+    sec('事業',topic(FWORK[n]))+sec('財運',topic(FMONEY[n]))+sec('愛情',topic(FLOVE[n]))+
+    sec('健康',`<p class="lead"><b>${H[0]}</b>${H[1]}</p>${ul(H[2])}<p class="remind">${H[3]}</p><p class="hint">僅供生活保養參考，身體不舒服請就醫。</p>`)+
+    sec('流年禁忌',`<p class="lead"><b>${T[0]}</b>今年避免：</p>${ul(T[1].map(x=>'不要'+x))}<p class="remind">${T[2]}</p>`)+
+    sec('行動方案',`<div class="acts">${FACT[n].map(a=>`<div class="act"><b>${a[0]}</b><span>${a[1]}</span></div>`).join('')}</div>`);
+}
+
+function drawDecode(p){
+  const inner=[p.top,p.mL,p.mR,...p.b];
+  const outer=[...p.left,...p.upper,...p.right];
+  const cnt=(arr,n)=>arr.filter(v=>v===n).length;
+  const esc=s=>String(s);
+  /* 幾號人：生日模式金字塔頂端（等同主命數，多胞胎會校正） */
+  const n=p.top, P=PERSON[n];
+  $('personNo').textContent=n;
+  $('personDot').style.background=P.color[1];
+  $('personBody').innerHTML=`
+    <div class="formula"><span>${P.f[0]}</span><b>→</b><span>${P.f[1]}</span></div>
+    <p class="fl">${P.fl}</p>
+    <div class="ok-no"><p><i class="ok">✓</i>${P.f[0]}，可以成就${P.f[1]}。</p><p><i class="no">!</i>留意「${P.w}」：${P.wl}</p></div>
+    <details class="sub"><summary>更多 ${n} 號人解析</summary>
+      <dl class="kv">
+        <dt>基本解析</dt><dd>${P.basic}</dd>
+        <dt>天賦</dt><dd>${P.talent}</dd>
+        <dt>正面</dt><dd>${P.pos}</dd>
+        <dt>負面</dt><dd>${P.neg}</dd>
+        <dt>適合工作</dt><dd>${P.jobs}</dd>
+        <dt>職場</dt><dd>${P.work}</dd>
+        <dt>婚姻相處</dt><dd>${P.love}</dd>
+        <dt>能量色</dt><dd><span class="cdot" style="background:${P.color[1]}"></span>${P.color[0]}：${P.color[2]}</dd>
+      </dl>
+    </details>`;
+  /* 內外 16 數 */
+  $('innerNums').innerHTML=inner.map(v=>`<span>${v}</span>`).join('');
+  $('outerNums').innerHTML=outer.map(v=>`<span>${v}</span>`).join('');
+  $('quadList').innerHTML=[1,2,3,4,5,6,7,8,9].map(k=>{
+    const a=cnt(inner,k), b=cnt(outer,k), q=(a?'+':'-')+(b?'+':'-');
+    const many=a?MANY[k][Math.min(a,3)-1]:'';
+    return `<details class="qrow q${q==='++'?'pp':q==='-+'?'mp':q==='--'?'mm':'pm'}">
+      <summary><span class="qn">${k}</span><span class="qc">內 ${a}・外 ${b}</span><span class="qb">${q}　${QL[q][1]}</span></summary>
+      <div class="qd"><p class="core">${k} 的核心能量：${QUAD[k].c}</p>
+      <p><b>${QL[q][0]}（${q}）</b>${QUAD[k][q]}</p>
+      ${a?`<p><b>金字塔內有 ${a} 個 ${k}</b>${many}${a>3?'（超過 3 個，能量更強）':''}</p>`:''}</div>
+    </details>`;}).join('');
+  /* 財庫 */
+  const cq=(cnt(inner,6)?'+':'-')+(cnt(outer,6)?'+':'-'), C=CAI[cq];
+  $('caiBadge').textContent=C.n; $('caiBadge').className='cai-badge c'+(cq==='++'?'pp':cq==='-+'?'mp':cq==='--'?'mm':'pm');
+  $('caiWhy').textContent=`金字塔內${cnt(inner,6)?'有':'沒有'} 6、外${cnt(outer,6)?'有':'沒有'} 6`;
+  $('caiBody').innerHTML=`<p class="cai-s">${C.s}</p>
+    <details class="sub"><summary>常見現象</summary><ul>${C.sign.map(x=>`<li>${x}</li>`).join('')}</ul></details>
+    <details class="sub"><summary>注意事項</summary><ul>${C.warn.map(x=>`<li>${x}</li>`).join('')}</ul></details>
+    <details class="sub"><summary>生存守則</summary><ul>${C.rule.map(x=>`<li>${x}</li>`).join('')}</ul></details>
+    <p class="cai-note">${C.note}</p>`;
+}
+
+function drawMissing(y,m,d,add){
+  const p=pyramid(y,m,d,add);                      // 一律用生日模式
+  drawDecode(p);
+  const have=new Set([p.top,p.mL,p.mR,...p.b]);
+  const miss=[1,2,3,4,5,6,7,8,9].filter(n=>!have.has(n));
+  $('missChips').innerHTML=miss.map(n=>`<span>${n}</span>`).join('');
+  $('missNote').textContent=miss.length?'依生日模式的大三角形 7 格計算。':'大三角形 7 格沒有缺數。';
+  $('missList').innerHTML=miss.map(n=>`<div class="miss-card"><h4>缺 ${n}</h4><ul>${MISS[n].t.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tip">${MISS[n].a}</p></div>`).join('');
+}
 function drawPyramid(){
   const [y,m,d]=$('solar').value.split('-').map(Number);
   if(!y) return;
@@ -373,6 +701,13 @@ function drawPyramid(){
     const parts=ids.map(id=>$(id).value).filter(Boolean).map(v=>{const [a,b2,c]=v.split('-').map(Number);return base4(a,b2,c);});
     if(parts.length===ids.length){add=[0,0,0,0];parts.forEach(q=>q.forEach((v,i)=>add[i]+=v));if(flow)add[2]=add[3]=0;}
   }
+  let addB=null;
+  if(multi){
+    const ids=order===1?['mom']:order===2?['dad']:['dad','mom'];
+    const parts=ids.map(id=>$(id).value).filter(Boolean).map(v=>{const [a,b2,c]=v.split('-').map(Number);return base4(a,b2,c);});
+    if(parts.length===ids.length){addB=[0,0,0,0];parts.forEach(q=>q.forEach((v,i)=>addB[i]+=v));}
+  }
+  drawMissing(y,m,d,addB);
   const p=pyramid(yy,m,d,add);
   const ys=String(yy).padStart(4,'0'), pad=v=>String(v).padStart(2,'0');
   const raw=[pad(d),pad(m),ys.slice(0,2),ys.slice(2)];
@@ -394,6 +729,9 @@ function drawPyramid(){
    tiles(98,140,p.left,'青年','21–40','--t-young','--t-young-bg')+
    tiles(302,140,p.right,'晚年','61–','--t-old','--t-old-bg');
   $('flowPill').hidden=!flow;
+  $('flowBox').hidden=!flow; $('missBox').hidden=flow;
+  $('quadBlock').hidden=flow; $('caiBlock').hidden=flow;
+  if(flow) drawFlow(p.top,yy);
   $('flowPill').textContent=`${p.top} 為 ${yy} 流年`;
 }
 
