@@ -241,6 +241,30 @@ details.sub ul{margin:0 0 10px;padding-left:1.1em;font-size:.88rem;display:flex;
 .act{display:flex;flex-direction:column;gap:1px;border-left:3px solid var(--accent);padding-left:10px}
 .act b{color:var(--ink);font-size:.9rem}
 .act span{color:var(--muted)}
+.tap{cursor:pointer}
+td.tap:hover{background:var(--soft)}
+td.tap:focus-visible,.row.tap:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.fcard .row.tap{border-radius:6px}
+.fcard .row.tap:hover{background:var(--soft)}
+.tbl-tip{margin:0}
+.cm-wrap{position:fixed;inset:0;z-index:30;display:flex;align-items:flex-end;justify-content:center}
+.cm-back{position:absolute;inset:0;background:rgba(20,16,30,.45)}
+.cm{position:relative;background:var(--panel);color:var(--ink);width:100%;max-width:560px;max-height:85vh;border-radius:18px 18px 0 0;display:flex;flex-direction:column;box-shadow:0 -8px 30px rgba(0,0,0,.25);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (min-width:640px){.cm-wrap{align-items:center}.cm{border-radius:18px}}
+.cm-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 20px 10px;border-bottom:1px solid var(--rule)}
+.cm-head h3{margin:0;font-family:var(--display);font-size:1.3rem;color:var(--line);display:flex;align-items:center;gap:10px}
+.cm-no{width:38px;height:38px;border-radius:50%;background:var(--hl);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--num);font-size:1.05rem}
+.cm-x{font:inherit;font-size:1.6rem;line-height:1;width:38px;height:38px;border-radius:50%;border:0;background:var(--soft);color:var(--ink);cursor:pointer}
+.cm-body{overflow-y:auto;padding:14px 20px 22px;display:flex;flex-direction:column;gap:10px;font-size:.92rem;line-height:1.75}
+.cm-body p{margin:0}
+.cm-body h4{margin:6px 0 0;color:var(--line);font-size:.95rem}
+.cm-k{display:flex;flex-wrap:wrap;gap:6px}
+.cm-k span{font-size:.8rem;background:var(--soft);color:var(--line);border-radius:999px;padding:3px 10px}
+.cm-res{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.85rem;color:var(--muted)}
+.cm-link{font:inherit;font-size:.82rem;border:1px solid var(--rule);background:var(--panel);color:var(--line);border-radius:999px;padding:2px 10px;cursor:pointer}
+.cm-tags{display:flex;flex-direction:column;gap:4px;background:var(--hl-bg);border-radius:10px;padding:10px 12px}
+.cm-tags p{color:var(--hl);font-size:.85rem;font-weight:700}
+.miss-both{border-top:1px dashed var(--rule);padding-top:14px;margin-top:4px;display:flex;flex-direction:column;gap:10px}
 footer{padding-bottom:72px;text-align:center;color:var(--muted);font-size:.75rem;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:8px}
 footer p{margin:0}
 </style>
@@ -277,7 +301,8 @@ footer p{margin:0}
           <button data-v="2" aria-pressed="false">老二</button>
           <button data-v="3" aria-pressed="false">老三</button>
         </div>
-        <p class="hint">老大加媽媽、老二加爸爸、老三加爸媽。用於七秒讀心數的數字校正，流年模式只校正日、月。</p>
+        <p class="hint">老大加媽媽、老二加爸爸、老三加爸媽。只用在 20 歲前的七秒讀心數校正，20 歲後看原始生日；流年模式只校正日、月。</p>
+        <p class="hint" id="multiNote"></p>
         <div id="dadBox" class="birth-box" hidden><label class="lbl">爸爸國曆生日</label>
         <div class="field date"><input type="date" id="dad" class="empty"></div></div>
         <div id="momBox" class="birth-box"><label class="lbl">媽媽國曆生日</label>
@@ -324,6 +349,11 @@ footer p{margin:0}
       <h3>大三角形缺數 <span class="miss-chips" id="missChips"></span></h3>
       <p class="hint" id="missNote">依生日模式的大三角形 7 格計算。</p>
       <div class="miss-list" id="missList"></div>
+      <div class="miss-both">
+        <h3>九宮格＋三角形都缺 <span class="miss-chips" id="bothChips"></span></h3>
+        <p class="hint" id="bothNote"></p>
+        <div class="miss-list" id="bothList"></div>
+      </div>
     </div>
   </section>
 
@@ -332,7 +362,7 @@ footer p{margin:0}
     <p class="hint">依生日模式的七秒讀心數計算：金字塔內 7 個數（天賦、在家的樣子），外面三組 9 個數（後天能力、在外的樣子）。</p>
 
     <div class="person">
-      <div class="person-head"><span class="pno"><i id="personDot"></i><b id="personNo"></b></span><div><h3>號人的成功公式</h3><p class="hint">由主命數決定</p></div></div>
+      <div class="person-head"><span class="pno"><i id="personDot"></i><b id="personNo"></b></span><div><h3>號人的成功公式</h3><p class="hint">看七秒讀心數三角形的頂端</p></div></div>
       <div id="personBody"></div>
     </div>
 
@@ -360,6 +390,7 @@ footer p{margin:0}
         <button data-v="-1" aria-pressed="false">−1</button>
       </div>
     </div>
+    <p class="hint tbl-tip">點表格裡的數字，可以看這張牌的流年筆記。</p>
     <div class="tbl"><table id="flowTbl"></table></div>
   </section>
 
@@ -398,6 +429,13 @@ footer p{margin:0}
     </div>
     <p>從數字看見自己，從理解找到方向。</p>
   </footer>
+  <div class="cm-wrap" id="cardModal" hidden>
+    <div class="cm-back" onclick="closeCard()"></div>
+    <div class="cm" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
+      <div class="cm-head"><h3 id="cmTitle"></h3><button type="button" class="cm-x" id="cmClose" onclick="closeCard()" aria-label="關閉">×</button></div>
+      <div class="cm-body" id="cmBody"></div>
+    </div>
+  </div>
   <button type="button" class="totop" id="toTop" aria-label="回首頁" hidden>
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg><span>首頁</span>
   </button>
@@ -412,12 +450,63 @@ const dsum=n=>String(Math.abs(n)).split('').reduce((a,c)=>a+ +c,0);
 const one=n=>{while(n>9)n=dsum(n);return n;};
 const tarot=n=>dsum(n)%22;                  // 各位數相加後 mod 22（0＝愚人）
 const CARDS=['愚人','魔術師','女祭司','女皇','皇帝','教皇','戀人','戰車','力量','隱者','命運之輪','正義','吊人','死神','節制','惡魔','高塔','星星','月亮','太陽','審判','世界'];
-const cardCell=(n,cls='')=>`<td class="${cls}">${n}<span class="cn">${CARDS[n]}</span></td>`;
+const cardCell=(n,cls='')=>`<td class="${cls} tap" data-card="${n}" role="button" tabindex="0">${n}<span class="cn">${CARDS[n]}</span></td>`;
+/* ===== 塔羅流年 0～21 筆記（依上課筆記原意整理） ===== */
+const TN={
+0:{k:['體驗','人生旅程'],b:['人活著，是為了去體驗。我們每個人都像愚人，走在每一個流年的道路上。']},
+1:{k:['創造','萬事俱備','環境資源俱足','內心有感','溝通'],r:[10,19],b:['四元素代表萬事俱備：要錢有錢、要人有人、要計畫有計畫。感覺環境欣欣向榮、資源充足，前途一片光明，內心有感，就會想去創造。','運用你的說服力去爭取想要的資源，再加上創造力，配合環境的萬事俱備，創造出你想要的一切。','覺得一切都很順利時，常是來自魔術師的共振。','想超越命運的安排，就要順著共振去發展，可以往正向、逆向，或兩者同時發展，重點是自己要有所感。']},
+2:{k:['智慧','獨立','靠自己','單身','心理學','神秘學、玄學','水的療癒'],r:[11,20],b:['對療癒、占卜這類領域容易有興趣。','能量上會特別喜歡親近水，例如做 SPA、接觸水晶、頌缽等與療癒、神秘相關的事物。','這一年如果發生這些事，代表你正走在流年的設定裡。']},
+3:{k:['美','愛','母愛','孕育、培育','豐收','給出愛'],r:[12,21],b:['美｜正位：注意自己的儀容，感受到自己特別有魅力。逆位：邋遢、發胖，只知道生存，不知道生活。','享受｜正位：愛生活、開始愛自己。逆位：過得寒酸。','孕育、培育：不只滋養自己，也會因為愛而去滋養別人。之前付出的一切，在這一年得到豐收，也希望把這份豐盛帶給大家。','一件事會共振到正位還是逆位，事前無法知道，但通常一開始是逆位，其他共振的牌也會以逆位居多。'],combo:['3、12、21 組合：例如在 12 結婚，代表為了一棵樹放棄整片森林，因為有愛，所以心甘情願犧牲自由、被綁住；也因為相信會幸福，一段旅程圓滿結束，準備前往下一段。','又例如懷孕：被孩子綁住、成為媽媽，因為有母愛，願意讓步和犧牲，暫時被困在當下；但相信生產後就會重獲自由，完成這件事，就圓滿了。']},
+4:{k:['事業','成就','蛻變','我想自己做主','打基礎','不想被管（叛逆）'],r:[13],b:['成就：推出自己的品牌。','打基礎：學習很多，想在這個領域成王，想開始推出個人品牌。過去遇到的考驗都有價值，它們打下了你的基礎。','不想被管：有可能想離職。','這一年容易打下世俗的基礎，成績應該不錯。','你有機會得到國王的能量，但該學會的還是要學會。沒有覺知的話，容易「不是國王，卻有國王的脾氣」。']},
+5:{k:['身心靈','心靈成長','領導與被領導','言行一致','感慨','老師或貴人','遠離人群','憤世嫉俗'],r:[14],b:['正向：能引領一群人，讓自己和別人的心靈更開闊。怎麼想就怎麼說、怎麼做，思言行合一，把自己的經驗帶給別人，成為別人的老師或貴人。','逆向：覺得這世界太複雜、人太麻煩，不想跟人相處，想遠離人群，有很多感慨，不相信人；也容易遇到思言行不一的人。','13 接 5 的人，大多會有情關要過。']},
+6:{k:['新關係建立','新關係建立＋舊關係結束','結盟合作','戀愛','拆夥','人際關係','情關'],r:[15],b:['逆位：人際關係說再見、重新建立；分手，卡在情關或錢關，談錢傷感情、談感情傷錢。','破解方法：要有覺知，知道球來了，才不會錯過機會。要先學會，才能隨時準備好接球；接球也要有技巧，就是成為大家的「戀人」，對人好一點、大方一點，好到像夥伴、像愛人一樣。但不要被情緒勒索，要有意識地編寫自己的劇本。','6 走到 7：舊關係結束，來到新戰場（可能是突然的再見）。如果在 6 建立了新人脈，到 7 會抵達適合你發展、對你有利的新戰場，開創新局面。']},
+7:{k:['新戰場','對你有利','外出、旅行','車關','開闢新局'],r:[16],b:['開闢新局：往你擅長的、喜歡的、對你有利的方向走。','車關：戰車流年最要注意的就是車，因為共振到高塔，而高塔跟意外有關，交通安全要多留意。','筆記建議：這一年適合衝事業。','15 接 7：要看工作忙不忙碌，注意健康。']},
+8:{k:['小官符','半吉半凶','煩、拉扯','勇氣','耗損精神力'],r:[17],b:['小官符：別人搞出來、拉扯出來的問題，讓你覺得很煩。','半吉半凶：有些人先吉後凶，有些人先凶後吉。女生通常愛情運好，財運和事業普通；男生愛情運好，財運和事業也好，要記得顧好另一半的心情。','如果是先吉後凶，到了 9 流年容易把自己封閉起來。','勇氣，與內在的那頭獅子有關。','不要讓情緒影響你拿到禮物。']},
+9:{k:['內心苦悶','沒有人懂','犯小人','沉潛','尋找','低調','沒有方向','傳承經驗','帶領'],r:[18],b:['最忌諱把自己封閉起來。順著隱士的路再往下走（逆位），內心會越來越不安，天天情緒起伏，搞不清楚身邊出現的人是敵是友。','經過一段路之後，才能安定內在的情緒。如果把經驗傳承出去，雖然一開始沒人懂你在做什麼，但一段時間後，你可以帶別人找到方向，把經驗帶給別人。','隱士也很適合沉潛、低調，默默做著目標裡的事，思考未來的方向。','你沒有走出去，怎麼會有路？怎麼會有方向？']},
+10:{k:['時間（命中注定、時間到了）','幸運','德不配位','轉捩點','半桶水','四聖獸：愛與臣服、精神成長、自我成就'],r:[1,19],b:['在這個時間點，做這件事會得到最好的結果；即將發生轉變，你會覺得一切水到渠成。是幸運還是命運的捉弄，就看這一年有沒有用智慧，幫自己寫出比較好的未來。','要學會「正確的許願」：這個流年沒有退貨機制，你許的都會發生，就算你只是半桶水，還是會給。但之後三年才會開始考驗你，如果許的是德不配位的願，到 11 流年壓力會非常大。之後三年的結果，都是自己找的，所以可以許一個自己願意努力去配上的願，或是比現在能力再高一點的願。','之後的 11、12、13 怎麼走，都來自 10。','命，是註定的命盤設定（阿卡西），來自生日，也就是你的個性；流年，是透過一連串事件讓你升級的功課；運，是用自由意志去運轉，創造出不一樣的軌跡。什麼樣個性的人，遇到什麼樣的事件，就容易做出什麼樣的選擇，所以個性決定命運。','命運之輪流年：順著天賦做事，逆著個性做選擇。要知道自己擅長什麼，會跌坑，往往是個性帶來的。有潔癖的人，是被詛咒的。','天賦和個性怎麼分？天賦像是某個職業本身擁有的固定技能，以及可以延伸的同派系技能；個性則像不同玩家操作同一個職業，會呈現出不同的風格。','如何運用覺知：學會並理解、覺察並感受到，你就會有意識地創造；塔羅牌，就是你可以使用的工具。']},
+11:{k:['一分耕耘一分收穫','法律糾紛','詐騙','壓力','業力清算','契約'],r:[2,20],b:['這些事情就是固定會發生。','契約：口頭承諾（有人抓你語病）、結婚、買房、離婚、賣房、官司。','6、7、8、9 做過的事，一律在 11 流年清算，因為共振到 20。','這一年也會共振到女祭司，帶來成長。']},
+12:{k:['綁住','犧牲','不自由','大腦革命','信仰','困在當下（成繭）'],r:[3,21],b:['犧牲有兩種：心甘情願，或不情不願。不情不願留下的是一種遺憾和不甘心，事情沒有完美、有瑕疵，很痛苦，想結束也結束不了，因此感到不自由、被綁住。','大腦革命：發現你相信的事情原來不是這麼一回事，或接觸到過去沒接觸過的認知、看到沒看過的世界，因而突然領悟、看透、想通、放下，得到不同的想法和很大的智慧。你簡單，上天給的就簡單；你有能力，上天給的就比較精采。','信仰：是你相信的某件事支撐著你繼續往前走，還是你的信仰漸漸消失？原因在於你根本看不到自己所相信的一切。你會越來越痛苦，內在越來越緊縮，沒辦法想怎樣就怎樣，覺得自己被困在當下、像結成了繭；信仰不見了，內在強大的供應源也不再繼續供應你。','要學會接受、臣服，否則到了國王流年，情況會越來越嚴重。']},
+13:{k:['痛','結束','斷捨離','船與冥河'],r:[4],b:['痛：是要你領悟、明白、調整自己的習氣，看有沒有學會反省。不懂的話就會失去，也就被斷捨離了。有時候痛是因為習氣讓你失去，但如果把錯都往外丟，就無法透過反省得到智慧的昇華，下一次力道會更強。','結束：人事物的結束，或一件事的結束，例如分手、換工作、與家人口角、病痛或失去，過程通常不會太開心。','斷捨離：逆著個性做人，也是一種斷捨離，斷捨離你的脾氣。','船與冥河：船是我們，冥河是時間。我們在時間的流上不斷成長，但如果沒有在適當的時間，把跟你沒有緣分的東西卸下，有一天負荷不了，就會沉在時間的河裡，或一直在漩渦裡打轉。死神流年也告訴你，時間是最好的藥；覺得藥效不夠，就讓自己忙一點，加速解脫。','特效藥：重點在船（我們）。船為什麼會走？因為有人擺渡。如果這一年你能成為別人的擺渡人，把該渡的人渡過去，你也會因此把自己渡過去；看著別人的故事、聽著別人的痛苦，自己也越來越明白。本欲渡眾生，反被眾生渡。','放下自己的執著，種下美好的種子。']},
+14:{k:['調節','控制','跨','學習','教育','外出','一段路','富裕'],r:[5],b:['控制：會去控制自己的慾望和習性，明明很想做，但會停一停、看一看、等一等，這是節制帶給你的心理狀態。','跨：跨領域學習身心靈，或被推出去領導別人，或被別人領導。','富裕：像鳶尾花一樣，這一年有錢或有成長。','想做出成績，就要「跨」：跨領域學習、跨職業，才能得到不同的人生，留在原地就浪費了。要經過一段時間、一段路，才會得到想要的結果；要去學、去表達、跟別人交流，沒完成該有的條件，這一年就浪費了。','14 逆位：一是跨不出去，共振到 5，心靈越來越感慨，越來越遠離人群、憤世嫉俗；二是跨到奇怪的身心靈領域。']},
+15:{k:['酒色賭毒','功成名就（世俗成績）','慾望','世俗與心靈被綁住','犯貪'],r:[6],b:['犯貪：要注意身體健康，不要因為世俗的慾望把自己累壞，小心下一個戰車流年突然說再見。','敏感體質的人，惡魔流年不要亂去奇怪的地方。','上天知道出什麼招會讓你有感覺，所以有時遇到的某些人為你上演一段劇情，是因為只有他能扮演那個角色。','惡魔流年你可以換，球來了就接，但什麼時候不能再接球，自己要知道，不然會換不起。']},
+16:{k:['意外','突如其來','砍掉重練','沒有極大的破壞，就沒有極大的建設'],r:[7],b:['不要沉浸在意外帶來的崩潰裡，這樣會看不到上天帶給你的禮物（戰車）。','如果已經走不到戰車年，請好好感受這場突如其來的意外背後，是否帶著意想不到的禮物，它會為你開闢一個新戰場，但難的是你能不能重整心態。']},
+17:{k:['信心','希望','星運','重生與殞落'],r:[8],b:['重生或殞落要看數字組合：17／12、17／13 在晚年時，可能前一年發現身體的病痛，但控制得宜，感覺自己重生了；10／17 是時間到了、星星殞落；18／16 要注意健康；10／17 也要注意 9 流年，要走出去。','把握 7 和 8，這一顆星就會被看見，有星運加持，對自己越來越有自信，對未來充滿希望。']},
+18:{k:['不安','情緒起伏','一段路','是敵是友'],r:[9],b:['擔心東、擔心西，擔心自己老了、沒用了；年紀大時走到 9／18，常會覺得自己老了，不願出門。','要記得逆著個性做選擇，去完成人生的體驗。','18 接 10：時間到了。']},
+19:{k:['光明','初生之犢不畏虎','領導','新生兒','快樂'],r:[1,10],b:['在魔術師的共振下，你會想去創造，因為感到萬事俱備，環境一片光明，內心是快樂、光明、充滿希望的。']},
+20:{k:['人間律法的證明','看得到與看不到','無形','清算消息'],r:[2,11],b:['看得到與看不到：像是舊的人事物重新跑出來，不論是看得見的，還是看不見的。','做好事上天堂、做壞事下地獄，要多廣結善緣。','憤怒之火會燒掉好的種子，滋潤壞的種子。']},
+21:{k:['圓滿','旅行','沒有痛苦的結束','完成、完美'],r:[3,12],b:['圓滿：完成一件事。','旅行：出國，或出國念書。','沒有痛苦的結束：前幾年發生的某些事，會以不痛苦的方式結束。','完成、完美：完成一件事，或希望這件事變得完美、精緻、很享受。','你是導演，也是編劇，劇本是你自己挑的，可以決定故事怎麼演；但要有覺知，才知道故事怎麼安排。大部分人活在個性的本能上，什麼樣個性的人遇到什麼事，就容易做出什麼樣的選擇，所以個性不變，算命就會準。','因此你可能會疑惑：什麼時候我的個性會帶來好結果，什麼時候又會讓我跌坑？可以試著用塔羅牌算一下，並在流月時觀察自己是否有原則性的問題，再訓練自己的菩薩心腸與雷霆手段。']}};
+const TN_TAIL=[5,11,13,16];          // 拉尾盤
+const TN_KARMA=[11,13];              // 業力引爆
+const TN_LOVE={6:'新關係、新生兒',9:'內心孤獨，想找人陪',10:'命中注定的人',11:'婚姻關係當成夥伴，簽訂重要契約',12:'因為愛，願意被綁住',13:'身分上的轉變，從單身變成人夫、人妻'};
+function openCard(n){
+  n=+n; const T=TN[n]; if(!T) return;
+  const res=T.r?`<p class="cm-res">共振：${T.r.map(x=>`<button type="button" class="cm-link" data-card="${x}">${x} ${CARDS[x]}</button>`).join('')}</p>`:'';
+  const tags=[];
+  if(TN_TAIL.includes(n)) tags.push('拉尾盤流年：生日前最後三個月最明顯，沒過好的話，下一次會再加重。');
+  if(TN_KARMA.includes(n)) tags.push('流年的業力引爆，常出現在 11、13。');
+  if(TN_LOVE[n]) tags.push(`容易遇到對象或結婚的流年：${TN_LOVE[n]}。`);
+  $('cmTitle').innerHTML=`<span class="cm-no">${n}</span>${CARDS[n]}`;
+  $('cmBody').innerHTML=`<div class="cm-k">${T.k.map(x=>`<span>${x}</span>`).join('')}</div>${res}
+    ${tags.length?`<div class="cm-tags">${tags.map(x=>`<p>${x}</p>`).join('')}</div>`:''}
+    ${T.b.map(x=>`<p>${x}</p>`).join('')}
+    ${T.combo?`<h4>組合關聯</h4>${T.combo.map(x=>`<p>${x}</p>`).join('')}`:''}
+    <p class="hint">流年不會告訴你一定會發生什麼事，而是提示你這一年的主題、功課和考驗。</p>`;
+  $('cardModal').hidden=false; document.body.style.overflow='hidden'; $('cmClose').focus();
+}
+function closeCard(){$('cardModal').hidden=true;document.body.style.overflow='';}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-card]');if(t){e.preventDefault();openCard(t.dataset.card);}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('cardModal').hidden)closeCard();
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('td[data-card]')){e.preventDefault();openCard(e.target.dataset.card);}});
+
 /* 塔羅性格（依 Excel）：本性＝出生年後兩位數字相加；外在、內在＝(年+月+日) 各位數相加，
    超過 21 時外在 −22、內在改成十位＋個位 */
-const persona=(Y,M,D)=>{const t=dsum(Y+M+D);return {n:dsum(Y%100),o:t<=21?t:t-22,i:t<=21?t:Math.floor(t/10)+t%10};};
+/* 本性：出生年後兩位小於 22 直接取數字（例 16→16），否則兩位相加（例 77→14） */
+const natur=Y=>{const yy=Y%100;return yy<22?yy:dsum(yy);};
+const persona=(Y,M,D)=>{const t=dsum(Y+M+D);return {n:natur(Y),o:t<=21?t:t-22,i:t<=21?t:Math.floor(t/10)+t%10};};
 /* 流年：年份＋生日月＋日；流月：查詢年＋出生年＋生日月＋日＋月份；流日：出生年＋生日月＋日＋查詢年＋查詢月＋日 */
 const flowY=(Y,M,D)=>tarot(Y+M+D);
+/* 查詢日期還沒過到當年的國曆生日 → 用去年 */
+const tarotYear=(bM,bD,qY,qM,qD)=>(qM>bM||(qM===bM&&qD>=bD))?qY:qY-1;
 const flowM=(qY,bY,M,D,m)=>tarot(qY+bY+M+D+m);
 const flowD=(bY,M,D,qY,qM,d)=>tarot(bY+M+D+qY+qM+d);
 
@@ -446,7 +535,8 @@ function drawGrid(y,m,d,ln,target='grid9'){
   $(target).innerHTML=html;
 }
 
-const base4=(y,m,d)=>{const ys=String(y).padStart(4,'0');return [one(d),one(m),one(+ys.slice(0,2)),one(+ys.slice(2))];};
+/* 年份後兩位是 00（例如 2000 年）時，這一格以 5 計算 */
+const base4=(y,m,d)=>{const ys=String(y).padStart(4,'0');const yy=+ys.slice(2);return [one(d),one(m),one(+ys.slice(0,2)),yy===0?5:one(yy)];};
 function pyramid(y,m,d,add){
   let b=base4(y,m,d);
   if(add) b=b.map((v,i)=>one(v+add[i]));   // 多胞胎老大：與媽媽同位置相加
@@ -689,6 +779,14 @@ function drawMissing(y,m,d,add){
   const miss=[1,2,3,4,5,6,7,8,9].filter(n=>!have.has(n));
   $('missChips').innerHTML=miss.map(n=>`<span>${n}</span>`).join('');
   $('missNote').textContent=miss.length?'依生日模式的大三角形 7 格計算。':'大三角形 7 格沒有缺數。';
+  /* 國曆九宮格有任何記號（○△□）就算有，再和三角形 7 格合併 */
+  const ln=lifeNums(y,m,d), grid=new Set();
+  (String(y)+m+d+(ln.chain.slice(0,-1).join('')||String(ln.total))).split('').forEach(c=>{if(c!=='0')grid.add(+c);});
+  grid.add(ln.main);
+  const both=[1,2,3,4,5,6,7,8,9].filter(n=>!have.has(n)&&!grid.has(n));
+  $('bothChips').innerHTML=both.map(n=>`<span>${n}</span>`).join('');
+  $('bothNote').textContent=both.length?'國曆九宮格（○△□ 任一記號都算有）和三角形 7 格都沒有的數字。':'國曆九宮格和三角形 7 格加起來，1～9 都有。';
+  $('bothList').innerHTML=both.map(n=>`<div class="miss-card"><h4>缺 ${n}</h4><ul>${MISS[n].t.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tip">${MISS[n].a}</p></div>`).join('');
   $('missList').innerHTML=miss.map(n=>`<div class="miss-card"><h4>缺 ${n}</h4><ul>${MISS[n].t.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tip">${MISS[n].a}</p></div>`).join('');
 }
 function drawPyramid(){
@@ -699,14 +797,15 @@ function drawPyramid(){
   if(multi){
     const ids=order===1?['mom']:order===2?['dad']:['dad','mom'];
     const parts=ids.map(id=>$(id).value).filter(Boolean).map(v=>{const [a,b2,c]=v.split('-').map(Number);return base4(a,b2,c);});
-    if(parts.length===ids.length){add=[0,0,0,0];parts.forEach(q=>q.forEach((v,i)=>add[i]+=v));if(flow)add[2]=add[3]=0;}
+    if(parts.length===ids.length&&(flow?yy-y:NOW-y)<20){add=[0,0,0,0];parts.forEach(q=>q.forEach((v,i)=>add[i]+=v));if(flow)add[2]=add[3]=0;}
   }
   let addB=null;
   if(multi){
     const ids=order===1?['mom']:order===2?['dad']:['dad','mom'];
     const parts=ids.map(id=>$(id).value).filter(Boolean).map(v=>{const [a,b2,c]=v.split('-').map(Number);return base4(a,b2,c);});
-    if(parts.length===ids.length){addB=[0,0,0,0];parts.forEach(q=>q.forEach((v,i)=>addB[i]+=v));}
+    if(parts.length===ids.length&&NOW-y<20){addB=[0,0,0,0];parts.forEach(q=>q.forEach((v,i)=>addB[i]+=v));}
   }
+  $('multiNote').textContent=!multi?'':(flow?(yy-y<20?`${yy} 年未滿 20 歲，使用校正後的數字。`:`${yy} 年已滿 20 歲，看原始生日。`):(NOW-y<20?'目前未滿 20 歲，使用校正後的數字。':'目前已滿 20 歲，看原始生日；20 歲前的樣子可切到流年模式查詢。'));
   drawMissing(y,m,d,addB);
   const p=pyramid(yy,m,d,add);
   const ys=String(yy).padStart(4,'0'), pad=v=>String(v).padStart(2,'0');
@@ -764,10 +863,10 @@ function renderFlow(y,m,d,lm,ld){
   const [qY,qM,qD]=v.split('-').map(Number);
   const hasL=!!lm;
   const card=(t,a,b)=>`<div class="fcard"><span class="t">${t}</span>
-    <div class="row"><span class="k">國</span><span class="n">${a}</span></div><span class="nm">${CARDS[a]}</span>
-    ${hasL?`<div class="row"><span class="k">農</span><span class="n">${b}</span></div><span class="nm">${CARDS[b]}</span>`:''}</div>`;
+    <div class="row tap" data-card="${a}"><span class="k">國</span><span class="n">${a}</span></div><span class="nm">${CARDS[a]}</span>
+    ${hasL?`<div class="row tap" data-card="${b}"><span class="k">農</span><span class="n">${b}</span></div><span class="nm">${CARDS[b]}</span>`:''}</div>`;
   $('flow3').innerHTML=
-    card(`${qY} 流年`,flowY(qY,m,d),hasL?flowY(qY,lm,ld):0)+
+    card(`${tarotYear(m,d,qY,qM,qD)} 流年`,flowY(tarotYear(m,d,qY,qM,qD),m,d),hasL?flowY(tarotYear(m,d,qY,qM,qD),lm,ld):0)+
     card(`${qM} 月流月`,flowM(qY,y,m,d,qM),hasL?flowM(qY,y,lm,ld,qM):0)+
     card(`${qD} 日流日`,flowD(y,m,d,qY,qM,qD),hasL?flowD(y,lm,ld,qY,qM,qD):0);
   const months=[...Array(12)].map((_,i)=>i+1);
@@ -805,13 +904,15 @@ function render(){
   drawGrid(y,m,d,s);
   if(ly) drawGrid(ly,lm,ld,l,'grid9L'); else $('grid9L').innerHTML='<p class="hint">請先輸入農曆生日。</p>';
 
-  const years=[];for(let k=-3;k<=3;k++)years.push(NOW+k);
-  const row=(mm,dd)=>years.map(Y=>mm?cardCell(tarot(mm+dd+shift+Y),Y===NOW?'cur':''):`<td>—</td>`).join('');
-  $('flowTbl').innerHTML=`<thead><tr><th class="k">類型</th>${years.map(Y=>`<th class="${Y===NOW?'cur':''}">${Y}</th>`).join('')}</tr></thead>
-   <tbody><tr><td class="k">國曆</td>${row(m,d)}</tr><tr><td class="k">農曆</td>${row(lm,ld)}</tr></tbody>`;
-  $('curPill').textContent=`${NOW} 為當年流年`;
+  /* 塔羅流年：今年國曆生日過了才算今年，還沒過就算去年（農曆也跟著國曆的年份） */
+  const td=new Date(), CUR=tarotYear(m,d,td.getFullYear(),td.getMonth()+1,td.getDate());
+  const years=[];for(let k=-3;k<=3;k++)years.push(CUR+k);
+  const row=(mm,dd)=>years.map(Y=>mm?cardCell(tarot(mm+dd+shift+Y),Y===CUR?'cur':''):`<td>—</td>`).join('');
+  $('flowTbl').innerHTML=`<thead><tr><th class="k">類型</th>${years.map(Y=>`<th class="${Y===CUR?'cur':''}">${Y}</th>`).join('')}</tr></thead>
+   <tbody><tr><td class="k">國曆<span class="cn">外在事件</span></td>${row(m,d)}</tr><tr><td class="k">農曆<span class="cn">內心戲</span></td>${row(lm,ld)}</tr></tbody>`;
+  $('curPill').textContent=`${CUR} 為當年流年`;
 
-  const put=(id,n)=>{$(id).innerHTML=n==null?'—':`${n}<span class="cn">${CARDS[n]}</span>`;};
+  const put=(id,n)=>{const el=$(id);el.innerHTML=n==null?'—':`${n}<span class="cn">${CARDS[n]}</span>`;if(n==null){delete el.dataset.card;el.classList.remove('tap');}else{el.dataset.card=n;el.classList.add('tap');el.tabIndex=0;}};
   const ps=persona(y,m,d); put('sN',ps.n);put('sO',ps.o);put('sI',ps.i);
   const pl=ly?persona(ly,lm,ld):{}; put('lN',pl.n);put('lO',pl.o);put('lI',pl.i);
   renderFlow(y,m,d,lm,ld);
@@ -842,7 +943,8 @@ topBtn.onclick=()=>{
   window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};
 $('startBtn').onclick=()=>{if(!$('solar').value)return;started=true;render();
   setTimeout(()=>{try{$('sRes').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}catch(e){}},50);};
-$('flowYear').value=NOW;
+/* 七秒讀心數的流年：每年 10/1 起就算下一年 */
+$('flowYear').value=new Date().getMonth()>=9?NOW+1:NOW;
 $('flowYear').addEventListener('input',drawPyramid);
 $('mBirth').onclick=()=>{mode='birth';$('mBirth').setAttribute('aria-pressed','true');$('mFlow').setAttribute('aria-pressed','false');$('yrWrap').hidden=true;drawPyramid();};
 $('mFlow').onclick=()=>{mode='flow';$('mFlow').setAttribute('aria-pressed','true');$('mBirth').setAttribute('aria-pressed','false');$('yrWrap').hidden=false;drawPyramid();};
