@@ -1,32 +1,31 @@
-<!doctype html>
-<html lang="zh-Hant">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>芝心數語｜靈數羅盤</title>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>芝心數語｜靈數羅盤</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=DM+Mono:wght@500&display=swap">
 <script src="https://cdn.jsdelivr.net/npm/lunar-javascript@1.6.12/lunar.js"></script>
+<script>(function(){var srcs=['https://unpkg.com/lunar-javascript@1.6.12/lunar.js','https://fastly.jsdelivr.net/npm/lunar-javascript@1.6.12/lunar.js'];
+function next(){if(typeof Solar!=='undefined'||!srcs.length)return;var s=document.createElement('script');s.src=srcs.shift();
+s.onload=function(){try{if(typeof autoLunar==='function'&&document.getElementById('solar').value){autoLunar();render();}}catch(e){}};s.onerror=next;document.head.appendChild(s);}
+if(typeof Solar==='undefined')next();})();</script>
 <style>
 /* Layout: one narrow column of stacked panels — input, numbers, nine-grid, pyramid, tarot tables */
 :root{
-  --bg:#f3f1f6; --panel:#ffffff; --ink:#24203a; --muted:#6c6782;
-  --line:#2f3b8f; --accent:#b0833f; --hl:#d0427f; --hl-bg:#fbe8f0;
-  --soft:#e9ecf8; --rule:#dcd9e6;
+  --bg:#faf4eb; --panel:#ffffff; --ink:#2e2218; --muted:#7a6957;
+  --line:#b85a12; --accent:#b8862b; --hl:#c43d2e; --hl-bg:#fbe8de;
+  --soft:#fbeedd; --rule:#ecdcc6;
   --c-pre:#e8742a; --c-post:#24a055; --c-main:#e0505a;
   --display:"Noto Serif TC","Songti TC",serif;
   --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
   --num:"DM Mono",ui-monospace,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#16141f; --panel:#211e2e; --ink:#ece9f5; --muted:#a39fb8;
-  --line:#8d9cf0; --accent:#d7ab68; --hl:#f07aaa; --hl-bg:#3a2030;
-  --soft:#2b2a40; --rule:#36334a;
+  --bg:#18120d; --panel:#251c15; --ink:#f5ece1; --muted:#b7a591;
+  --line:#f2a14c; --accent:#e5b862; --hl:#f4886a; --hl-bg:#3e231a;
+  --soft:#33261c; --rule:#45362a;
   --c-pre:#f39553; --c-post:#4cc47a; --c-main:#f07a82; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#16141f; --panel:#211e2e; --ink:#ece9f5; --muted:#a39fb8;
-  --line:#8d9cf0; --accent:#d7ab68; --hl:#f07aaa; --hl-bg:#3a2030;
-  --soft:#2b2a40; --rule:#36334a;
+  --bg:#18120d; --panel:#251c15; --ink:#f5ece1; --muted:#b7a591;
+  --line:#f2a14c; --accent:#e5b862; --hl:#f4886a; --hl-bg:#3e231a;
+  --soft:#33261c; --rule:#45362a;
   --c-pre:#f39553; --c-post:#4cc47a; --c-main:#f07a82; color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -90,28 +89,28 @@ td.k,th.k{font-family:var(--body);color:var(--line);font-weight:700;position:sti
 :root{--ring:#5cc08f;--ring-soft:#e8f8ef;--tri-out:#b7e0c8;--tri-in:#3f9a5e;--node:#ffffff;
   --n-left:#3f5a4c;--n-right:#e58a6f;--n-top:#e08a2e;--star:#e0484a;--raw:#2a2a2a;
   --t-mid:#3b7fd6;--t-mid-bg:#eef4fd;--t-young:#4a9a5c;--t-young-bg:#e3f8e9;--t-old:#e0b53c;--t-old-bg:#fdf6dd}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ring:#4fae80;--ring-soft:#1c2e25;--tri-out:#2f5a42;--tri-in:#5cc08f;--node:#211e2e;
-  --n-left:#cfe6d8;--n-right:#f2a48c;--n-top:#e8963a;--star:#f07070;--raw:#ece9f5;
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ring:#4fae80;--ring-soft:#1c2e25;--tri-out:#2f5a42;--tri-in:#5cc08f;--node:#251c15;
+  --n-left:#cfe6d8;--n-right:#f2a48c;--n-top:#e8963a;--star:#f07070;--raw:#f5ece1;
   --t-mid:#7fb0f0;--t-mid-bg:#1f2a3d;--t-young:#7cc98e;--t-young-bg:#1d3326;--t-old:#ecc85e;--t-old-bg:#352e18}}
-:root[data-theme="dark"]{--ring:#4fae80;--ring-soft:#1c2e25;--tri-out:#2f5a42;--tri-in:#5cc08f;--node:#211e2e;
-  --n-left:#cfe6d8;--n-right:#f2a48c;--n-top:#e8963a;--star:#f07070;--raw:#ece9f5;
+:root[data-theme="dark"]{--ring:#4fae80;--ring-soft:#1c2e25;--tri-out:#2f5a42;--tri-in:#5cc08f;--node:#251c15;
+  --n-left:#cfe6d8;--n-right:#f2a48c;--n-top:#e8963a;--star:#f07070;--raw:#f5ece1;
   --t-mid:#7fb0f0;--t-mid-bg:#1f2a3d;--t-young:#7cc98e;--t-young-bg:#1d3326;--t-old:#ecc85e;--t-old-bg:#352e18}
-#pyr .ring{fill:none;stroke:var(--ring);stroke-width:1.6}
-#pyr .tri-out{fill:var(--ring-soft);stroke:var(--tri-out);stroke-width:4;stroke-linejoin:round}
-#pyr .tri-in{fill:none;stroke:var(--tri-in);stroke-width:2.6;stroke-linecap:round}
-#pyr .node{fill:var(--node)}
-#pyr .node-top{fill:var(--n-top)}
-#pyr .nv{font-family:var(--body);font-size:17px;font-weight:700}
-#pyr .node,#pyr .node-top{filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.14))}
-#pyr .nl{fill:var(--n-left)} #pyr .nr{fill:var(--n-right)} #pyr .nt{fill:#fff}
-#pyr .star{fill:var(--star);font-size:11px}
-#pyr .raw{font-family:var(--body);fill:var(--raw);font-size:15px;font-weight:700}
-#pyr .rawl{font-family:var(--body);fill:var(--raw);font-size:9px}
-#pyr .grp{font-family:var(--body);font-size:11px;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round;paint-order:stroke}
-#pyr .grp-s{font-size:9px}
-#pyr .tile-t{font-family:var(--num);font-size:15px}
+.pyr .ring{fill:none;stroke:var(--ring);stroke-width:1.6}
+.pyr .tri-out{fill:var(--ring-soft);stroke:var(--tri-out);stroke-width:4;stroke-linejoin:round}
+.pyr .tri-in{fill:none;stroke:var(--tri-in);stroke-width:2.6;stroke-linecap:round}
+.pyr .node{fill:var(--node)}
+.pyr .node-top{fill:var(--n-top)}
+.pyr .nv{font-family:var(--body);font-size:17px;font-weight:700}
+.pyr .node,.pyr .node-top{filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.14))}
+.pyr .nl{fill:var(--n-left)} .pyr .nr{fill:var(--n-right)} .pyr .nt{fill:#fff}
+.pyr .star{fill:var(--star);font-size:11px}
+.pyr .raw{font-family:var(--body);fill:var(--raw);font-size:15px;font-weight:700}
+.pyr .rawl{font-family:var(--body);fill:var(--raw);font-size:9px}
+.pyr .grp{font-family:var(--body);font-size:11px;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round;paint-order:stroke}
+.pyr .grp-s{font-size:9px}
+.pyr .tile-t{font-family:var(--num);font-size:15px}
 svg{display:block}
-#pyr{width:100%;max-width:480px;height:auto;margin:0 auto}
+.pyr{width:100%;max-width:480px;height:auto;margin:0 auto;display:block}
 svg .edge{fill:none;stroke:var(--line);stroke-width:3;stroke-linejoin:round}
 svg .sm{stroke-width:2}
 svg text{font-family:var(--num);fill:var(--line);text-anchor:middle;dominant-baseline:central}
@@ -196,7 +195,7 @@ details.fold summary:focus-visible{outline:2px solid var(--accent);outline-offse
 .ok-no .ok{background:var(--c-post)} .ok-no .no{background:var(--hl)}
 details.sub{border:1px solid var(--rule);border-radius:10px;padding:0 12px}
 details.sub summary{cursor:pointer;padding:10px 0;font-weight:700;color:var(--line);font-size:.92rem}
-details.sub[open] summary{border-bottom:1px solid var(--rule);margin-bottom:8px}
+details.sub[open]>summary{border-bottom:1px solid var(--rule);margin-bottom:8px}
 details.sub ul{margin:0 0 10px;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:3px}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:0 0 12px;font-size:.88rem}
 .kv dt{color:var(--muted);white-space:nowrap}
@@ -248,7 +247,7 @@ td.tap:focus-visible,.row.tap:focus-visible{outline:2px solid var(--accent);outl
 .fcard .row.tap:hover{background:var(--soft)}
 .tbl-tip{margin:0}
 .cm-wrap{position:fixed;inset:0;z-index:30;display:flex;align-items:flex-end;justify-content:center}
-.cm-back{position:absolute;inset:0;background:rgba(20,16,30,.45)}
+.cm-back{position:absolute;inset:0;background:rgba(30,18,8,.45)}
 .cm{position:relative;background:var(--panel);color:var(--ink);width:100%;max-width:560px;max-height:85vh;border-radius:18px 18px 0 0;display:flex;flex-direction:column;box-shadow:0 -8px 30px rgba(0,0,0,.25);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (min-width:640px){.cm-wrap{align-items:center}.cm{border-radius:18px}}
 .cm-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 20px 10px;border-bottom:1px solid var(--rule)}
@@ -294,8 +293,91 @@ td.tap:focus-visible,.row.tap:focus-visible{outline:2px solid var(--accent);outl
 .jt-c{flex:none;font-family:var(--num);font-size:1.05rem;color:var(--line);background:var(--soft);border-radius:8px;padding:2px 8px}
 .jt div{display:flex;flex-direction:column;gap:2px;min-width:0}
 .jt-p{font-size:.75rem;color:var(--muted)}
+.jt .lv3-k{flex-direction:row;flex-wrap:wrap}.jt details.sub{margin-top:6px}
+.tabs{display:flex;background:var(--panel);border-radius:14px;padding:4px;gap:4px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.tabs button{flex:1;font:inherit;font-weight:700;border:0;border-radius:10px;padding:10px;background:transparent;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--line);color:var(--panel)}
+#tabSolo,#tabPair{display:flex;flex-direction:column;gap:18px}
+#tabSolo[hidden],#tabPair[hidden]{display:none!important}
+.wrap.wide{max-width:980px}
+.pair-in{display:grid;grid-template-columns:1fr;gap:10px}
+.pin{display:flex;gap:8px;align-items:center}
+.pin .field{flex:1;min-width:0}
+.pname{width:5.5em!important;flex:none;text-align:center;font-family:var(--body)!important;font-weight:700;color:var(--line)!important}
+.pair-grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media (min-width:760px){.pair-grid,.pair-in{grid-template-columns:1fr 1fr}}
+.pcard{min-width:0}
+.pcard h2 .pno-s{font-family:var(--num);background:var(--hl);color:#fff;border-radius:999px;padding:0 10px;font-size:.95rem}
+.pmeta{display:flex;flex-wrap:wrap;gap:6px}
+.pmeta span{font-size:.8rem;background:var(--soft);color:var(--line);border-radius:999px;padding:3px 10px}
+.cmp-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cmp-row b{color:var(--line);min-width:6.5em}
+.ptags{display:flex;flex-direction:column;gap:4px;background:var(--hl-bg);border-radius:10px;padding:10px 12px}
+.ptags p{margin:0;color:var(--hl);font-size:.85rem;font-weight:700}
+.pcard .fy-head h3{font-size:.98rem}
+.psex{flex:none;font:inherit;border:1px solid var(--rule);border-radius:10px;background:var(--soft);color:var(--line);padding:0 8px;min-height:48px}
+.hc{display:flex;gap:12px;align-items:center}
+.hc-n{flex:none;width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.5rem;font-weight:900}
+.hc h4{margin:0;color:var(--line);font-size:1rem}
+.hc .hint{margin:2px 0 0}
+#pRelBody ul{margin:0;padding-left:1.1em}
+.lv-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:760px){.lv-grid{grid-template-columns:1fr 1fr}}
+.lv{border:1px solid var(--rule);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.lv h4{margin:0;color:var(--line)}
+.lv .hint{margin:0}
+.need{background:var(--soft);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;font-size:.88rem}
+.need p{margin:0}
+.need b{color:var(--line);margin-right:6px}
+.need .say{color:var(--hl);font-weight:700}
+.lv9{border-left:3px solid var(--accent);padding:2px 0 2px 10px;display:flex;flex-direction:column;gap:2px}
+.lv9 p{margin:0;font-size:.9rem}.lv9 b{color:var(--hl);margin-right:6px}
+.qk{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;margin:4px 0;font-size:.88rem;align-items:center}
+.qk dt{font-weight:700;color:var(--line);white-space:nowrap}.qk dd{margin:0;display:flex;flex-wrap:wrap;gap:4px}
+.qk dd b{color:var(--hl)}
+.fl-love{border-top:1px dashed var(--rule);margin-top:8px;padding-top:8px;display:flex;flex-direction:column;gap:6px}.fl-love p{margin:0}
+.en-row{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;font-size:.9rem}
+.en-row b{color:var(--line);min-width:2.5em}.en-row em{font-style:normal;font-family:var(--num);font-size:1.15rem;color:var(--ink);margin-left:4px}
+.en-h{margin:8px 0 0;color:var(--line);font-family:var(--display)}
+.en-grid .cell.en-miss{border-style:dashed;opacity:.55}
+.en-miss-box{background:var(--soft);border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;gap:4px}
+.en-miss-box p{margin:0}.en-miss-box b{color:var(--hl);margin-right:8px}
+.en-n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--line);color:var(--panel);font-weight:700;font-family:var(--num);margin-right:6px;font-size:.9rem}
+.en-miss-box .en-n{background:var(--hl)}
+.en-card summary{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.en-tags{display:inline-flex;flex-wrap:wrap;gap:4px;margin-left:auto}
+.en-tags i{font-style:normal;font-size:.72rem;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 8px;color:var(--muted)}
+.en-card.en-off summary{opacity:.75}
+#energyBody{display:flex;flex-direction:column;gap:10px}
+.toc{position:sticky;top:0;z-index:20;display:flex;gap:6px;overflow-x:auto;padding:8px 2px;margin:0 -2px;background:var(--bg);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.toc::-webkit-scrollbar{display:none}
+.toc button{flex:none;font:inherit;font-size:.82rem;font-weight:700;border:1px solid var(--rule);background:var(--panel);color:var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.toc button:active{background:var(--soft)}
+.toc button.on{background:var(--line);color:var(--panel);border-color:var(--line)}
+#results [data-toc]{scroll-margin-top:56px}
+.grp>summary{font-size:.98rem}
+.grp>.sbody{display:flex;flex-direction:column;gap:8px;padding-bottom:10px}
+.sum-codes{font-family:var(--num);font-weight:500;color:var(--muted);font-size:.82rem;margin-left:6px}
+.fold2{margin-top:6px}
+.miss-list{display:flex;flex-direction:column;gap:8px}
+#loveSolo{display:flex;flex-direction:column;gap:10px}
+#loveSolo .lv p{margin:0;font-size:.9rem}
+.lv3-k{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem}
+.lv3-l{font-weight:700;color:var(--line);margin-right:2px}
+.lv3-l.nd{color:var(--hl)}
+.lv3-c{border:1px solid var(--rule);border-radius:999px;padding:2px 10px;background:var(--soft)}
+.lv3-box{list-style:none;padding:0!important;margin:0 0 8px!important}
+.lv3-box b{color:var(--line);margin-right:6px}
+html[data-tab="pair"]{--bg:#fbf1f4;--panel:#ffffff;--ink:#2e1820;--muted:#7d6069;--line:#b5355f;--accent:#c0607f;--hl:#8e3fae;--hl-bg:#f4e6fb;--soft:#fbe5ec;--rule:#efd2db;}
+@media (prefers-color-scheme:dark){html[data-tab="pair"]:not([data-theme="light"]){--bg:#1a1015;--panel:#27171f;--node:#27171f;--ink:#f7eaef;--muted:#bc9ca8;--line:#f287ab;--accent:#f4adc4;--hl:#d3a2ff;--hl-bg:#2f1d3d;--soft:#36202a;--rule:#4b2f3b;}}
+html[data-tab="pair"][data-theme="dark"]{--bg:#1a1015;--panel:#27171f;--node:#27171f;--ink:#f7eaef;--muted:#bc9ca8;--line:#f287ab;--accent:#f4adc4;--hl:#d3a2ff;--hl-bg:#2f1d3d;--soft:#36202a;--rule:#4b2f3b;}
+html[data-tab="energy"]{--bg:#f5f2fb;--panel:#ffffff;--ink:#231b36;--muted:#6f6688;--line:#6a3fb5;--accent:#8c5fcc;--hl:#c0407f;--hl-bg:#fbe5f0;--soft:#ede7f9;--rule:#ddd4ee;}
+@media (prefers-color-scheme:dark){html[data-tab="energy"]:not([data-theme="light"]){--bg:#14111e;--panel:#211b30;--node:#211b30;--ink:#efe9fb;--muted:#aaa0c2;--line:#b698f6;--accent:#d6bcff;--hl:#f28ac0;--hl-bg:#3a1f35;--soft:#2d2544;--rule:#3d3358;}}
+html[data-tab="energy"][data-theme="dark"]{--bg:#14111e;--panel:#211b30;--node:#211b30;--ink:#efe9fb;--muted:#aaa0c2;--line:#b698f6;--accent:#d6bcff;--hl:#f28ac0;--hl-bg:#3a1f35;--soft:#2d2544;--rule:#3d3358;}
+body,.panel,.tabs button,.cta{transition:background-color .25s,color .25s}
 footer{padding-bottom:72px;text-align:center;color:var(--muted);font-size:.75rem;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:8px}
 footer p{margin:0}
+.foot-note{font-size:.7rem;opacity:.8}
 </style>
 
 <div class="wrap">
@@ -303,6 +385,14 @@ footer p{margin:0}
     <h1>芝心數語｜靈數羅盤</h1>
     <p>生命靈數 × 七秒讀心術 × 塔羅流年</p>
   </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tabBtnSolo" aria-selected="true" data-tab="solo">個人解讀</button>
+    <button role="tab" id="tabBtnPair" aria-selected="false" data-tab="pair">雙人比較</button>
+    <button role="tab" id="tabBtnEnergy" aria-selected="false" data-tab="energy">能量靈數</button>
+  </nav>
+
+  <div id="tabSolo">
 
   <section class="panel">
     <label class="lbl" for="solar">國曆生日</label>
@@ -346,7 +436,8 @@ footer p{margin:0}
   </section>
 
   <div class="results" id="results" hidden>
-  <section class="panel">
+  <nav class="toc" id="toc" aria-label="快速跳轉"></nav>
+  <section class="panel" id="secGrid" data-toc="九宮格">
     <h2>國曆九宮格</h2>
     <div class="legend"><span class="lg-pre">○ 先天數</span><span class="lg-post">△ 後天數</span><span class="lg-main">□ 主命數</span></div>
     <div class="grid9" id="grid9"></div>
@@ -358,7 +449,7 @@ footer p{margin:0}
     <div class="grid9" id="grid9L"></div>
   </details>
 
-  <section class="panel">
+  <section class="panel" id="secPyr" data-toc="七秒讀心數">
     <h2>七秒讀心數 <span class="pill" id="flowPill" hidden></span></h2>
     <div class="controls">模式
       <div class="seg" role="group">
@@ -367,7 +458,7 @@ footer p{margin:0}
       </div>
       <span id="yrWrap" hidden>年份 <input id="flowYear" type="number" inputmode="numeric"></span>
     </div>
-    <svg id="pyr" viewBox="0 0 400 350" role="img" aria-label="七秒讀心數"></svg>
+    <svg id="pyr" class="pyr" viewBox="0 0 400 350" role="img" aria-label="七秒讀心數"></svg>
     <div class="flowbox" id="flowBox" hidden>
       <div class="fy-head" id="flowHead"></div>
       <div class="fy-tags" id="flowTags"></div>
@@ -399,42 +490,47 @@ footer p{margin:0}
       <p><b class="tag">聯合碼</b>三個數字是「起因＋過程＝結果」，以結果為主；第一個數字比較會影響第三個數字。一樣的號碼，也會因為年紀、社會化程度不同而有不同的樣子。</p>
     </div></details>
 
-    <div class="person">
+    <div class="person" id="personSec" data-toc="成功公式">
       <div class="person-head"><span class="pno"><i id="personDot"></i><b id="personNo"></b></span><div><h3>號人的成功公式</h3><p class="hint">看七秒讀心數三角形的頂端</p></div></div>
       <div id="personBody"></div>
     </div>
 
-    <div class="block" id="anaBlock">
+    <div class="block" id="anaBlock" data-toc="性格分析">
       <h3>數字性格分析</h3>
       <p class="hint">以金字塔內 7 個數計算。</p>
       <div class="pcts" id="anaPct"></div>
       <h4 class="ana-h">入口碼與內在碼</h4>
       <div class="ana-sec" id="anaEntry"></div>
-      <h4 class="ana-h">容易被觸發的情緒（「多」的數字）</h4>
-      <div class="ana-sec" id="anaEmo"></div>
-      <h4 class="ana-h">數字組合</h4>
-      <div class="ana-sec" id="anaCombo"></div>
-      <h4 class="ana-h">聯合碼</h4>
+      <details class="sub fold2"><summary>容易被觸發的情緒（「多」的數字）</summary><div class="sbody"><div class="ana-sec" id="anaEmo"></div></div></details>
+      <details class="sub fold2"><summary>數字組合</summary><div class="sbody"><div class="ana-sec" id="anaCombo"></div></div></details>
+      <details class="sub fold2"><summary>聯合碼 <span class="sum-codes" id="jointCodes"></span></summary><div class="sbody">
       <p class="hint">三個數字是「起因＋過程＝結果」，以結果為主。</p>
-      <div class="ana-sec" id="anaJoint"></div>
+      <div class="ana-sec" id="anaJoint"></div></div></details>
     </div>
 
-    <div class="block" id="quadBlock">
+    <div class="block" id="quadBlock" data-toc="四大象限">
       <h3>內外四大象限</h3>
       <div class="nums"><span class="lbl2">金字塔內</span><span class="chips" id="innerNums"></span></div>
       <div class="nums"><span class="lbl2">金字塔外</span><span class="chips out" id="outerNums"></span></div>
+      <details class="sub fold2"><summary>1～9 逐條解析</summary><div class="sbody">
       <p class="hint">點每個數字看解析。</p>
-      <div class="qlist" id="quadList"></div>
+      <div class="qlist" id="quadList"></div></div></details>
     </div>
 
-    <div class="block" id="caiBlock">
+    <div class="block" id="loveBlock" data-toc="愛情">
+      <h3>愛情觀</h3>
+      <p class="hint">看七秒讀心數三角形的頂端（幾號人）。</p>
+      <div id="loveSolo"></div>
+    </div>
+
+    <div class="block" id="caiBlock" data-toc="財庫">
       <h3>財庫系統 <span id="caiBadge" class="cai-badge"></span></h3>
       <p class="hint" id="caiWhy"></p>
-      <div id="caiBody"></div>
+      <details class="sub fold2"><summary>詳細說明</summary><div class="sbody"><div id="caiBody"></div></div></details>
     </div>
   </section>
 
-  <section class="panel">
+  <section class="panel" id="secTarot" data-toc="塔羅流年">
     <h2>塔羅流年表 <span class="pill" id="curPill"></span></h2>
     <div class="controls">靈魂換日線
       <div class="seg" role="group" id="shiftSeg">
@@ -447,12 +543,13 @@ footer p{margin:0}
     <div class="tbl"><table id="flowTbl"></table></div>
   </section>
 
-  <section class="panel">
-    <h2>流年・流月・流日</h2>
+  <section class="panel" id="secFlowT" data-toc="流月流日">
+    <h2>塔羅流年・流月・流日</h2>
     <div class="controls">查詢日期 <input type="date" id="fDate" style="width:auto"></div>
     <div class="flow3" id="flow3"></div>
     <h3 id="mTitle">流月</h3>
     <div class="tbl"><table id="mTbl"></table></div>
+    <details class="sub fold2" id="calFold"><summary>流日月曆</summary><div class="sbody">
     <div class="cal-head">
       <button class="nav" id="calPrev" aria-label="上個月">‹</button>
       <h3 id="dTitle">流日</h3>
@@ -460,9 +557,10 @@ footer p{margin:0}
     </div>
     <p class="hint">點日期可以看當天的牌。每格上面是國曆，下面是農曆。切換到最下方的「電腦版」會加上牌名。</p>
     <div class="cal" id="dCal"></div>
+    </div></details>
   </section>
 
-  <section class="panel">
+  <section class="panel" id="secPersona" data-toc="塔羅性格">
     <h2>塔羅靈數性格</h2>
     <div class="tbl"><table>
       <thead><tr><th>類型</th><th>本性</th><th>外在</th><th>內在</th></tr></thead>
@@ -474,13 +572,64 @@ footer p{margin:0}
   </section>
 
   </div>
+  <div class="results" id="energyRes" hidden>
+  <section class="panel">
+    <h2>能量靈數</h2>
+    <p class="hint" id="energyBirth"></p>
+    <div id="energyBody"><p class="hint">能量靈數的講義還在整理中，內容準備好就會出現在這裡。</p></div>
+  </section>
+  </div>
+  </div>
+
+  <div id="tabPair" hidden>
+    <section class="panel">
+      <h2>雙人七秒讀心數</h2>
+      <p class="hint">分別輸入兩個人的國曆生日，比較兩個人的七秒讀心數（生日模式）。</p>
+      <div class="controls">模式
+        <div class="seg" role="group" id="pModeSeg">
+          <button data-v="birth" aria-pressed="true">生日</button>
+          <button data-v="flow" aria-pressed="false">流年</button>
+        </div>
+        <span id="pYrWrap" hidden>年份 <input id="pYear" type="number" inputmode="numeric"></span>
+      </div>
+      <div class="controls">關係
+        <div class="seg" role="radiogroup" id="pRelSeg">
+          <button data-v="family" hidden aria-pressed="false">家人</button>
+          <button data-v="couple" aria-pressed="false">情侶</button>
+          <button data-v="inlaw" aria-pressed="false">婆媳</button>
+        </div>
+      </div>
+      <div class="pair-in">
+        <div class="pin"><input type="text" id="pNameA" class="pname" value="A" maxlength="10" aria-label="第一個人的稱呼"><div class="field date"><input type="date" id="pDateA" class="empty"></div><select id="pSexA" class="psex" aria-label="第一個人的性別" hidden><option value="">性別</option><option value="m">男</option><option value="f">女</option></select></div>
+        <div class="pin"><input type="text" id="pNameB" class="pname" value="B" maxlength="10" aria-label="第二個人的稱呼"><div class="field date"><input type="date" id="pDateB" class="empty"></div><select id="pSexB" class="psex" aria-label="第二個人的性別" hidden><option value="">性別</option><option value="m">男</option><option value="f">女</option></select></div>
+      </div>
+    </section>
+    <div class="pair-grid">
+      <section class="panel pcard" id="pCardA"></section>
+      <section class="panel pcard" id="pCardB"></section>
+    </div>
+    <section class="panel" id="pCompare" hidden>
+      <h2>兩人比較</h2>
+      <div id="pCmpBody" class="ana-sec"></div>
+    </section>
+    <section class="panel" id="pRel" hidden>
+      <h2 id="pRelTitle">關係解讀</h2>
+      <div id="pRelBody" class="ana-sec"></div>
+    </section>
+  </div>
 
   <footer>
     <div class="seg" role="group" id="calView" aria-label="顯示方式">
       <button data-v="m" aria-pressed="true">手機版</button>
       <button data-v="d" aria-pressed="false">電腦版</button>
     </div>
+    <div class="seg" role="group" id="themeSeg" aria-label="顏色">
+      <button data-v="auto" aria-pressed="true">跟隨手機</button>
+      <button data-v="light" aria-pressed="false">淺色</button>
+      <button data-v="dark" aria-pressed="false">深色</button>
+    </div>
     <p>從數字看見自己，從理解找到方向。</p>
+    <p class="foot-note">內容依課程筆記整理，僅供自我探索參考。</p>
   </footer>
   <div class="cm-wrap" id="cardModal" hidden>
     <div class="cm-back" onclick="closeCard()"></div>
@@ -501,7 +650,9 @@ let mode='birth', shift=0, multi=false, order=1;
 
 const dsum=n=>String(Math.abs(n)).split('').reduce((a,c)=>a+ +c,0);
 const one=n=>{while(n>9)n=dsum(n);return n;};
-const tarot=n=>dsum(n)%22;                  // 各位數相加後 mod 22（0＝愚人）
+const tarot=n=>dsum(n)%22;                  // 塔羅流年表、塔羅性格：各位數相加後 mod 22（0＝愚人）
+/* 流年・流月・流日區：各位數相加，超過 21 再拆開相加（使用者指定） */
+const tarotSplit=n=>{let t=dsum(n);while(t>21)t=dsum(t);return t;};
 const CARDS=['愚人','魔術師','女祭司','女皇','皇帝','教皇','戀人','戰車','力量','隱者','命運之輪','正義','吊人','死神','節制','惡魔','高塔','星星','月亮','太陽','審判','世界'];
 const cardCell=(n,cls='')=>`<td class="${cls} tap" data-card="${n}" role="button" tabindex="0">${n}<span class="cn">${CARDS[n]}</span></td>`;
 /* ===== 塔羅流年 0～21 筆記（依上課筆記原意整理） ===== */
@@ -557,11 +708,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('cardModal').hid
 const natur=Y=>{const yy=Y%100;return yy<22?yy:dsum(yy);};
 const persona=(Y,M,D)=>{const t=dsum(Y+M+D);return {n:natur(Y),o:t<=21?t:t-22,i:t<=21?t:Math.floor(t/10)+t%10};};
 /* 流年：年份＋生日月＋日；流月：查詢年＋出生年＋生日月＋日＋月份；流日：出生年＋生日月＋日＋查詢年＋查詢月＋日 */
-const flowY=(Y,M,D)=>tarot(Y+M+D);
+const flowY=(Y,M,D)=>tarotSplit(Y+M+D);
 /* 查詢日期還沒過到當年的國曆生日 → 用去年 */
 const tarotYear=(bM,bD,qY,qM,qD)=>(qM>bM||(qM===bM&&qD>=bD))?qY:qY-1;
-const flowM=(qY,bY,M,D,m)=>tarot(qY+bY+M+D+m);
-const flowD=(bY,M,D,qY,qM,d)=>tarot(bY+M+D+qY+qM+d);
+const flowM=(qY,bY,M,D,m)=>tarotSplit(qY+bY+M+D+m);
+const flowD=(bY,M,D,qY,qM,d)=>tarotSplit(bY+M+D+qY+qM+d);
 
 function lifeNums(y,m,d){
   const s=dsum(String(y)+m+d);
@@ -759,22 +910,35 @@ const F2026={1:['911','213','行動、執行',['創造機會、積極正向，�
 8:['718','966','智慧、價值',['拓展人脈、主動帶領，成就整個團隊','創造機會、用智慧生財，讓財富長流','招攬人才、放大舞台，掌握機會成為頂尖']],
 9:['819','189','機會、趨勢',['放大眼界、落實行動，啟發身邊的人','開創未來、持續突破，實踐理想','帶人也帶心，團結力量大；做得果斷、贏得穩健']]};
 
-function drawFlow(n,yr){
+function flowParts(n,yr){
   const F=FY[n], C=FCORE[n];
   const ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
   const topic=(d)=>`<p class="lead"><b>${d[0]}</b>${d[1]}</p>${ul(d[2])}<p class="warnline">注意：${d[3]}</p><p class="remind">${d[4]}</p>`;
   const sec=(t,body)=>`<details class="sub"><summary>${t}</summary><div class="sbody">${body}</div></details>`;
   const H=FHEALTH[n], T=FTABOO[n];
-  $('flowHead').innerHTML=`<span class="fy-n">${n}</span><div><h3>${yr} 年｜流年 ${n}・${F.n}</h3><p>${F.t}・${F.line}</p></div>`;
-  $('flowTags').innerHTML=`<span>階段：${F.alias}</span><span>關鍵：${F.key}</span><span>核心：${F.core}</span>`;
-  $('flowBody').innerHTML=
+  const head=`<span class="fy-n">${n}</span><div><h3>${yr} 年｜流年 ${n}・${F.n}</h3><p>${F.t}・${F.line}</p></div>`;
+  const tags=`<span>階段：${F.alias}</span><span>關鍵：${F.key}</span><span>核心：${F.core}</span>`;
+  const body=
     sec('年度總覽',`<dl class="kv"><dt>聯想詞</dt><dd>${F.assoc}</dd><dt>可能出現</dt><dd>${F.sign}</dd><dt>秘訣</dt><dd>${F.tip}</dd></dl>`)+
     sec('核心解讀',`<p class="lead">${C[0]}</p><p><b class="tag">今年的課題</b>${C[1]}</p><p><b class="tag">做好三件事</b></p>${ul(C[2])}<p class="remind">${C[3]}</p>`)+
     (yr===2026?sec('2026 年攻略',`<p class="lead"><b>${F.n}</b>組合 ${F2026[n][0]}・關鍵優勢 ${F2026[n][1]}（${F2026[n][2]}）</p>${ul(F2026[n][3])}`):'')+
-    sec('事業',topic(FWORK[n]))+sec('財運',topic(FMONEY[n]))+sec('愛情',topic(FLOVE[n]))+
+    sec('事業',topic(FWORK[n]))+sec('財運',topic(FMONEY[n]))+sec('愛情',topic(FLOVE[n])+flLoveHTML(n))+
     sec('健康',`<p class="lead"><b>${H[0]}</b>${H[1]}</p>${ul(H[2])}<p class="remind">${H[3]}</p><p class="hint">僅供生活保養參考，身體不舒服請就醫。</p>`)+
     sec('流年禁忌',`<p class="lead"><b>${T[0]}</b>今年避免：</p>${ul(T[1].map(x=>'不要'+x))}<p class="remind">${T[2]}</p>`)+
     sec('行動方案',`<div class="acts">${FACT[n].map(a=>`<div class="act"><b>${a[0]}</b><span>${a[1]}</span></div>`).join('')}</div>`);
+  return {head,tags,body};
+}
+function drawFlow(n,yr){const f=flowParts(n,yr);$('flowHead').innerHTML=f.head;$('flowTags').innerHTML=f.tags;$('flowBody').innerHTML=f.body;}
+/* 七秒讀心數流年 × 本命的關係（依上課筆記） */
+const CYC={1:'147',4:'147',7:'147',2:'258',5:'258',8:'258',3:'369',6:'369',9:'369'};
+const CYC_D={'147':'147 循環：該拿到的就要拿到。','258':'258 循環：拿到之後，感受滿足。','369':'369 循環：能開始思考下一步。'};
+function flowTagsFor(birthP,fn){
+  const t=[], main=birthP.top, inner=new Set([birthP.top,birthP.mL,birthP.mR,...birthP.b]);
+  t.push(CYC_D[CYC[fn]]);
+  if([2,4,6,7,9].includes(main)&&[1,3,5,8].includes(fn)) t.push(`主性格 ${main}，走流年 ${fn} 要特別把握：不要想太多，機會來了就抓住。`);
+  if([1,3,5,8].includes(main)&&[2,4,6,7,9].includes(fn)) t.push(`主性格 ${main}，走流年 ${fn} 要好好把握：在這一年學會沉澱下來。`);
+  if(!inner.has(fn)) t.push(`流年 ${fn} 是金字塔內沒有的數字，請好好把握，透過流年讓生命更完整。`);
+  return t;
 }
 
 /* ===== 1～9 號天賦關鍵字（依上課筆記原意整理） ===== */
@@ -901,8 +1065,9 @@ function drawAnalysis(p){
   $('anaCombo').innerHTML=hit.map(x=>`<div class="cb"><b>${x.t}</b><span>${x.d}</span></div>`).join('');
   /* 聯合碼 */
   const J=[['金字塔左下',p.b[0],p.b[1],p.mL],['金字塔右下',p.b[2],p.b[3],p.mR],['金字塔中間',p.mL,p.mR,p.top],['青年 21–40',...p.left],['中年 41–60',...p.upper],['晚年 61–',...p.right]];
+  $('jointCodes').textContent=J.map(([,a,b,c])=>''+a+b+c).join('・');
   $('anaJoint').innerHTML=J.map(([pos,a,b,c])=>{const code=''+a+b+c,t=JOINT[code];
-    return `<div class="jt${t?'':' none'}"><span class="jt-c">${code}</span><div><span class="jt-p">${pos}</span>${t?`<p>${t}</p>`:'<p class="hint">筆記裡沒有這組的說明。</p>'}</div></div>`;}).join('');
+    return `<div class="jt${t||JC[code]?'':' none'}"><span class="jt-c">${code}</span><div><span class="jt-p">${pos}</span>${t?`<p>${t}</p>`:JC[code]?`<p>${JC[code][3]}</p>`:WQ[code]?'':'<p class="hint">筆記裡沒有這組的說明。</p>'}${jcHTML(code)}${wqHTML(code)}</div></div>`;}).join('')+WQ_END;
 }
 function profileHTML(n){
   const P=PROF[n], ism=ISM[n];
@@ -921,6 +1086,122 @@ function profileHTML(n){
   </details>`;
 }
 
+/* ===== 五行看懂天賦（課後加餐②，老師原文） ===== */
+const WXT={
+'木':{h:'別讓自己停止成長',d:'大家想想看，一棵大樹要長得高大茂盛，是不是需要肥沃的土壤、充足的養分，以及長時間的灌溉？其實人也是一樣！有些人明明很聰明，也很有能力，卻因為覺得自己已經懂得夠多，不願意繼續學習，最後反而停留在原地。所以，天賦決定我們的起點，持續學習才能讓自己不斷成長！',
+ sh:'其實木最大的特點，就是向下扎根、向上成長！一棵樹想要長得高，就必須先把根扎得深；人想要有所成就，也需要不斷學習，累積自己的實力。所以，4號人要善用規劃與邏輯能力，同時保持開放的學習態度；9號人則要發揮整合資源與連結渠道的優勢，透過持續學習，創造更大的價值。不要因為自己已經懂得很多，就停止學習；也不要因為眼前有了成就，就忘記繼續成長！',end:'向下扎根，才能穩固基礎；向上成長，才能成就非凡！',
+ ex:'圖卡補充：4號人與9號人屬木，需要肥沃的土地，才能成長茁壯；木可成書，這類型的人需要不斷讀書學習。成長五步驟：找到肥沃的土地（良好環境與學習資源）→ 播下種子（設定目標與方向）→ 持續灌溉（學習與實踐累積養分）→ 深深紮根（建立實力與基礎）→ 向上成長（成就與財富開花結果）。做事前、承諾前都需要三思而後行：①停下來冷靜思考 → ②想清楚評估利弊 → ③問一問聽取建議 → ④再決定理性選擇 → ⑤行動執行計畫。不斷學習是養分，思考與整合是方向，行動與堅持是成長的關鍵！'},
+'金':{h:'別讓才華被埋沒',d:'大家想想看，黃金即使再有價值，如果一直埋在土裡，沒有人去挖掘，又有多少人能夠發現呢？其實人也是一樣！有些人明明很有能力，卻因為不敢嘗試、不願意表現，讓自己的才華一直被埋沒。所以，擁有天賦是一回事，願不願意發揮又是另一回事！',
+ sh:'其實每個人都有自己的天賦，只是有些人願意發揮，有些人卻一直把它藏起來。就像黃金一樣，不是沒有價值，而是還沒有被真正挖掘出來！所以，1號人要勇敢行動，發揮自己的領導力與創造力；6號人則要善用智慧與洞察力，讓別人看見自己的價值。不要只是等待別人發現你，而是要學會主動展現自己！',end:'有天賦，更要有行動；有能力，更要敢展現！'},
+'水':{h:'別讓環境決定方向',d:'大家想想看，同樣是一條河流，流經乾淨的地方，水就清澈；流經受到污染的地方，水也可能變得混濁。其實人也是一樣！有些人原本很有想法，卻因為太在意別人的眼光，或是受到周遭環境的影響，慢慢失去了自己的方向。所以，環境會影響我們，但人生的方向，還是要學會自己決定！',
+ sh:'其實水最大的特點，就是能夠隨著環境改變形態，也能滋養萬物。但我們要學習的是水的適應力，而不是一味地隨波逐流！所以，2號人要學會理性判斷，發揮自己的溝通與協調能力；7號人則要懂得自律，善用專業與洞察力，持續累積自己的價值。不要因為太在意別人而失去自己，也不要因為太享受當下而忘記目標！',end:'環境可以影響選擇，卻不能決定人生；懂得掌握方向，才能活出自己的精彩！'},
+'火':{h:'別讓情緒燒掉成就',d:'大家想想看，火可以帶來溫暖，也可以照亮黑暗，但如果火勢太大、失去控制，也可能造成傷害。其實人也是一樣！有些人做事充滿熱情，行動力很強，卻因為一時衝動、情緒失控，讓原本的好事變成壞事。所以，有熱情是優勢，但懂得控制情緒，才能讓這股能量發揮真正的價值！',
+ sh:'其實火最大的特點，就是能夠帶來熱情與能量，但如果沒有適當控制，也可能傷害自己與別人。所以，3號人要學會先思考再行動，善用自己的熱情與表現力；8號人則要懂得適度放手，發揮責任感與領導力，而不是把所有壓力都往自己身上扛。不要因為一時的情緒，破壞長久累積的成果；也不要因為過度承擔，讓自己失去原本的熱情！',end:'善用熱情，才能照亮自己；懂得控制，才能成就非凡！'},
+'土':{h:'別讓選擇耽誤人生',d:'大家想想看，同樣是一顆種子，如果種在肥沃的土地上，又有適當的陽光與水分，就有機會長成茂盛的大樹。但如果種在不適合的地方，即使再努力生長，也可能無法開花結果。其實人也是一樣！有些人明明很有能力，也願意努力，卻因為沒有找到適合自己的方向，最後花了很多時間，依然看不到成果。所以，努力固然重要，但選對方向，才能讓努力發揮真正的價值！',
+ sh:'其實土最大的特點，就是能夠孕育萬物，讓不同的種子都有機會生根發芽。但不是每一塊土地，都適合種植相同的植物；就像不是每一條道路，都適合每一個人。所以，5號人要善用自己的探索力與適應力，勇敢嘗試不同的可能，同時也要學會做出選擇，找到真正適合自己的方向。不要因為害怕被限制，就不願意做出選擇；也不要因為選擇太多，反而忘記自己真正想要的是什麼！',end:'勇敢探索，才能發現機會；選對方向，才能成就人生！'}};
+const WXN={
+4:[['發揮規劃力與邏輯力','4號人通常做事有條理，善於規劃，也有不錯的邏輯思考能力，遇到問題時，往往能夠一步一步找出解決方法。但是，有些4號人因為太相信自己的判斷，容易堅持原本的做法，不太願意接受新的觀念。例如，工作上明明已經有更有效率的方法，卻因為習慣過去的模式，總覺得「以前這樣做也沒問題啊！」要記得，經驗固然重要，但如果願意多學習、多嘗試，才能讓自己的能力更上一層樓！（圖卡：聰明好學，邏輯思維縝密且快速；學習能力強，完完全全就是一個終身學習者。）']],
+9:[['發揮整合力與創造價值','9號人通常善於觀察機會、連結渠道，也懂得運用不同的資源，創造更多可能性。但是，有些9號人因為反應快、點子多，容易覺得很多事情自己都懂，反而忽略了持續學習的重要性。例如，看到別人有好的商業模式，就想趕快整合資源、把事情做起來，卻沒有先深入了解背後的專業與細節。要記得，懂得整合資源是優勢，但如果缺少專業知識，再好的機會也未必能夠真正掌握！（圖卡：整合力強，成功指數直線飆升；總能在平凡生活現象背後，看到旁人看不到的東西，需要不停地學習、不停地整合。）']],
+1:[['發揮領導力與創造力','1號人通常很有自己的想法，也喜歡帶頭做事，遇到問題時，往往能夠提出不同的解決方法。但是，有些1號人明明有很多創意，卻因為擔心失敗、害怕被否定，最後什麼都沒有做。要記得，再好的創意，如果沒有付諸行動，也只能停留在想像當中！']],
+6:[['發揮智慧與洞察力','6號人往往有不錯的觀察力，對於事物的品質、價值與細節，也比較容易有自己的判斷。例如，同樣是一個賺錢的機會，有些人只看到眼前的利益，6號人可能會進一步思考背後的價值與長遠發展。但是，如果總是把自己的想法藏在心裡，不願意分享，再好的智慧也很難被別人看見！']],
+2:[['發揮溝通力與協調力','2號人通常比較溫柔體貼，也善於觀察別人的情緒，懂得站在不同的角度思考問題。但是，有些2號人明明心裡不願意，卻因為害怕拒絕別人、擔心破壞關係，最後總是委屈自己。例如，朋友邀約明明不想去，卻不好意思說不；別人提出要求，即使自己很忙，還是勉強答應。要記得，懂得體諒別人是優點，但也要學會尊重自己的選擇！']],
+7:[['發揮專業力與洞察力','7號人通常喜歡深入研究，也有不錯的觀察力，對於自己感興趣的事情，往往願意花時間鑽研。但是，有些7號人也很懂得享受生活，喜歡自由自在，不喜歡受到太多約束。例如，原本計畫好要學習新技能，卻因為追劇、玩樂或享受當下，結果一天拖過一天，最後什麼都沒有完成。要記得，享受生活沒有不好，但如果缺少自律，再好的天賦也可能慢慢被浪費！']],
+3:[['發揮行動力與表現力','3號人通常熱情開朗，做事速度快，想到什麼就想趕快行動，也很容易帶動周圍的氣氛。但是，有些3號人因為太急著完成事情，還沒想清楚就開始做，遇到不順心的狀況，也容易情緒上來。例如，工作上明明是想幫忙解決問題，卻因為講話太直接、脾氣太急，最後反而跟同事發生爭執。要記得，行動快是優點，但如果能夠多一點耐心、多一點思考，事情往往會做得更好！']],
+8:[['發揮責任感與領導力','8號人通常責任感很強，做事有擔當，也願意承擔別人不想承擔的事情。但是，有些8號人因為太有責任感，什麼事情都想自己扛，甚至覺得交給別人不放心，最後把自己搞得壓力很大。例如，明明是團隊的工作，卻什麼都自己做，累得半死不說，還可能因為別人做得不夠好而生氣。要記得，有責任感很好，但不代表所有事情都要自己承擔，懂得分工與放手，也是一種智慧！']],
+5:[['發揮探索力與適應力','5號人通常熱愛自由，喜歡探索新事物，也勇於嘗試不同的可能性，對於環境的變化往往有不錯的適應能力。但是，有些5號人因為興趣太廣，什麼都想試試看，反而容易三分鐘熱度，做事情缺少持續性。例如，今天看到朋友創業賺錢，就想跟著創業；明天看到別人投資有成果，又想趕快研究投資，結果每件事情都碰一點，卻沒有真正深入。要記得，勇於嘗試是優點，但如果沒有明確方向，再多的選擇也可能讓自己迷失！'],
+ ['人生的兩種選擇','其實5號人的人生，很容易因為不同的選擇，走出完全不同的結果。有些5號人懂得善用自由與探索的優勢，找到適合自己的方向，持續累積經驗，最後活出精彩的人生。但也有些5號人，因為太過追求自由，不願意受到約束，遇到困難就想換方向，最後忙了大半輩子，卻始終沒有累積出真正的成果。所以，自由不是想做什麼就做什麼，而是知道自己為什麼而做！']]};
+const WX67='在五行天賦裡，6號人與7號人都提到了「洞察力」，但發揮的方向不太一樣。6號代表正財，也有聚寶盆的能量；6號人的洞察力更深入來看，可以稱為「鑑賞力」，懂得欣賞品質、辨別好壞，比較容易看出一件事物背後的價值。7號代表偏財，也與人脈、貴人及異性緣的能量有關；7號人的洞察力更多表現在觀察細節、深入研究，以及看懂人事物背後的本質。6號人偏向鑑賞價值，7號人則偏向洞察本質。';
+function wxHTML(n){const el=PROF[n].el, T=WXT[el], N=WXN[n];
+  if(!T||!N) return `<details class="sub"><summary>五行看懂天賦・${el}</summary><div class="sbody"><p class="hint">「${el}」（4 號人與 9 號人）這一張的講義還沒有提供，傳給我之後就會補上。</p></div></details>`;
+  return `<details class="sub"><summary>五行看懂天賦・${el}｜${N[0][0]}</summary><div class="sbody">
+  <p><b class="tag">${el}的特質｜${T.h}</b></p><p>${T.d}</p>
+  ${N.map(x=>`<p><b class="tag">${n} 號人｜${x[0]}</b></p><p>${x[1]}</p>`).join('')}
+  ${n===6||n===7?`<p><b class="tag">補充：6 號與 7 號的洞察力</b>${WX67}</p>`:''}
+  <p><b class="tag">龍麒老師分享</b>${T.sh}</p>${T.ex?`<p class="hint">${T.ex}</p>`:''}<p class="remind">${T.end}</p>
+  <p class="hint">看懂五行，啟動天賦；發揮優勢，活出自我！</p></div></details>`;}
+/* ===== 容易委屈的聯合碼（老師原文） ===== */
+const WQ_G={1:{codes:['134','314'],t:'前人種樹，後人乘涼',k:['做事很快，容易繞路','辛苦付出，成果歸人','說話太直，容易誤會'],tip:['少一點情緒，多一點細節','少一點爭辯，多一點成果'],
+ d:'這兩組數字有一個共同的特色，就是明明很有能力，也很願意做事，最後卻常常忙了半天，成果反而落在別人身上。不過，134 跟 314 的排列不同，表現出來的情況也有些差異。',
+ it:{'134':['行動太快，容易繞路','1號有想法，3號行動快，但遇到4號的時候，可能因為規劃不夠周全，反而卡在細節上。例如，主管才剛交代工作，你就馬上動手，結果做到一半才發現方向不對，又得全部重來。明明做得很快，最後卻花了更多時間。'],
+     '314':['做事積極，容易卡關','3號行動力強，1號又想趕快看到成果，但走到4號的時候，可能因為忽略細節，讓事情變得不順利。例如，朋友找你一起做生意，你很快就開始幫忙找客戶、談合作，結果後來才發現分工、帳目都沒有講清楚。最後忙了半天，成果沒拿到，反而還要收拾後續問題。']},
+ common:['辛苦付出，容易被誤會','這兩組數字有時候做事快，說話也比較直接。例如，看到同事動作慢，忍不住說：「這個很簡單啊！怎麼做這麼久？」明明只是希望事情趕快完成，對方卻覺得你態度不好。結果事情做得最多，最後被抱怨的也是自己。這就是我們常說的：「前人種樹，後人乘涼。」'],
+ sh:'未來分析到這兩組聯合碼，可以先觀察：134 是不是容易急著開始，卻卡在過程？314 是不是容易急著看到成果，卻忽略細節？如果對方確實有類似情況，就可以提醒他：少一點情緒，多一點細節；少一點爭辯，多一點成果。當然，數字只是一種輔助參考，不代表有這組碼的人一定會如此，還是要搭配對方的實際情況來分析。',
+ end:'有能力把事情做好，也要有智慧守住自己的成果。'},
+2:{"codes": ["145", "415"], "t": "有想有法，卻缺乏自信", "k": ["目標明確，容易猶豫", "自我設限，錯過機會", "過度擔心，不敢嘗試"], "tip": ["少一點猶豫，多一點行動", "少一點擔心，多一點嘗試"], "d": "這兩組數字有一個共同特色，就是明明有想法、有方法，也知道自己想要什麼，卻常常因為想太多、擔心太多，最後錯過了機會。不過，145 跟 415 的排列不同，表現出來的情況也有些差異。", "it": {"145": ["目標明確，卻容易猶豫", "1號有想法，4號重視規劃，5號有目標，但有時候就是因為太在意過程，反而遲遲不敢行動。例如，明明很想創業，也知道自己想做什麼，卻一直擔心資金不夠、經驗不足，結果準備了好幾年，始終沒有開始。145要注意的是：不要等到萬事俱備，才願意跨出第一步。"], "415": ["考慮太多，容易自我設限", "4號走在前面，做事情會先考慮風險，1號有自己的想法，5號也有想追求的目標。但有時候還沒開始，就先想到一堆可能失敗的原因。例如，公司有升遷機會，主管也很看好你，你卻說：「我怕自己能力不夠，還是讓別人去好了！」結果機會給了別人，心裡又覺得可惜。415要注意的是：不要還沒嘗試，就先替自己判出局。"]}, "common": ["想得很多，做得太少", "這兩組數字有時候不是沒有能力，而是太容易懷疑自己。明明心裡很想做，嘴巴卻一直說：「再等等看！」等到別人成功了，又忍不住想：「早知道當初我也去試試看！」最後最委屈的，反而是自己。"], "sh": "未來分析到這兩組聯合碼，可以先觀察：145 是不是目標很清楚，卻一直停留在準備階段？415 是不是顧慮太多，還沒開始就先否定自己？如果對方確實有類似情況，就可以提醒他：少一點猶豫，多一點行動；少一點擔心，多一點嘗試。當然，數字只是一種輔助參考，還是要搭配對方的實際情況來分析。", "end": "機會不一定留給準備最久的人，而是留給願意跨出第一步的人。"},
+3:{"codes": ["178", "718"], "t": "有求必應，最後卻扛下責任", "k": ["能力很強，什麼都扛", "熱心幫忙，不懂拒絕", "付出太多，反而委屈"], "tip": ["少一點逞強，多一點界線", "少一點包辦，多一點放手"], "d": "這兩組數字有一個共同特色，就是能力很強、重視情義，卻容易因為太願意幫忙，最後委屈了自己。", "it": {"178": ["能力很強，什麼都扛", "1號主動，7號重視人脈，8號有責任感。例如，主管交代工作，你總是說：「沒問題，我來處理！」結果自己的事情還沒忙完，又接下別人的工作，最後累壞了自己。"], "718": ["重視情義，不懂拒絕", "7號重視人脈，1號願意出手，8號容易扛起責任。例如，朋友找你借錢、請你幫忙作保，明明心裡不太願意，卻又不好意思拒絕。結果好心幫忙，最後反而要自己收拾善後。"]}, "common": ["付出太多，反而委屈", "我們常說這類型的人就像「土地公」，有求必應！但有時候幫忙十次，拒絕一次，對方反而不高興。心裡難免會想：「我以前幫了這麼多，怎麼現在反而變成我的錯？」"], "sh": "未來分析到這兩組數字，可以先觀察：178 是不是因為能力太強，什麼責任都往身上扛？718 是不是因為太重視情義，經常不好意思拒絕？如果確實有類似情況，就可以提醒對方：少一點逞強，多一點界線；少一點包辦，多一點放手。數字只是參考，還是要結合實際情況來分析。", "end": "幫助別人是好事，但也別忘了照顧自己！"},
+4:{"codes": ["235", "325"], "t": "明明不願，卻還是配合", "k": ["不好意思，難以拒絕", "表面配合，內心委屈", "情緒波動，容易累積"], "tip": ["少一點迎合，多一點表達", "少一點委屈，多一點界線"], "d": "這兩組數字有一個共同特色，就是明明心裡不願意，卻又不好意思拒絕，最後委屈了自己。不過，235 跟 325 的排列不同，表現出來的情況也有些差異。", "it": {"235": ["太在乎感受，不好意思拒絕", "2號重視感受，3號行動快，5號又有自己的想法與目標。例如，朋友臨時找你幫忙，明明自己已經有安排，卻還是說：「好啦！沒關係，我來幫你！」結果打亂自己的計畫，心裡又覺得不舒服。"], "325": ["答應得太快，事後容易後悔", "3號熱情直接，2號在意別人的感受，5號又希望保有自己的自由。例如，同事約你週末出去玩，你一開心就答應了。結果回家想想，又覺得自己只想好好休息，卻不知道怎麼開口取消。最後人去了，心裡卻不太開心。"]}, "common": ["表面配合，內心委屈", "這兩組數字有時候最大的問題，就是嘴巴說沒關係，心裡卻很有關係！明明不想做，卻一直配合別人，等到情緒累積太多，又容易突然爆發。"], "sh": "未來分析到這兩組聯合碼，可以先觀察：235 是不是太在乎別人的感受，經常不好意思拒絕？325 是不是答應得太快，事後又覺得委屈？如果確實有類似情況，就可以提醒對方：少一點迎合，多一點表達；少一點委屈，多一點界線。數字只是參考，還是要結合實際情況來分析。", "end": "懂得照顧別人的感受，也別忘了尊重自己的心情！"},
+5:{"codes": ["224"], "t": "太在乎別人，常常委屈自己", "k": ["過度在意，別人眼光", "付出太多，回應卻少", "渴望認同，內心不安"], "tip": ["少一點討好，多一點底氣", "少一點期待，多一點自在"], "d": "這組數字有一個很特別的現象，就是太在乎別人的感受與看法，常常照顧了別人，卻委屈了自己。", "items": [["過度在意，別人眼光", "2號本來就比較重視感受，當兩個2出現時，這種在意可能更加明顯，加上4號容易想得比較多。例如，朋友只是回訊息慢了一點，就開始想：「是不是我說錯什麼？還是他不高興了？」結果對方根本只是工作太忙，自己卻擔心了一整天。"], ["付出太多，回應卻少", "例如，朋友生日，你用心準備禮物、安排聚餐。結果輪到自己生日，對方卻連一句祝福都沒有。嘴巴說：「沒關係啦！」心裡卻忍不住想：「難道我對你不夠好嗎？」"], ["渴望認同，內心不安", "有時候明明已經做得很好，卻還是很在意別人有沒有肯定自己。例如，工作完成後，主管沒有特別稱讚，就開始懷疑是不是自己做得不夠好。其實不是能力不足，而是太容易把自己的價值交給別人決定。"]], "sh": "未來分析到 224 這組聯合碼，可以先觀察：是不是太在乎別人的評價？是不是付出很多，卻又期待對方給予同樣的回應？是不是很需要被肯定，才覺得自己做得夠好？如果確實有類似情況，就可以提醒對方：少一點討好，多一點底氣；少一點期待，多一點自在。數字只是參考，還是要結合實際情況來分析。", "end": "對別人好是一種善良，但不必透過別人的認同，來證明自己的價值！"}};
+const WQ={}; Object.entries(WQ_G).forEach(([g,v])=>v.codes.forEach(c=>WQ[c]=+g));
+const WQ_END=`<details class="sub"><summary>容易委屈的聯合碼・最後總結</summary><div class="sbody">
+<p>每一組委屈的原因都不太一樣：</p><ul>
+<li><b>① 134／314｜做得太快，容易繞路</b>：明明很有能力，卻可能因為忽略細節，最後辛苦付出，成果反而歸別人。</li>
+<li><b>② 145／415｜想得太多，不敢行動</b>：明明有想法、有目標，卻因為擔心失敗、自我設限，最後錯過機會。</li>
+<li><b>③ 178／718｜扛得太多，不懂拒絕</b>：明明是一片好意，卻因為太有責任感、太重視情義，最後什麼事情都往自己身上扛。</li>
+<li><b>④ 235／325｜配合太多，委屈自己</b>：明明心裡不願意，嘴巴卻說沒關係，最後情緒越積越多。</li>
+<li><b>⑤ 224｜在乎太多，失去自在</b>：明明已經付出很多，卻因為太在意別人的眼光與回應，讓自己活得很累。</li></ul>
+<p><b class="tag">龍麒老師最後想提醒大家</b>我們學習聯合碼，不是為了替別人貼標籤，而是希望透過數字，多了解一個人的行為與內心。尤其未來在幫別人分析或諮詢時，不要看到數字就急著下結論，而是先了解對方的經歷，再判斷哪些特質符合、哪些建議適合。</p>
+<p class="remind">看懂數字，是為了理解自己；學會調整，才是真正幫助自己。</p></div></details>`;
+function wqHTML(code){const g=WQ[code]; if(!g) return ''; const W=WQ_G[g], I=W.it?W.it[code]:null;
+  return `<details class="sub wq"><summary>容易委屈的聯合碼${'①②③④⑤⑥⑦⑧⑨'[g-1]}｜${W.codes.join('／')}・${W.t}</summary><div class="sbody">
+  <div class="lv3-k">${W.k.map(x=>`<span class="lv3-c">${x}</span>`).join('')}</div><p>${W.d}</p>
+  ${W.items?W.items.map((x,i)=>`<p><b class="tag">${'①②③④'[i]} ${x[0]}</b></p><p>${x[1]}</p>`).join(''):`<p><b class="tag">${code}｜${I[0]}</b></p><p>${I[1]}</p>
+  <p><b class="tag">共同特質｜${W.common[0]}</b></p><p>${W.common[1]}</p>`}
+  <p><b class="tag">龍麒老師想跟大家分享</b>${W.sh}</p>
+  <p class="remind">相處提醒：${W.tip.join('；')}。</p><p class="remind">${W.end}</p></div></details>`;}
+/* ===== 1–9 號隱藏的阻礙、心理狀態（講義原文） ===== */
+const HIDE={1:['控制不放、自我中心、外強內怯','孤軍奮戰、害怕失敗、拒絕示弱'],2:['過度迎合、容易妥協、壓抑情緒','隱忍退讓、逃避對立、怕被討厭'],3:['三分熱度、容易分心、缺乏定性','不想面對、過於浮誇、怕沒舞台'],4:['嚴肅過頭、慣性否定、拒絕改變','缺乏彈性、自我設限、無法放鬆'],5:['追求刺激、放縱失衡、沉迷快感','害怕束縛、不願承諾、容易逃避'],6:['扛責過重、完美枷鎖、過度干涉','過度期待、失去自我、情緒勒索'],7:['理性武裝、孤立自閉、疏離人群','冷淡防衛、過度分析、拒絕連結'],8:['失去掌控、失敗羞辱、忽略感受','暴露脆弱、失去地位、無力改變'],9:['不敢表達、容易迷失、消極退縮','缺乏界線、看淡一切、內心渙散']};
+const MIND={1:['逞強焦慮型','外面很強勢，內心很怕輸','高功能焦慮＋自我懷疑','被否定、被比較','你不是很強，你是不能輸','允許自己不完美'],
+2:['壓抑討好型','很會顧別人，卻很少顧自己','情緒壓抑＋討好型人格','被忽略、不被回應','你不是沒情緒，你是不敢說','練習表達需求'],
+3:['情緒外放型','開心很快，崩潰也很快','情緒失控＋衝動反應','被壓住、被限制','你不是太真，你是太快','建立情緒緩衝'],
+4:['緊張防禦型','很想穩，但越想越不安','過度擔心＋控制害怕','失控、突發變化','你不是慢，你是不敢錯','接受不確定性'],
+5:['迷失焦躁型','很想改變，卻不知道往哪走','方向焦慮＋內在空虛','卡住、停滯','你不是不動，你是沒方向','先選一條路'],
+6:['過勞付出型','一直在給，一直在撐','情緒耗竭＋責任壓力','沒人接住、沒人理解','你不是不重要，是你太用力','讓別人也付出'],
+7:['過度思考型','看得很透，卡得很深','Overthinking＋懷疑循環','想不通、沒有答案','你不是不懂，你是想太多','先做再說'],
+8:['內耗糾結型','想要很多，但一直拉扯','內在衝突＋情緒壓抑','選擇、承擔','你不是做不到，你是卡住了','學會取捨'],
+9:['空虛失落型','很想成功，卻一直不滿','存在焦慮＋內在空洞','努力沒結果','你不是沒有，你是不滿','建立內在價值']};
+function hideHTML(n){const H=HIDE[n],M=MIND[n];
+  return `<details class="sub"><summary>${n} 號人隱藏的阻礙</summary><div class="sbody">${H.map(x=>`<p><b class="tag">▲阻礙</b>${x}。</p>`).join('')}</div></details>
+  <details class="sub"><summary>${n} 號人的心理狀態・${M[0]}</summary><div class="sbody">
+    <p class="lead">${M[1]}</p>
+    <dl class="kv"><dt>心理狀態</dt><dd>${M[2]}</dd><dt>崩潰點</dt><dd>${M[3]}</dd></dl>
+    <p><b class="tag">一句就中</b>${M[4]}</p><p class="remind">修復方向：${M[5]}</p></div></details>`;}
+/* ===== 五行數字：小金大金、小水大水…（講義原文） ===== */
+const WX2N={
+1:{k:'小金',img:'1 號人像一把剛出鞘的寶劍。鋒利、直接、果斷、有衝勁。',gift:['領導力','開創力','行動力','不服輸','想證明自己的能量'],d:'很多 1 號人，從小就不喜歡被控制。因為他們骨子裡，本來就有「我要自己決定」的性格。',tr:['開天闢地','主導人生','越挑戰越興奮','越困難越想贏','喜歡當第一個'],end:'1 號人的人生，往往不是被安排出來的，而是自己殺出一條路。',q:'你的價值，在於敢衝。'},
+6:{k:'大金',img:'6 號人則像被打磨過的黃金。越成熟，價值越高。',gift:['智慧力','財富力','洞察力','敏銳感','資源整合能力'],d:'很多 6 號人，其實都有很強的「感知能力」。別人還沒發現，6 號人就已經感覺到了。',tr:['財富敏感度高','很懂價值交換','很會看人','很懂資源運作','越沉穩越值錢'],end:'很多 6 號人，不是靠蠻力賺錢，而是靠智慧、眼光、判斷、格局來累積財富。',q:'你的財富，在於看得懂。'},
+2:{k:'小水',img:'2 號人像一條溫柔流動的小溪。柔軟、細膩、貼心、有溫度。',gift:['溝通力','陪伴力','共感力','親和力','照顧別人的能量'],d:'很多 2 號人，從小就很會察言觀色。因為他們骨子裡，本來就有「希望大家都好」的性格。',tr:['溫柔體貼','喜歡照顧別人','很會經營關係','越被需要越有價值','喜歡和諧的感覺'],end:'2 號人的人生，往往不是靠強勢贏來的，而是用溫度，慢慢走進別人的心裡。',q:'你的價值，在於溫暖。'},
+7:{k:'大水',img:'7 號人則像深不見底的海洋。安靜、深沉、敏銳、有魅力。',gift:['人脈力','洞察力','貴人運','靈魂交流能力','很強的直覺感'],d:'很多 7 號人，其實都有很強的「看人能力」。別人還沒說出口，7 號人就已經感覺到了。',tr:['很容易吸引貴人','很懂人情世故','重感情重信任','朋友不多但很深','越成熟越有魅力'],end:'很多 7 號人，不是靠熱鬧交朋友，而是靠真誠、頻率、信任、陪伴來建立深層關係。',q:'你的魅力，在於交心。'},
+3:{k:'小火',img:'3 號人像一團正在燃燒的小火苗。熱情、直接、活潑、有衝勁。',gift:['行動力','表達力','創造力','感染力','喜歡熱鬧的能量'],d:'很多 3 號人，從小就很有存在感。因為他們骨子裡，本來就有「想發光」的性格。',tr:['情緒來得快','做事衝勁十足','越熱鬧越有能量','喜歡分享與表達','越被鼓勵越有自信'],end:'3 號人的人生，往往不是安靜型，而是走到哪裡，氣氛就熱到哪裡。',q:'你的力量，在於熱情。'},
+8:{k:'大火',img:'8 號人則像正在醞釀的火山。沉穩、強勢、壓得住、有爆發力。',gift:['抗壓力','責任感','掌控力','執行力','很強的使命感'],d:'很多 8 號人，其實都有很強的「壓力承受能力」。別人快撐不住時，8 號人還在硬撐。',tr:['越有壓力越強','很愛扛責任','做事不喜歡輸','氣場天生強勢','越成熟越有份量'],end:'很多 8 號人，不是靠情緒做事，而是靠意志力、責任感、抗壓性、執行力來扛起整個局面。',q:'你的氣場，在於扛壓。'},
+4:{k:'小木',img:'4 號人像一棵正在扎根的小樹。穩定、理性、細膩、有規劃。',gift:['學習力','思考力','規劃力','喜歡穩定的能量'],d:'很多 4 號人，從小就很愛觀察。因為他們骨子裡，本來就有「想把事情弄懂」的性格。',tr:['做事喜歡有步驟','越學習越有安全感','很重視邏輯與規則','喜歡穩定與秩序','越累積越有實力'],end:'4 號人的人生，往往不是靠衝動，而是靠持續累積，慢慢讓自己變強。',q:'你的力量，在於累積。'},
+9:{k:'大木',img:'9 號人則像一整片遼闊森林。寬廣、成熟、有遠見、有格局。',gift:['包容力','遠見力','影響力','靈性感','很強的大局觀'],d:'很多 9 號人，其實都有很強的「人生感悟能力」。別人只看到眼前，9 號人已經看到未來。',tr:['很容易吸引機會','很懂人生高度','願意幫助別人','思維格局很大','越成熟越有魅力'],end:'很多 9 號人，不是只看現在，而是靠格局、遠見、經驗、人生智慧來影響更多人。',q:'你的高度，在於格局。'},
+5:{k:'土',img:'5 號人像一片厚實的大地。穩重、自由、有想法、有方向感。',gift:['適應力','探索力','生存能力','很強的轉變能量'],d:'很多 5 號人，從小就不喜歡被限制。因為他們骨子裡，本來就有「想探索世界」的性格。',tr:['喜歡自由變化','很會隨機應變','不喜歡被困住','越變動越有靈感'],end:'5 號人的人生，往往不是固定不變，而是在變化之中，慢慢找到自己的道路。',q:'你的力量，在於找到方向。'}};
+const WX2E={
+'金':{pair:[1,6],vs:['1 號小金：像衝鋒的寶劍。先衝、先開路、先突破。','6 號大金：像珍貴的黃金。越沉穩、越有價值。'],two:['「我來開創世界。」','「我來掌握價值。」'],end:'金，不怕被埋沒。怕的是——你明明有光，卻不敢發亮。'},
+'水':{pair:[2,7],vs:['2 號小水：像溫柔溪流。慢慢流進別人的心裡。','7 號大水：像深層海洋。越認識越有吸引力。'],two:['「我來溫暖世界。」','「我來連結人心。」'],end:'水，不需要爭。真正厲害的水——是看似溫柔，卻能慢慢影響所有人。'},
+'火':{pair:[3,8],vs:['3 號小火：像熱情火苗。點燃氣氛與快樂。','8 號大火：像巨大火山。壓力越大，爆發越強。'],two:['「我來點亮氣氛。」','「我來扛起全場。」'],end:'火，不怕燃燒。真正厲害的火——不是亂衝，而是能把能量變成影響力。'},
+'木':{pair:[4,9],vs:['4 號小木：像正在成長的小樹。一步一步扎穩根基。','9 號大木：像遼闊森林。能包容萬物與世界。'],two:['「我來建立基礎。」','「我來看見未來。」'],end:'木，不怕成長慢。真正厲害的木——不是長得快，而是能撐得久。'},
+'土':{pair:[5],intro:'土，代表的是穩定、中心、方向與承載。而 5，剛好位於 1～9 的正中央，就像人生的核心位置一樣，能連接四面八方。',extra:[['東土大唐 × 數字 5','在古時候西遊記，「東土大唐」代表的數字就是 5。因為 5 象徵的是中心，也是方向、道路、轉折、行動力。很多 5 號人，人生都會經歷很多變化；但也因為這些經歷，最後更容易找到真正的自己。'],['土能量的核心','5 號土能量像大地一樣，能承載，也能轉變。不是停在原地，而是邊走邊找方向。一個真正成熟的 5 號人，往往都走過很多路，因為只有經歷過，才知道自己真正要的是什麼。']],end:'土，不只是穩。真正厲害的土——是能站穩自己，也能承載整個人生。'}};
+function wx2HTML(n){const N=WX2N[n], el=PROF[n].el, E=WX2E[el]; if(!N||!E) return '';
+  const chips=a=>a.map(x=>`<span class="lv3-c">${x}</span>`).join('');
+  const other=E.pair.find(x=>x!==n);
+  return `<details class="sub"><summary>${el}能量・${n} 號${N.k==='土'?'':N.k}</summary><div class="sbody">
+  <p>${E.intro||`在五行數字裡，${E.pair.join(' 號與 ')} 號都屬於「${el}」能量。但同樣是${el}，能量層次卻完全不同。`}</p>
+  <p class="lead">${N.img}</p>
+  <p><b class="tag">天生就帶著</b></p><div class="lv3-k">${chips(N.gift)}</div>
+  <p>${N.d}</p>
+  <p><b class="tag">${n} 號人的${el}能量特徵</b></p><div class="lv3-k">${chips(N.tr)}</div>
+  <p>${N.end}</p>
+  ${E.vs?`<p><b class="tag">${WX2N[E.pair[0]].k} vs ${WX2N[E.pair[1]].k}</b></p><ul>${E.vs.map(x=>`<li>${x}</li>`).join('')}</ul><p>一個是：${E.two[0]}一個是：${E.two[1]}</p>`:''}
+  ${E.extra?E.extra.map(x=>`<p><b class="tag">${x[0]}</b></p><p>${x[1]}</p>`).join(''):''}
+  <p><b class="tag">一句就中</b>${n} 號人：「${N.q}」${other?`　${other} 號人：「${WX2N[other].q}」`:''}</p>
+  <p class="remind">${E.end}</p></div></details>`;}
+/* ===== 聯合碼講義（81 組，講義原文） ===== */
+const JC={"112":[["對答如流","執行管理","文案達人","外表陽剛","內心柔軟","有始無終","小人是非","離婚率高"],["和事佬","說一套 做一套","刀子口 豆腐心"],"仲介、律師、業務、外交官","有說服力，有辯解力","胸有成足、手到擒來、相輔相成","目中無人、不可一世、口出狂言"],"123":[["來去如風","樂於表達","各種舞臺","孤軍作戰","人海戰術","不經大腦","欠缺思考","被人誤解"],["講師碼","銷售碼","演員碼"],"老師、業務、舞者、營業員","態度剛毅，有執行力","大膽表達、雙向溝通、積極行動","夜郎自大、口不擇言、惡性循環"],"134":[["奔波勞碌","勤奮肯幹","凡事求穩","強勢崛起","弱勢瓦解","未雨綢繆","抱怨消極","心軟愛哭"],["懷才不遇","為他人做嫁衣","前人種樹後人乘涼"],"商業、投資、房產、開發商","左嗡右嗡，像小蜜蜂","自信滿滿、自我驅動、高效執行","妄自菲薄、面有難色、自暴自棄"],"145":[["穩重可靠","文思泉湧","定海神針","是人上人","或人下人","患得患失","中途放棄","事與願違"],["矛盾","畫龍不點睛","需要團隊拉一把"],"表演、作家、導師、設計師","缺乏勇氣，需要鼓勵","充滿幹勁、信心百倍、勝劵在握","過於自我、先入為主、行動軟弱"],"156":[["先知先覺","英雄氣概","國際市場","擇人而交","擇事而為","過度自戀","不良嗜好","眼界過高"],["三個一","環遊世界","大男人大女人"],"表演、教育、教練、探險家","遠離他鄉，比較吃香","滿懷信心、大步向前、開花結果","自我貶低、食古不化、百花凋零"],"167":[["洞悉事務","情商特高","慷慨解囊","穿衣時髦","愛照鏡子","過份彰顯","愛慕虛榮","一擲千金"],["最靈性","買單高手","分享歡樂分享愛"],"專家、學者、研究、科學家","買單高手，買到忘我","直覺敏銳、心思細膩、征服人心","目中無人、自作聰明、取悅人心"],"178":[["角色擔當","專注事業","成就他人","做事在前","貴人在後","內外糾結","容易躺槍","或背黑鍋"],["有求必應","土地公土地婆","不借錢不擔保"],"老闆、總裁、高層、政治圈","事業心重，責任心重","天性聰明、深得人心、市場開拓","趾高氣昂、不得人心、自甘墮落"],"189":[["企業高層","臥薪嘗膽","頑強意志","路見不平","拔刀相助","非常執著","給人壓迫","是工作狂"],["三高","強迫症","三餐不正常"],"狂   建議 ▼","完美主義，非常正義","充滿自信、選擇要熬、突破困境","充滿自卑、選擇要逃、陷入困境"],"191":[["天生要強","事必躬親","觸底反彈","自主思考","獨立經營","寧折不彎","心力交瘁","適合晚婚"],["智多星","快樂單身漢","孤獨領導者"],"設計、編劇、導演、發明家","單打獨鬥，不擅合作","揮灑創意、有目共睹、使命必達","自視清高、貪得無厭、無人理解"],"213":[["招人喜愛","逢人就誇","讓人舒服","朗誦唱歌","話有人聽","主觀性強","不留情面","言多必失"],["講師碼","銷售碼","演員碼"],"老師、業務、舞者、營業員","坦率真誠，喜歡管人","洗耳恭聽、主導議題、明確表達","遲疑不決、自我懷疑、拖泥帶水"],"224":[["心靈諮詢","談判協商","人際傳播","優質服務","白裡透紅","口無遮攔","姑息養奸","歇斯底里"],["大嘴巴","母親的慈愛","受害者狀態"],"精算、律師、幕後、科學家","偏女性化，很會說話","心細如髮、無話不談、志同道合","心事重重、畏首畏尾、不敢前進"],"235":[["口才出眾","身懷絕技","化險為夷","看人說話","技巧辦事","較於偏激","極端傾向","惹火燒身"],["國際老千","空手套白狼","化干戈為玉帛"],"演說、寫作、新聞、美食","催眠的碼，洗腦的碼","良性溝通、互動頻繁、一網打盡","唉聲歎氣、抱怨連篇、竹籃打水"],"246":[["引起共鳴","開口來財","信任基石","言之有度","待人有情","想東想西","過於被動","照本宣科"],["以口為業","口碑行銷","很多轉介紹"],"服務、保險、健身、諮詢師","善解人意，感情細膩","柔情似水、言而有信、貢獻價值","有氣無力、死氣沉沉、沒有價值"],"257":[["主觀意識","說一不二","高端產業","看似柔軟","拿命去換","道人是非","易貼標籤","自毀形象"],["好人緣","明星臉","分別心"],"情報、寫作、表演、研究員","過人領悟，很有深度","將心比心、一視同仁、奮勇向前","各種擔心、差別對待、徘徊不前"],"268":[["充滿善意","光輝形象","社會道德","經濟頭腦","商業思維","天花亂墜","過度擔憂","反目成仇"],["攀比心","信口開河","開口就是講錢"],"客服、演說、推銷、企業主","被動號碼，感性號碼","言之有物、充滿智慧、安安穩穩","言之有誤、充滿挑剔、空空洞洞"],"279":[["社交牛人","服務周到","年輕族群","貴人緣好","異性緣好","沒邊界感","迷失自己","拖延戰術"],["為你買單","為他人著想","女生相關的行業"],"宗教、歷史、考古、美容師","大方溫和，還很隨和","互動不錯、唯我所用、產生機會","互動不夠、被人利用、錯過機會"],"281":[["釋出善意","肝膽相向","委以重任","不銷而銷","為愛成交","咄咄逼人","壓力山大","內心煎熬"],["鬧心碼","知心大姊","價值放大器"],"銷售、寫作、教師、諮詢師","口才犀利，銷售潛力","換位思考、言出必行、高效執行","心猿意馬、內心掙扎、極度自卑"],"292":[["巧舌如簧","心胸寬大","情感細膩","滿腦構思","談論生意","空喊口號","代人頂罪","大器晚成"],["紅娘","諸葛亮","跨界合作"],"醫師、仲介、軍師、協調員","啟發他人，生命貴人","言而有信、一致好評、合作共贏","空喊口號、花拳繡腿、猶豫不前"],"314":[["求真務實","耳目一新","忠誠可靠","品牌策劃","活動營銷","外界干擾","認可度低","委屈失落"],["懷才不遇","為他人做嫁衣","前人種樹後人乘涼"],"商業、投資、房產、開發商","外表硬朗，內心柔軟","聞風而動、鬥志昂揚、整裝待發","血氣方剛、橫衝直撞、一成不變"],"325":[["隨心所欲","無所顧忌","能說能做","借勢而為","見機行事","對牛彈琴","很多理由","樹立敵人"],["國際老千","空手套白狼","化干戈為玉帛"],"演說、寫作、新聞、美食","說走就走，不計後果","精準表達、連說帶笑、勢如破竹","變色之言、感情用事、有始無終"],"336":[["積極樂觀","熱情好客","善於揣摩","沒有酒量","但有酒膽","急於滿足","愛賺快錢","容易破財"],["齒輪轉動","快速賺錢","快速花錢"],"培訓、組織、連鎖、運動員","網路銷售，平台銷售","熱情洋溢、採取行動、累積財富","惱羞成怒、大發雷霆、揮霍財富"],"347":[["智商超群","真槍實彈","貴人支持","表面隨意","內心拘泥","滿腹牢騷","友誼短暫","不愛冒險"],["帶隊高手","人脈達人","步步為贏"],"行銷、企劃、培訓、管理員","男女通殺，蓄勢待發。","快如閃電、設計方案、達成合作","渙散分心、心胸狹窄、無緣合作"],"358":[["推陳出新","改天換地","深刻印象","性情反覆","易被激怒","爭強鬥狠","損身傷情","人財兩空"],["吃軟不吃硬","235/325的哥哥","三八點就會成功"],"演說、創業、銷售、業務員","不但熱情，還很激情","轟轟烈烈、當場出彩、迎難而上","匆匆忙忙、當場出糗、迎難而下"],"369":[["關懷他人","資產管理","長線投資","得意忘形","大手大腳","考慮不周","無心之舉","背叛初衷"],["不動產","喜歡收錢","喜歡花錢"],"投資、採購、代購、不動產","想賺快錢，完完全全","健步如飛、出類拔萃、達到成功","惹事生非、責備怪罪、遠離成功"],"371":[["熱情慷慨","主動踐行","交際應酬","尊老愛幼","扶危救困","更換頻繁","心浮氣躁","孤苦無援"],["師字輩","技術學術","社交圈層"],"藝術、表演、攝影、美相關","有公主病，沒公主命","熱情不滅、人脈搭建、服務無限","喜怒無常、親信背離、孤苦伶仃"],"382":[["即興發言","活力泉源","帶動團隊","傳播力強","開拓力強","早出晚歸","情緒火山","迷失自己"],["情緒碼","阻礙碼","火燒功德林"],"舞蹈、瑜珈、表演、造型師","水火相沖，容易爆衝","一馬當先、全心全意、同甘共苦","怒髮衝冠、隻手遮天、詞不達意"],"393":[["真誠待人","愛好廣泛","尋找商機","胸懷抱負","拋頭露面","寵溺子女","得罪上司","招來毀謗"],["才華碼","技術碼","舞台碼"],"武術、創意、體育、激勵師","才華洋溢，多才多藝","熱情似火、千載難逢、勢在必行","滿腹牢騷、擦肩而過、忙碌不堪"],"415":[["推進有序","不搶功勞","深得尊敬","嚴以律己","寬以待人","固守傳統","冷眼旁觀","錯失良機"],["矛盾","畫龍不點睛","需要團隊拉一把"],"表演、作家、導師、設計師","獨立穩重，缺乏主動","穩重踏實、能者多勞、恒之以恒","計畫受阻、自我設限、無法推進"],"426":[["通情達理","乾淨俐落","值得信賴","物美價廉","理財產品","害怕挫折","放不太開","關係緊張"],["以口為業","口碑行銷","很多轉介紹"],"服務、保險、健身、諮詢師","銷售本事，顧問模式","引經據典、循循善導、傳遞價值","顧慮重重、吞吞吐吐、分文不值"],"437":[["精兵簡政","及時行動","人脈建立","天時地利","還有人和","惹事生非","易被利用","睡眠較差"],["帶隊高手","人脈達人","步步為贏"],"行銷、企劃、培訓、管理員","很有能力，上當不易","條理分明、聰明機警、共襄盛舉","斤斤計較、幼稚膚淺、不聞不問"],"448":[["系統學習","細節入手","精心佈局","在乎利益","重視回報","看不慣人","城府較深","不易深交"],["忍者鱉","操心的命","按常理出牌"],"法官、政治、創業，出版商","只要學到，就能得到","做事謹慎、步步為營、邁向卓越","做事緊張、步步為艱、無法跨越"],"459":[["適合實體","商業模式","管理人才","信念很強","目標很強","自我衝突","各種矛盾","工於心計"],["吸引力法則","喜歡大自然","喜歡收藏物品"],"醫生、律師、領導、企業家","立場堅定，帶有目的","腳踏實地、滴水穿石、走向成功","輕易放棄、無法堅持、希望落空"],"461":[["安守本份","說話算數","惜財愛物","財務決策","數據報表","錙銖必較","得不償失","小氣財神"],["高材生","高財商","物超所值"],"設計、會計、理財、建築師","現學現賣，實實在在","系統規劃、融會貫通、事半功倍","如履薄冰、戰戰兢兢、事倍功半"],"472":[["通情達理","生性敦厚","給人忠告","是策劃者","是謀略家","望梅止渴","閉門造車","只剩張嘴"],["話術碼","睿智碼","福爾摩斯"],"理財、規劃、教練、造型師","成熟幹練，穩重老練","計畫周詳、專業水準、並肩而行","絞盡腦汁、挖空心思、言行不一"],"483":[["勤勉好學","頭腦聰慧","權威人士","家庭至上","懂得知足","朝三暮四","勞而無功","婚姻波折"],["證照碼","副手碼","迷糊碼"],"幕僚、表演、教師、經紀人","需要推動，才能啟動","做足準備、擔起責任、執行計畫","過度焦慮、漩渦徘回、一無所得"],"494":[["多謀善思","光明磊落","落地實操","系統方案","長期經營","措辭不當","不解風情","心生煩惱"],["企業家","直男直女","多開會就會成交"],"管理、財務、會計、建築師","做事認真，像模範生","親自策畫、拿到引薦、落地執行","遲疑不決、空空如也、留在原地"],"516":[["敢於嘗試","豪爽仗義","品味獨特","喜之沉迷","厭之逃避","難以容人","條件苛刻","也難被容"],["三個一","環遊世界","大男人大女人"],"表演、教育、教練、探險家","性格剛強，非常好強","志在五方、志在必得、生根發芽","自我吹噓、自吹自擂、枯枝敗葉"],"527":[["權威人士","不兜圈子","堅守原則","三五成群","結群成黨","會嫌麻煩","難以妥協","叛逆色彩"],["好人緣","明星臉","分別心"],"情報、寫作、表演、研究員","性格爽快，無一例外","方向明確、良性溝通、勇往直前","固執處事、敷衍溝通、停滯不前"],"538":[["引領氣質","雄心勃勃","為人坦蕩","爽到別人","艱苦自己","拔苗助長","愛出風頭","坎坷波折"],["吃軟不吃硬","235/325的哥哥","三八點就會成功"],"演說、創業、銷售、業務員","容易衝動，還有激動","帶著堅持、並且行動、做大做強","帶著固執、並且衝動、做小作弱"],"549":[["善於謀劃","看準時機","認真敬業","雙重性格","動靜皆宜","當面一套","像牆頭草","隨風就倒"],["吸引力法則","喜歡大自然","喜歡收藏物品"],"醫生、律師、領導、企業家","深藏不露，捉摸不透","熱情豪爽、資訊植入、滿滿引薦","心情不爽、單刀直入、滿滿成見"],"551":[["高人指路","持之以恆","名利雙收","超級魅力","超強號召","肆無忌憚","絕不低頭","自作自受"],["成功碼","老大碼","自虐碼"],"業務、銷售、舞臺、旅遊業","為人海派，像大反派","胸懷大志、彈無虛發、百發百中","固執己見、一意孤行、放縱自己"],"562":[["財富感知","樂於分享","文化傳播","女的旺夫","男的旺己","小錢計較","大錢糊塗","省小花大"],["守財碼","鎖財碼","尊重金錢"],"化妝、造型、色彩 、藝術家","理性消費，常常嫌貴","思路清晰、釜底抽薪、平等互利","不可理喻、品頭論足、長篇大論"],"573":[["目標清晰","談吐風趣","博學多識","喜歡名牌","享受美食","天生傲氣","盲目自大","拒人千里"],["有錢人","有權人","高層人"],"導遊、從政、主持、旅行家","高級貴人，您的貴人","知難而上、人脈累積、達成交易","為所欲為、漠不關心、貿然行事"],"584":[["路徑明確","忠於職責","遊戲法則","辦事卓越","王者風範","顧及太多","心理負擔","情緒解壓"],["粥餅倫","心大力小","縮手縮腳"],"銀行、慈善、教育、開發商","人前風光，人後緊張","目標清新、不負眾望、一路前行","執迷不悟、目中無人、故步自封"],"595":[["性情中人","無畏精神","激發鬥志","以死相搏","絕不吃虧","打擦邊球","吸引官司","牢獄之災"],["大哥大","大姊大","出生牛犢不畏虎"],"廣告、創意、藝術、探險家","天也不怕，地也不怕","夢想版圖、爭取機會、磨杵成針","無所顧忌、失之交臂、大海撈針"],"617":[["文學修養","智慧之光","花錢辦事","崇拜時髦","高檔消費","弄巧成拙","有戀愛腦","意外之災"],["最靈性","買單高手","分享歡樂分享愛"],"專家、學者、研究、科學家","一人賺錢，多人花錢","提供價值、做事認真、服務人群","不識大體、自私自利、遠離人群"],"628":[["社交舞台","精準溝通","金錢金融","快速賺錢","反倒虧錢","迴避衝突","違背意願","錢財官司"],["攀比心","信口開河","開口就是講錢"],"客服、演說、推銷、企業主","大大小小，對人友好","愛為導向、傾聽他人、值得信任","錢為導向、干涉他人、無法信任"],"639":[["投資眼光","樂於投資","同理心強","財富來了","但又沒了","理財草率","揮金如土","揮霍無度"],["不動產","喜歡收錢","喜歡花錢"],"投資、採購、代購、不動產","人緣很好，想多做少","解囊相助、行動積極、增加機會","揮霍無度、行動消極、減少機會"],"641":[["晝耕夜誦","投資腦袋","自我成長","化難為易","適應性強","嬌生慣養","不通情理","強人所難"],["高材生","高財商","物超所值"],"勤奮，小心謹慎","工作勤奮，小心謹慎","集思廣益、刪繁就簡、功成名就","挑三揀四、一針見血、徒勞無功"],"652":[["金融專業","善用資金","懂得投資","尊重資源","規劃藍圖","只想錢進","不想錢出","是守財奴"],["守財碼","鎖財碼","尊重金錢"],"化妝、造型、色彩 、藝術家","精打細算，已成習慣","成就智慧、當機立斷、上下一心","看不上眼、死心眼兒、錯失商機"],"663":[["注重儀表","體貼細心","忠誠無私","捨得花錢","參與投資","資金流動","能賺難存","月光家族"],["錢追你跑","大起大落","大進大出"],"媒體、傳播、娛樂、主持人","用錢開路，花錢快速","滴水不漏、明察秋毫、快速達標","花錢衝動、不顧後果、難有積蓄"],"674":[["聰明絕頂","財運亨通","請客送禮","扶人上馬","拉人下馬","耍小聰明","愛拍馬屁","旁門左道"],["狗屎運","智慧花錢","正財偏財"],"保險、理財、會計、營養師","做事用心，收買人心","善用智慧、盡人皆知、鞏固事業","嫌貧愛富、唯利是圖、破局收場"],"685":[["意志堅決","心靈紐帶","特定使命","情感忠誠","家庭觀念","投資不利","感情遺憾","花錢消災"],["行善","取正財","別偏財"],"廚師、音樂、繪畫、攝影師","長江黃河，一波三折","提供價值、義不容辭、移山倒海","嫌這嫌那、眼高於天、大海枯竭"],"696":[["眼光敏銳","敢於投資","承擔風險","左手進錢","右手出錢","起落不定","牽掛擔心","過路財神"],["投資理財","用錢滾錢","點石成金"],"金融、理財、銀行、醫療師","運氣極佳，財運更佳","別具慧眼、命中靶心、用錢滾錢","挑毛揀刺、利益熏心、財來財去"],"718":[["人脈很廣","氣場強大","捍衛尊嚴","對人嚴厲","對己嚴格","惡意利用","他人忌妒","與論爭議"],["有求必應","土地公土地婆","不借錢不擔保"],"老闆、總裁、高層、政治圈","非常仗義，會做生意","遇事理智、帶著自信、承擔責任","遇事懷疑、帶著自負、扛下壓力"],"729":[["直中帶柔","人情世故","支持者多","想得太雜","難以決定","逃避問題","機會流失","天生桃花"],["為你買單","為他人著想","女生相關的行業"],"宗教、歷史、考古、美容師","個性友善，為人和善","風度翩翩、逆境上游、慢慢升空","瘋瘋癲癲、隨波逐流、天馬行空"],"731":[["社交高手","人脈整合","機構合作","天資聰穎","博學多才","眼高於頂","多疑猜忌","流失率高"],["師字輩","技術學術","社交圈層"],"藝術、表演、攝影、美相關","才華洋溢，多才多藝","遊刃有餘、自告奮勇、獲得力量","滿肚疑團、陰晴不定、貴人遠離"],"742":[["人品爆發","貴人扶持","躺贏基因","富人名師","肺腑之言","過於拖延","決策癱瘓","引起妒忌"],["話術碼","睿智碼","福爾摩斯"],"理財、規劃、教練、造型師","學習力強，分析力強","精雕細刻、絲絲入扣、化零為整","坐享其成、無所作為、耍嘴皮子"],"753":[["呼朋引伴","結群成黨","感性社交","十句交友","一句得罪","被人利用","被人出賣","被人重傷"],["有錢人","有權人","高層人"],"導遊、從政、主持、旅行家","異性緣好，方向感好","文武雙全、技高一籌、開花結果","半信半疑、自我陶醉、橫衝直撞"],"764":[["悟性極高","很有福報","意外收穫","有錢出錢","有力出力","冷漠疏離","周期較長","暗桃花重"],["狗屎運","智慧花錢","正財偏財"],"保險、理財、會計、營養師","會化危機，成為轉機","聚精凝神、慷慨解囊、實現計畫","磨磨蹭蹭、難以取悅、失望而歸"],"775":[["有理有據","吸引異性","互利共生","不是貴人","就是小人","耳根子軟","被帶風向","陷入情緒"],["粉絲","支持者","現世報"],"音樂、美術、創業、藝術家","用人帶人、一層一層","靜水深流、守望相助、高朋滿座","保持距離、漠不關心、毫不相干"],"786":[["盡心盡責","博學多才","超值夥伴","打工皇帝","高薪一族","看人臉色","精神壓迫","背負債務"],["刻苦耐勞","雨過天晴","風雨過後會有彩虹"],"培訓、服務、創業、諮詢師","貴人施壓，必須抗壓","專業引領、承擔責任、接受挑戰","半信半疑、不願承擔、逃避現實"],"797":[["聰明絕頂","自帶流量","融入人群","上有人拉","下有人托","陷入冷戰","貪圖享樂","酒肉朋友"],["桃花碼","網紅碼","萬人迷"],"詩人、浪子、作家、藝術家","跟隨著你，支持著你","見多識廣、借力使力、擴大人脈","孤陋寡聞、有氣無力、錯失人脈"],"819":[["一手包辦","行事大膽","不畏強權","看似堅強","實則不然","常常掙扎","借或不借","幫或不幫"],["三高","強迫症","三餐不正常"],"慈善、醫生、律師、承包商","樂於助人，愛幫助人","親力親為、訓練有素、完成使命","為所欲為、我行我素、差點沒命"],"821":[["商業氣息","八面玲瓏","精英客戶","購買指令","推動交易","愛慕虛榮","謀取暴利","敬而遠之"],["鬧心碼","知心大姊","價值放大器"],"銷售、寫作、教師、諮詢師","銷售冠軍，橫掃千軍","敢做敢當、傾心交談、完成任務","自命不凡、口無遮攔、力量單薄"],"832":[["踴躍投入","社交智商","公眾演說","賣夢高手","銷售奇才","怒火中燒","反應過度","阻礙發展"],["情緒碼","阻礙碼","火燒功德林"],"舞蹈、瑜珈、表演、造型師","行動力強，影響力強","以身作則、盡忠職守、其利斷金","惱羞成怒、老羞成怒、怨天怨地"],"843":[["認真細緻","承擔責任","實力說話","很多想法","多種生意","丟三落四","壓力巨大","空忙一場"],["證照碼","副手碼","迷糊碼"],"幕僚、表演、教師、經紀人","一個大火，一個小火","滿腔熱忱、構思安排、協調整合","脾氣欠佳、沒安全感、付諸流水"],"854":[["人生定位","擔當意識","豐富想像","披荊斬棘","所向披靡","過去糾結","未來恐懼","喘不過氣"],["粥餅倫","心大力小","縮手縮腳"],"銀行、慈善、教育、開發商","很有野心，也很創新","任勞任怨、宏觀志願、順水推舟","死氣沉沉、不受約束、一籌莫展"],"865":[["競爭格局","任務繁多","四處奔波","人生閱歷","歲月歷練","自我施壓","左右為難","全身緊繃"],["行善","取正財","別偏財"],"廚師、音樂、繪畫、攝影師","佛家的號，功德的號","義無反顧、全力以赴、轉虛為實","愛慕虛榮、自欺欺人、虛有其表"],"876":[["真誠善良","樂於助人","求知慾旺","心門緊閉","給臉色看","下達命令","情緒勒索","婚姻挑戰"],["刻苦耐勞","雨過天晴","風雨過後會有彩虹"],"培訓、服務、創業、諮詢師","付出很多，獲得更多","敢做敢當、獲得信賴、創造財富","虛有其表、防備之心、風餐露宿"],"887":[["強悍儒雅","言傳身教","道德責任","隱而不發","長期壓抑","財迷心竅","氣急敗壞","離婚率高"],["笑面虎","無法一心二用","利事業不利婚姻"],"間諜、員警、偵探、表演員","胸懷大志，想幹大事","以身作則、海納百川、大眾信賴","出爾反爾、泰山壓頂、大眾警戒"],"898":[["開疆拓土","天生老闆","精神領袖","不能走偏","不能賭博","獨斷專行","心理鬱悶","各種糾結"],["幹大的","有故事的人","事事難成事事成"],"老闆、從政、銀行、演藝圈","能者多勞，從不潛逃","面對挑戰、把握機遇、不屈不饒","心驚膽戰、失去機遇、臨陣脫逃"],"911":[["出類拔萃","領袖風采","精益求精","堅持主張","長遠發展","玩物喪志","爭強顯勝","孤芳自賞"],["智多星","快樂單身漢","孤獨領導者"],"設計、編劇、導演、發明家","直覺敏銳，半夜不睡","統籌全局、自成一格、不負眾望","不勞而獲、不易親近、寂寞孤單"],"922":[["愛聊趨勢","處事圓滑","指點江山","商機無限","搭建平台","說的很多","做的很少","較不落地"],["紅娘","諸葛亮","跨界合作"],"醫師、仲介、軍師、協調員","可當媒人，或中間人","利他之下、促膝長談、合作無間","貪而無信、自我吹噓、舉棋不定"],"933":[["藝術細胞","勇於拚搏","傳遞快樂","快速成交","短期生意","蜻蜓點水","容易曖昧","產生誤解"],["才華碼","技術碼","舞台碼"],"武術、創意、體育、激勵師","全副武裝，閃閃發光","處事積極、掌握時機、喜從天降","滿坑滿谷、三心二意、兩頭落空"],"944":[["制訂戰略","知識變現","謀定後動","人不犯我","我不犯人","反覆折磨","消化不好","睡眠較差"],["企業家","直男直女","多開會就會成交"],"管理、財務、會計、建築師","學習力強，組織力強","抓住商機、深度整合、大量推進","眼高手低、不自量力、心神不定"],"955":[["霸氣總裁","談天說地","江湖俠氣","湧泉相報","加倍奉還","頑固不化","情感衝動","無法招架"],["大哥大","大姊大","出生牛犢不畏虎"],"廣告、創意、藝術、探險家","要嘛是龍，要嘛是蟲","樂此不疲、夜以繼日、達成目標","財迷心竅、自私自利、不知悔改"],"966":[["智慧睿智","財富氣息","商機引薦","跟誰合作","誰就賺錢","過度付出","可以投資","不能投機"],["投資理財","用錢滾錢","點石成金"],"金融、理財、銀行、醫療師","用多少心，得多少金","寶貴機會、精準無誤、把握良機","過於貪心、還要更多、錯失良機"],"977":[["勤學苦練","上天眷顧","放大裂變","不缺人脈","不愁人緣","魚龍混雜","見異思遷","四處留情"],["桃花碼","網紅碼","萬人迷"],"詩人、浪子、作家、藝術家","不少貴人，不少小人","隨機應變、透過專業、迎來貴人","貪得無厭、推三阻四、遠離貴人"],"988":[["追逐理想","渴望改變","拒絕平庸","停留表面","漩渦徘徊","渾渾噩噩","消耗時間","自找苦吃"],["幹大的","有故事的人","事事難成事事成"],"老闆、從政、銀行、演藝圈","放不了心，容易操心","掌握時機、掌握局勢、漸入佳境","錯過時機、錯過局勢、陷入困境"],"999":[["前瞻性強","不求索取","利益眾生","各種機遇","各種變數","毫無原則","一無所得","老年孤獨"],["頂流中的頂流","挖井多而無泉","一念天堂一念地獄"],"哲學、信仰、投資、哲學家","眼光敏銳，口才到位","機會很多、一心一意、隨手可得","誘惑很多、三心二意、百轉千折"]};
+function jcHTML(code){const J=JC[code]; if(!J) return '';
+  return `<details class="sub jc"><summary>${code} 聯合碼講義</summary><div class="sbody">
+  <div class="lv3-k">${J[0].map(x=>`<span class="lv3-c">${x}</span>`).join('')}</div>
+  <dl class="kv"><dt>聯想</dt><dd>${J[1].join('・')}</dd><dt>工作</dt><dd>${J[2]}</dd><dt>敘述</dt><dd>${J[3]}</dd><dt>正面</dt><dd>${J[4]}</dd><dt>負面</dt><dd>${J[5]}</dd></dl></div></details>`;}
 function drawDecode(p){
   drawAnalysis(p);
   const inner=[p.top,p.mL,p.mR,...p.b];
@@ -930,6 +1211,11 @@ function drawDecode(p){
   /* 幾號人：生日模式金字塔頂端（等同主命數，多胞胎會校正） */
   const n=p.top, P=PERSON[n];
   $('personNo').textContent=n;
+  $('loveSolo').innerHTML=`<div class="lv"><h4>${n} 號人・${LOVE3[n].t}</h4>${quickHTML(n)}<details class="sub"><summary>${n} 號人的愛情觀・四大表現與需求</summary><div class="sbody">${love3Body(n)}</div></details></div>
+    ${worldHTML(n,'m')}${worldHTML(n,'f')}${advHTML(n)}${intiHTML(n)}
+    <details class="sub"><summary>1～9 號人的愛情建議・總結</summary><div class="sbody">${ADV_END}</div></details>
+    <details class="sub"><summary>1～9 號人的親密特質・總結</summary><div class="sbody">${INTI_END}</div></details>
+    <details class="sub"><summary>${n} 號人的愛情密碼（核心需求）</summary><div class="sbody">${love2HTML(n,'')}</div></details>`;
   $('personDot').style.background=P.color[1];
   $('personBody').innerHTML=`
     <div class="formula"><span>${P.f[0]}</span><b>→</b><span>${P.f[1]}</span></div>
@@ -940,10 +1226,14 @@ function drawDecode(p){
       <div class="tal-row"><span class="tal-l hi">高能量</span>${TALENT[n].hi.map(x=>`<span class="tal-p hi">${x}</span>`).join('')}</div>
       <div class="tal-row"><span class="tal-l lo">低能量</span>${TALENT[n].lo.map(x=>`<span class="tal-p lo">${x}</span>`).join('')}</div>
     </div>
+    <details class="sub grp"><summary>天賦與能量</summary><div class="sbody">
     <details class="sub"><summary>認識 ${n} 號人的天賦</summary>
       <ul>${TALENT[n].d.map(x=>`<li>${x}</li>`).join('')}</ul>
       <p class="tal-tip">給 ${n} 號人的建議：${TALENT[n].tip}</p>
     </details>
+    ${wxHTML(n)}${wx2HTML(n)}
+    </div></details>
+    <details class="sub grp"><summary>阻礙與心理</summary><div class="sbody">${hideHTML(n)}</div></details>
     ${profileHTML(n)}
     <details class="sub"><summary>更多 ${n} 號人解析</summary>
       <dl class="kv">
@@ -994,8 +1284,29 @@ function drawMissing(y,m,d,add){
   const both=[1,2,3,4,5,6,7,8,9].filter(n=>!have.has(n)&&!grid.has(n));
   $('bothChips').innerHTML=both.map(n=>`<span>${n}</span>`).join('');
   $('bothNote').textContent=both.length?'國曆九宮格（○△□ 任一記號都算有）和三角形 7 格都沒有的數字。':'國曆九宮格和三角形 7 格加起來，1～9 都有。';
-  $('bothList').innerHTML=both.map(n=>`<div class="miss-card"><h4>缺 ${n}</h4><ul>${MISS[n].t.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tip">${MISS[n].a}</p></div>`).join('');
-  $('missList').innerHTML=miss.map(n=>`<div class="miss-card"><h4>缺 ${n}</h4><ul>${MISS[n].t.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tip">${MISS[n].a}</p></div>`).join('');
+  $('bothList').innerHTML=both.map(n=>`<details class="sub miss-d"><summary>缺 ${n} 的說明</summary><div class="sbody"><ul>${MISS[n].t.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tip">${MISS[n].a}</p></div></details>`).join('');
+  $('missList').innerHTML=miss.map(n=>`<details class="sub miss-d"><summary>缺 ${n} 的說明</summary><div class="sbody"><ul>${MISS[n].t.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tip">${MISS[n].a}</p></div></details>`).join('');
+}
+/* 七秒讀心數圖形（共用） */
+function pyrSVG(p,yy,m,d){
+  const ys=String(yy).padStart(4,'0'), pad=v=>String(v).padStart(2,'0');
+  const raw=[pad(d),pad(m),ys.slice(0,2),ys.slice(2)];
+  const T=[200,131], BL=[133,250], BR=[267,250];
+  const L=[166.5,190], R=[233.5,190], B=[[133,240],[178,240],[222,240],[267,240]];
+  const ln=(P,Q)=>`M${P[0]} ${P[1]}L${Q[0]} ${Q[1]}`;
+  const node=([x,yv],v,cls,r=12)=>`<circle class="node" cx="${x}" cy="${yv}" r="${r}"/><text class="nv ${cls}" x="${x}" y="${yv+1}">${v}</text>`;
+  return    `<circle class="ring" cx="200" cy="193" r="153"/><circle class="ring" cx="200" cy="193" r="131"/>
+   <path class="tri-out" d="M200 98L107 259H293Z"/>
+   <path class="tri-in" d="${ln(T,BL)}${ln(T,BR)}${ln(BL,BR)}${ln(L,R)}${ln(L,B[1])}${ln(R,B[2])}"/>`+
+   `<circle class="node-top" cx="${T[0]}" cy="${T[1]}" r="12"/><text class="nv nt" x="${T[0]}" y="${T[1]+1}">${p.top}</text>`+
+   node(L,p.mL,'nl')+node(R,p.mR,'nr')+
+   node(B[0],p.b[0],'nl')+node(B[1],p.b[1],'nl')+node(B[2],p.b[2],'nr')+node(B[3],p.b[3],'nr')+
+   `<text class="star" x="200" y="112">*</text><text class="star" x="121" y="256">*</text><text class="star" x="279" y="256">*</text>`+
+   raw.map((v,i)=>`<text class="raw" x="${B[i][0]+2}" y="276">${v}</text>`).join('')+
+   `<text class="rawl" x="${B[0][0]+2}" y="290">日期</text><text class="rawl" x="${B[1][0]+2}" y="290">月份</text><text class="rawl" x="247" y="290">年份</text>`+
+   tiles(200,55,p.upper,'中年','41–60','--t-mid','--t-mid-bg')+
+   tiles(98,140,p.left,'青年','21–40','--t-young','--t-young-bg')+
+   tiles(302,140,p.right,'晚年','61–','--t-old','--t-old-bg');
 }
 function drawPyramid(){
   const [y,m,d]=$('solar').value.split('-').map(Number);
@@ -1016,28 +1327,10 @@ function drawPyramid(){
   $('multiNote').textContent=!multi?'':(flow?(yy-y<20?`${yy} 年未滿 20 歲，使用校正後的數字。`:`${yy} 年已滿 20 歲，看原始生日。`):(NOW-y<20?'目前未滿 20 歲，使用校正後的數字。':'目前已滿 20 歲，看原始生日；20 歲前的樣子可切到流年模式查詢。'));
   drawMissing(y,m,d,addB);
   const p=pyramid(yy,m,d,add);
-  const ys=String(yy).padStart(4,'0'), pad=v=>String(v).padStart(2,'0');
-  const raw=[pad(d),pad(m),ys.slice(0,2),ys.slice(2)];
-  const T=[200,131], BL=[133,250], BR=[267,250];
-  const L=[166.5,190], R=[233.5,190], B=[[133,240],[178,240],[222,240],[267,240]];
-  const ln=(P,Q)=>`M${P[0]} ${P[1]}L${Q[0]} ${Q[1]}`;
-  const node=([x,yv],v,cls,r=12)=>`<circle class="node" cx="${x}" cy="${yv}" r="${r}"/><text class="nv ${cls}" x="${x}" y="${yv+1}">${v}</text>`;
-  $('pyr').innerHTML=
-   `<circle class="ring" cx="200" cy="193" r="153"/><circle class="ring" cx="200" cy="193" r="131"/>
-   <path class="tri-out" d="M200 98L107 259H293Z"/>
-   <path class="tri-in" d="${ln(T,BL)}${ln(T,BR)}${ln(BL,BR)}${ln(L,R)}${ln(L,B[1])}${ln(R,B[2])}"/>`+
-   `<circle class="node-top" cx="${T[0]}" cy="${T[1]}" r="12"/><text class="nv nt" x="${T[0]}" y="${T[1]+1}">${p.top}</text>`+
-   node(L,p.mL,'nl')+node(R,p.mR,'nr')+
-   node(B[0],p.b[0],'nl')+node(B[1],p.b[1],'nl')+node(B[2],p.b[2],'nr')+node(B[3],p.b[3],'nr')+
-   `<text class="star" x="200" y="112">*</text><text class="star" x="121" y="256">*</text><text class="star" x="279" y="256">*</text>`+
-   raw.map((v,i)=>`<text class="raw" x="${B[i][0]+2}" y="276">${v}</text>`).join('')+
-   `<text class="rawl" x="${B[0][0]+2}" y="290">日期</text><text class="rawl" x="${B[1][0]+2}" y="290">月份</text><text class="rawl" x="247" y="290">年份</text>`+
-   tiles(200,55,p.upper,'中年','41–60','--t-mid','--t-mid-bg')+
-   tiles(98,140,p.left,'青年','21–40','--t-young','--t-young-bg')+
-   tiles(302,140,p.right,'晚年','61–','--t-old','--t-old-bg');
+  $('pyr').innerHTML=pyrSVG(p,yy,m,d);
   $('flowPill').hidden=!flow;
   $('flowBox').hidden=!flow; $('missBox').hidden=flow;
-  $('quadBlock').hidden=flow; $('anaBlock').hidden=flow; $('caiBlock').hidden=flow;
+  $('quadBlock').hidden=flow; $('anaBlock').hidden=flow; $('caiBlock').hidden=flow; $('loveBlock').hidden=flow; setTimeout(buildToc,0);
   if(flow) drawFlow(p.top,yy);
   $('flowPill').textContent=`${p.top} 為 ${yy} 流年`;
 }
@@ -1054,7 +1347,127 @@ const selToDate=()=>{const y=+$('ly').value,m=+$('lm').value,d=+$('ld').value;
   if(y&&m&&d&&d<=new Date(y,m,0).getDate()){$('lunarDate').value=`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;}
   else{$('lunarDate').value='';if(y&&m&&d)setLunarMode(true);}
   ph($('lunarDate'));};
-let started=false;
+/* ===== 能量靈數（依筆記整理） ===== */
+const EN={
+1:{t:'開創與自我',
+ pos:['自我','獨立','果斷','創造（無中生有）','原創力','進取（不喜歡不求上進的人）','獨特（吃、喝、穿著都有自己的堅持，甚至特別挑食）','樂觀','凝聚力（中高能量時，在人群中就是能看到他）'],
+ neg:['說教（太過自我）','自大（原本自信過多變成自大；或原本該有自信卻被忽視，變得自卑，反而演出一種假性的自大）','強硬','自私','咄咄逼人（說教＋強硬）','虛榮','攀比（希望自己鶴立雞群）','嫉妒（焦點被搶走時）','有勇無謀（看到表象就去做）','偏執（認定一件事就很難改變；很重視第一眼印象）'],
+ fear:['做配角','不如別人','不被重視','被傷自尊','害怕低人一等的感覺'],
+ more:['喜歡獨處，很需要有自己的空間。','速度很快，可以觀察走路速度：1 號走路很快。','表達欲望高，但比較常講自己想講的。','沒心機，能自己替自己加油打氣。','拚搏：凡殺不死我的，必使我更加強大。','獨特，有自己的風格。','領導統御：呼朋引伴的能力很強，身先士卒，別人再跟上。','不喜歡把事情交給別人做，覺得自己做比較快，所以容易有孤獨感；愛面子，不喜歡團體作業。','1 號人總覺得自己是對的，容易聽不進別人的話（低能量時），除非你比他厲害——他只信比他厲害的人。','說話不常用「應該、也許、可能、大概」這類不確定的詞。','1 號積極努力進取，不是為了虛榮心，只是希望被別人看見。','1 號有傲氣，除非有 2；1 多、2 多的人容易自我內耗，習慣先自己處理，很難開口。','1 號的感情觀：你是他的，他的還是他的，除非有 2、有 6。','說教到了低能量會變成碎唸。','工作時不要吵他，1 號會生氣。','1 號值得信賴，但討厭被背叛。','點子王、工作狂。','工作上不看過程，只看結果；帶 1 多的員工，只要講清楚你要的結果。','判斷靠自己的好惡（包含對人）。','外貌協會：喜歡長得好看或長得特別的，很重視第一眼印象。','喜歡肯學習、上進的人，也會鞭策別人積極努力進取。']},
+2:{t:'協調與合作',
+ pos:['藝術（美感）','美感出色','耐心（說話有耐心）','寬容（包容）','直覺（來自於對別人的察言觀色）','配合（可靠的幫手）','協調','可靠','和平','安靜（很好的左右手）','守護（在團隊裡有安定、守護的作用，有很強的陪伴能力）'],
+ neg:['依附（需要依附別人而活）','左右不定','無主見','過度敏感','軟弱','善於討好','抱怨（但 2 號覺得自己是在抒發）','耳根子軟','沮喪','利用他人','缺乏獨立性'],
+ fear:['獨立作戰','無依靠','做決定'],
+ more:['2 號人的價值來自別人的肯定，快樂也是因為別人而快樂。','低能量的 2 容易被人當成牆頭草。','凡你抱怨的，終將失去。','2 多的人容易自我內耗，容易憂鬱。','5 能沖銷 2。','貼心、溫暖，2 的快樂來自於他人。','容易委屈：因為貼心照顧他人而委屈自己；心太軟，委屈自己去配合他人。','記憶力比較不好。','2 號要理解：很多不快樂來自自己的個性——太過配合、壓抑自己、忘了自己，以致於情緒上的苦難和不快樂。','低頻的 2 號人容易遇到不好的事情。','2 號人慢熱，情感上升溫比較慢，尤其 1 多、2 多。','不喜歡出鋒頭、站在舞台上，要獨挑大樑會很討厭，除非有準備或練過。','愛哭，容易被感動；2 號男生長大後可能忘記怎麼哭，因為小時候就體驗過無助，懂了哭也沒用。','感情：細水長流、溫柔。','可配合、可妥協，要找有智慧的主管，擺在團隊裡會開心。','2 多、6 多的女生，不建議當全職家管：6 容易情勒，2 容易找不到自己。','中階的 2 知道什麼該堅持、什麼時候為自己發聲、什麼時候配合別人，合作機會會很多。','對別人寬容，對美、心理學、神秘學有天份，對人的情緒感受很敏感。','低能量時容易鑽牛角尖。']},
+3:{t:'創意與表達',
+ pos:['聰明（學東西很快、領悟力很好）','熱情（喜怒哀樂都寫在臉上，發脾氣也很直接）','想像力豐富','有創意','幽默感','善表達','時尚（喜歡新奇）','擅社交','多才多藝（學東西很快）','有趣','樂觀','受歡迎'],
+ neg:['誇張','做作','缺乏方向（感興趣的事太多，會讓人覺得沒定性）','幼稚','膚淺（浮誇）','撒謊','搬弄是非（嘴巴是武器）','喋喋不休','逃避現實'],
+ fear:['被限制（任何形式）','無聊','面對現實（喜歡活在天馬行空的世界裡）','不被關注'],
+ more:['3 號人外表通常比實際年齡年輕。','學東西不會學得很深，除非有 7。','2 多、3 多的人會把抱怨加上 3 的能量誇張化；也喜歡跟人相處、喜歡熱鬧。','說話是 3 號的武器：很會說話、喜歡表演、喜歡成為焦點，所以 3 號人需要有舞台。','有藝術天份，可以往時尚發展；2、3、6 多可往美業發展（6 帶來質感）。','善用嘴做事、表達，但也容易傷人。','喜歡小動物。','可以觀察 3 號人的口頭禪：「好像很好玩」「好有趣」「為什麼」。','3 號人很需要稱讚。','3 號媽媽會碎唸。','3 號生氣會用嘴當武器；2 多是用委屈的方式；2 多 3 多則是又委屈又憤怒。','3 號人不會記恨，來得快、去得快。','人緣好，容易有三角問題：A 和 B 都會來找他。']},
+4:{t:'實際與執行',
+ pos:['實際','有組織力','可靠','實幹','誠懇','未雨綢繆','做事認真（時間可能比較長，但時間到了事情一定做到）','忠實','邏輯分明','責任感'],
+ neg:['拒絕改變','自我保護','挑剔','吝嗇','心胸狹窄（低能量時）','嫉妒心（低能量時：你不能比我好）','缺乏想像力','不變通（擔心變了之後很難控制）','無趣乏味','古板','貨比三家'],
+ fear:['變化','不穩定','生活危機'],
+ more:['低能量時，會羨慕比自己有錢的人。','1 多 4 多：很有想法，但會先做最壞的打算再去執行。','讓人覺得很安心、很靠譜。','面面俱到：會把可能發生的事都先想一遍、把該做的準備好，有突發狀況也知道怎麼處理。','不喜歡浪費，念舊。','苦幹實幹。','物慾低，買東西很實際。','階級觀念重。','需要團隊，也有帶團隊的天賦，可以發揮未雨綢繆、風險控管的能力。','固執，希望事情不要改變。','不喜歡紀念性的東西，喜歡 CP 值高、有實用性的東西。','事業成功的前提是家庭穩定，或公司穩定；4 號人最主要的議題是「家」或「公司」。','不可有投機取巧的心態，有的話容易賠錢。','白手起家：1 多 4 多。']},
+5:{t:'自由與冒險',
+ pos:['勇敢冒險','反傳統','博學（喜歡學習）','堅持自我','探索心（好奇心）','獨立性強','視野寬','幽默感','智慧'],
+ neg:['煩躁不安','無常（除非有 2、9 這類穩定的數字）','愛拖延','惰性','華而不實','頑固','散漫無序','缺乏恆心','情緒化（憑感覺）','精力不集中','浪費','不可靠'],
+ fear:['承諾','壓力','承擔責任','一成不變'],
+ more:['1、6、8 碰上 5 容易是災難（5 反傳統），彼此不了解彼此。','2 號說貼心話，3 號想說就說，5 號說的來自於他們的體驗（很有畫面感）。','5 號有儀式感。','5 對外人比較好（新鮮感）。','有正義感、像俠客，看不慣別人受委屈，會呼朋引伴來幫忙。','喜歡出國、大自然，喜歡無拘無束的感覺。','不太容易早婚，除非另一半也喜歡出門走走，或是先有後婚。','工作要選自己喜歡的，不喜歡心思就不會在這裡；適合有設定目標、不用固定待在一個地方的職業。','5 號旅遊適合帶 2 號、3 號。','很容易認識人，喜歡熱鬧，喜歡大家聚在一起。','跟 5 號談感情：不要吵架，他討厭吵鬧的互動。','容易讓人覺得缺乏責任感。','跳躍性思考的數字：3、5。','善變、無常。','給 5 號目標，就不用管他。','沒有 4、7、6、8 的 5 號人比較虛浮，不會深入研究。','生活隨性：沒有目標的 5 號人。','封印解除的 5 號人：目標導向的戰士。']},
+6:{t:'關懷與奉獻',
+ pos:['可信','忠實','愛和平','有同情心（2 號是不好意思拒絕，6 號是同情心氾濫）','可以承擔（為了自己愛的人去扛）','助人（喜歡幫助別人）','親和','體貼（2 號是貼心，6 號的體貼是放了愛進去）','治癒他人（別人喜歡找 6 聊心事，他會展現同情心和耐心）','奉獻精神','榮譽感強','直覺力','美的鑑賞（愛漂亮）','善解人意','完美主義'],
+ neg:['焦慮（要求完美）','自憐','得失心重','盲目付出（自我感動式的付出，付出沒被看到會失落，容易說「我對你這麼好……」）','道德綁架','多管閒事（6 號、8 號容易心軟）','嘴碎（要面子，愛的表現會變成嘮叨、指出你身上的缺點）'],
+ fear:['付出無回報（低階時）','缺乏價值（他要的是有價值的東西，包含他自己；害怕自己沒有價值）'],
+ more:['6 號容易為了愛失去尊嚴，容易卡情關。','6 愛漂亮、善解人意。','3 號用嘴讓人開心、療癒；336 適合靠教課、演說療癒他人。','6 號討厭被當壞人。','6 號有兩種狀態：強硬的大男人、大女人，或柔順的小男人、小女人。','情勒高手是 6 號；他的挑剔是希望你完美。','重視親情、家庭。','6 號對自己人（家人）很好，可信是基於忠誠度高；忠誠來自於你愛他，而且他感受到你感恩他的付出。','如果他的付出你沒看到、冷漠以待，6 號會由愛生恨。','6 號會為了所愛的人犧牲重要的事。','有療癒力、給人溫暖，責任心體現在「自己人」身上，會把自己人的責任扛在身上。','有 6、8 容易為了家人、家族扛責任。','容易過勞：1（工作狂）、6（責任）、8（大責任）。','6 號做事不是為了利益、權利，而是想讓人快樂（但有 4、6、7 除外）。','喜歡美、時尚、精品；若有 4，東西還要好用又精緻。對美無法抗拒，因為發現了價值。','關心時是天使，生氣時是惡魔，知道怎麼打擊你；有 3、6 的人會用嘴說出最讓你痛的話。','敏感體質，跟光、神性有緣份。','心腸軟：2 號只是配合，6 號只要你離他很近就會愛（9 是大愛，不一定心腸軟）。','容易憑感覺，所以有情關；很好哄，愛吃回頭草（2、6）。','擔心傷到別人的脆弱，但其實真正脆弱的是 6 自己。','愛哭：2、6；容易被感動：6。','3 多 6 多往時尚發展有優勢（336 時尚）。']},
+7:{t:'求真與分析',
+ pos:['分析力','博愛','安靜','有深度','求知慾強','找真理（想知道真相是什麼）','內省','自學成材（帶進門、知道技巧後，就會自己去找答案）','智慧','幸運（高能量狀態）','越級交朋友'],
+ neg:['自負','疑心重','孤僻','冷漠','與人保持距離','奸詐','挑剔','重視陰暗面（往壞的地方想）','缺乏同情心','剛愎自用','妄斷','幫人貼標籤'],
+ fear:['犯錯','無知','被欺騙（怕被人覺得自己笨）'],
+ more:['討厭笨蛋；1、7 很重的人討厭笨又不上進的人；7 多厭蠢。','用「加法式」交朋友；中階能量容易有貴人。','7 好面子，所以怕自己犯錯。','很喜歡內卷。','學東西很快，是自己花時間學來的（3、7）。','7 很重的人容易失眠，因為腦袋一直在轉；也容易是夜貓子。','容易鑽牛角尖，想得多做得少，沒用行動破除恐懼。','容易疑神疑鬼：2 多、6 多、7 多的家庭主婦，容易懷疑另一半外遇；2 多 6 多 7 多放在工作上，則是很好的軍師。','鐵齒，除非 9 多；7 多 9 多時，若 7 先被封印，容易迷信、被騙；若 9 先被封印，就會鐵齒。','重視頭腦。','情緒化時是忍著不說，像水庫，積累很久之後爆炸（2 號像水杯，用抱怨宣洩）。','喜歡研究可以深挖的東西：歷史、神秘學、哲學。','重視家庭；感情上有潔癖。','7 號人挑朋友，高能量的 7 號推薦的都不錯。','一被騙就是大筆的，因為他相信數據。','直覺強，卻不相信自己的直覺，硬要用邏輯去分析直覺。','1 多、7 多喜歡思考。','2、7、6 多容易憂鬱，要注意胸口的疾病。','低能量的 7 號容易挖坑給人跳。']},
+8:{t:'領導與果斷',
+ pos:['領導','果斷','勇敢','專注（對成功的專注）','有魄力','能屈能伸（為了目標）','智謀出色','商業頭腦（容易取得世俗的成功）','成功（獲得地位）','有雄心','創造財富','援助他人（取之社會，用之社會）'],
+ neg:['愛操縱','易怒','急於成功','好權力','虛榮','世俗','勢利眼（低能量）','投機取巧','濫用職權','唯利是圖','攀比（要看起來體面，不管是小孩還是禮物）','賭性（一夜致富或一夜負債）','不擇手段'],
+ fear:['失去威望（面子）','被人憐憫（討厭被可憐）','失敗','貧窮'],
+ more:['討厭躺平、把自己過得很悲慘的人。','1、3、8 很難在別人底下當員工，除非老闆比他厲害；只服比他強的人。','8 號的人生目標，很大比例建築在世俗成就上。','擅長交換法則。','責任感強，但也可能因為責任感而低能量。','對賺錢有興趣且有天份，有理財天賦，對投資理財有頭腦。','1 多、5 多、8 多對目標的完成率高。','1、8 誰強勢：1 是活在自己的想法裡，8 是霸氣。','容易在社會上取得身份地位，擅長人脈經營。','擅長察言觀色：2 的察言觀色來自情緒的敏感度，8 則是在身份上，所以能屈能伸。','天生的老闆，不甘於在別人底下太久。','不要被 8 號的外表騙了。','好勝心強：1 多、8 多；愛比較：1 多、6 多、8 多。','商場或政治名人，擁有身份地位的象徵。','答應的事會盡力完成，在家庭裡會承擔很多責任。','心機重，但不喜歡另一半有心機；重視同甘共苦的另一半，不會背叛你。','可以接受豪門聯姻、門當戶對。','容易有財無庫，除非有 4；1、8、6 多有錢，但沒有 4（庫）。','1、4、8 在世俗上容易累。','8 怕失去控制人的權利。','很懂人情世故。','1、8 比起其他數字更容易取得世俗成就；戰場不限，政治、商界都可以。','最容易被榮譽綁架。']},
+9:{t:'靈性與大愛',
+ pos:['智慧','博愛','高尚','付出愛心','熱心公益','慈悲','利人','靈性（敏感體質、夢中得到預視）','激勵別人（容易看到他人的光點）','正義感（見不得別人受苦）','想像力豐富（最容易看見未來的東西，能把想法化為現實）','慷慨','人道主義（悲天憫人）','浪漫','誠懇'],
+ neg:['惰性','妄想','不拒絕','消極','不利己（缺乏世俗心）','迷信（涉世未深）','愛心氾濫','拯救欲過強','情緒沮喪','情感軟弱','自我貶低','不現實'],
+ fear:['任何形式的限制','幻想破滅','希望落空（陷入負面）'],
+ more:['不要去看恐怖電影（或接觸負面的小說）。','容易被看見。','需要控制自己的脾氣。','不要跟錢過不去。','因為你需要，所以才發生。','夢想家：缺乏落地時，會被人當作不切實際。','心想事成的能力，透過信仰支撐動力。','涉世未深時，容易對邪教盲從。','1、7、9 號人沒經過他人指點，容易活在空想之中。','9 號越開心越有愛，能量越高，顯化力越高。','心軟的不同：2 是貼心、想被需要、配合你；6 是為愛；9 是大愛，除了自己好，也希望其他人好。','萬物不為我所有，但我皆可用。','沒原則的數字：2、6、9（不好意思得罪人、雞婆、慈悲心重）。','天賦：你去做比別人更容易學會，但不能靠著天賦就不做事。']}};
+const EN_NOTE=['先天數（8 碼）是年月日，與生俱來：生下來就擁有的能力，這 8 個數字表示我們曾經學習過、有經驗的。','後天數（最多 4 碼、最少 0 碼）是先天數加起來的雙位數：是潛能，也是缺點，代表為了解決這輩子課題所需要學習的能力。','主命數（只有 1 碼）是後天數相加後得到的個位數：人生課題，佔數字能量的大部分，與一個人的性格及未來有很大的關聯。','主命數是你的目標；為了這個目標，你必須修練完後天數（把缺點修練成潛能後），才能打開主命數。','先天數與後天數對照：後天數有的數字，先天數也有，就代表這個症狀太多了，原始的特性讓你產生了缺點（一律往負面去解）；但先天數沒有、後天數有，就跟他說不是很完備。','後天數（缺點）會幫你吸引很多劇情，這些劇情的發生都是為了讓你成長、讓你認識你的缺點。你以前或現在也有，把時間拉長去回想。','並不是年紀大就有智慧。'];
+const EN_MISS=['空缺數是你不擅長的那部份，需要留意欠缺能量所帶來的障礙；天性上的欠缺，也相當於缺陷。','了解一個人的天賦、行為模式、性格、思考模式，除了要看有的，也要看他沒有的，這才是完整的他。'];
+const EN_FULL='所有數字都有，稱為「大滿貫」：看起來好像所有優勢都佔滿了，但這類人反而生活的道路比較坎坷，尤其是在工作上。他們是最容易迷路的人，心思較複雜、喜好很多，做什麼都可以；但也因為都可以，什麼都不突出，路路通暢所以不知道該走哪一條，也會因為能量分散而蹉跎歲月。建議練九宮圖或訊息圖最強的那個數字，練到極致，就能突出。';
+/* 國曆＋農曆合盤：同年時年份只畫一次；不同年時，年份重複的部份不畫進去，除非跨西元年（例：2000、1999 → 1999 全畫；2011、2012 → 只畫不同處） */
+function energyCounts(y,m,d,ly,lm,ld){
+  const pre={},post={},mains=[];
+  const add=(o,str)=>{for(const ch of String(str))if(ch!=='0')o[ch]=(o[ch]||0)+1;};
+  const sN=lifeNums(y,m,d);
+  add(pre,String(y)+m+d); add(post,sN.chain.slice(0,-1).join('')||String(sN.total)); mains.push(sN.main);
+  let lN=null, yearNote='';
+  if(ly){
+    lN=lifeNums(ly,lm,ld);
+    let yStr='';
+    if(ly===y){yearNote='國曆、農曆同一年，年份只畫一次。';}
+    else if(String(ly).slice(0,2)!==String(y).slice(0,2)){yStr=String(ly);yearNote=`國曆 ${y}、農曆 ${ly} 跨西元年，農曆年份全畫。`;}
+    else{const a=String(y),b=String(ly);for(let i=0;i<4;i++)if(a[i]!==b[i])yStr+=b[i];yearNote=`國曆 ${y}、農曆 ${ly} 不同年，只畫不同的位數（${yStr||'無'}）。`;}
+    add(pre,yStr+lm+ld); add(post,lN.chain.slice(0,-1).join('')||String(lN.total)); mains.push(lN.main);
+  }
+  return {pre,post,mains,sN,lN,yearNote};
+}
+function drawEnergyGrid(c){
+  let html='';
+  for(let k=1;k<=9;k++){
+    const p=c.pre[k]||0,t=c.post[k]||0,mc=c.mains.filter(x=>x===k).length;
+    let s='';
+    for(let i=0;i<mc;i++) s+=`<rect class="main" x="${8-i*5}" y="${8-i*5}" width="${84+i*10}" height="${84+i*10}"/>`;
+    for(let i=0;i<t;i++){const g=i*7;s+=`<path class="post" d="M50 ${14+g}L${16+g*.9} ${84-g*.4}H${84-g*.9}Z"/>`;}
+    for(let i=0;i<p;i++) s+=`<circle class="pre" cx="50" cy="60" r="${17+i*5}"/>`;
+    s+=`<text x="50" y="61" style="font-size:24px;fill:var(--line)">${k}</text>`;
+    html+=`<div class="cell${p||t||mc?'':' en-miss'}"><svg viewBox="0 0 100 100" aria-label="${k}">${s}</svg></div>`;
+  }
+  return html;
+}
+function enCard(n,c,open){
+  const E=EN[n], p=c.pre[n]||0,t=c.post[n]||0,mc=c.mains.filter(x=>x===n).length, tot=p+t+mc;
+  const tags=[mc?'主命數':'',p?`先天 ×${p}`:'',t?`後天 ×${t}`:'',!tot?'空缺數':'',p&&t?'先後天都有':''].filter(Boolean);
+  const chips=a=>a.map(x=>`<span class="lv3-c">${x}</span>`).join('');
+  return `<details class="sub en-card${tot?'':' en-off'}"${open?' open':''}><summary><span class="en-n">${n}</span>${E.t}<span class="en-tags">${tags.map(x=>`<i>${x}</i>`).join('')}</span></summary><div class="sbody">
+    ${p&&t?`<p class="remind">先天數和後天數都有 ${n}：這個特質偏多，原始的特性容易變成缺點，先往負面的部分留意。</p>`:''}
+    ${!p&&t?`<p class="hint">先天沒有、後天有 ${n}：這是要學習的能力，目前還不完備。</p>`:''}
+    ${!tot?`<p class="remind">${n} 是你的空缺數：這是你比較不擅長的部分，留意下面的「恐懼」與「負面」。</p>`:''}
+    <p><b class="tag">正面</b></p><div class="lv3-k">${chips(E.pos)}</div>
+    <p><b class="tag">負面</b></p><div class="lv3-k">${chips(E.neg)}</div>
+    <p><b class="tag">恐懼</b></p><div class="lv3-k">${chips(E.fear)}</div>
+    <p><b class="tag">補充</b></p><ul>${E.more.map(x=>`<li>${x}</li>`).join('')}</ul></div></details>`;
+}
+
+let started=false, tabMode='solo';
+function tocMark(){const bs=[...document.querySelectorAll('#toc button')];if(!bs.length||$('results').hidden)return;let cur=bs[0];
+  for(const btn of bs){const el=$(btn.dataset.t);if(el&&el.getBoundingClientRect().top<120)cur=btn;}
+  bs.forEach(x=>x.classList.toggle('on',x===cur));const tc=$('toc'),r=cur.offsetLeft-tc.clientWidth/2+cur.offsetWidth/2;if(Math.abs(tc.scrollLeft-r)>40)tc.scrollLeft=r;}
+addEventListener('scroll',()=>{clearTimeout(window._tm);window._tm=setTimeout(tocMark,60);},{passive:true});
+function buildToc(){const items=[...document.querySelectorAll('#results [data-toc]')].filter(el=>!el.hidden&&!el.closest('[hidden]'));
+  $('toc').innerHTML=items.map(el=>`<button type="button" data-t="${el.id}">${el.dataset.toc}</button>`).join('');
+  tocMark();
+  $('toc').querySelectorAll('button').forEach(b=>b.onclick=()=>{const el=$(b.dataset.t);if(el)el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});});}
+function drawEnergy(){const v=$('solar').value; if(!v) return; const [y,m,d]=v.split('-').map(Number);
+  const ly=+$('ly').value||0, lm=+$('lm').value||0, ld=+$('ld').value||0, hasL=!!(ly&&lm&&ld);
+  const c=energyCounts(y,m,d,hasL?ly:0,lm,ld);
+  $('energyBirth').textContent=`國曆 ${y}/${m}/${d}`+(hasL?`・農曆 ${ly}/${lm}/${ld}`:'（請輸入農曆生日，才能國曆、農曆合盤）');
+  const miss=[1,2,3,4,5,6,7,8,9].filter(k=>!(c.pre[k]||c.post[k]||c.mains.includes(k)));
+  const row=(t,N)=>`<div class="en-row"><b>${t}</b><span>主命數 <em>${N.main}</em></span><span>後天數 <em>${N.chain.slice(0,-1).join('／')||'—'}</em></span></div>`;
+  $('energyBody').innerHTML=`
+    ${row('國曆',c.sN)}${c.lN?row('農曆',c.lN):''}
+    <details class="sub"><summary>先天數、後天數、主命數是什麼</summary><div class="sbody"><ul>${EN_NOTE.map(x=>`<li>${x}</li>`).join('')}</ul></div></details>
+    <h3 class="en-h">${c.lN?'國曆＋農曆合盤九宮格':'國曆九宮格'}</h3>
+    <div class="legend"><span class="lg-pre">○ 先天數</span><span class="lg-post">△ 後天數</span><span class="lg-main">□ 主命數</span></div>
+    <div class="grid9 en-grid">${drawEnergyGrid(c)}</div>
+    ${c.yearNote?`<p class="hint">${c.yearNote}</p>`:''}
+    <div class="en-miss-box">${miss.length?`<p><b>空缺數</b>${miss.map(k=>`<span class="en-n">${k}</span>`).join('')}</p>`:`<p><b>大滿貫</b>九個數字都有</p><p class="hint">${EN_FULL}</p>`}
+      <p class="hint">${EN_MISS.join('')}</p></div>
+    <h3 class="en-h">1～9 號能量</h3><p class="hint">有出現的數字排在前面；點開看正面、負面、恐懼與補充。</p>
+    ${[1,2,3,4,5,6,7,8,9].sort((a,b)=>(miss.includes(a)-miss.includes(b))||a-b).map(k=>enCard(k,c,c.sN.main===k)).join('')}`;
+}
 function autoLunar(){
   const [y,m,d]=$('solar').value.split('-').map(Number);
   if(!y) return;
@@ -1099,9 +1512,10 @@ function render(){
   const [y,m,d]=$('solar').value.split('-').map(Number);
   $('startBtn').disabled=!y;
   const has=!!y&&started;
-  $('results').hidden=!has; $('sRes').hidden=!has; $('ageBox').hidden=!has; $('startHint').hidden=has; $('startBtn').hidden=has;
+  $('results').hidden=!has||tabMode==='energy'; $('energyRes').hidden=!has||tabMode!=='energy'; if(has&&tabMode==='energy') drawEnergy(); $('sRes').hidden=!has; $('ageBox').hidden=!has; $('startHint').hidden=has; $('startBtn').hidden=has;
   $('lRes').hidden=!(has&&$('ly').value&&$('lm').value&&$('ld').value);
   if(!has) return;
+  setTimeout(buildToc,0);
   const s=lifeNums(y,m,d);
   $('sSum').textContent=s.shown;$('sMain').textContent=s.main;
   let ly=+$('ly').value,lm=+$('lm').value,ld=+$('ld').value;
@@ -1149,6 +1563,568 @@ topBtn.onclick=()=>{
   document.querySelector('#orderSeg button[data-v="1"]').click();
   started=false;render();
   window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};
+/* ===== 淺色／深色 ===== */
+(()=>{const set=v=>{if(v==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',v);
+  document.querySelectorAll('#themeSeg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v?'true':'false'));
+  try{localStorage.setItem('zx-theme',v)}catch(e){}};
+  let v='auto';try{v=localStorage.getItem('zx-theme')||'auto'}catch(e){}
+  set(v);document.querySelectorAll('#themeSeg button').forEach(b=>b.onclick=()=>set(b.dataset.v));})();
+/* ===== 分頁 ===== */
+const showTab=t=>{const pair=t==='pair';tabMode=t;document.documentElement.dataset.tab=t;$('tabSolo').hidden=pair;$('tabPair').hidden=!pair;
+  $('tabBtnSolo').setAttribute('aria-selected',t==='solo');$('tabBtnPair').setAttribute('aria-selected',pair);$('tabBtnEnergy').setAttribute('aria-selected',t==='energy');
+  $('startBtn').textContent=t==='energy'?'解讀我的能量':'解讀我的數字';$('startHint').textContent=t==='energy'?'選好國曆生日，農曆會自動帶入。按「解讀我的能量」看結果。':'選好國曆生日，農曆會自動帶入。按「解讀我的數字」看結果。';
+  if(!pair) render();
+  document.querySelector('.wrap').classList.toggle('wide',pair);};
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+/* ===== 雙人比較 ===== */
+const GEN={'木':'火','火':'土','土':'金','金':'水','水':'木'}, KE={'木':'土','土':'水','水':'火','火':'金','金':'木'};
+let pMode='birth';
+function pairCard(id,name,v){
+  const el=$(id); if(!v){el.innerHTML=`<h2>${name}</h2><p class="hint">請輸入 ${name} 的國曆生日。</p>`;return null;}
+  const [y,m,d]=v.split('-').map(Number), p=pyramid(y,m,d,null), n=p.top, ln=lifeNums(y,m,d);
+  if(pMode==='flow'){
+    const yr=+$('pYear').value||NOW, fp=pyramid(yr,m,d,null), fn=fp.top, f=flowParts(fn,yr);
+    el.innerHTML=`<h2>${name} <span class="pno-s">${n} 號人</span></h2>
+      <div class="fy-head">${f.head}</div>
+      <div class="fy-tags">${f.tags}</div>
+      <div class="ptags">${flowTagsFor(p,fn).map(x=>`<p>${x}</p>`).join('')}</div>
+      <svg class="pyr" viewBox="0 0 400 350" role="img" aria-label="${name} 的 ${yr} 流年七秒讀心數">${pyrSVG(fp,yr,m,d)}</svg>
+      <p class="hint">點下面的主題展開看流年解讀。</p>
+      <div class="fy-body">${f.body}</div>`;
+    return {p,n,name,fn,yr};
+  }
+  el.innerHTML=`<h2>${name} <span class="pno-s">${n} 號人</span></h2>
+    <div class="pmeta"><span>${y}/${m}/${d}</span><span>主命數 ${ln.main}</span><span>天賦：${TALENT[n].k}</span><span>五行：${PROF[n].el}</span><span>${ISM[n]}主義</span></div>
+    <svg class="pyr" viewBox="0 0 400 350" role="img" aria-label="${name} 的七秒讀心數">${pyrSVG(p,y,m,d)}</svg>
+    <p class="hint">成功公式：${PERSON[n].f[0]} → ${PERSON[n].f[1]}・留意「${PERSON[n].w}」</p>`;
+  return {p,n,name};
+}
+/* ===== 愛情之鑰（依講義原意整理） ===== */
+const LOVE={
+1:{t:'敢愛敢恨型',r:'理性大於感性，麵包比愛情重要',do:['主動出擊、強勢示愛，說行就行、不行就不行','說一不二，習慣當決策者'],want:['直言不諱、主動表白、不玩曖昧，展現出決心','願意跟隨，但不要太黏，給彼此空間，不要硬碰硬'],m:['喜歡主導，渴望在關係中贏得地位','戀愛時直接了當，習慣把自己放在首位','婚姻中比較少表達，傾向當家裡的決策者'],f:['抗拒依賴，但仍想在伴侶身上找到支持','渴望平等，卻也希望伴侶能帶領自己','婚後維持獨立，用柔和的方式展現權威'],blind:'容易忽略另一半的感受或需求',myth:'以為成功可以代表愛情的價值',tip:'情感交流比成就炫耀更重要',adv:['輸掉了感情，不代表輸掉人生','越專注自己，越能吸引對的人','別愛得太強勢，也要學會一點柔軟']},
+2:{t:'溫柔協調型',r:'感性大於理性，愛情比麵包重要',do:['情感細膩、哭點低、依賴心強，委屈常藏在心裡','為了和諧願意妥協，為了對方而改變自己'],want:['能談心、給依靠，適時聆聽，有高品質的陪伴','熱情擁抱、一起合照，牽手、搭肩這類親密互動'],m:['體貼溫和，為伴侶提供情感支持','戀愛時很專注，常需要確認自己在關係中的位置','婚姻中當支持者，會主動化解家庭衝突'],f:['比較感性，在乎情感需求和對方的反應','會表達愛意，重視深層交流和情感連結','婚姻中容易產生共鳴，擅長安撫家庭關係'],blind:'太在意別人的感受，容易失去自我',myth:'以為妥協可以避免所有矛盾',tip:'學會平衡，不要一味迎合對方',adv:['尊重自己，別讓愛情變卑微','付出太多，反而讓人不珍惜','別太依賴，獨立才更有吸引力']},
+3:{t:'創意表達型',r:'感性大於理性，愛情比麵包重要',do:['說走就走、樂趣無窮，開心就笑、傷心就大哭','愛得轟轟烈烈，有時無理取鬧、容易善變，渴望被關注'],want:['火熱、有青春活力，被欣賞，一起愉快地冒險','甜蜜約會、營造氛圍、輕鬆自在，來趟即興旅行'],m:['活潑外向，會用搞笑讓氣氛輕鬆','追求樂趣，喜歡製造驚喜或浪漫情境','婚後重視活動，注意力容易放在自己的興趣上'],f:['浪漫，有時會把愛情想得太像童話','情感多變，對愛情充滿熱情','婚後希望有輕鬆的氛圍，而不只是例行的家庭生活'],blind:'只重視熱鬧，忽略感情的長期經營',myth:'以為輕鬆愉快就能解決問題',tip:'穩定比外在的趣味更重要',adv:['失去愛情，不等於失去快樂','你的快樂，不該由別人決定','別讓愛情消耗你的熱情']},
+4:{t:'穩定建設型',r:'理性大於感性，麵包比愛情重要',do:['務實可靠、追求長久關係，保守傳統、有家庭觀念','講求實際、以結婚為前提，有時會顯得一成不變'],want:['有時間觀念、言行一致、說到做到、坦誠相待','提前報備、老老實實，一起規劃、一步一步來'],m:['保守安靜，通常不會輕易展開感情','願意承諾，重視共同的生活和目標','婚姻中提供經濟支持，注重家庭的實際需求'],f:['感情持久穩定，需要時間建立信任','戀愛注重實際，希望有共同的長期規劃','婚後細心周到，重視生活環境的秩序'],blind:'太保守，讓感情陷入一成不變',myth:'以為穩定的生活就是最好的付出',tip:'不要太刻板，愛情需要一點調和',adv:['該放下的，就別再執著','你的穩定，要給值得的人','真正的愛，是接受，不是忍受']},
+5:{t:'不羈放縱型',r:'感性大於理性，愛情比麵包重要',do:['幽默逗趣、會討你歡心，喜歡新鮮刺激、常反其道而行','討厭被唸、不聽勸、害怕承諾，需要交友的空間'],want:['不要被約束，活在當下，多一點信任、少一點規矩','熱情擁抱、一起合照，牽手、搭肩這類親密互動'],m:['自在，對關係的束縛很敏感','喜歡調情，但需要足夠的空間保持自我','婚後愛往外跑，容易顯得不太安分'],f:['重視自由空間，想在不被束縛下體驗愛情','避免黏人，也希望保有自己的空間','婚後能帶來活力，希望伴侶有包容心'],blind:'太隨性，感情缺乏深度經營',myth:'以為要不斷追求新鮮感才能維持熱度',tip:'太追求刺激，容易失去真愛',adv:['別逃避感情，要學會承擔責任','心有多簡單，你就有多自由','最好的感情，是兩個人一起成長']},
+6:{t:'維護關係型',r:'理性大於感性，麵包比愛情重要',do:['願意奉獻、愛情至上、不容易分手，把伴侶放在第一位','會挑毛病、重視外表，期待回報，失戀時容易崩潰'],want:['重視人品道德、有紳士風度、有智慧，不要太安逸','一起經營、重視家庭，孝順愛家，和家人一起好'],m:['關心伴侶，致力保護另一半','重視踏實感，希望感情長久穩定','以家庭為重，但可能過度佔有'],f:['會表達關懷，細心照顧伴侶的情感需求','為愛而生，希望對方能承擔起承諾','婚後營造溫馨的家，願意犧牲小我、完成大我'],blind:'對感情期待太高，容易失望',myth:'以為愛真的可以解決所有問題',tip:'愛情也需要務實和現實面的考量',adv:['愛不是犧牲，而是彼此支持','過度付出，也等於失去自我','不對的愛情，換個人也能很美好']},
+7:{t:'內行分析型',r:'理性大於感性，麵包比愛情重要',do:['冷靜理智，喜歡去愛多過被愛，會有距離感','疑心病重、會逃避問題，話不直說，要對方去猜'],want:['享受生活、不要被催促，滿足好奇心、探索原因','聊哲學、深度議題，有思想共鳴和心靈連結'],m:['比較理性，會冷靜分析關係中的細節','重視契合，尋求理性和情感的平衡','婚後顯得疏離，但會默默在背後支持'],f:['比較內斂，表達感情不衝動','重視深層連結，對浮誇的浪漫不感興趣','婚後心平氣和，扮演好智慧顧問的角色'],blind:'封閉自己，情感連結不夠',myth:'以為邏輯可以解決情感問題',tip:'表達情感比理性分析更重要',adv:['別再分析愛情，感受它的真實','愛是一種直覺，別把它當考題','不要考慮太多，行動才能開始']},
+8:{t:'霸氣總裁型',r:'感性大於理性，愛情比麵包重要',do:['會照顧人、很重感情，尊重支持對方，但會壓抑情緒','愛得很深、恨得很重，特別愛面子，掌控欲較強'],want:['像生活戰友一樣分享日常，一旦投入就百分百認真','被需要、覺得沒他不行，被崇拜，擁有決定權'],m:['保護欲強，對不確定性會感到不安','戀愛時強勢主導，重視自己的權威和地位','婚後提供保障，但常忽略情感需求'],f:['控制欲強，在關係中保持主導','戀愛時偏向主導，希望對方尊重她的付出和決定','婚姻中尋求匹配，希望經濟和情感都有保障'],blind:'太強勢，容易讓對方壓力很大',myth:'以為物質或實力就是愛的全部',tip:'愛情不是一場權力競賽',adv:['該放的就放，別想掌控一切','愛不是控制，是信任與尊重','強者的愛情，是包容與接納']},
+9:{t:'和平理想型',r:'理性和感性都有，愛情麵包都要',do:['人見人愛、非常健談、不會隱藏，嚮往柏拉圖式愛情','容易過度期待、美化對方，明明不能繼續了還盲目前進'],want:['無私的愛、接納和奉獻，同頻相吸、純粹美好','一起參加公益、慈善、心靈講座，重視精神層面'],m:['追求和平，通常會避免衝突和對立','比較理想化，對感情的期待比較高','婚後重視家庭和諧，與世無爭地相處'],f:['追求唯美，嚮往童話般的美好結局','對愛情有美麗的憧憬，希望有深入的心靈共鳴','婚後生活融洽，充滿愛與理解'],blind:'忽略自己的需求，過度聚焦在對方',myth:'以為大愛可以取代小愛',tip:'愛情需要落地，過度付出會疲憊',adv:['理想的愛，要和現實取得平衡','感情失敗，不代表人生失敗','你的大愛，要留給值得的人']}};
+const HECAI={
+1:{c:['各自為政，五行相剋，嚮往私人和隱私的空間','聚少離多、遠距戀愛，小別勝新婚'],s:'在家不要談工作，用橙色的能量來緩和。'},
+2:{c:['戀愛很好、結婚很吵，交往時特別溫柔體貼','善於合作、話題不斷，彼此無所不談'],s:'避免光說不練，用綠色的能量提前規劃。'},
+3:{c:['感情衝動、時好時壞，情緒波動比較不穩','經歷較多、容易忙碌，要做的功課比較多'],s:'處事不要太誇張，用靛色的能量療癒靜心。'},
+4:{c:['關係穩定、分手率低，平平淡淡、實實在在過日子','生活有序、有安全感，彼此用心經營、規劃未來'],s:'除了柴米油鹽，用金色的能量讓感情升溫。'},
+5:{c:['問題容易上門，兩人個性兩極，常是一方遷就另一方','熱愛美食、喜歡旅遊，但一談工作就容易吵架'],s:'不要靠感覺行事，用紅色的能量拿到結果。'},
+6:{c:['財富倍增、越來越旺，婚後會帶動兩家的運勢','忠誠信賴、關心彼此，以家為主，重視家庭'],s:'千萬不要太挑剔，用黃色的能量釋放憂鬱。'},
+7:{c:['人脈融合、圈子擴大，常有活躍的交際活動','彼此體貼、懂得自我反省，就算不常見面也信任彼此'],s:'任何感受都要分享，用藍色的能量達成目標。'},
+8:{c:['責任和壓力大，真情流露，常是一方輕鬆、一方緊繃','氣場強勢、容易爭奪主控權，雙方腳步不太一致'],s:'給彼此展現的機會，用紫色的能量找到內在平靜。'},
+9:{c:['一起學習、一起成長，結婚後各方面都容易成功','異中求同、樂於奉獻，是合不來卻分不開的關係'],s:'尊重彼此的不同，用白色的能量回到初心。'}};
+const HC_PAIRS={1:'1+9／2+8／3+7／4+6／5+5',2:'1+1／2+9／3+8／4+7／5+6',3:'1+2／3+9／4+8／5+7／6+6',4:'1+3／2+2／4+9／5+8／6+7',5:'1+4／2+3／5+9／6+8／7+7',6:'1+5／2+4／3+3／6+9／7+8',7:'1+6／2+5／3+4／7+9／8+8',8:'1+7／2+6／3+5／4+4／8+9',9:'1+8／2+7／3+6／4+5／9+9'};
+const HECAI_G={6:'最佳組合',7:'最佳組合',9:'最佳組合',2:'相敬如賓',4:'相敬如賓',1:'互相體諒',3:'互相體諒',5:'互相體諒',8:'互相體諒'};
+/* ===== 愛情密碼補充（依講義原意整理） ===== */
+const LOVE2={
+1:{need:'被肯定、被尊重',needD:'渴望被欣賞，需要感覺自己是重要的、能被信任和依靠的一方。',fear:'被控制或被懷疑',say:'「我相信你」「我以你為榮」',type:'主導型戀愛者',typeD:'愛得主動、講求效率，像在開戰略會議，目標明確、行動迅速；追愛時霸氣直接，穩定後容易變成「總經理模式」。',key:'學會溫柔領導，不要命令對方。',quote:'我不只是想贏你，我想贏在我們。',view:'愛情就像戰場，要贏、要有主導權。',good:'有行動力，會主動追求、不怕表白。',lesson:'太強勢，容易忽略對方的感受。',talk:'先傾聽再下結論，用「我需要」取代「你應該」。',too:'太想掌控',tooB:'太強勢、太主導，容易忽略對方感受。',tooA:'放軟一點，愛才有空間。'},
+2:{need:'被理解、被需要',needD:'重視情感交流和情緒連結，希望對方讀懂自己的細膩和體貼。',fear:'冷漠和忽略',say:'「有你在，我很安心」',type:'依附型戀愛者',typeD:'愛得溫柔、體貼、感性，像戀愛裡的溫度計，對情緒超敏銳；對方一句話能開心一整天，也能失落好幾夜。',key:'別用情緒試探愛，用信任延續愛。',quote:'愛不是討好，是懂得自己也值得被愛。',view:'愛情就是互相照顧、體貼入微。',good:'善解人意，能察覺對方細微的需要。',lesson:'過度付出，容易失去自我、缺乏安全感。',talk:'直接說出需求，不要用「沒關係」掩飾真心。',too:'太依附',tooB:'太在意對方反應，容易患得患失。',tooA:'先愛自己，再被愛。'},
+3:{need:'被讚美、被陪伴',needD:'要的是快樂的互動和情緒共鳴，需要有人願意分享生活、一起笑。',fear:'無趣和壓抑',say:'「和你在一起真開心」',type:'浪漫型戀愛者',typeD:'愛得熱鬧、甜蜜又可愛，是戀愛的氣氛王，會製造驚喜也愛被寵；容易因為感覺而愛，也可能因為感覺而散。',key:'情緒要有出口，愛才能長久。',quote:'我不需要完美的愛，只要開心的陪伴。',view:'愛情需要新鮮感和浪漫驚喜。',good:'會製造快樂氣氛，幽默有趣。',lesson:'容易情緒化，缺乏穩定和承諾感。',talk:'情緒上來先冷靜三分鐘，用真心代替誇張的玩笑。',too:'太戲劇',tooB:'把浪漫誤當深情，愛得太快太滿。',tooA:'別急著投入，也要給自己留空間。'},
+4:{need:'被信任、被穩定',needD:'需要安全感和規律感，希望感情有明確的方向和承諾。',fear:'不確定和不負責',say:'「我會陪你一起走下去」',type:'務實型戀愛者',typeD:'愛得穩重、有責任感，把感情當成長期投資，有規劃、有節奏；不會甜言蜜語，但行動最真誠。',key:'別怕表達，安全感也需要被聽見。',quote:'我愛你的方式，是讓你放心。',view:'愛情要像蓋房子，穩固又可靠。',good:'專情、踏實，給對方安全感。',lesson:'太理性，容易忽略浪漫和情感表達。',talk:'多說感謝和肯定，偶爾加點驚喜。',too:'太理性',tooB:'不善表達情感，讓人覺得冷淡。',tooA:'安全感不是沉默，而是溫柔的回應。'},
+5:{need:'被自由、被欣賞',needD:'需要空間、需要冒險，喜歡能一起探索世界、激發靈感的伴侶。',fear:'束縛和壓力',say:'「你想去哪，我都支持你」',type:'自由型戀愛者',typeD:'愛得刺激、多變、有節奏，像風一樣無法被束縛，卻能帶來新鮮感；最怕被控制，越逼越遠。',key:'自由不是遠離，是一起探索。',quote:'我不想被抓住，我想被懂。',view:'愛情要有自由，像旅行一樣充滿冒險。',good:'新鮮感十足，帶給對方驚喜和刺激。',lesson:'不安於室、缺乏承諾，容易逃避責任。',talk:'清楚表達承諾，多分享未來計畫，建立安全感。',too:'太貪新',tooB:'熱得快、冷得也快，容易忽略對方的情緒。',tooA:'自由不是逃避，而是選擇一起飛。'},
+6:{need:'被重視、被需要',needD:'希望被依賴、被感謝，享受照顧人的感覺，也想被溫柔回應。',fear:'被當成理所當然',say:'「有你真好，我很感激你」',type:'照顧型戀愛者',typeD:'愛得深、愛得細，像戀愛裡的家，會給溫暖、會守護；容易為了照顧而忽略自己的需求。',key:'被愛的人也要學會回饋。',quote:'我不求回報，但希望你懂我。',view:'愛情就是責任，要給對方最穩固的依靠。',good:'願意承擔，照顧周到，很有安全感。',lesson:'佔有慾和控制慾太強，容易壓迫對方。',talk:'學會信任，用陪伴代替質問。',too:'太付出',tooB:'付出太多，卻忘了被愛的感覺，容易陷入犧牲者模式。',tooA:'愛不是照顧，是一起成長。'},
+7:{need:'被理解、被信任',needD:'內心深沉又敏感，渴望一段能靜靜相處、心靈共鳴的愛。',fear:'被逼問或被誤解',say:'「我懂你，不用多說」',type:'理性型戀愛者',typeD:'愛得慢、愛得深，喜歡心靈契合而不是外在熱鬧；不會輕易表白，一旦愛上就很難抽離。',key:'信任比言語更重要。',quote:'我愛你，不吵不鬧，是靜靜地在。',view:'愛情是心靈交流，要找到靈魂共鳴的人。',good:'有智慧，能給對方深度的啟發。',lesson:'太冷淡、表達不夠，容易讓對方覺得疏離。',talk:'主動表達感受，多一點眼神和肢體交流。',too:'太封閉',tooB:'怕受傷、怕被看穿，乾脆不說愛。',tooA:'勇敢一點，真誠比完美更動人。'},
+8:{need:'被尊重、被支持',needD:'追求事業和成就感，希望感情是一種力量的結盟。',fear:'被看輕或被阻礙',say:'「我挺你，你可以的」',type:'權能型戀愛者',typeD:'愛得強勢、有掌控慾，但也極度保護；在感情中像 CEO，主導又講效率，只要被尊重，就能給出最穩定的力量。',key:'別跟他爭輸贏，要跟他談共贏。',quote:'我不想征服你，我想和你一起稱王。',view:'愛情要和事業一樣成功才算完整。',good:'願意為伴侶付出資源、保護對方。',lesson:'容易忽略細膩情感，把愛情當成合作計畫。',talk:'放下「老闆模式」，多用「我們」代替「你和我」。',too:'太強勢',tooB:'用控制代替安全感，容易把愛情當成管理。',tooA:'放手一點，信任就是力量。'},
+9:{need:'被感動、被信任',needD:'愛得深、愛得廣，想要浪漫、有靈魂、有溫度的愛。',fear:'現實和冷淡',say:'「你讓我相信愛的存在」',type:'靈性型戀愛者',typeD:'愛得深、愛得廣、愛得像詩，用靈魂談戀愛，浪漫又感性，常為愛付出、為情感流淚。',key:'別迷失在理想裡，要活在當下。',quote:'我不是愛一段關係，我愛的是靈魂的共鳴。',view:'愛情應該是最美、最純粹的存在。',good:'浪漫、深情、無私，能帶來感動。',lesson:'太理想化，容易失望、退縮。',talk:'少批評、多欣賞，把期望轉為鼓勵。',too:'太感性',tooB:'心軟愛得深也痛得深，常為理想化的愛受傷。',tooA:'愛不是拯救，是陪伴。'}};
+/* 脫單（男／女） */
+const SINGLE={m:{
+1:['太想主導關係，又怕被拒絕','控制感強、逞強、不願示弱，容易給人壓力','放下控制，學會傾聽，用穩定取代壓迫','你不是太強，是太怕輸。'],
+2:['對女生太好，卻沒有吸引力','討好、沒有界線、不敢表達需求','停止迎合，建立界線，讓自己有立場','你不是不夠好，是太好欺負。'],
+3:['一開始很熱，後面就冷掉','三分鐘熱度、情緒不穩','穩定輸出、建立節奏，讓對方覺得可以依靠','你不是沒魅力，是不穩定。'],
+4:['太保守，不敢突破','想太多、怕失敗、不行動','先做再想，增加嘗試次數，允許不完美','你不是沒機會，是不敢動。'],
+5:['太自我，難相處','固執、不調整、不傾聽','學會彈性，理解對方的感受，世界不只有你','你不是有原則，是太硬。'],
+6:['標準高，難建立關係','打分數式戀愛、過度比較','降低條件、提升溫度，先建立連結再談條件','你不是在選人，是在篩掉愛。'],
+7:['觀察很多，卻不行動','想太多、怕犯錯、不出手','行動優先，邊做邊修正，降低心理門檻','你不是不會，是不敢。'],
+8:['想很多，卻遲遲不開始','壓力大、責任感重、怕承擔','從小步開始，不用一次到位，讓關係自然發展','你不是沒能力，是被責任壓住。'],
+9:['選擇多，但難穩定','不專一、猶豫、想要更多','聚焦一段關係，學會投入，停止比較','你不是選不到，是不想選。']},
+f:{
+1:['太強勢，容易讓對方有壓力','控制、主導、不願示弱，很難被接近','降低控制感，學會柔軟與回應，讓對方有參與感','你不是沒人要，是太像一個人也過得很好。'],
+2:['太溫柔，容易吸引到錯的人','心軟、沒界線、容易被消耗','建立界線，學會拒絕，不要誰來都接','你不是缺愛，是給太多。'],
+3:['情緒大，關係容易不穩','情緒起伏、衝動、愛得太快','穩定情緒、放慢節奏，讓關係自然發展','你不是不值得，是太用力。'],
+4:['太保守，不容易開始一段關係','怕受傷、想太多、不敢嘗試','允許不完美，增加互動機會，先體驗再判斷','你不是沒機會，是太小心。'],
+5:['太有主見，難磨合','固執、自我、不願調整','增加彈性，理解對方感受，學會雙向互動','你不是不適合，是太難靠近。'],
+6:['標準高，難進入關係','挑剔、比較，看條件多過感覺','放慢篩選速度，先建立連結，讓感情慢慢長出來','你不是遇不到，是篩太快。'],
+7:['看很多，卻不投入','懷疑、觀察、不信任','適度打開自己，給關係機會，不要只站在外面看','你不是不想愛，是不敢信。'],
+8:['想很多，難做決定','責任感重、糾結、怕選錯','相信當下的感受，不用一次就選對，讓關係自然流動','你不是沒人選，是太難決定。'],
+9:['選擇多，但難穩定','容易比較、不滿足、總想要更好','聚焦一段關係，學會投入，不要一直換選項','你不是找不到，是不想停。']}};
+/* 女生分手 [表面, 真相, 反應, 卡點, 需求, 總結] */
+const BREAKF={
+1:['看起來很灑脫，很像沒事','最痛的不是失去，是「自己居然輸了」','嘴巴很硬、情緒很壓，白天正常、晚上失眠','逞強、不低頭、不願示弱','被理解、被尊重、被堅定地選擇','不是放不下，是不甘心。'],
+2:['一直想溝通、想修復','其實早就委屈很久了','反覆心軟、替對方找理由，深夜情緒容易反撲','太重感情、太容易原諒','被陪伴、被在乎、被回應','不是離不開，是太會撐。'],
+3:['情緒爆炸、哭得很大聲','痛的是感覺突然消失','衝動封鎖、衝動發文、衝動復合','情緒太快，太急著填補空缺','被重視、被熱情對待、有感的互動','不是放不下，是太怕安靜。'],
+4:['冷靜、理性，不太哭','最痛的是未來崩塌','反覆檢討自己，思考哪裡做錯','過度內耗、想太多','穩定、安全感、長期規劃','不是不痛，是不敢亂掉。'],
+5:['看起來很瀟灑，很快抽離','其實是感覺突然斷掉了','容易突然想通，又突然失落','感覺一變，整個人就跟著變','自由感、新鮮感、被理解的感覺','不是絕情，是感覺回不去了。'],
+6:['開始變得現實、談條件','失望的是對方沒有成長','重新評估人生、重新計算價值','容易用理性壓住情感','價值感、安全感、未來感','不是現實，是怕白費。'],
+7:['安靜、冷靜，不太表態','其實已經觀察很久了','自己消化，不太找人傾訴','不信任、怕受傷、怕看錯人','真誠、安全、精神上的交流','不是冷淡，是不敢再信。'],
+8:['糾結、反覆，放不乾淨','一直在想：「是不是我再撐一下就好？」','容易拖著不放，一直想救關係','責任感太重、容易自責','被分擔、被理解、被一起承擔','不是放不下，是太會扛。'],
+9:['恢復很快，看起來很豁達','怕的是錯過更好的人生','快速往前，快速投入新生活','容易比較、容易不滿足','成長感、未來感、靈魂共鳴','不是無情，是太怕停下來。']};
+function love2HTML(n,g){
+  const L=LOVE2[n], ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  const S=g?SINGLE[g][n]:null, F=g==='f'?BREAKF[n]:null;
+  return `<div class="need"><p><b>核心需求</b>${L.need}：${L.needD}</p><p><b>最怕</b>${L.fear}</p><p class="say">對 Ta 說：${L.say}</p></div>
+  <details class="sub"><summary>愛情密碼</summary><div class="sbody">
+    <p><b class="tag">${L.type}</b>${L.typeD}</p>
+    <p><b class="tag">關係關鍵</b>${L.key}</p>
+    <p class="remind">「${L.quote}」</p>
+    <p><b class="tag">愛情觀</b>${L.view}</p>
+    <p><b class="tag">優點</b>${L.good}</p>
+    <p><b class="tag">課題</b>${L.lesson}</p>
+    <p><b class="tag">溝通技巧</b>${L.talk}</p>
+    <p><b class="tag">${L.too}</b>${L.tooB}建議：${L.tooA}</p>
+  </div></details>
+  ${S?`<details class="sub"><summary>${g==='m'?'男':'女'}生脫單解析</summary><div class="sbody">
+    <p><b class="tag">問題</b>${S[0]}</p><p><b class="tag">卡點</b>${S[1]}</p><p><b class="tag">解法</b>${S[2]}</p><p class="remind">${S[3]}</p></div></details>`:''}
+  ${F?`<details class="sub"><summary>女生分手解析</summary><div class="sbody">
+    <p><b class="tag">表面</b>${F[0]}</p><p><b class="tag">真相</b>${F[1]}</p><p><b class="tag">反應</b>${F[2]}</p><p><b class="tag">卡點</b>${F[3]}</p><p><b class="tag">真正需要</b>${F[4]}</p><p class="remind">${n} 號女生${F[5]}</p></div></details>`:''}`;
+}
+
+/* ===== 1–9 號人的愛情觀＋男女情感世界（依講義原意整理） ===== */
+const LOVE3={
+1:{t:'敢愛敢恨型',line:'愛得直接，喜歡就說、不愛也不勉強。',show:['主動追求','強勢主導','愛得直接','說斷就斷'],want:['渴望尊重','保有空間','期待欣賞','甘心追隨'],
+ act:'喜歡一個人時不拖泥帶水，會主動製造機會、勇敢追求想要的幸福。本身很有主見，進入關係後容易變得強勢，習慣由自己安排，甚至覺得自己的決定就是最好的。喜歡就表現出來，不喜歡也不太勉強自己；感情真的走不下去時，可能快刀斬亂麻、說斷就斷。',
+ inner:'很在意自己有沒有被尊重，希望另一半給適當的自由與空間。努力完成一件事時，比起被挑毛病，一句「你真的很厲害！」更能讓他感受到被愛。雖然喜歡主導，內心也希望有一個值得欣賞、信任，甚至願意追隨的伴侶；這不是盲目服從，而是認同對方的能力與價值，願意一起前進。',
+ share:'1 號人的愛情看似強勢，背後往往藏著對尊重、自由、肯定與信任的渴望。懂得欣賞他的優點，也讓他學會尊重你的想法，才是長久相處的關鍵。',
+ m:['很重視自己的能力與地位，希望另一半認同自己，也希望自己在感情裡是有價值、有分量的。約會時喜歡安排一切，遇到問題習慣自己處理，甚至覺得「這件事交給我就好」。',
+    '喜歡就表達、有想法就說出來；但因為習慣從自己的角度出發，有時明明是好意，卻忽略了另一半的感受。',
+    '希望自己能承擔責任，習慣成為家裡的決策者。不太擅長表達內心的情緒，覺得努力工作、照顧家庭就是愛的表現。'],
+ ms:'有主見、有行動力是優勢，但真正好的感情，不只是自己能做決定，也要讓另一半有參與的機會。懂得主導是一種能力，願意傾聽才是感情裡的智慧。',
+ f:['外表看起來很獨立，內心其實也渴望有人可以依靠。很多事習慣自己處理（「沒關係，我自己來就好！」），但另一半如果真的什麼都不管，她又會想「難道你都不會主動關心我嗎？」她不是不需要幫忙，而是希望對方主動關心，不是等她開口。',
+    '欣賞有能力、有想法、有擔當的人，希望另一半在重要時刻給予方向和建議，但不代表什麼事都要聽對方的。對方太強勢、凡事替她決定，反而容易讓她反感。',
+    '對她來說，結婚不代表失去自己。即使願意為家庭付出，也希望自己的意見被重視。有時會選擇比較柔和的方式溝通，但不代表她沒有立場，只是不希望每件事都變成爭執。'],
+ fs:'1 號女生不是不需要被照顧，而是不希望被照顧變成被控制。真正適合她的感情，是有人可以依靠，也有空間做自己。'},
+2:{t:'柔情依戀型',line:'重視陪伴、在意感受，希望兩顆心能靠得更近。',show:['主動撒嬌','在意回應','害怕冷落','委屈求全'],want:['渴望陪伴','溫柔安撫','親密互動','細心聆聽'],
+ act:'通常溫柔體貼，喜歡一個人時會主動撒嬌、關心對方，也很在意另一半有沒有給回應。訊息很久沒回，就可能開始胡思亂想：「是不是我說錯什麼了？還是他不在乎我了？」這不一定是缺乏安全感，而是比較容易從對方的態度感受彼此的親密程度。也因為重視感情，有時明明心裡不開心卻不敢直說，甚至為了維持關係而委屈自己。',
+ inner:'渴望陪伴，希望有人分享生活，難過時能得到溫柔的安撫與理解。愛不一定要昂貴的禮物，生活中的一句關心、一個擁抱，或願意耐心聽他說話，都能讓他感動很久。分享心事時，最重要的往往不是立刻幫他解決問題，而是先讓他感受到被理解。',
+ share:'2 號人的優點是溫柔、體貼、懂得照顧別人的感受，但也要學習表達自己的需求。愛一個人可以付出，但不要因為害怕失去，而忘記好好愛自己。',
+ m:['比較重視情感交流，容易留意另一半的心情；發現女朋友心情不好，會主動問「怎麼了？是不是發生什麼事情？」不一定會說甜言蜜語，但會透過陪伴、關心與實際行動，讓對方感受到支持。',
+    '很重視彼此的連結，也希望知道自己是不是被需要、被在乎。另一半突然變冷淡、很久沒主動聯絡，他不一定會立刻生氣，反而開始猜「是不是我們之間出了什麼問題？」表面看起來沒事，心裡其實已經想了很多。',
+    '比較願意扮演支持者的角色，希望透過溝通與協調減少家裡的摩擦；另一半情緒不好時也會主動安慰、緩和氣氛。但過度在意別人的感受，有時容易忽略自己的立場，甚至把不滿一直放在心裡。'],
+ ms:'溫柔、細膩、懂得體貼是 2 號男生的優勢，但真正成熟的感情，不只是照顧對方，也要懂得表達自己。願意支持另一半很好，但別忘了自己的感受也同樣重要。',
+ f:['對情緒比較敏感，很容易察覺對方語氣或表情的變化。另一半平常都會說晚安，哪天忘了，她可能就會想「是不是你今天不開心？還是我做錯什麼？」她在意的不一定是那句晚安，而是想透過這些小細節確認感情依然穩定。',
+    '對她來說，愛不只是心裡知道，更希望透過言語、行動與陪伴感受到。分享今天遇到的事時，比起對方一直滑手機，她更希望對方放下手邊的事認真聽她說幾句話；有時她要的不是大道理，而是一句「我懂你的感受」。',
+    '希望家裡有溫暖的氣氛，願意透過溝通、安撫與協調讓關係更融洽。但有時太在意大家開不開心，反而容易把自己的委屈藏起來；明明自己也很累，卻還是習慣先照顧別人的情緒。'],
+ fs:'2 號女生的溫柔與體貼是感情裡很珍貴的特質，但也要學會讓另一半知道自己的想法。真正好的感情，不是只有你懂得體諒對方，而是彼此都願意理解與照顧。'},
+3:{t:'熱情奔放型',line:'熱情直接、充滿活力，希望兩個人在一起開心又有趣。',show:['大膽示愛','情緒外露','說走就走','愛玩愛鬧'],want:['渴望關注','甜蜜約會','獲得讚美','一起歡笑'],
+ act:'喜歡一個人時不太會把感情藏在心裡，反而會大膽示愛、主動表達：想到對方就打電話，開心的事第一時間分享，甚至突然安排一場約會給驚喜。情緒也很直接，開心或不開心都寫在臉上；有時比較衝動，前一秒還很熱情，下一秒因為一句話不開心，甚至一時生氣就說出分手。也比較有童心，喜歡玩樂、開玩笑，希望感情不要太沉悶。',
+ inner:'渴望被關注，希望另一半願意陪自己約會、分享生活，一起創造甜蜜的回憶。精心打扮後希望聽到一句讚美；準備驚喜後，也希望看到對方開心的反應。對 3 號人來說，愛情不只是兩個人在一起，更希望彼此能一起歡笑、一起體驗生活。',
+ share:'3 號人的優點是熱情、樂觀、懂得創造浪漫，但也要學習管理情緒，不要因為一時衝動而傷害感情。愛情可以充滿激情，但真正長久的幸福，還需要理解、包容與耐心。',
+ m:['活潑外向，喜歡讓身邊的人開心。女朋友心情不好時，可能不會馬上講大道理，而是先開個玩笑、逗她笑，讓氣氛輕鬆一點；看起來不太正經，其實只是習慣用輕鬆的方式表達感情。',
+    '很重視生活的樂趣，不希望兩人每天都一模一樣：會突然安排旅行、臨時約出去吃飯，想到有趣的活動就希望另一半一起參與。但也因為比較隨性，有時只顧著自己的興趣，忽略了另一半真正想要的陪伴。',
+    '希望家裡的氣氛輕鬆愉快，不喜歡每天被嚴肅的事情圍繞，下班可能想先放鬆、看影片、玩遊戲。但另一半正在忙家務時自己卻只顧著玩，就容易讓對方覺得缺乏責任感。'],
+ ms:'3 號男生的優勢是熱情、幽默、懂得創造快樂，但婚姻不能只有開心，也需要責任與付出。懂得製造浪漫很好，願意一起承擔生活，才能讓幸福更長久。',
+ f:['喜歡被關注、被照顧，有時像個小公主，也希望另一半能主動表達愛意。精心打扮出門，會期待對方說一句「妳今天真的很漂亮！」對方完全沒反應，她可能就會覺得「你都沒發現我今天不一樣嗎？」她在意的不一定是讚美本身，而是自己的用心有沒有被看見。',
+    '喜歡有趣的互動，也希望兩人一起創造浪漫的回憶：紀念日希望有儀式感，平常也喜歡分享心情、安排約會，期待另一半偶爾給一點驚喜。但有時情緒來得快，可能只是對方一句無心的話，就讓她突然不開心。',
+    '對她來說，結婚不代表每天只能圍繞著柴米油鹽，即使有了家庭，也希望夫妻之間保有戀愛時的甜蜜，一起聊天、開玩笑、偶爾出去走走。但也要注意，婚姻除了浪漫，還有很多需要共同承擔的責任。'],
+ fs:'3 號女生的熱情與活力，往往能為感情帶來很多歡笑，但也要學會理解，愛情不可能每天都充滿驚喜。真正幸福的婚姻，不只是有人陪妳浪漫，也有人願意陪妳走過平凡。'},
+4:{t:'老夫老妻型',line:'平淡相守、細水長流，希望兩個人安安穩穩地走下去。',show:['平淡相守','認真交往','考慮婚嫁','少說情話'],want:['信守承諾','言行一致','生活安定','共同規劃'],
+ act:'通常比較務實，不太喜歡轟轟烈烈的愛情，更重視兩個人能不能長久相處。可能不會天天說「我愛你」，卻會記得你喜歡吃什麼、生活需要什麼，默默把事情安排好。對感情很認真，一旦決定交往就開始思考未來：適不適合結婚、工作穩不穩定、未來要住哪裡。但也因為務實，比較不擅長說情話，有時會讓另一半覺得不夠浪漫。',
+ inner:'重視承諾，希望另一半說到做到，而不是嘴巴說得很好聽、實際上卻沒有行動。答應好的約會不要隨便取消，討論好的事情不要經常改變；這些看似平凡的小事，其實都是建立信任的重要過程。也希望感情能穩定發展，兩個人對未來有共同的方向。',
+ share:'4 號人的優點是認真、踏實、願意付出，但也要記得，愛情除了責任與承諾，偶爾也需要一點浪漫與驚喜。真正長久的愛情，不一定每天都有激情，而是平凡的日子裡依然願意彼此珍惜。',
+ m:['比較謹慎，不太習慣把心裡的感受直接說出來。明明很喜歡一個女生，卻不一定馬上告白，反而先觀察對方的態度，確認彼此是否適合；交往後也比較少說甜言蜜語。這不代表他不在乎，而是更習慣透過實際行動表達關心。',
+    '不喜歡沒有方向的感情，交往一段時間後就會開始思考工作、收入、存款，甚至未來結婚的安排。對他們來說，愛情不是只有今天開不開心，而是兩個人能不能一起走向未來；但有時太重視現實，反而忽略另一半當下的情感需求。',
+    '認為既然成家了，就應該把家庭照顧好：努力工作、負擔生活開銷、安排家庭支出，讓家人有安定的生活。但有時會覺得「我努力賺錢，就是在愛這個家」，卻忘了另一半除了生活上的保障，也需要陪伴與情感交流。'],
+ ms:'4 號男生的優點是踏實、可靠、有責任感，但也要學會把心裡的關心說出來。願意承擔責任是一種愛，懂得表達關心，才能讓另一半真正感受到愛。',
+ f:['比較細心、務實，很重視感情中的安全感與穩定性，通常不會輕易把感情交出去。剛認識的人即使很熱情、很會說甜言蜜語，她也不一定馬上心動，反而會觀察對方是不是認真、說話算不算話。對她來說，真正的安全感不是聽到多少承諾，而是看見對方長期的實際行動。',
+    '希望感情有明確的方向，交往一段時間後，可能開始關心彼此的工作、經濟能力，以及未來是否有結婚的打算。另一半總是說「以後再看看」卻沒有任何具體安排，就容易讓她感到不安。但有時太重視規劃，也可能讓對方覺得壓力比較大。',
+    '希望生活有條理，家裡的事情也能安排妥當：家中收納、生活開銷、孩子作息，甚至每天要完成的事，都希望有一定的規律。另一半比較隨性、東西亂放、事情拖延，就容易產生摩擦。其實她不一定想控制對方，而是希望家庭生活更加穩定。'],
+ fs:'4 號女生的優點是細心、可靠、懂得照顧生活，但也要學習適度放鬆，不需要每件事都按照自己的規劃進行。幸福的婚姻，不是所有事情都安排得完美，而是兩個人願意互相理解、一起把日子過好。'},
+5:{t:'浪漫自由型',line:'浪漫自由、充滿變化，希望在一起依然保有自己的生活。',show:['幽默調情','製造驚喜','追求刺激','害怕承諾'],want:['自由空間','彼此信任','一起冒險','保留社交'],
+ act:'通常幽默風趣，喜歡透過開玩笑、製造驚喜讓感情保持新鮮感，例如突然安排一場旅行、臨時決定去吃美食，想到有趣的事就拉著另一半一起體驗。對 5 號人來說，愛情不只是陪伴，更是一種共同探索生活的樂趣。但也因為喜歡自由與刺激，有時比較害怕承諾；並不是不願意認真，而是擔心進入穩定關係後，自己的生活會受到太多限制。',
+ inner:'首先是自由空間：交往之後還是希望能跟朋友聚會、保有自己的興趣，而不是每天都必須向另一半報備所有行程。其次很重視彼此信任，另一半經常查勤、懷疑，甚至限制交友，就容易讓 5 號人產生想逃離的感覺。另外也希望另一半能一起冒險、體驗新事物，而不是所有生活都一成不變。',
+ share:'5 號人的優點是幽默、有趣、充滿活力，但也要學習理解，愛情除了自由，也需要責任與承諾。真正的自由，不是想走就走，而是即使擁有選擇，依然願意珍惜彼此。',
+ m:['不太喜歡被限制，尤其是生活中的各種規定與約束。明明只是跟朋友出去吃飯，另一半卻一直問「你在哪裡？跟誰？幾點回來？」即使他沒做什麼不好的事，也可能因為這種被管束的感覺而產生反感。對他們來說，兩個人在一起應該是開心的，而不是失去原本的生活。',
+    '喜歡輕鬆、有趣的相處模式，會開玩笑、說些幽默的話，甚至故意逗另一半生氣再想辦法哄回來。但有時也讓另一半覺得「你到底是認真的，還是只是在開玩笑？」其實他很享受戀愛的過程，只是不喜歡太多壓力與束縛；適度給予空間，反而容易讓彼此保持吸引力。',
+    '不喜歡每天過著完全一樣的生活，假日可能想出去走走、找朋友聚會，或安排一些新的活動；婚姻生活如果太單調，就可能讓他覺得缺乏活力。但這不代表 5 號男生不顧家，而是需要學習在自由與責任之間找到平衡。'],
+ ms:'5 號男生的優點是幽默、有趣、懂得享受生活，但也要記得，婚姻不是失去自由，而是學習與另一個人共同經營生活。真正成熟的愛情，不是沒有人管，而是懂得自由，也願意讓對方安心。',
+ f:['希望即使談了戀愛，也能保有自己的生活方式：想跟朋友逛街、參加聚會，或臨時安排旅行，不希望每件事都需要經過另一半同意。對方經常要求她改變生活習慣，甚至限制交友，就容易讓她覺得壓力很大。其實她不是不重視感情，而是不希望愛情變成一種負擔。',
+    '喜歡有互動、有趣味的感情，但不代表希望兩個人時時刻刻黏在一起。另一半每天都要求見面，甚至沒有立即回訊息就開始生氣，久而久之她可能覺得自己的生活空間越來越少。對她來說，適度的距離不是感情不好，而是希望兩個人都有自己的生活。',
+    '不喜歡婚後每天只剩下工作、家事與固定的生活安排，偶爾想跟另一半出去旅行、嘗試新餐廳，或安排一些不一樣的活動。另一半能理解她的想法、願意一起探索生活，通常更容易讓她感受到婚姻的幸福；但也要記得，婚姻除了自由與樂趣，還需要彼此包容與共同承擔責任。'],
+ fs:'5 號女生的優點是活潑、有趣、充滿生命力，但也要學習理解，真正的自由不是完全不受限制，而是在關係中找到彼此都舒服的相處方式。好的愛情，不是把彼此綁在一起，而是給予空間，依然願意一起走下去。'},
+6:{t:'忠誠專一型',line:'忠誠專一、重視承諾，希望兩個人能認真經營一段長久的感情。',show:['為愛付出','容易心軟','醋意較重','挑剔伴侶'],want:['珍惜真心','重視家庭','專情對待','共同經營'],
+ act:'通常比較願意為愛付出，真正喜歡一個人時，往往會把對方的事放在心上：另一半工作很累，會主動關心有沒有吃飯；對方遇到困難，也會想辦法幫忙解決。對 6 號人來說，愛不只是嘴巴說說，更希望透過實際行動讓對方感受到心意。但也因為太重視感情，有時容易心軟，明明受了委屈還是選擇包容。另外比較在意細節，容易對另一半有所要求；忘記重要的紀念日、答應的事沒做到，都可能讓他們特別失望，因為這些小事往往代表對方有沒有把自己放在心上。',
+ inner:'首先是真心與專情，希望另一半對感情認真，而不是抱著玩玩的心態。其次也很重視家庭，希望兩個人不只是談戀愛，更能一起規劃未來。另外，他們也期待彼此共同經營感情，而不是永遠只有一個人在付出。',
+ share:'6 號人的優點是願意付出、重視感情，也懂得照顧另一半。但要記得，愛一個人不代表什麼事情都要自己承擔，更不需要透過不斷付出來證明自己的價值。真正好的愛情，不是一個人付出所有，而是兩個人都願意珍惜彼此。',
+ m:['比較重視責任，也希望自己能成為另一半的依靠。女朋友遇到工作上的困難，他可能主動幫忙分析問題，甚至想辦法替對方解決；有時對方只是想找人聊聊天，他卻已經開始提供各種建議。在他心裡，既然愛一個人，就應該盡可能保護、照顧對方；但有時太想幫忙，反而讓另一半覺得自己被干涉。',
+    '不太喜歡感情忽冷忽熱，更希望兩個人能踏踏實實走下去，交往一段時間就可能開始思考未來的生活安排，甚至討論結婚、買房或家庭規劃。但也因為太重視這段關係，有時容易產生佔有慾；另一半跟異性朋友走得比較近，就可能讓他感到不安。其實背後往往是因為太在乎，也害怕失去。',
+    '通常希望自己能扛起家庭責任，讓另一半與孩子過得更好：努力工作、安排家庭開銷，甚至很多事情都想自己處理。但有時也可能因為太重視家庭，不自覺地想掌握家中的大小事；原本是出於關心，最後卻可能變成過度干涉。'],
+ ms:'6 號男生的優點是有責任感、願意照顧家庭，也很重視長久的感情。但要記得，真正的保護不是替對方決定一切。',
+ f:['比較細心，也很在意對方的感受。另一半工作忙碌，她可能主動準備晚餐、提醒對方休息，甚至連生活中的小事都幫忙安排好；對方隨口說了一句想吃什麼，她就會默默記在心裡。對她來說，愛一個人就是希望對方能夠過得更好，但也因為太願意付出，有時容易忽略自己的需求。',
+    '真正認定一個人時，通常會很認真地經營這段關係：明明自己也很忙，還是願意抽時間陪伴對方；兩個人發生爭執，也可能先選擇退讓。但付出久了，心裡也會開始期待「我為你做了這麼多，你是不是也應該多在乎我一點？」另一半總把她的付出當成理所當然，就容易讓她感到委屈；其實她想要的未必是多大的回報，而是自己的用心能夠被看見。',
+    '很重視家庭的溫暖，希望家人能過得幸福：會用心安排家庭生活、照顧孩子，甚至為了家庭調整自己的工作與生活規劃。有時明明自己很累，卻還是習慣先把家人的事情處理好；久而久之，可能連自己喜歡什麼、想做什麼都慢慢放到最後，這是 6 號女生在婚姻中需要特別留意的地方。'],
+ fs:'6 號女生的優點是溫柔、體貼、願意付出，也很懂得營造家庭的溫暖。但要記得，愛家人是一件很美好的事，卻不代表一定要犧牲自己，才能讓家庭幸福。真正幸福的婚姻，不是委屈自己成全所有人，而是照顧家人的同時，也懂得好好愛自己。'},
+7:{t:'慢熱知心型',line:'慢熱知心、重視精神交流，希望找到真正懂自己的人。',show:['暗中觀察','不善表白','忽冷忽熱','容易猜疑'],want:['不要逼問','深夜談心','保有隱私','尊重節奏'],
+ act:'通常比較慢熱，不一定一開始就把感情表現出來。明明對某個人有好感，卻不會急著告白，反而先觀察對方的個性、說話方式，以及兩個人相處起來是否舒服；有時朋友都看出來他喜歡對方了，他自己卻還在默默觀察。對 7 號人來說，喜歡一個人是一回事，能不能真正信任對方又是另外一回事。另外不太擅長表達感情，甚至容易給人忽冷忽熱的感覺：前幾天還聊得很開心，隔天卻突然變得安靜。這不一定代表他不喜歡對方，而是需要自己的空間整理情緒與想法；另一半不了解，就容易產生誤會，甚至懷疑是不是感情變淡了。',
+ inner:'首先是不要逼問：7 號人還沒有準備好分享心事時，越是追問反而越容易讓他退縮。其次很重視深度交流，比起每天只是問吃飽了沒，更希望兩個人能聊聊人生、夢想，甚至分享內心真正的想法。另外也很重視個人隱私與生活節奏，即使已經交往，也不代表所有事情都必須毫無保留地公開。對他們來說，真正舒服的關係是彼此信任，也懂得尊重對方。',
+ share:'7 號人的優點是善於觀察、重視內在，也願意花時間了解一個人。但要記得，感情不是只有放在心裡，偶爾也需要透過言語與行動，讓另一半知道自己的心意。真正好的愛情，不是時時刻刻黏在一起，而是彼此理解，即使安靜相處也能感到安心。',
+ m:['通常習慣先觀察、再做決定，不太容易因為一時衝動就投入感情。認識一個女生之後，即使覺得對方不錯，也可能先從朋友開始，慢慢了解彼此的生活習慣與價值觀。有時女生可能覺得「他到底喜不喜歡我？怎麼都沒有什麼表示？」但其實他可能已經默默記住對方說過的話，甚至觀察到很多別人沒注意的小細節，只是他的喜歡不一定會直接說出口。',
+    '不只在意外在條件，更希望兩個人能聊得來、想法接近，也能互相理解。一起吃飯時，他可能不太擅長製造浪漫氣氛，卻很喜歡聊工作、人生規劃，甚至分享自己正在研究的事情；對他來說，能跟另一半深入交流本身就是一種親密感。但也因為比較理性，有時另一半只是想表達委屈，他卻急著分析事情的對錯（「那妳有沒有想過問題出在哪裡？」），原本是想幫忙，卻讓對方覺得沒有被安慰。',
+    '通常需要自己的時間與空間，也比較習慣用自己的方式支持家庭：下班回家可能喜歡安靜看書、研究東西，或獨自思考工作上的問題；不太會主動說甜言蜜語，也不一定把關心掛在嘴邊。但當家人真正遇到困難時，卻可能默默想辦法解決問題。只是要注意，如果長期缺少情感交流，即使有付出，另一半也不一定感受得到。'],
+ ms:'7 號男生的優點是理性、善於觀察，也能夠在關鍵時刻提供實際的支持。但要記得，感情不是所有事情都需要分析，有時候另一半需要的不是答案，而是一份理解與陪伴。愛一個人，不只是默默替她解決問題，更要讓她知道，你一直都在。',
+ f:['比較內斂，即使心裡有很多想法，也不一定會馬上說出來。明明很想念另一半，卻不一定主動說「我想你」，反而可能只是簡單問一句「你今天忙不忙？」有時明明很在乎，表面上卻裝得若無其事，因為她希望對方能主動理解，而不是每件事都要自己說出口；但也因為如此，有時容易讓另一半猜不透她真正的想法。',
+    '不太容易被表面的浪漫打動，更希望另一半能真正了解自己。比起收到昂貴的禮物，她更在意對方有沒有記住自己曾經分享過的心事；心情不好時，也不一定需要特別的活動，而是希望能好好坐下來聊天。對她來說，真正的浪漫不一定是鮮花與驚喜，而是有人願意理解自己沒有說出口的感受。但另一半畢竟不是讀心專家，什麼都放在心裡、期待對方自己發現，久了也容易產生失落。',
+    '比較善於觀察，也喜歡思考事情背後的原因。孩子遇到學習問題，她可能不會急著責罵，而是先了解原因、再慢慢找出適合的方法；另一半遇到工作上的困難，她也能提供不同角度的建議，幫助對方看清問題。只是有時太習慣理性分析，容易忽略家人當下真正需要的是情緒上的安慰。另外，7 號女生通常也需要自己的生活空間，即使結婚了，還是希望保有自己的興趣、想法與獨處時間。'],
+ fs:'7 號女生的優點是細心、善於觀察，也能夠透過自己的智慧幫助家人。但要記得，感情不需要每件事情都自己消化，適度分享內心的想法，也是一種對另一半的信任。真正幸福的婚姻，不是期待對方猜懂所有心事，而是願意敞開心房，讓彼此更加靠近。'},
+8:{t:'霸道護愛型',line:'霸道護愛、責任感強，希望成為另一半最可靠的依靠。',show:['保護伴侶','愛得深沉','佔有慾強','死要面子'],want:['渴望崇拜','獲得支持','受到重視','坦誠相待'],
+ act:'通常有比較強烈的保護欲，真正喜歡一個人時，就會希望對方過得好，也不希望對方受到委屈。另一半遇到工作上的困難，8 號人可能主動幫忙想辦法，甚至直接出面處理。但有時明明是出於關心，卻容易變成替對方做決定；另一半只是想分享自己的煩惱，他卻直接說「這有什麼好想的？照我的方式做就好了！」出發點是好的，只是有時忘了對方也有自己的想法。在感情中也通常愛得比較深沉，不一定每天把甜言蜜語掛在嘴邊，但如果真正認定一個人，就希望這段關係能長久發展。只是 8 號人比較有主見，有時容易出現佔有慾，甚至特別在意自己的面子；兩人在外面意見不合，8 號人可能不喜歡當眾被反駁，尤其是在朋友或家人面前。不是不能溝通，而是很重視自己是否受到尊重。',
+ inner:'首先，希望獲得另一半的崇拜與肯定：努力完成一件事，或為家庭付出很多心力時，一句「還好有你，真的幫了我很多」往往就能讓他很有成就感。其次，很希望自己的付出被看見；8 號人習慣扛起責任，卻不一定主動說自己有多辛苦。另外也很重視彼此能否坦誠相待；尤其當 8 號人產生不安全感時，有時反而會用比較強勢的方式，試圖掌握關係中的主導權。',
+ share:'8 號人的優點是有責任感、願意保護伴侶，也有能力為兩個人的未來努力。但要記得，保護不代表控制，關心也不代表所有事情都要由自己決定。真正好的愛情，不是誰比較有權力，而是彼此尊重，願意一起承擔生活中的責任。',
+ m:['保護欲比較強，很重視自己的能力與責任，希望成為另一半可以依靠的人。女朋友說最近工作不順利，他可能立刻幫忙分析問題，甚至直接提出解決方案；有時還會主動安排接送、處理生活上的大小事情。但如果事情突然不在掌握之中，就可能開始感到不安，例如另一半臨時改變原本約好的行程，他可能忍不住問「怎麼突然改了？為什麼沒有先跟我說？」其實不是不信任，而是習慣掌握狀況，這樣才會覺得安心。',
+    '比較有主見，也希望自己的能力與付出能得到肯定。兩個人討論去哪裡吃飯，他可能主動安排餐廳、交通，甚至把整個行程都規劃好；另一半開心地說「你安排得真好！」他就會很有成就感。但對方總是直接否定他的安排，甚至在朋友面前批評他，就容易讓他覺得沒有受到尊重。尤其當 8 號男生比較強勢時，有時會把意見不同誤以為是對方不重視自己；所以相處時除了適度肯定，也要讓他理解，兩個人有不同想法是很正常的事。',
+    '很重視家庭責任，也會希望透過工作與經濟能力，提供家人更好的生活：為了讓家人過得舒服，可能每天忙著工作、賺錢，甚至主動承擔家庭中的重大支出。他可能會認為「我這麼努力，不就是為了這個家嗎？」但另一半真正需要的，有時候不只是經濟上的保障，可能只是希望他早一點回家、陪自己吃頓飯，或願意聽聽自己今天發生了什麼事情。如果只顧著提供物質生活，卻忽略了情感上的交流，久了也容易讓另一半感到孤單。'],
+ ms:'8 號男生的優點是有擔當、願意承擔責任，也希望透過自己的能力保護家人。但要記得，真正的安全感，不只是提供經濟保障，更是讓另一半感受到尊重與陪伴。一個男人真正的強大，不是讓另一半凡事聽自己的，而是有能力保護她，也願意溫柔地理解她。',
+ f:['比較獨立，也習慣按照自己的想法做事。兩個人準備出去旅行，她可能主動安排住宿、交通，甚至連每天要去哪裡都先規劃好；另一半沒什麼意見，她可能就會覺得「那就照我的安排走吧！」但對方突然提出不同想法，有時反而容易讓她覺得原本的計畫被打亂了。其實 8 號女生不一定是故意強勢，而是她們通常比較有自己的判斷，也希望事情能按照預期進行；只是感情畢竟是兩個人的事情，有時也需要給另一半參與與決定的機會。',
+    '不只希望被愛，也希望自己的能力與貢獻能夠被看見。兩個人一起經營事業，她可能主動協助規劃、管理財務，甚至幫另一半處理很多事情；但對方把她的付出當成理所當然，或做重大決定時完全沒有詢問她的意見，就容易讓她感到不被重視。像是另一半突然決定換工作、事後才告訴她，她可能會說「這麼重要的事情，你怎麼都沒有先跟我討論？」其實她在意的不一定是對方最後做了什麼決定，而是自己有沒有被當成重要的伴侶。',
+    '通常比較有責任感，也希望家庭能夠維持一定的生活品質：除了關心家裡的收入與支出，也可能主動規劃儲蓄、投資，甚至孩子未來的教育安排。她們通常希望另一半不只是有感情，也要有共同承擔生活責任的能力。但要注意，當 8 號女生太習慣安排所有事情時，有時候也容易不自覺地替家人做決定；另一半想嘗試新的工作方向，她可能第一時間就開始分析風險，甚至直接反對。原本是出於關心，卻可能讓對方覺得自己的想法沒有受到尊重。'],
+ fs:'8 號女生的優點是有能力、有責任感，也願意為家庭與另一半付出。但要記得，真正幸福的感情，不是每件事情都要掌握在自己手中，而是懂得適度放手，讓彼此都有發揮的空間。真正成熟的愛情，不是誰主導誰，而是兩個人都能被尊重，也願意攜手創造共同的未來。',
+},
+9:{t:'靈魂伴侶型',line:'對愛情有美好的期待，希望找到真正理解自己、支持自己夢想、心靈相通的伴侶。',show:['嚮往真愛','美化伴侶','憧憬未來','期待過高'],want:['精神契合','支持理想','共同夢想','真誠接納'],
+ act:'① 嚮往真愛，希望彼此心靈相通：比較重視精神上的交流，希望另一半不只是陪伴自己，也能理解自己的想法；約會除了吃飯、看電影，也希望能聊聊彼此的夢想、人生方向，甚至未來想過什麼樣的生活。真正吸引 9 號人的，往往是兩個人能不能聊得來、想得遠。② 美化伴侶，容易看見對方的優點：喜歡上一個人時，有時容易把對方想得太美好；朋友提醒「你不覺得他有些地方需要注意嗎？」他可能回答「其實他人很好啦，只是你們還不夠了解他！」願意相信愛情的美好，但也要記得，欣賞優點的同時，不能忽略真正需要面對的問題。③ 憧憬未來，希望擁有共同的夢想：通常不只看眼前，也會思考兩個人未來能夠一起完成什麼事情，才交往一段時間就開始討論未來想住哪裡、去哪裡旅行，甚至一起創業。有共同的方向讓 9 號人覺得這段感情更有意義，但未來很重要，眼前的相處與磨合同樣不能忽略。④ 期待過高，容易產生失落感：有時對愛情有太多美好的想像，也希望另一半能夠理解自己的心情；自己心情不好時，希望對方不用說就能察覺，但另一半可能完全沒發現，還開心地問「今天晚上要吃什麼？」這時候就容易覺得「你怎麼連我不開心都不知道？」其實不是對方不愛你，而是有些期待如果沒有說出來，對方真的不一定知道。',
+ inner:'渴望精神上的契合，希望對方支持自己的理想、擁有共同的夢想，並且真誠地接納彼此。',
+ share:'9 號人的優點，是願意相信愛情、重視心靈交流，也希望與另一半共同實現夢想。但要記得，真正的靈魂伴侶，不一定是完全符合自己期待的人，而是願意理解、包容與接納彼此的不同。最美好的愛情，不是找到理想中的那個人，而是兩個人願意一起努力，把理想變成共同的幸福。',
+ m:['通常不喜歡衝突，也不希望為了一些小事情爭吵影響彼此的感情。兩個人約好週末出去玩、原本安排好行程，結果女朋友臨時想改變計畫，他可能會說「好啦，妳開心就好，我都可以！」有時女生可能覺得「怎麼每次問你意見，你都說隨便？」但其實他不一定沒有想法，只是覺得兩個人在一起開心比較重要，沒必要什麼事情都爭個輸贏。不過如果長期為了避免衝突而不表達想法，也可能讓另一半越來越不了解他。',
+    '通常想得比較長遠，對感情也有自己的理想，希望找到能夠互相理解、一起走向未來的伴侶。兩個人才剛開始交往，他可能已經在想未來要住在哪裡，甚至開始規劃兩個人的生活。但有時候現實跟想像不一樣，就容易產生失落感；原本以為女朋友會支持自己的夢想，結果對方卻提出不同意見，他可能會想「我以為妳會懂我，怎麼連妳也不支持？」其實對方不一定是不支持，只是每個人看事情的角度不同。所以 9 號男生要學習的，就是不要把自己的理想變成另一半必須達成的期待。',
+    '通常希望家庭平平順順，夫妻少一點爭吵，大家都能開開心心地生活。家裡遇到意見分歧，他可能會選擇退一步，甚至主動當和事佬；有時太太可能會說「你可不可以不要每次都說沒關係？我想知道你真正的想法！」因為他以為退讓就是維持和諧，卻忽略了婚姻也需要溝通。真正的家庭和諧，不是什麼事情都不爭論，而是即使意見不同，也願意一起面對、一起解決。'],
+ ms:'9 號男生的優點是懂得包容、重視和諧，也願意為了感情與家庭做出退讓。但要記得，感情不是一味地配合，也不是要求另一半符合自己的理想；適度表達自己的想法，反而能讓彼此更加了解。真正幸福的愛情，不是永遠沒有爭執，而是即使想法不同，依然願意互相理解、一起走下去。',
+ f:['通常對愛情充滿想像，希望遇到一個真正懂自己、能夠陪伴自己走到最後的人。認識一個男生之後，只要對方稍微體貼一點，或說了幾句關心的話，她可能就會開始想像兩個人未來的生活；有時朋友會說「妳們才剛認識，怎麼已經想到結婚了？」但其實她不一定真的急著結婚，只是習慣把眼前的感情連結到未來的可能性。不過如果太早把對方想得過於完美，當現實跟期待不同時，也容易感到失落。',
+    '不只希望有人陪伴，更希望另一半能夠理解自己的想法、夢想與內心感受。她可能很喜歡跟男朋友分享生活中的小事情，甚至聊到未來想做什麼、想去哪裡生活；如果男朋友願意認真聽，也能分享自己的想法，她就會覺得兩個人的距離越來越近。但如果男朋友只是回答「喔，好啊！」「妳決定就好！」她可能就會覺得「你到底有沒有認真聽我說話？」因為對她來說，真正的浪漫不一定是送禮物，而是兩個人能夠互相理解。',
+    '通常希望婚姻不只是兩個人住在一起，而是能夠共同經營生活，讓家裡充滿溫暖與幸福；她可能很在意一家人能不能一起吃飯、聊天，或是在假日安排一些家庭活動。有時候先生可能覺得「我每天努力工作，把錢賺回家，不就是為了這個家嗎？」但她可能更希望先生下班之後能夠放下手機，陪自己聊聊天、關心一下家人的生活。只是要注意，如果對家庭的期待太高，也可能不自覺要求每個人都符合自己的理想。婚姻需要共同經營，也需要接受彼此不同的生活習慣。'],
+ fs:'9 號女生的優點是對愛情充滿期待，重視心靈交流，也願意用心經營家庭。但要記得，真正幸福的感情，不一定要像童話故事一樣完美；學會接受彼此的不完美，反而能讓愛情走得更加長久。愛情最美好的結局，不是找到完美的人，而是兩個不完美的人，依然願意相愛、理解與陪伴。'}};
+const LOVE3_END='同一個數字，男生和女生面對感情時還是可能不太一樣。數字代表的是一個人的性格特質與內在需求，但每個人的成長環境、家庭教育、生活經歷，以及男女在社會角色上的不同，都可能影響表達愛的方式。學習數字不是要把男生女生分類，也不是認為某個數字的人一定會怎樣，而是透過數字更了解彼此的性格、內心想法與情感需求。有時候不是對方不愛你，而是你們表達愛、理解愛的方式不同。看懂數字是為了理解差異；理解差異，是為了讓彼此相處得更好。';
+/* ===== 愛情密碼（兩性關係課 6.0，合財碼 1–9 的情境解析） ===== */
+const HC2={
+1:{th:'各自為政、五行相剋',d:'兩個人都有自己的想法與生活節奏，不太喜歡被另一半管得太多。',qa:[
+ ['為什麼有些夫妻總是各忙各的？','先生下班只想滑手機、休息一下，太太卻希望先生能陪自己聊聊天；「你回來都不陪我！」「我工作一整天，休息一下也不行嗎？」其實不是不愛對方，而是兩個人對陪伴與個人空間的需求不同。'],
+ ['為什麼有時候聚少離多，感情反而比較好？','這類組合比較需要自己的空間。每天在一起，可能為家事、生活習慣或小事爭執；各自有工作、興趣與生活重心，反而比較不容易互相干涉。適當保持距離，也是維持感情的一種方式。'],
+ ['為什麼不建議把工作情緒帶回家？','這類組合在五行上屬於相剋，容易因為想法不同而摩擦。先生在公司受了氣，回家太太只是多問幾句，就可能引發爭執；原本只是關心，最後卻變成吵架。要提醒自己：工作情緒不帶回家，更不要把另一半當成情緒的出口。']],
+ sh:'五行相剋不代表兩個人不適合，而是提醒彼此更需要學習尊重、包容與溝通。也可以透過橙色所代表的柔和與溝通能量，提醒自己放慢情緒、好好說話。',end:'好的感情，不是每天黏在一起，而是給彼此空間，心裡依然有對方。'},
+2:{th:'戀愛甜蜜、善於合作、話題不停',d:'兩人通常很有話聊，也願意互相配合，但進入婚姻後需要更多磨合與實際行動。',qa:[
+ ['為什麼戀愛很好，結婚卻容易吵架？','交往時先生總說「妳想去哪裡？我陪妳！」太太也覺得對方很溫柔體貼。但結婚後開始面對家庭開銷、孩子教育，甚至雙方父母的問題，就容易因為想法不同而爭執。其實不一定是感情變差，而是婚姻需要更多責任與互相理解。'],
+ ['為什麼兩個人總是有聊不完的話題？','這類組合善於合作，也容易找到共同話題：工作、朋友之間的趣事，甚至晚餐吃什麼，都能聊得很開心；一個人提出想法，另一個人馬上接話，越聊越起勁。這是這組密碼的優點，彼此容易交流，也比較有機會成為生活上的好夥伴。'],
+ ['為什麼要特別避免光說不練？','這類組合有時想法很多、討論很多，卻容易忽略實際行動。夫妻說好要安排家庭旅行，「妳不是說要訂飯店嗎？」「我以為你已經安排好了！」結果討論了半天，什麼都還沒準備。要特別學習提前規劃、明確分工，才能讓想法真正落實。']],
+ sh:'這組愛情密碼的優點，就是彼此容易溝通，也有機會成為很好的合作夥伴。但要記得，戀愛需要感情，婚姻更需要責任與行動。也可以透過綠色所象徵的成長與規劃能量，提醒彼此把共同目標一步步落實。',end:'好的感情，不只是有說不完的話，更是有一起完成的事。'},
+3:{th:'感情衝動、時好時壞、情緒起伏比較大',d:'兩人可能很有感情，但也容易因為一時情緒，讓原本好好的氣氛突然改變。',qa:[
+ ['為什麼有些夫妻一下甜蜜，一下又吵架？','早上出門時還開開心心，晚上回家卻可能因為一句話不合就鬧脾氣；「你今天怎麼都不關心我？」「我不是才剛陪妳吃完飯嗎？」其實不一定是誰對誰錯，而是兩個人當下的情緒與期待不同。這類組合要特別學習情緒管理，避免一時衝動傷害彼此的感情。'],
+ ['為什麼兩個人在一起，總是有忙不完的事情？','這類組合在生活中可能需要面對比較多的事情，也容易把自己安排得很忙碌：先生忙工作、太太忙家庭，兩個人每天都有處理不完的事情。久而久之，容易因為疲累而忽略彼此的感受；再忙，也要記得保留一些時間給另一半。'],
+ ['為什麼不建議把事情搞得太誇張？','情緒比較激動時，容易把原本的小事情放大。先生只是忘記回訊息，太太就說「你是不是根本不在乎我？」原本只是忘記回覆，最後卻變成一場爭吵。要提醒自己，事情還沒弄清楚之前，不要急著下結論，更不要讓情緒越演越烈。']],
+ sh:'這組愛情密碼並不是感情不好，而是提醒彼此要更懂得管理情緒、安排生活，也不要因為忙碌而忽略另一半。在五行能量的運用上，也可以參考靛色所象徵的沉靜與安定，提醒自己放慢情緒，讓心情慢慢平靜下來。',end:'好的感情，不是從來不鬧情緒，而是情緒過後，依然願意好好珍惜彼此。'},
+4:{th:'關係穩定、生活有序、重視安全感',d:'兩人比較重視長久的陪伴，也願意一起經營家庭，讓生活慢慢走向穩定。',qa:[
+ ['為什麼有些夫妻感情平淡，卻不容易分開？','結婚多年後，夫妻可能不再天天說甜言蜜語，也很少安排特別浪漫的約會；「我們好像很久沒有出去約會了！」「可是我們每天都在一起啊！」其實不一定是感情變淡，而是兩個人已經習慣彼此的陪伴，把愛情慢慢變成生活的一部分。'],
+ ['為什麼這類夫妻特別重視生活的安定？','這類組合比較希望生活有規律，也重視家庭帶來的安全感：夫妻會一起討論每個月的開銷、孩子的教育，甚至未來退休的生活。「我們是不是應該多存一點錢？」「對啊！以後生活才比較有保障！」對他們來說，能夠安心過日子就是一種幸福。'],
+ ['為什麼感情穩定，還是需要一點浪漫？','這類組合容易把生活重心放在家庭責任與未來規劃上，每天忙著工作、照顧孩子、處理家事，久而久之，夫妻之間可能只剩下「記得繳電費！」「明天要接小孩！」這類生活上的交代。婚姻除了柴米油鹽，也需要適當的浪漫與溫度；偶爾一起吃頓飯、牽牽手，或說一句關心的話，都能讓感情持續升溫。']],
+ sh:'這組愛情密碼的優點，就是關係相對穩定，也願意為了家庭與未來共同努力。但要記得，穩定不代表可以忽略感情，平淡也不代表不需要浪漫。在五行能量的運用上，也可以參考金色所象徵的溫暖與珍惜，提醒彼此在安穩的生活中，持續為感情增添溫度。',end:'好的感情，不一定每天轟轟烈烈，而是在平淡的日子裡，依然願意牵手走下去。'},
+5:{th:'問題上門、兩個極端、容易一方遷就另一方',d:'兩人可能有很多共同喜好，但在處理事情時，卻容易出現不同的想法與做法。',qa:[
+ ['為什麼有些夫妻總是一個強勢、一個退讓？','先生想買一台新車，太太覺得現在沒有必要；「我已經決定好了，就買這台！」「好啦！你高興就好！」表面上好像沒事，但如果長期都是一方決定、另一方配合，心裡難免會累積不滿。感情不是誰說了算，而是兩個人都應該有表達想法的空間。'],
+ ['為什麼喜歡一起吃喝玩樂，卻容易談工作就吵架？','這類組合通常喜歡美食、旅遊，也願意一起享受生活，討論週末去哪裡玩可能聊得很開心；但一談到工作或事業就容易出現不同意見。「你這樣做生意，風險會不會太大？」「妳又不懂我的工作，幹嘛一直管我？」原本只是關心，最後卻變成爭執。生活可以一起享受，工作上的意見更需要互相尊重。'],
+ ['為什麼不建議只憑感覺做決定？','這類組合有時容易出現兩個極端：一個想得很多，另一個卻想趕快行動。夫妻討論要不要投資一筆錢，「我覺得這個機會很好，趕快做！」「你有沒有先了解清楚？不要每次都這麼衝動！」所以遇到重要事情時，不能只靠當下的感覺，更需要把事情想清楚、確認風險，再一起做決定。']],
+ sh:'這組愛情密碼不是不能合作，而是要特別注意彼此想法上的差異，避免一方過度強勢、另一方長期委屈。也可以參考紅色所象徵的行動與執行能量，提醒彼此不要只是憑感覺，而是透過溝通與實際行動，一起把事情做好。',end:'好的感情，不是一個人說了算，而是兩個人有商有量，一起走向想要的未來。'},
+6:{th:'財富倍增、忠誠信賴、以家為重',d:'兩人比較願意為家庭付出，也重視彼此的信任與支持，有機會一起創造更好的生活。',qa:[
+ ['為什麼有些夫妻結婚後，財運反而越來越好？','先生原本只是領固定薪水，結婚之後太太開始幫忙管理開銷、規劃儲蓄，甚至一起經營副業；「還好有妳幫我規劃，不然我賺多少就花多少！」「我們一起努力，以後生活才會越來越好！」其實不一定是結婚就會發財，而是兩個人願意互相支持，讓家庭資源發揮更大的價值。'],
+ ['為什麼這類夫妻特別重視忠誠與信任？','這類組合通常比較在乎家庭，也希望彼此能夠互相信任。先生工作比較忙，太太會主動關心、也願意給予支持；「你放心去忙，家裡有我！」「謝謝妳，有妳在我就安心了！」對他們來說，感情不只是甜言蜜語，更重要的是遇到事情時，知道另一半願意陪自己一起面對。'],
+ ['為什麼感情很好，還是不要太挑剔？','這類組合通常很重視家庭，也希望生活越來越好，但有時太在乎，反而容易對另一半有比較高的要求：先生努力工作，太太卻說「你怎麼沒有再多賺一點？」太太辛苦照顧家庭，先生卻說「家裡怎麼還是這麼亂？」原本都是為了家庭努力，最後卻因為一句話讓對方感到委屈。所以要記得，少一點挑剔，多一點肯定，才能讓彼此的付出更有價值。']],
+ sh:'這組愛情密碼的優點，就是重視家庭、忠誠信賴，也有機會透過彼此合作，讓生活與財富越來越好。但要記得，家庭不是拿來比較誰付出比較多，而是兩個人願意互相扶持。也可以參考黃色所象徵的熱情與正向能量，提醒彼此多看見對方的優點，少一些挑剔與埋怨。',end:'好的感情，不只是一起創造財富，更是懂得珍惜彼此，讓幸福越來越富足。'},
+7:{th:'人脈融合、彼此體貼、互相信賴',d:'兩人不只是生活上的伴侶，也容易成為彼此在人際關係與人生目標上的好夥伴。',qa:[
+ ['為什麼有些夫妻結婚後，朋友圈反而越來越大？','先生帶太太參加朋友聚會，太太很快就能跟大家聊在一起；「你的朋友人都很好耶！」「下次我們再一起約出來吃飯！」因為這類組合比較容易融入彼此的生活圈，也願意一起參與聚會、活動，讓雙方的人際關係更加豐富。'],
+ ['為什麼有些夫妻不常見面，感情依然很好？','這類組合比較懂得體貼，也願意站在另一半的角度思考。先生因為工作需要出差，太太不會一直抱怨，反而主動關心：「你工作忙沒關係，記得照顧自己！」「放心啦！我忙完就回家陪妳！」其實感情不一定要每天黏在一起，重要的是彼此心裡都有對方，也願意互相信任。'],
+ ['為什麼任何感受都要記得分享？','這類組合雖然容易互相信任，但有時也會因為太替對方著想，反而把自己的心事藏起來。太太最近心情不好，先生問「妳怎麼了？」太太回答「沒事啦！你工作已經很忙了！」但其實心裡還是希望有人能夠關心自己。體貼不是什麼都不說，而是願意把自己的感受分享給另一半。']],
+ sh:'這組愛情密碼的優點，就是容易融入彼此的生活圈，也懂得體貼、省思與互相信賴。但要記得，再好的默契，也需要透過分享與溝通來維持。也可以參考藍色所象徵的方向與目標能量，提醒彼此一起設定共同目標，讓感情與生活持續向前。',end:'好的感情，不是什麼事情都自己承擔，而是喜怒哀樂都有人分享，人生道路也有人同行。'},
+8:{th:'責任壓力、氣場強勢、容易爭奪主控權',d:'兩人都有自己的想法，也願意為家庭付出，但相處時容易出現一方比較輕鬆、另一方比較緊繃的情況。',qa:[
+ ['為什麼一個人比較輕鬆，另一個卻比較緊繃？','夫妻準備出門旅行，先生說「沒關係啦！到時候再安排就好了！」太太卻說「飯店訂了嗎？交通安排好了嗎？你怎麼都不著急？」其實兩個人都希望旅行順利，只是面對事情的態度不同。要學習多一點理解、少一點指責，避免讓另一半承擔所有壓力。'],
+ ['為什麼兩個人都很有主見，卻容易爭奪主控權？','這類組合通常比較有自己的想法，也希望事情能按照自己的方式進行。夫妻討論家庭開銷，「我們應該先存錢！」「不如先投資，讓錢發揮更大的價值！」其實兩個人都是為了家庭著想，但如果誰都不願意退讓，就容易變成爭執。婚姻不是爭誰說了算，而是一起找到適合彼此的方法。'],
+ ['為什麼要給彼此機會展現，也要學會冷靜？','意見不同時，情緒容易升溫，甚至說出比較強勢的話：「這件事情交給我處理就好！」「可是你每次都不聽我的意見！」原本只是想把事情做好，最後卻變成誰都不服誰。所以要提醒自己，適當給對方發揮的空間，情緒上來時也不要急著爭辯。']],
+ sh:'這組愛情密碼的優點，就是兩個人都有責任感，也願意為家庭努力。但要記得，感情不是誰比較強勢，而是學會互相配合、尊重彼此的想法。也可以參考紫色所象徵的內在平靜與智慧，提醒自己在意見不同的時候，先穩定情緒，再好好溝通。',end:'好的感情，不是彼此爭誰說了算，而是願意在不同的想法中，找到一起前進的方向。'},
+9:{th:'一起學習、共同成長、異中求同',d:'兩人不一定有相同的個性與想法，但願意互相支持，也能從彼此身上學習不同的優點。',qa:[
+ ['為什麼有些夫妻結婚後，反而越來越成功？','先生想要創業，太太不只是支持，還會一起討論方向、分享想法；「我最近想嘗試做點不一樣的事情！」「好啊！我們一起研究看看！」這類組合通常願意一起學習、共同成長，讓彼此在事業、家庭與生活上都有機會獲得更多收穫。'],
+ ['為什麼個性不同，反而能成為很好的伴侶？','這類組合比較有機會學習異中求同，欣賞彼此不同的特質。先生做事比較積極，太太卻習慣先觀察、想清楚再行動；「機會來了，我們就趕快試試看！」「可以啊！但我們先把風險了解清楚！」兩個人不一定要完全一樣，而是透過不同的觀點，讓彼此的決定更加完整。'],
+ ['為什麼有些夫妻明明吵架，卻還是分不開？','這類組合通常比較願意為感情付出，也重視彼此一起經歷過的事情。夫妻因為生活習慣不同而爭執，「你怎麼每次都這樣？」「好啦！我知道了，下次我會注意！」雖然偶爾還是會有摩擦，但只要願意互相調整，就有機會讓感情越來越成熟。所以要記得，感情不是沒有爭執，而是爭執過後，依然願意理解與珍惜對方。']],
+ sh:'這組愛情密碼的優點，就是願意一起學習、共同成長，也有機會透過彼此的支持，創造更多人生的收穫。但要記得，異中求同不是要求對方改變，而是學會尊重彼此的不同。也可以參考白色所象徵的純粹與初心，提醒彼此回想當初為什麼選擇在一起，讓感情回到最初的美好。',end:'好的感情，不是找到完全相同的人，而是兩個不同的人，依然願意攜手成長、一起走向幸福。'}};
+const HC2_END='人與人之間的相處，有時就像一場修行。兩個不同的主性格數字加在一起，會呈現出不同的互動能量；有時你原本沒有某個數字，跟另一半的主性格相加後卻出現了，可以把它理解成一種互補的機會：你不擅長的事，另一半剛好可以協助你；常為同一件事爭吵，換個角度想，對方也可能正在提醒你、幫助你看見自己需要成長的地方。學習數字不是為了判斷誰適合誰、誰剋誰，更不是替另一半貼標籤，而是更了解自己，也更理解對方。兩個人願意互相學習、互相包容，就有機會創造出 1＋1 大於 2 的加乘效果。';
+const LV9={1:['熱情直率、喜歡掌控、主導關係','自信放閃、要你崇拜、快刀斬愛'],2:['重視連結、需要陪伴、感受為先','愛中柔軟、深情款款、默默守候'],3:['愛說愛笑、善於放電、創意告白','喜歡驚喜、情緒豐富、玩樂優先'],4:['穩定第一、慢熱深情、愛的實在','承諾優先、講求信用、說話算話'],5:['浪漫情懷、愛是冒險、新鮮至上','心動就追、膩了就走、風一般愛'],6:['愛如家人、為你著想、甘願犧牲','忠誠顧家、感情牽絆、重視回應'],7:['情感內斂、不愛熱鬧、慢熟型人','靈魂契合、重視隱私、知性戀愛'],8:['權力情人、愛的霸氣、要你服從','控場愛人、重視承諾、不容背叛'],9:['情深義重、愛人如己、無私奉獻','悲憫之心、包容體諒、心懷天下']};
+function love3Body(n){
+  const L=LOVE3[n], chips=a=>a.map(x=>`<span class="lv3-c">${x}</span>`).join('');
+  return `<p class="hint">${L.line}</p>
+    <div class="lv9">${LV9[n].map(x=>`<p><b>▲愛情觀</b>${x}。</p>`).join('')}</div>
+    <div class="lv3-k"><span class="lv3-l">四大表現</span>${chips(L.show)}</div>
+    <div class="lv3-k"><span class="lv3-l nd">四大需求</span>${chips(L.want)}</div>
+    <p><b class="tag">在感情中的表現</b>${L.act}</p>
+    <p><b class="tag">內心真正需要</b>${L.inner}</p>
+    <p class="remind">${L.share}</p>`;
+}
+/* ===== 1–9 號人的愛情建議（兩性關係課 6.0，老師原文） ===== */
+const ADV={
+1:{d:'1號人通常比較有主見，做事情喜歡自己決定，也希望在感情中得到另一半的尊重。但有時候，太習慣自己做決定，反而容易讓另一半覺得沒有被重視。',
+ it:[['輸掉感情，不代表輸掉人生','例如，兩個人吵架的時候，明明只是一件小事情，卻誰也不願意先低頭。「為什麼每次都是我要讓你？」「明明就是你不對啊！」結果原本只是意見不同，最後卻變成誰輸誰贏。其實感情不是比賽，有時候願意先退一步，不是認輸，而是更珍惜彼此的關係。'],
+  ['越專注自己，越能吸引對的人','有些1號人在感情中，容易把太多心思放在另一半身上。例如，對方晚一點回訊息，就開始胡思亂想，甚至不斷追問。但其實一段好的感情，除了兩個人在一起，也要保有自己的生活、興趣與目標。當你把自己照顧好，自然也更容易建立健康、舒服的關係。'],
+  ['別愛太強勢，也要學會點柔軟','例如，兩個人準備出門吃飯，1號人可能已經決定好要去哪裡。另一半說：「可是我今天想吃別的耶！」1號人回答：「我都安排好了，照我的就好啦！」雖然出發點可能是好意，但時間久了，另一半也可能覺得自己的想法不重要。所以有時候多問一句「你覺得呢？」就能讓彼此的感受很不一樣。']],
+ sh:'1號人的優勢是有主見、有行動力，也願意為自己在乎的人付出。但在感情中，除了帶領對方，也要記得傾聽對方。真正的強大，不是讓另一半都聽你的，而是有能力帶領，也有溫柔陪伴的智慧。',
+ end:'感情不必爭輸贏，懂得柔軟才能走得遠。'},
+2:{d:'2號人通常比較溫柔、貼心，也很重視感情中的陪伴與互動。他們很懂得照顧別人的感受，但有時候太在意對方，反而容易忽略自己，甚至在感情中付出太多。',
+ it:[['尊重自己，別讓愛情變卑微','例如，另一半臨時取消約會，明明自己已經期待了一整天，卻還是回答：「沒關係啦，你忙你的就好！」但其實心裡很失落，也很希望對方能多在乎自己一點。久而久之，委屈越積越多，反而容易讓感情失去平衡。所以要記得，體貼別人很好，但自己的感受也同樣重要。'],
+  ['付出太多，反而讓人不珍惜','有些2號人在感情中，總是習慣把另一半放在第一位。例如，對方肚子餓了，馬上準備吃的；對方心情不好，趕快安慰；對方有事情，自己的安排也可以全部取消。甚至另一半說：「這件事情你幫我處理一下！」明明自己已經很累了，還是回答：「好啦，我來就好！」時間久了，對方可能慢慢把這些付出當成理所當然。所以愛情不是不能付出，而是付出的同時，也要讓對方學會珍惜與回應。'],
+  ['別太依賴，獨立才能更吸引','2號人很重視陪伴，有時候也比較希望另一半能隨時關心自己。例如，傳了訊息，對方過了兩個小時還沒回覆，就開始胡思亂想：「是不是不愛我了？」「是不是我做錯什麼事情？」但其實對方可能只是正在工作，或忙著處理自己的事情。如果每天的心情都跟著另一半的反應起伏，久了雙方都容易感到壓力。所以除了愛情，也要有自己的朋友、興趣與生活重心。當你能好好照顧自己，感情反而更容易自在長久。']],
+ sh:'2號人最大的優點，就是懂得關心、陪伴與理解別人。但要記得，愛情不是一個人不斷付出，而是兩個人願意互相珍惜。你可以溫柔，也可以有自己的原則；你可以依靠另一半，但也要有獨立生活的能力。數字只是幫助我們看見可能的相處習慣，真正重要的，還是彼此願不願意調整與成長。',
+ end:'好的愛情，不是委屈自己成全對方，而是彼此珍惜，一起成長。'},
+3:{"d": "3號人通常比較熱情、活潑、樂觀，喜歡分享生活，也很重視感情中的快樂與互動。但有時候太在意當下的感受，反而容易讓自己的情緒受到另一半影響。", "it": [["失去愛情，不等於失去快樂", "例如，有些3號人分手之後，會一直想著：「以前我們明明那麼開心，為什麼現在變成這樣？」甚至連原本喜歡的事情，都提不起興趣。但要記得，一段感情的結束，不代表人生就失去了快樂。"], ["你的快樂，不該由別人決定", "例如，開開心心跟另一半分享今天發生的事情，結果對方只是淡淡回答：「喔，是喔！」原本的好心情，瞬間就不見了。其實對方可能只是累了，不代表不在乎你。所以不要讓另一半的一句話，就決定自己一整天的心情。"], ["別讓愛情，消耗你的熱情", "有些3號人談戀愛之後，為了配合另一半，慢慢放棄原本喜歡的活動。以前喜歡唱歌、旅行、朋友聚會，現在卻什麼都不去了。久而久之，連原本開朗的自己都不見了。好的感情，應該讓生活更加精彩，而不是讓自己失去熱情。"]], "sh": "3號人的熱情與樂觀，是很珍貴的特質。但愛情不是生活的全部，也不需要每天都充滿驚喜。學會照顧自己的情緒，保留自己的興趣，才能讓感情相處得更加自在。", "end": "好的愛情，不是依靠對方給你快樂，而是自己快樂，也能帶給對方幸福。"},
+4:{"d": "4號人通常比較務實、穩重，做事情有規劃，也很重視感情中的安全感與承諾。但有時候太過堅持自己的原則，反而容易讓自己在感情中放不下、走不開。", "it": [["該放下的，就別再繼續執著", "例如，明明一段感情已經結束了，卻還是一直想著：「我們以前明明那麼好，為什麼不能再試一次？」甚至分手很久了，還在等待對方回頭。其實有時候不是不夠努力，而是兩個人真的不適合繼續走下去。懂得堅持很好，但也要學會適時放下。"], ["你的穩定，是該給值得的人", "4號人一旦認定一個人，通常就會很認真地經營感情。例如，明明另一半經常失約、不守承諾，卻還是安慰自己：「沒關係，再給他一次機會！」結果一次又一次，最後受傷的還是自己。所以要記得，你的認真與付出，應該留給同樣願意珍惜你的人。"], ["真正的愛，是接受不是忍受", "4號人很重視規矩與生活習慣，有時候也希望另一半按照自己的方式做事。例如，看到對方東西亂放，就忍不住說：「我不是跟你說過很多次了嗎？」對方回答：「一定要照你的方式才對嗎？」其實兩個人生活在一起，本來就會有不同的習慣。接受是理解彼此的不同，忍受卻是把委屈一直放在心裡。所以有問題就好好溝通，而不是一味要求對方改變，或勉強自己接受。"]], "sh": "4號人的穩定、責任感與認真，是經營長久感情很重要的優點。但感情不是所有事情都能按照計畫進行，有時候也需要多一點彈性。該珍惜的好好珍惜，該放下的學會放下，才能讓自己在感情中更加自在。", "end": "好的愛情，不是勉強自己一直堅持，而是彼此珍惜，互相理解。"},
+5:{"d": "5號人通常比較自由、隨性，喜歡新鮮感，也不太喜歡受到太多限制。他們在感情中很重視自己的空間，但有時候太追求自由，反而容易忽略另一半的感受。", "it": [["別逃避情感，要學會承擔責任", "例如，兩個人發生爭執，另一半希望坐下來好好談談。結果5號人卻說：「唉唷，不要再講了啦！過幾天就好了！」但問題沒有解決，只是暫時被擱在一旁。所以要記得，感情不是不吵架就沒問題，而是願意一起面對問題。"], ["有自由的心，會遇見自由的愛", "5號人不喜歡被管，也希望另一半能尊重自己的生活方式。例如，週末想跟朋友出去走走，另一半卻一直問：「你要去哪裡？跟誰？幾點回來？」可能就會覺得很有壓力。但自由不是想做什麼就做什麼，而是彼此信任，也願意交代清楚。真正舒服的感情，是有自己的空間，也讓對方有安全感。"], ["最好的感情，兩個人共同成長", "有些5號人喜歡嘗試新事物，今天想旅行，明天想換工作，後天又有新的計畫。另一半可能忍不住說：「你怎麼每次想法都不一樣？」其實喜歡變化不是壞事，但感情需要兩個人一起經營。所以除了追求自己的夢想，也要記得把另一半放進未來的規劃裡。兩個人一起探索生活，才能讓感情越來越精彩。"]], "sh": "5號人的自由、幽默與變通，是很有魅力的特質。但自由不代表沒有責任，愛情也不是一種束縛。學會面對問題、尊重彼此的空間，讓兩個人都能保有自己，也能一起成長。", "end": "好的愛情，不是為了對方失去自由，而是在彼此尊重中，一起走向幸福。"},
+6:{"d": "6號人通常比較重視家庭、責任與生活品質，也很願意照顧自己在乎的人。但有時候太希望把所有事情做到最好，反而容易在感情中給自己太多壓力。", "it": [["愛不是犧牲，而是雙方的支持", "例如，有些6號人為了家庭，每天忙著工作、照顧孩子、處理家事，什麼事情都自己扛。另一半說：「你累了就休息一下啊！」卻回答：「我不做，誰來做？」其實愛一個人，不代表所有責任都要自己承擔。好的感情，是兩個人願意互相支持，而不是一個人默默付出。"], ["過度的付出，也等同失去自我", "有些6號人很懂得照顧另一半，卻常常忽略自己的需求。例如，買東西總是先想到家人，安排假日也以另一半為主。朋友問：「那你自己想做什麼？」卻回答：「沒關係啦，他們開心就好！」時間久了，可能連自己真正喜歡什麼都忘記了。所以要記得，照顧別人很重要，但也別忘了好好照顧自己。"], ["不對的愛情，換個人也能美好", "6號人一旦認定一段感情，通常會很認真地經營，也不太願意輕易放棄。例如，明明兩個人已經經常爭吵，甚至彼此都不快樂，卻還是想著：「我都付出這麼多了，怎麼可以說放就放？」但感情不是付出越多，就一定能換來幸福。如果經過努力溝通，雙方依然無法好好相處，也要學會重新思考這段關係。放下一段不適合的感情，不代表失敗，而是給自己重新幸福的機會。"]], "sh": "6號人的責任感、智慧與願意付出，是經營家庭很珍貴的特質。但愛情不是一個人不斷犧牲，也不是凡事都要做到完美。學會讓另一半一起承擔，保留自己的生活，也要懂得分辨什麼樣的感情值得繼續經營。", "end": "好的愛情，不是一個人付出所有，而是兩個人互相扶持，一起幸福。"},
+7:{"d": "7號人通常比較喜歡思考、觀察與分析，對感情也有自己的想法。但有時候想得太多，反而容易讓自己在愛情裡猶豫不決。", "it": [["別再分析愛情，感受它的真實", "例如，另一半今天回訊息比較慢，7號人可能就開始想：「他是不是不在乎我了？」「是不是我剛剛說錯什麼？」其實對方可能只是工作比較忙。感情不是每件事情都需要找答案，有時候好好感受彼此的相處，比反覆分析更重要。"], ["愛是一種直覺，別把它當考題", "有些7號人遇到喜歡的人，反而會開始考慮很多事情。例如：「我們適合嗎？」「以後會不會有問題？」「他是不是我要找的人？」想著想著，原本可以發展的感情，反而停在原地。其實愛情不是考試，沒有辦法每一道題目都先找到標準答案。有時候願意相信自己的感受，才能真正開始一段關係。"], ["不要過多考慮，行動才能開始", "例如，明明很想約對方吃飯，卻一直擔心被拒絕。朋友說：「喜歡就約啊！」卻回答：「我再觀察一下好了！」結果觀察了半天，對方可能已經被別人約走了。😄 所以有些事情，與其一直想，不如勇敢跨出第一步。不行動，永遠不知道結果；願意嘗試，才有機會遇見幸福。"]], "sh": "7號人的洞察力與思考能力，是很珍貴的天賦。但在感情裡，不需要每件事情都分析得清清楚楚。有時候少一點猜測，多一點溝通；少一點猶豫，多一點行動，反而更容易拉近彼此的距離。", "end": "好的愛情，不是想清楚了才開始，而是在相處中慢慢理解，一起成長。"},
+8:{"d": "8號人通常比較有主見、有責任感，做事情也喜歡掌握方向。但有時候太習慣自己做決定，反而容易讓另一半感受到壓力。", "it": [["該放的就放，別想掌控一切", "例如，兩個人週末準備出去玩。8號人可能已經把時間、地點、行程全部安排好了。另一半說：「我想去別的地方耶！」8號人卻回答：「我都安排好了，照我的走就好了啊！」其實你可能只是想把事情做好，但對方也希望自己的想法能被重視。有時候放手讓對方做決定，也是一種愛的表現。"], ["愛不是控制，是信任與尊重", "例如，另一半跟朋友出去吃飯，沒有馬上回訊息。8號人可能就會問：「你去哪裡？跟誰？怎麼都不回我？」對方可能覺得：「我只是跟朋友吃個飯，為什麼好像做什麼都要報備？」其實關心沒有錯，但如果變成事事要求，就容易讓對方感受到壓力。真正的信任，不是隨時掌握對方的行蹤，而是願意給彼此適當的空間。"], ["強者的愛情，是包容與接納", "有些8號人習慣把責任扛在自己身上，也希望事情能按照自己的標準完成。例如，另一半做家事的方法跟自己不同，就忍不住說：「你這樣不對啦！應該要這樣做！」但對方可能只是想幫忙，最後卻變得什麼都不想做。兩個人在一起，不需要每件事情都分對錯，有時候願意包容差異，反而更容易相處。"]], "sh": "8號人的責任感與領導能力，是很好的天賦。但在感情裡，不是所有事情都需要自己掌控，也不需要每次都爭個輸贏。學會適度放手、尊重對方的選擇，讓另一半也有參與和表達的空間，感情自然更容易走得長久。", "end": "真正的強大，不是讓對方都聽你的，而是有能力包容彼此的不同。"},
+9:{"d": "9號人通常想得比較長遠，善於把握機會，也懂得整合資源，對感情往往有自己的期待與理想。但有時候太在意未來，反而容易忽略眼前的幸福。", "it": [["理想的愛，要和現實做平衡", "例如，兩個人交往一段時間，9號人可能已經開始規劃未來。「我們以後要住哪裡？」「什麼時候買房子？」「接下來的人生要怎麼安排？」另一半卻說：「我們才剛開始交往，可以先好好享受現在嗎？」其實有理想、有規劃是好事，但也要考慮彼此目前的狀況。好的感情，不只是一起期待未來，也要懂得珍惜當下。"], ["感情失敗，不代表人生失敗", "有些9號人對感情抱有很高的期待，一旦分手，就容易覺得自己付出的時間與心力都白費了。例如，朋友安慰說：「不適合就算了，還會遇到更好的人。」卻回答：「可是我原本連未來都想好了！」其實一段感情沒有走到最後，不代表過去的付出沒有意義。每一段經歷，都有機會讓我們更了解自己，也更清楚什麼樣的人適合自己。"], ["你的大愛，該留給值得的人", "9號人有時候很願意幫助別人，也容易因為看見對方的需要，而不斷付出。例如，另一半遇到困難，自己總是第一個出面幫忙。朋友說：「你已經幫他很多次了，怎麼還是你在處理？」9號人卻回答：「沒辦法啊，我就是不忍心！」但感情如果長期只有一個人在付出，難免會感到疲憊。願意付出是優點，但也要懂得觀察，對方是否同樣珍惜這段關係。"]], "sh": "9號人的遠見、整合能力與願意付出的心，是很珍貴的特質。但在感情裡，不需要每段關係都追求完美，也不需要為了成全別人而委屈自己。學會平衡理想與現實，接受感情中的得失，把時間與真心留給願意彼此珍惜的人。", "end": "好的愛情，不是付出越多就越幸福，而是彼此珍惜，讓愛成為雙方的幸福。"}};
+const ADV_END=`<p>從 1 號人到 9 號人，每個數字都有自己的優點，也都有需要學習與成長的地方。有些人太有主見，有些人太在意對方，有些人容易衝動，有些人想得太多，也有些人總是付出太多，反而忘了照顧自己。但這些都不代表誰比較好、誰比較不好。</p>
+<p><b class="tag">龍麒老師一直想提醒大家</b>學習數字，不是為了替自己或另一半貼標籤，更不是拿來判斷誰對誰錯；而是透過數字，更了解自己的性格，理解對方的需求，找到彼此更舒服的相處方式。兩個人在一起，有時候真的就像一場修行。不是每件事情都要爭輸贏，也不是每次吵架都要分對錯。有時候願意退一步、換個角度想一想，反而會發現，原來對方不是故意跟自己作對，只是彼此看事情的方式不同。</p>
+<p>好的感情，需要的不是完美的兩個人，而是兩個願意互相理解、共同成長的人。不管你現在是單身、戀愛中，還是已經結婚，不只是看自己的數字，也可以看看另一半的數字，作為日後相處與自我調整的參考。</p>
+<p class="remind">愛情不是改變對方，而是理解彼此；不是爭個輸贏，而是學會珍惜。既然選擇相愛，就好好相待；讓彼此的存在，成為人生的加分，而不是負擔。</p>`;
+function advHTML(n){const A=ADV[n];if(!A)return '';
+  return `<details class="sub"><summary>${n} 號人的愛情建議</summary><div class="sbody"><p>${A.d}</p>
+  ${A.it.map((x,i)=>`<p><b class="tag">${'①②③④⑤'[i]} ${x[0]}</b></p><p>${x[1]}</p>`).join('')}
+  <p><b class="tag">龍麒老師想跟大家分享</b>${A.sh}</p><p class="remind">${A.end}</p></div></details>`;}
+/* ===== 1–9 號人的親密特質（兩性關係課 6.0，老師原文） ===== */
+const INTI={
+1:{t:'熱情直接｜節奏明快',k:['熱吻開場','說做就做','引領互動','果斷有力','不愛拖拉','迅速進入','適度挑逗','熱情回應','坦白喜好'],
+ it:[['親密習慣｜喜歡主動帶領','1號人通常比較熱情直接，喜歡主動表達愛意。例如，兩個人坐在沙發上看電視，突然想抱抱、親親另一半，可能就直接靠過去了！另一半問：「你怎麼突然這麼熱情？」他可能回答：「想抱你就抱你啊！」😄'],
+  ['親密節奏｜喜歡直接明快','1號人通常不喜歡拖拖拉拉，想到就想行動，親密互動也比較重視當下的感覺。不過，有時候自己覺得剛剛好，另一半可能還沒準備好，所以也要學會配合彼此的節奏。'],
+  ['相處默契｜期待熱情回應','別看1號人總是比較主動，其實他們也希望另一半有所回應！例如，主動牽手時，對方願意握緊；想要擁抱時，也能感受到對方的溫暖。有時候，一個小小的回應，就能讓彼此感受到被愛。']],
+ sh:'親密關係不是誰比較主動、誰就比較愛，而是懂得理解彼此的習慣與需求。',end:'主動是一種熱情，回應是一種在乎；彼此尊重，才能讓感情更加幸福！'},
+2:{t:'溫柔細膩｜慢慢升溫',k:['喜歡擁抱','甜蜜親吻','輕聲細語','享受愛撫','重視前戲','深情對視','不急不躁','貼心呵護','依偎入睡'],
+ it:[['親密習慣｜喜歡溫柔陪伴','2號人通常比較重視情感交流，喜歡擁抱、親吻，以及輕聲細語的互動。例如，另一半下班回家，2號人可能會靠過去撒個嬌，說一句：「今天好累喔，抱一下好不好？」對他們來說，有時候一個擁抱，比說很多甜言蜜語還要溫暖！'],
+  ['親密節奏｜重視感覺與氣氛','2號人通常不喜歡太匆忙，比較享受慢慢培養感情的過程。像是睡前聊聊天、說說心事，或是兩個人安靜地依偎在一起，都能讓他們感受到親密與安心。'],
+  ['相處默契｜需要貼心呵護','2號人通常比較細膩，也很在意另一半的態度與反應。有時候，一句溫柔的關心、一個主動的擁抱，就能讓他們感受到被愛與被重視。']],
+ sh:'親密不一定要轟轟烈烈，有時候願意放慢腳步、用心陪伴，就是最溫暖的愛。',end:'溫柔是一種體貼，陪伴是一種幸福；懂得呵護彼此，感情才能慢慢升溫！'},
+3:{t:'愛玩愛鬧｜趣味調情',k:['偷襲親吻','孩子氣重','即興發揮','角色扮演','講求效率','表現慾強','歡樂互動','製造驚喜','誇他好棒'],
+ it:[['親密習慣｜喜歡玩鬧互動','3號人通常比較活潑，喜歡用開玩笑、撒嬌或突然親一下的方式表達愛意。例如，另一半正在認真滑手機，3號人可能突然湊過去親一下！對方說：「你幹嘛啦！嚇我一跳！」他可能笑著回答：「誰叫你都不理我！」😂 對他們來說，親密不一定要很正經，有時候打打鬧鬧，反而更有情趣！'],
+  ['親密節奏｜喜歡變化與驚喜','3號人通常比較有表現慾，也喜歡嘗試不同的互動方式。像是偶爾換個角色、安排小驚喜，或是突然提出有趣的點子，都可能讓他們覺得很新鮮。不過，有時候太急著表現，也容易忽略另一半的心情，所以記得熱情之外，也要懂得體貼。'],
+  ['相處默契｜喜歡被欣賞與肯定','3號人通常很享受兩個人開心互動的感覺，也希望自己的用心能被看見。例如，特地準備一個小驚喜，另一半如果笑著說：「哇！你怎麼這麼有創意！」這句簡單的稱讚，可能就讓他開心一整天！']],
+ sh:'3號人的親密魅力，在於願意帶來歡笑、熱情與驚喜。但親密關係不只是自己玩得開心，更重要的是兩個人都能享受其中。',end:'玩鬧是一種情趣，欣賞是一種肯定；懂得彼此配合，愛情才能充滿歡笑！'},
+4:{t:'按部就班｜穩定持久',k:['固定習慣','睡前準備','重視默契','床鋪整潔','熟悉姿勢','熟悉環境','提前暗示','不愛變動','耐心陪伴'],
+ it:[['親密習慣｜熟悉就是安心','4號人通常比較重視固定的習慣與熟悉的環境，對他們來說，親密不一定要一直追求新鮮，兩個人熟悉彼此的喜好，反而更自在。有時候你問他：「每次都差不多，不會膩嗎？」他可能覺得：「舒服就好，為什麼一定要一直變？」😂'],
+  ['親密節奏｜喜歡穩定默契','4號人比較重視彼此長期培養出來的默契，不太喜歡突然改變原本的節奏。所以當兩個人越來越熟悉，他反而越能放鬆，也越能享受彼此的陪伴。'],
+  ['相處默契｜提前溝通更安心','如果想要有不同的安排，與其突然來個大驚喜，不如提前透露一點、讓他有心理準備。對4號人來說，耐心陪伴、尊重習慣，往往比刻意製造刺激更加分！']],
+ sh:'親密不一定要天天有驚喜，能夠在熟悉中依然願意陪伴，在平凡中依然保有默契，也是一種長久的幸福。',end:'熟悉帶來安心，默契帶來穩定；細水長流，也可以很浪漫。'},
+5:{t:'大膽探索｜追求刺激',k:['主動求歡','打破常規','隨興親熱','變換姿勢','花樣百出','戶外情趣','勇於嘗鮮','樂於配合','享受當下'],
+ it:[['親密習慣｜喜歡新鮮變化','5號人通常比較不喜歡一成不變，偶爾換個方式、換個氣氛，都可能讓他覺得更有趣。另一半可能問：「今天怎麼突然不一樣？」他可能笑著說：「偶爾換一下才有意思啊！」😄 對5號來說，親密也是生活的一部分，有變化才有新鮮感！'],
+  ['親密節奏｜享受探索樂趣','5號人通常比較敢嘗試，也喜歡隨興一點，不一定每次都按照固定模式。有時候換個約會地點、安排一趟小旅行，甚至只是改變平常的相處方式，都能讓兩個人的感覺重新升溫。'],
+  ['相處默契｜願意一起嘗試','其實5號人追求刺激，不代表什麼都要改變，而是希望另一半願意一起探索、一起創造新的回憶。當然，再有趣的嘗試，都還是要建立在彼此願意、彼此舒服的前提下。']],
+ sh:'感情久了，最怕的不是平淡，而是忘了替生活增加一點變化。',end:'新鮮帶來火花，配合帶來默契；一起探索，也能讓愛情持續升溫！'},
+6:{t:'講究品質｜感官享受',k:['精心打扮','注重衛生','追求美感','香氛環繞','柔軟觸感','幸福滿滿','浪漫布置','留意反應','事後擁抱'],
+ it:[['親密習慣｜講究質感與氛圍','6號人通常比較重視細節，從打扮、整潔，到香味與環境，都可能影響他的感受。有時候另一半會問：「只是在家，有必要弄得這麼有氣氛嗎？」6號人可能會說：「有感覺比較重要啊！」😄'],
+  ['親密節奏｜喜歡慢慢享受','對6號人來說，親密不只是互動本身，也包含氣氛、觸感以及兩個人在一起的感覺。所以一點香氛、一個舒服的環境，甚至一句溫柔的話，都可能讓幸福感加分。'],
+  ['相處默契｜用心會被看見','6號人通常很在意另一半有沒有「用心」。不一定要花很多錢，有時候只是把環境整理好、準備一點小浪漫，結束後再給一個溫暖的擁抱，都會讓他感受到被重視。']],
+ sh:'6號人要的不一定是奢華，而是那份「你有把我放在心上」的感覺。',end:'質感創造氛圍，用心增加幸福；好的親密，是彼此都能享受其中。'},
+7:{t:'私密探索｜身心交融',k:['關門獨處','細膩感受','專心投入','昏暗燈光','深度沉浸','大腦交歡','保有隱私','輕聲引導','尊重步調'],
+ it:[['親密習慣｜重視私密空間','7號人通常比較慢熱，也很重視兩個人獨處的空間。對他們來說，真正的親密不是做給別人看，而是關起門來，只有彼此知道的那份靠近與信任。'],
+  ['親密節奏｜喜歡深度投入','7號人一旦有了安全感，往往會比想像中更加專心投入。他們重視細膩的感受，也喜歡慢慢進入彼此的世界，有時候不用講太多，一個眼神、一個動作，就能感受到對方。'],
+  ['相處默契｜尊重隱私與步調','跟7號人相處，不一定要一直追問：「你現在在想什麼？」有時候給他一點空間、輕聲引導，反而更容易讓他卸下心防。當信任夠深，兩個人的身心距離自然就會越來越靠近。😊']],
+ sh:'7號人的親密，重點不在熱鬧，而在深度；不在表面，而在真正的信任與投入。',end:'空間讓人安心，信任讓人靠近；懂得彼此的步調，才能走進彼此的內心。'},
+8:{t:'王者氣勢｜渴望臣服',k:['氣勢逼人','緊緊擁抱','展現力量','攻勢猛烈','喜歡主導','保護慾強','主動依靠','柔情反差','卸下防備'],
+ it:[['親密習慣｜喜歡掌握節奏','8號人通常氣場比較強，也比較習慣主動帶領。有時候另一半可能會說：「你怎麼什麼都要你決定？」他可能回答：「因為我知道你喜歡什麼啊！」😂 對8號來說，主導很多時候也是展現自信與力量的一種方式。'],
+  ['親密節奏｜強勢裡也有保護','別看8號平常比較強勢，其實對自己在乎的人，保護慾也很強。一個緊緊的擁抱、一個主動的依靠，都可能是他表達「有我在」的方式。'],
+  ['相處默契｜強者也需要柔軟','8號很有趣的一點，就是外表可能很有氣勢，但真正遇到信任的人，也會出現柔情反差。當他願意卸下防備、展現柔軟的一面，其實代表他真的把你放進心裡了。']],
+ sh:'真正的親密，不是誰征服誰，而是再強的人，也有一個可以安心卸下防備的地方。',end:'力量讓人安心，柔情讓人靠近；懂得剛柔並濟，感情才能更加深刻。'},
+9:{t:'角色多變｜靈活應對',k:['風格切換','深淺皆宜','隨機應變','可柔可烈','收放自如','多面展現','察覺反應','順勢調整','滿足彼此'],
+ it:[['親密習慣｜沒有固定模式','9號人的特色就是「變化」。有時溫柔、有時熱情，有時喜歡主動，有時又會順著另一半，會依照當下的氣氛與彼此的狀態自然切換。所以跟9號相處，你可能會發現：「你好像每次都不太一樣！」😂'],
+  ['親密節奏｜很會察覺對方','9號通常很會觀察另一半的反應。什麼時候該靠近、什麼時候該放慢，很多時候不需要講得太明白，他就會順勢調整自己的方式。'],
+  ['相處默契｜彼此舒服最重要','對9號來說，不一定非得按照某一套方式。能夠收放自如、順著彼此的感覺調整，找到兩個人都舒服的節奏，反而更容易讓關係保持新鮮感。']],
+ sh:'9號的魅力就在於他的靈活與多面，不一定要把感情變成固定公式。',end:'懂得察覺，也懂得調整；彼此舒服，就是最好的默契。'}};
+const INTI_END=`<p>每個人對「親密」的理解真的不一樣。有人喜歡主動直接，有人需要慢慢培養感覺；有人重視浪漫氛圍，有人更在乎安全與熟悉；也有人喜歡新鮮變化，有人則需要穩定與默契。</p>
+<p><b class="tag">龍麒老師想跟大家分享</b>親密關係沒有哪一種方式最好，適合彼此，才是最重要的。很多感情裡的問題，不一定是不愛了，而是我們常常用「自己喜歡的方式」去愛對方，卻忘了了解「對方真正需要的是什麼」。</p>
+<p class="remind">看懂彼此的不同，尊重彼此的需求；親密不是要求對方配合，而是一起找到舒服的節奏。</p>`;
+function intiHTML(n){const I=INTI[n];if(!I)return '';
+  return `<details class="sub"><summary>${n} 號人的親密特質・${I.t}</summary><div class="sbody">
+  <div class="lv3-k">${I.k.map(x=>`<span class="lv3-c">${x}</span>`).join('')}</div>
+  ${I.it.map((x,i)=>`<p><b class="tag">${'①②③'[i]} ${x[0]}</b></p><p>${x[1]}</p>`).join('')}
+  <p><b class="tag">龍麒老師想跟大家分享</b>${I.sh}</p><p class="remind">${I.end}</p></div></details>`;}
+const QK={1:['太強勢','凡事掌控，愛情像競爭','被忽視 被質疑 沒主導 不被尊重','展現自身的才華','別太強 學會示弱'],
+2:['太黏人','沒歸屬感，讓人有壓力','被嫌棄 被遺忘 冷暴力 不解風情','聆聽他人的聲音','少黏點 獨立一點'],
+3:['太花心','難以安定，三分鐘熱度','被批評 被限制 太無聊 不被關注','幫助身邊的友人','別亂撩 專注一個'],
+4:['太無趣','務實穩重，太不浪漫了','被欺騙 被逼迫 沒承諾 不切實際','學習受用的知識','浪漫點 別太白目'],
+5:['太愛玩','享受自由，不想被綁住','被束縛 被緊盯 無自由 不被信任','體驗新鮮的事物','定下來 別再亂跑'],
+6:['太付出','情緒勒索，對愛太認真','被遺忘 被輕視 不珍惜 不夠極致','提供價值的服務','撒個嬌 別再當媽'],
+7:['太難懂','捉摸不透，內心太深邃','被窺探 被揭穿 沒空間 不被接納','傳達專業的思想','多表達 別太冷淡'],
+8:['太霸氣','事業第一，感情被忽略','被操控 被否定 沒尊重 不得人心','給予真誠的對待','柔軟點 少點控制'],
+9:['太無私','為愛奉獻，總是在受傷','被辜負 被放棄 不同頻 不被認可','維持不變的初心','做自己 別沒原則']};
+function quickHTML(n){const q=QK[n];return `<dl class="qk"><dt>單身最大原因</dt><dd><b>${q[0]}</b>（${q[1]}）</dd>
+  <dt>愛情軟肋</dt><dd>${q[2].split(' ').map(x=>`<span class="lv3-c">${x}</span>`).join('')}</dd>
+  <dt>增進桃花</dt><dd>${q[3]}・${q[4].split(' ').join('・')}</dd></dl>${peachHTML(n)}`;}
+/* ===== 1–9 號如何增進桃花（講義） ===== */
+const PEACH={1:['是否太過於強勢讓人望而卻步？','放下強勢，柔軟示弱','控制太多，忽略對方','多說感謝，欣賞用語','強中帶柔，魅力自來'],
+2:['是否總是被當作工具人來使用？','自信獨立，展現光芒','過度討好，失去價值','勇敢說愛，欣賞自己','愛己之人，最被珍惜'],
+3:['是否缺乏深度交流只停在表面？','安靜傾聽，專注對方','過於自嗨，忽視對話','調整語氣，放慢速度','收斂鋒芒，魅力無限'],
+4:['是否太過於務實導致沒有情調？','多說暖話，放下理性','理性過頭，缺少情趣','即興約會，甜言撒嬌','柔軟心態，愛情自來'],
+5:['是否太過隨性給人沒有安全感？','減少分心，專注一人','忽冷忽熱，曖昧對象','說話算話，說到做到','安定之人，最得人心'],
+6:['是否給對方太多壓力彷彿嫌棄？','展現魅力，減少碎念','過度關心，像爸像媽','誇讚自己，改變穿搭','少管他人，多愛自己'],
+7:['是否太過於神秘讓人無法靠近？','分享感受，表達情緒','過度冷淡，拒人千里','微笑開場，童年故事','理性感性，皆具魅力'],
+8:['是否太像主管而不像是對戀人？','溫柔語氣，放掉權威','命令說話，太過霸道','說聲感謝，給予選擇','柔中帶剛，最具吸引'],
+9:['是否有時給人感覺只能當朋友？','主動示愛，勇敢表態','被動等待，錯失良機','安排約會，眼神交流','好討喜者，告白即贏']};
+function peachHTML(n){const P=PEACH[n];return `<details class="sub"><summary>${n} 號人如何增進桃花</summary><div class="sbody">
+  <p class="lead"><b>${n} 號關鍵</b>${P[0]}</p>
+  <dl class="qk"><dt>✅ 增進桃花</dt><dd>${P[1]}</dd><dt>❌ 避免雷區</dt><dd>${P[2]}</dd><dt>🎯 行動方案</dt><dd>${P[3]}</dd><dt>🔑 最後總結</dt><dd><b>${P[4]}</b></dd></dl>
+  <p class="hint">桃花不是只能等，也可以自己創造。想要有感情，就讓自己多一點機會認識人；想要遇到更好的人，自己也要慢慢成為更好的自己。</p></div></details>`;}
+/* ===== 流年與感情（老師原文整理） ===== */
+const FL_NEW={1:['新的開始','1 本身就帶著「開始」的能量。當一個人進入流年 1，很多事情可能會重新啟動，生活、人際、工作，甚至感情，都有機會進入新的階段。如果目前是單身：今年可以讓自己多出去走走、多認識不同的人，因為你正在進入一個新的階段，感情上也可以多留意新的機會。'],
+6:['想要有家','6 本身就跟家庭、陪伴、責任與穩定有關。有些人平常可能覺得「一個人也很好啊！」可是走到這個階段，反而會開始思考：「是不是也該找一個人穩定下來？」所以流年 6 不只是遇見人的機會，而是自己對於「穩定關係」的需求，也可能變得更加明顯。'],
+7:['真命天子','到了流年 7，感情裡比較容易出現「認真選擇」的課題。不是身邊出現一個人就好，而是會開始思考：「這個人適不適合我？」「這段關係能不能走得長久？」今年遇到的人，不妨多一點時間去了解，不要只看第一眼的感覺，而是去看看彼此到底適不適合。']};
+const FL_PEACH={2:['小心因為寂寞而選擇','2 很重視陪伴，也容易因為有人關心、有人陪伴，而產生依賴。「寂寞並不可怕，可怕的是不甘寂寞。」所以不要為了交而交，也不要只是為了有人陪，就走進一段感情。可以問問自己：「你是真的喜歡他，還是只是不想一個人？」','不要因為寂寞而選擇'],
+3:['小心因為激情而衝動','3 的感情來得快、熱得也快。容易一見鍾情、乾柴烈火，甚至一時衝動，很快確認關係或談婚論嫁。所以記得：激情可以很快，決定不要太快。','不要因為激情而衝動'],
+5:['小心因為新鮮而迷失','5 本身就有戀愛、自由與追求新鮮的能量。桃花可能變多，誘惑與選擇也容易跟著增加。最需要注意的就是：新鮮感，不代表真的適合。','不要因為新鮮而迷失']};
+const FL_CHG={5:['喜新厭舊','5 喜歡自由、新鮮與變化。走到流年 5，容易覺得原本的生活太固定，開始想追求新的感覺，感情自然也比較容易出現變動。想改變沒有問題，但不要把「新鮮感消失」誤認成「感情消失」。','不要為了新鮮，忘了珍惜'],
+8:['事業忽略','8 通常會把更多心力放在工作、責任與目標上。忙著賺錢、忙著工作、忙著完成自己的事情，很容易不知不覺忽略另一半。可以提醒自己：「事業很重要，但不要等到成功了，才發現身邊的人已經走遠了。」','不要為了事業，忽略伴侶'],
+9:['想斷捨離','9 本身就帶著整理、完成與告別過去的能量。走到流年 9，有些人會重新思考：「這段感情，我還要不要繼續？」但也不要一有問題就急著結束；有時候真正需要告別的，不一定是這個人，而是過去不適合的相處方式。','不要急著結束，先看清關係']};
+function flLoveHTML(n){
+  let h='';
+  if(FL_NEW[n]) h+=`<p><b class="tag">容易遇見新的戀情・${FL_NEW[n][0]}</b>${FL_NEW[n][1]}</p><p class="hint">流年 1、6、7 比較容易遇見新的戀情，但不是走到這幾年就一定會談戀愛；數字不是給人保證，而是幫助我們看見方向。</p>`;
+  if(FL_PEACH[n]) h+=`<p><b class="tag">容易出現桃花機會・${FL_PEACH[n][0]}</b>${FL_PEACH[n][1]}</p><p class="remind">${FL_PEACH[n][2]}</p><p class="hint">流年 2、3、5 不是一定會遇到爛桃花，而是比較容易因為當下的情緒、激情或新鮮感，遇到不適合自己的桃花。桃花來了不用怕，先看自己的狀態，再看對方的狀態，最後再決定要不要走進這段感情。</p>`;
+  if(FL_CHG[n]) h+=`<p><b class="tag">感情容易出現變動・${FL_CHG[n][0]}</b>${FL_CHG[n][1]}</p><p class="remind">${FL_CHG[n][2]}</p><p class="hint">流年 5、8、9 不是告訴我們「一定會分手」，而是提醒：感情出現變動的時候，先看懂問題，再決定是調整、珍惜，還是放下。</p>`;
+  if(!h) h=`<p class="hint">今年不是特別容易遇見新戀情、桃花或感情變動的流年。不要因為現在不是桃花流年，就覺得「今年沒希望了」——時間花在哪裡，成就就在哪裡；桃花不是只能等，也可以自己創造。你不出去，人家怎麼遇見你？</p>`;
+  return `<div class="fl-love">${h}<p class="remind">流年不是預言，而是一種提醒；數字給你方向，選擇仍然在自己手上。</p></div>`;
+}
+/* ===== 婆媳密碼（老師原文） ===== */
+const INLAW={
+1:{t:'主見強勢型',d:'在婆媳相處當中，有時候不是誰對誰錯，而是兩個人都有自己的想法，也都認為自己的方式比較好。尤其當婆婆與媳婦的主性格數字相加，最後得到 1 號時，就可以特別留意這類相處模式。',
+ box:['孩子管教、教育方式、雙方堅持各自做法','家庭決策、生活安排、大小事情都想作主'],
+ it:[['孩子的教育，誰說了算？','例如，婆婆覺得孩子應該嚴格一點，從小就要養成規矩。媳婦卻認為：「孩子還小，應該多給他一點自由。」兩個人其實都是為孩子好，只是教育觀念不同，誰也不想輕易讓步。'],
+  ['家裡的事情，誰來決定？','像是孩子要上什麼才藝班、假日去哪裡、家裡的東西怎麼擺放，甚至每天吃什麼，都可能有不同意見。婆婆可能會說：「以前我們都是這樣做的！」媳婦心裡卻想：「現在都什麼年代了，為什麼一定要照以前的方法？」時間久了，就容易因為一些生活小事產生摩擦。'],
+  ['婆媳相處，最重要的建議','尊重立場、減少干涉、教養原則夫妻先談。每個人都有自己的生活經驗，也都有值得被尊重的想法。尤其孩子的教育，建議先由夫妻雙方建立共識，再與長輩好好溝通，避免彼此都想作主，最後反而傷了感情。']],
+ s:'尊重立場、減少干涉、教養原則夫妻先談。',
+ sh:'其實主見強並不是壞事，代表雙方都有自己的想法，也願意為家庭付出。但要記得，有主見是優點，太過堅持就容易變成衝突。數字只是幫助我們理解相處模式的一種參考，不代表每一組婆媳都一定如此。',
+ end:'婆媳相處，不是爭誰作主，而是學會彼此尊重。'},
+2:{t:'溫柔體貼型',d:'這一組婆媳相處，通常比較重視彼此的感受，也願意互相照顧。有時候不需要說太多，一個小動作、一句關心的話，就能讓對方感受到溫暖。',
+ box:['婆婆煮飯、媳婦洗碗，兩人主動分擔家務','孩子哭鬧、輪流安撫，彼此願意幫忙照顧'],
+ it:[['家務分擔，不用事事計較','例如，婆婆在廚房忙著煮飯，媳婦看到了，可能會主動說：「媽，妳煮飯就好，等一下碗我來洗！」婆婆也可能回一句：「沒關係啦，妳今天上班也很累，先去休息！」兩個人不一定要把家務分得清清楚楚，而是看到對方辛苦，就願意主動幫忙。'],
+  ['照顧孩子，彼此願意伸出援手','像是孩子半夜哭鬧，媳婦已經累得快睡著了。婆婆可能會說：「妳先去休息，我幫妳顧一下。」或者婆婆忙了一整天，媳婦也會主動接手，讓長輩有時間休息。這類相處模式的優點，就是比較容易感受到彼此的關心，也願意為對方多做一點。'],
+  ['婆媳相處，最需要注意什麼？','主動道謝、有話直說、別把委屈藏在心裡。因為越是體貼的人，有時候反而越不好意思拒絕。明明已經很累了，嘴巴卻說：「沒關係，我來就好！」明明心裡有不同想法，卻又擔心說出來會讓對方不開心。久而久之，原本的體貼就可能變成委屈。']],
+ s:'主動道謝、有話直說、別把委屈藏在心裡。',
+ sh:'其實溫柔體貼是一件很棒的事情，但我們也要記得，關心別人的同時，別忘了照顧自己的感受。有些事情願意幫忙很好，但不代表每一次都必須答應。當然，數字只是一種輔助參考，實際相處還是要看雙方的個性與生活習慣。',
+ end:'好的婆媳關係，不是誰一直付出，而是彼此都懂得珍惜。'},
+3:{"t": "歡樂互動型", "d": "這一組婆媳相處，通常比較有活力，也容易因為孩子而增加許多互動與歡笑。有時候婆婆不像傳統印象中那麼嚴肅，反而像個大孩子，喜歡陪孫子玩，也願意跟媳婦分享生活中的趣事。不過，歡樂歸歡樂，有時候太寵孩子，也可能讓媳婦有點頭痛！😂", "box": ["陪伴孫子、遊戲玩樂、婆媳相處笑聲不斷", "偷買玩具、滿足要求、有時打亂教養規矩"], "it": [["陪伴孫子，家裡總是熱熱鬧鬧", "例如，婆婆陪孫子玩遊戲、唱歌、跳舞，甚至一起扮家家酒。媳婦回到家，看到阿嬤跟孫子玩得不亦樂乎，忍不住笑著說：「媽，妳怎麼比小朋友還會玩啊！」這類相處模式的優點，就是比較容易創造歡樂氣氛，也讓家人之間多了不少共同話題。"], ["太疼孫子，有時候也會打亂規矩", "像是媳婦明明已經跟孩子約定好，這個月不能再買玩具了。結果阿嬤帶孫子出門，看到孩子喜歡，忍不住又買了一個回來。媳婦可能會說：「媽，不是說好不能再買了嗎？」婆婆卻笑著回答：「哎呀！偶爾一次沒關係啦，小孩子開心就好！」其實阿嬤只是想疼孫子，但如果經常這樣，就容易讓孩子覺得，只要找阿嬤，什麼事情都有商量的空間。"], ["婆媳相處，最需要注意什麼？", "保持童心、約定原則、疼愛孩子也要有度。陪孩子玩、讓孩子開心，當然是很棒的事情！但如果涉及買玩具、吃零食、看電視或睡覺時間，最好還是先有共同的原則。例如可以事先約定，每個月買玩具的次數，或是一天可以吃多少零食。這樣阿嬤可以開心疼孫子，媳婦也不需要一直扮演管教孩子的壞人。"]], "s": "保持童心、約定原則、疼愛孩子也要有度。", "sh": "其實歡樂互動型的婆媳，有一個很棒的優點，就是比較容易透過玩樂、聊天與共同活動拉近彼此的距離。但要記得，疼愛孩子不等於什麼都答應，讓孩子開心也不代表可以沒有規矩。當然，數字只是輔助我們理解相處模式的一種參考，實際情況還是要看每個家庭的生活習慣。", "end": "婆媳相處，多一點歡笑很好，但疼愛孩子也要守住原則。"},
+4:{"t": "規矩秩序型", "d": "這一組婆媳相處，通常比較重視生活規矩、做事順序與家庭習慣。其實有規矩是一件好事，家裡比較容易保持整齊，生活也比較有秩序。不過，有時候雙方都很在意自己的做事方式，就容易因為一些小事情產生摩擦。", "box": ["廚房整潔、物品擺放、東西用完放回原位", "孩子作息、功課安排、生活規矩要求不少"], "it": [["廚房整潔，東西一定要放對位置", "例如，媳婦洗完碗，順手把杯子放在旁邊的櫃子。婆婆看到了，可能會說：「那個杯子不是放這裡的啦！我平常都放在上面那一格。」媳婦心裡可能會想：「不就是一個杯子嗎？放哪裡有差嗎？」但對重視秩序的人來說，東西放在固定的位置，不只是習慣，也會讓自己比較安心。"], ["孩子的作息，總希望照著規矩來", "像是孩子晚上九點應該睡覺，功課要先寫完才能看電視。婆婆可能會提醒：「時間到了，怎麼還不去睡覺？」媳婦卻覺得：「今天是假日，偶爾晚一點沒關係吧！」其實雙方都是為孩子好，只是一個比較重視規律，另一個可能希望保留一點彈性。如果沒有事先溝通，就容易因為生活習慣不同而產生爭執。"], ["婆媳相處，最需要注意什麼？", "明確分工、互相協調、家中規矩共同商量。例如，廚房誰負責整理、孩子的作息怎麼安排、家務應該如何分擔，都可以事先討論。尤其住在同一個屋簷下，更需要尊重彼此原本的生活習慣。有些事情可以訂好規矩，有些事情則不妨保留一點彈性。"]], "s": "明確分工、互相協調、家中規矩共同商量。", "sh": "其實規矩秩序型的優點，就是做事比較有條理，也願意把家庭生活安排妥當。但要記得，規矩是為了讓生活更好，而不是讓家人感到壓力。不要因為一個杯子放錯位置、一件衣服沒有摺好，就讓原本和睦的家庭氣氛變得緊張。當然，數字只是一種輔助參考，真正的相處還是需要雙方願意溝通與調整。", "end": "家裡可以有規矩，但相處更需要留有餘地。"},
+5:{"t": "自由隨性型", "d": "這一組婆媳相處，通常比較喜歡自由自在的生活，不太喜歡什麼事情都被安排得死死的。有時候想到什麼就想去做，臨時有個好點子，就想帶著家人一起出門！這樣的相處模式其實滿有趣的，生活比較不容易無聊，但有時候也會因為太過隨性，讓對方有點措手不及！😂", "box": ["假日出遊、臨時邀約、喜歡帶著孫子出門", "家庭聚會、節日安排、有時不想受到拘束"], "it": [["假日出遊，常常說走就走", "例如，星期六早上，婆婆突然打電話給媳婦：「今天天氣這麼好，我想帶孫子去動物園走走！」媳婦可能會回答：「媽，可是我們下午已經有安排了耶！」婆婆卻覺得：「沒關係啊！改天再做就好了！」其實婆婆只是想帶孫子出去玩，享受一家人在一起的時光。但如果沒有提前確認，就可能打亂媳婦原本的生活安排。"], ["家庭聚會，不喜歡被時間綁住", "像是過年過節，家人約好中午十二點一起吃飯。結果有人臨時想換餐廳，有人覺得晚一點到也沒關係。婆婆可能會說：「大家開心就好，不用那麼計較時間啦！」媳婦卻想：「可是我後面還有其他事情要忙啊！」對比較隨性的人來說，行程可以調整，時間也可以有彈性。但對已經安排好事情的人來說，臨時改變就可能造成困擾。"], ["婆媳相處，最需要注意什麼？", "保留彈性、提前告知、出遊時間先要確認。其實自由隨性並沒有不好，反而能讓家庭生活多一些驚喜與樂趣。但如果涉及孩子接送、假日出遊或家庭聚會，最好還是提前詢問對方的安排。例如：「這個星期天我想帶孫子出去玩，你們有沒有其他計畫？」多問這一句，就能減少很多不必要的誤會。"]], "s": "保留彈性、提前告知、出遊時間先要確認。", "sh": "其實自由隨性型的婆媳，優點就是比較懂得享受生活，也願意嘗試不同的活動。但要記得，自己喜歡自由，也要尊重別人的時間與安排。有時候不是對方不願意配合，而是每個人都有自己的生活節奏。當然，數字只是幫助我們理解相處模式的一種參考，真正重要的還是彼此願意溝通與尊重。", "end": "生活可以隨性，相處不能任性；保留一點自由，也要尊重彼此。"},
+6:{"t": "關懷照顧型", "d": "這一組婆媳相處，通常比較重視家人的生活起居，也習慣透過實際行動表達關心。不過，有時候太會照顧別人，反而容易忘記照顧自己。❤️", "box": ["煮飯備菜、營養搭配、常煮家人愛吃菜色", "孫子生病、陪同看診、細心照料也要休息"], "it": [["煮飯備菜，總想讓家人吃得好", "例如，婆婆知道媳婦工作忙，特別煮了她喜歡吃的菜。「來來來，多吃一點！這個是特別幫妳煮的！」媳婦笑著說：「媽，我真的吃不下了啦！」其實這就是一種愛的表現，只不過有時候太過熱情，也可能讓對方有點壓力。😊"], ["孫子生病，總是特別操心", "孩子突然發燒，婆婆可能比誰都緊張。「要不要我陪妳去看醫生？晚上我也可以幫忙顧！」明明自己已經忙了一整天，還是不放心孩子。這樣的付出很溫暖，但如果什麼事情都自己扛，時間久了也會累。"], ["婆媳相處，最需要注意什麼？", "感謝付出、輪流分擔、照顧家人不必逞強。有時候一句「媽，辛苦妳了！」或是「今天換我來，妳先休息！」就能讓對方感受到自己的付出被看見。"]], "s": "感謝付出、輪流分擔、照顧家人不必逞強。", "sh": "關心家人是好事，但不要讓自己的付出變成別人的理所當然。婆婆需要休息，媳婦也需要喘口氣。彼此願意分擔，才能讓家庭相處得更輕鬆。", "end": "照顧家人是愛，懂得分擔也是愛。"},
+7:{"t": "自在相處型", "d": "這一組婆媳相處，通常比較重視個人空間，不一定需要天天見面、時時陪伴，反而能維持不錯的關係。有時候，保持一點距離，也是一種相處的智慧！❤️", "box": ["各有朋友、各自出門、平時都有各自活動", "偶爾聚餐、見面聊天、不住一起感情也好"], "it": [["各有生活，不一定要天天黏在一起", "例如，婆婆平常有自己的朋友，喜歡出去喝茶、聊天或參加活動。媳婦也有自己的工作、朋友與生活安排。婆婆可能會說：「妳們忙妳們的，我今天跟朋友約好了！」媳婦也覺得：「這樣很好啊！大家都有自己的生活！」彼此不過度干涉，反而相處得更輕鬆。"], ["偶爾聚餐，不住一起感情也很好", "像是平常各自生活，到了週末或節日，再約出來一起吃飯。「媽，這個星期天有空嗎？我們一起吃個飯！」見面時聊聊近況、關心彼此，不需要每天聯絡，也能維持感情。不過，如果太少主動關心，也可能讓對方誤以為自己不被重視。"], ["婆媳相處，最需要注意什麼？", "尊重隱私、適度關心、保留空間也能親近。不需要什麼事情都過問，但重要的時候，還是要記得主動關心。"]], "s": "尊重隱私、適度關心、保留空間也能親近。", "sh": "其實婆媳關係不一定要像母女一樣親密，也不代表住在一起才叫感情好。每個家庭都有適合自己的相處方式。有時候少一點干涉，多一點尊重，反而能讓彼此更自在。", "end": "好的婆媳關係，不在距離遠近，而在彼此是否懂得尊重。"},
+8:{"t": "責任承擔型", "d": "這一組婆媳相處，通常比較重視家庭責任，也願意為家裡的大小事情付出。不過，當雙方都很有責任感，也都想參與決定時，有時候反而容易產生不同意見。", "box": ["買房規劃、裝潢安排、重大開支都想參與", "家庭開銷、修繕維護、帳單費用要求清楚"], "it": [["買房裝潢，大家都有自己的想法", "例如，夫妻準備買房子，婆婆知道後，可能會主動幫忙看地點、比較價格。「這間房子不錯啊！以後孩子上學也方便！」媳婦卻覺得：「媽，可是我們比較喜歡另外一間耶！」其實婆婆是出於關心，但如果參與太多，就可能讓媳婦覺得自己的決定不被尊重。"], ["家庭開銷，總希望每筆錢都清清楚楚", "像是家裡冷氣壞了，需要花錢維修。婆婆可能會問：「修理要多少錢？有沒有先問其他家？」媳婦心裡卻想：「我們已經比較過了，怎麼還要一直問？」其實雙方都是希望把家庭照顧好，只是對金錢管理與責任分配，有不同的想法。"], ["婆媳相處，最需要注意什麼？", "權責分明、共同商量、尊重彼此的決定權。尤其買房、裝潢、家庭開銷這些重要事情，可以一起討論，但也要清楚誰負責、誰做最後決定。有時候願意幫忙很好，但不代表所有事情都需要替對方作主。"]], "s": "權責分明、共同商量、尊重彼此的決定權。", "sh": "責任感強是一件好事，但要記得，願意承擔責任，不代表一定要掌握決定權。婆婆可以提供經驗，媳婦也可以表達想法，彼此尊重，才能減少不必要的摩擦。", "end": "家庭責任可以一起承擔，彼此的決定更需要尊重。"},
+9:{"t": "圓融變通型", "d": "這一組婆媳相處，通常比較懂得靈活處理事情，也善於運用身邊的關係與資源。遇到問題時，不一定要自己全部承擔，而是懂得尋找不同的方法來解決。❤️", "box": ["年節聚餐、親戚來訪、總能張羅大小事情", "孩子接送、臨時有事、知道找誰幫忙支援"], "it": [["年節聚餐，總能張羅大小事情", "例如，過年親戚突然多了幾位，原本準備的飯菜可能不太夠。婆婆可能會說：「沒關係啦！我們再叫幾道菜，請大家一起幫忙準備就好！」媳婦也可以協助安排座位、餐具，讓原本手忙腳亂的場面順利解決。"], ["臨時有事，知道可以找誰幫忙", "例如，媳婦臨時要加班，卻沒辦法接孩子放學。婆婆可能會說：「我今天也有事情，不然問問阿姨能不能幫忙接一下？」有時候事情不一定要自己完成，懂得尋求適當的協助，也能減少彼此的壓力。"], ["婆媳相處，最需要注意什麼？", "善用關係、隨時調整、遇事一起尋找方法。遇到問題時，不要急著責怪對方，也不需要堅持只有一種做法。不過，尋求親友協助之前，也要先確認對方是否方便，避免好意反而造成困擾。"]], "s": "善用關係、隨時調整、遇事一起尋找方法。", "sh": "9號的特色，就是善於連結渠道、掌握機會，也懂得靈活運用資源。但要記得，會想辦法是優點，懂得尊重別人的意願更重要。婆媳之間不需要事事自己來，能夠一起想辦法、找到適合彼此的方式，才是最重要的。", "end": "遇事多一點變通，相處少一點衝突；方法一起找，家庭自然更美好。"}};
+function worldHTML(n,g){
+  const L=LOVE3[n], W=g==='m'?L.m:L.f, s=g==='m'?L.ms:L.fs, box=LOVE[n]&&LOVE[n][g];
+  return `<details class="sub"><summary>${n} 號${g==='m'?'男':'女'}生的情感世界</summary><div class="sbody">
+    ${box?`<ul class="lv3-box"><li><b>感情</b>${box[0]}</li><li><b>戀愛</b>${box[1]}</li><li><b>婚姻</b>${box[2]}</li></ul>`:''}
+    <p><b class="tag">感情</b>${W[0]}</p><p><b class="tag">戀愛</b>${W[1]}</p><p><b class="tag">婚姻</b>${W[2]}</p>
+    <p class="remind">${s}</p></div></details>`;
+}
+
+function loveCard(name,n,g){
+  const L=LOVE[n], ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  return `<div class="lv"><h4>${name}｜${n} 號 ${L.t}</h4><p class="hint">${L.r}</p>
+    ${quickHTML(n)}
+    ${love2HTML(n,g)}
+    <details class="sub"><summary>${n} 號人的愛情觀・${LOVE3[n].t}</summary><div class="sbody">${love3Body(n)}</div></details>
+    ${(g?[g]:['m','f']).map(x=>worldHTML(n,x)).join('')}
+    ${advHTML(n)}${intiHTML(n)}
+    <details class="sub"><summary>愛情之鑰・愛情觀</summary><div class="sbody">
+      <p><b class="tag">在愛情裡的樣子</b></p>${ul(L.do)}
+      <p><b class="tag">希望對方</b></p>${ul(L.want)}
+      <p><b class="tag">盲點</b>${L.blind}</p><p><b class="tag">誤區</b>${L.myth}</p><p class="remind">提醒：${L.tip}</p>
+      <p><b class="tag">建議</b></p>${ul(L.adv)}
+    </div></details></div>`;
+}
+
+function drawPair(){
+  ['pDateA','pDateB'].forEach(id=>ph($(id)));
+  const nA=$('pNameA').value.trim()||'A', nB=$('pNameB').value.trim()||'B';
+  const A=pairCard('pCardA',nA,$('pDateA').value), B=pairCard('pCardB',nB,$('pDateB').value);
+  $('pCompare').hidden=!(A&&B); drawRel(A,B,nA,nB); if(!(A&&B)) return;
+  const inner=p=>new Set([p.top,p.mL,p.mR,...p.b]);
+  const a=inner(A.p), b=inner(B.p), all=[1,2,3,4,5,6,7,8,9];
+  const both=all.filter(x=>a.has(x)&&b.has(x)), onlyA=all.filter(x=>a.has(x)&&!b.has(x)), onlyB=all.filter(x=>!a.has(x)&&b.has(x)), none=all.filter(x=>!a.has(x)&&!b.has(x));
+  const chips=arr=>arr.length?`<span class="miss-chips">${arr.map(x=>`<span>${x}</span>`).join('')}</span>`:'<span class="hint">沒有</span>';
+  const eA=PROF[A.n].el, eB=PROF[B.n].el;
+  let rel;
+  if(eA===eB) rel=`兩人主性格的五行都是「${eA}」，屬性相同。`;
+  else if(GEN[eA]===eB) rel=`${nA}（${eA}）生 ${nB}（${eB}）：${nA} 對 ${nB} 比較像父母，比較包容；相生讓人感到舒服。`;
+  else if(GEN[eB]===eA) rel=`${nB}（${eB}）生 ${nA}（${eA}）：${nB} 對 ${nA} 比較像父母，比較包容；相生讓人感到舒服。`;
+  else if(KE[eA]===eB) rel=`${nA}（${eA}）剋 ${nB}（${eB}）：${nA} 對 ${nB} 比較像朋友，希望對方進步、比較有要求；相剋讓人成長，但比較不舒服。`;
+  else rel=`${nB}（${eB}）剋 ${nA}（${eA}）：${nB} 對 ${nA} 比較像朋友，希望對方進步、比較有要求；相剋讓人成長，但比較不舒服。`;
+  if(pMode==='flow'){
+    const yr=A.yr, same=A.fn===B.fn, sameC=CYC[A.fn]===CYC[B.fn];
+    $('pCmpBody').innerHTML=`
+      <div class="cmp-row"><b>${yr} 流年</b><span>${nA} 走流年 ${A.fn}（${FY[A.fn].n}），${nB} 走流年 ${B.fn}（${FY[B.fn].n}）。</span></div>
+      <div class="cmp-row"><b>循環</b><span>${same?'兩人走同一個流年數字，這一年的課題很接近。':sameC?`兩人都在 ${CYC[A.fn]} 循環裡：${CYC_D[CYC[A.fn]].split('：')[1].replace('。','')}`:`${nA} 在 ${CYC[A.fn]} 循環（${CYC_D[CYC[A.fn]].split('：')[1].replace('。','')}），${nB} 在 ${CYC[B.fn]} 循環（${CYC_D[CYC[B.fn]].split('：')[1].replace('。','')}）。`}</span></div>
+      <div class="cmp-row"><b>關鍵</b><span>${nA}：${FY[A.fn].key}・${FY[A.fn].line}　${nB}：${FY[B.fn].key}・${FY[B.fn].line}</span></div>`;
+    return;
+  }
+  $('pCmpBody').innerHTML=`
+    <div class="cmp-row"><b>主性格</b><span>${nA} 是 ${A.n} 號人（${TALENT[A.n].k}），${nB} 是 ${B.n} 號人（${TALENT[B.n].k}）。</span></div>
+    <div class="cmp-row"><b>五行</b><span>${rel}</span></div>
+    <div class="cmp-row"><b>主義</b><span>${ISM[A.n]===ISM[B.n]?`兩人都是${ISM[A.n]}主義，價值觀比較接近。`:`${nA} 是${ISM[A.n]}主義、${nB} 是${ISM[B.n]}主義，價值觀、金錢觀可能不太一樣。`}</span></div>
+    <p class="hint">以下比較金字塔內 7 個數：</p>
+    <div class="cmp-row"><b>兩人都有</b>${chips(both)}</div>
+    <div class="cmp-row"><b>只有 ${nA} 有</b>${chips(onlyA)}</div>
+    <div class="cmp-row"><b>只有 ${nB} 有</b>${chips(onlyB)}</div>
+    <div class="cmp-row"><b>兩人都沒有</b>${chips(none)}</div>`;
+}
+let pRel='';
+function drawRel(A,B,nA,nB){
+  const show=!!pRel&&A&&B; $('pRel').hidden=!show;
+  ['pSexA','pSexB'].forEach(id=>$(id).hidden=pRel!=='couple');
+  if(!show) return;
+  if(pRel==='inlaw'){
+    $('pRelTitle').textContent='婆媳關係｜婆媳密碼';
+    const hc=one(A.n+B.n), I=INLAW[hc], ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+    const head=`<div class="hc"><span class="hc-n">${hc}</span><div><h4>婆媳碼${'①②③④⑤⑥⑦⑧⑨'[hc-1]}${I?'・'+I.t:''}</h4><p class="hint">兩人主性格相加：${A.n} ＋ ${B.n} ＝ ${A.n+B.n}${A.n+B.n>9?` → ${hc}`:''}（同一組：${HC_PAIRS[hc]}）</p></div></div>`;
+    $('pRelBody').innerHTML=head+(I?`${ul(I.box)}<p class="remind">建議：${I.s}</p>
+      <details class="sub" open><summary>婆媳密碼${'①②③④⑤⑥⑦⑧⑨'[hc-1]}：${I.t}</summary><div class="sbody"><p>${I.d}</p>
+      ${I.it.map((q,i)=>`<p><b class="tag">${'①②③'[i]} ${q[0]}</b></p><p>${q[1]}</p>`).join('')}
+      <p><b class="tag">龍麒老師想跟大家分享</b>${I.sh}</p><p class="remind">${I.end}</p></div></details>`
+      :`<p class="hint">這一組婆媳碼的講義還沒有提供，目前有：${Object.keys(INLAW).map(k=>'婆媳碼'+'①②③④⑤⑥⑦⑧⑨'[k-1]).join('、')}。</p>`)+
+      `<p class="hint">兩人誰是婆婆、誰是媳婦都可以，婆媳碼看的是兩人主性格相加。</p>`;
+    return;
+  }
+  if(pRel!=='couple'){
+    $('pRelTitle').textContent='家人關係';
+    $('pRelBody').innerHTML='<p class="hint">家人關係的解讀還沒有資料。有相關講義時再傳給我，我幫你加進來。</p>';
+    return;
+  }
+  $('pRelTitle').textContent='情侶關係｜愛情之鑰';
+  const hc=one(A.n+B.n), H=HECAI[hc], ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  $('pRelBody').innerHTML=`
+    <div class="hc"><span class="hc-n">${hc}</span><div><h4>合財碼${'一二三四五六七八九'[hc-1]}・${HECAI_G[hc]}</h4><p class="hint">兩人主性格相加：${A.n} ＋ ${B.n} ＝ ${A.n+B.n}${A.n+B.n>9?` → ${hc}`:''}</p></div></div>
+    ${ul(H.c)}<p class="remind">建議：${H.s}</p>
+    <details class="sub"><summary>愛情密碼${'一二三四五六七八九'[hc-1]}：${HC2[hc].th}</summary><div class="sbody">
+      <p class="hint">同一組的組合：${HC_PAIRS[hc]}</p><p>${HC2[hc].d}</p>
+      ${HC2[hc].qa.map((q,i)=>`<p><b class="tag">${'①②③'[i]} ${q[0]}</b></p><p>${q[1]}</p>`).join('')}
+      ${HC2[hc].sh?`<p><b class="tag">龍麒老師想跟大家分享</b>${HC2[hc].sh}</p>`:''}
+      <p class="remind">${HC2[hc].end||'既然選擇相愛，就好好相待。少一點爭輸贏，多一點互相理解；少一點計較，多一點珍惜。'}</p>
+    </div></details>
+    <details class="sub"><summary>為什麼要看愛情密碼</summary><div class="sbody"><p>${HC2_END}</p><p>${LOVE3_END}</p></div></details>
+    <details class="sub"><summary>1～9 號人的愛情建議・總結</summary><div class="sbody">${ADV_END}</div></details>
+    <details class="sub"><summary>1～9 號人的親密特質・總結</summary><div class="sbody">${INTI_END}</div></details>
+    ${pMode==='flow'&&A.fn&&B.fn?`<div class="lv-grid">${[[nA,A],[nB,B]].map(([nm,X])=>{const L=FLOVE[X.fn];return `<div class="lv"><h4>${nm}｜${X.yr} 流年 ${X.fn}・${L[0]}</h4><p class="hint">流年愛情建議</p><p>${L[1]}</p>${ul(L[2])}<p class="warnline">注意：${L[3]}</p><p class="remind">${L[4]}</p>${flLoveHTML(X.fn)}</div>`;}).join('')}</div>`:''}
+    <div class="lv-grid">${loveCard(nA,A.n,$('pSexA').value)}${loveCard(nB,B.n,$('pSexB').value)}</div>
+    <details class="sub"><summary>愛情之鑰：男女大不同與幸福關鍵</summary><div class="sbody">
+      <p><b class="tag">思維邏輯</b>男生偏向邏輯和結果導向，喜歡直線解決問題、專注單一目標；女生偏向情感和過程導向，喜歡被理解，會注意多方細節。</p>
+      <p><b class="tag">情感表達</b>男生喜歡簡單直接，言詞較少，傾向壓抑情緒、獨自處理；女生喜歡細膩豐富，願意分享感受，透過傾訴釋放壓力。</p>
+      <p><b class="tag">行為模式</b>男生偏向孤立自己、喜歡有挑戰的活動，購物直奔目標；女生偏向尋求支持、重視安全感，購物喜歡多逛多比較。</p>
+      <p><b class="tag">愛情態度</b>男生看重尊重和成就感，想被當成英雄，重視身體接觸；女生看重被理解，重視心理上的深度投入。</p>
+      <p><b class="tag">分手常見原因</b>缺乏溝通（誤會累積、表達不當）、信任破裂（欺騙背叛、隱瞞謊言）、情感疏離（感情冷卻、期待落空、缺乏陪伴）。</p>
+      <p><b class="tag">幸福三階段</b>從只想滿足自己，到懂得讓對方快樂，最後互相成就：做自己，也能照顧對方。</p>
+      <p><b class="tag">圓滿三關鍵</b>了解自己、做最真實的自己；理解對方、允許別人做自己；有效互動、創造和諧的相處。</p>
+      <p class="remind">相愛容易，相處不易；愛是一陣子，守是一輩子。婚姻是一場修行，不是在爭輸贏。</p>
+    </div></details>`;
+}
+document.querySelectorAll('#pRelSeg button').forEach(b=>b.onclick=()=>{pRel=pRel===b.dataset.v?'':b.dataset.v;
+  document.querySelectorAll('#pRelSeg button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===pRel?'true':'false'));drawPair();});
+['pSexA','pSexB'].forEach(id=>$(id).addEventListener('change',drawPair));
+['pDateA','pDateB','pNameA','pNameB','pYear'].forEach(id=>['input','change'].forEach(ev=>$(id).addEventListener(ev,drawPair)));
+$('pYear').value=new Date().getMonth()>=9?NOW+1:NOW;
+document.querySelectorAll('#pModeSeg button').forEach(b=>b.onclick=()=>{pMode=b.dataset.v;
+  document.querySelectorAll('#pModeSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  $('pYrWrap').hidden=pMode!=='flow';$('pCompare').querySelector('h2').textContent=pMode==='flow'?'兩人流年比較':'兩人比較';drawPair();});
+drawPair();
 $('startBtn').onclick=()=>{if(!$('solar').value)return;started=true;render();
   setTimeout(()=>{try{$('sRes').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}catch(e){}},50);};
 /* 七秒讀心數的流年：每年 10/1 起就算下一年 */
@@ -1187,5 +2163,4 @@ applyView();
 $('calPrev').onclick=()=>shiftMonth(-1);$('calNext').onclick=()=>shiftMonth(1);
 render();
 </script>
-
 </html>
